@@ -1,0 +1,211 @@
+<aside class="col-sm-6 col-sm-push-6 fadeInLeft animated" *ngIf="selectedUHID!=null">
+  <h3 class="bdr-bottom text-primary heading14 ">Confirm Appointment</h3>
+  <section class="wt-bg">
+    <div class="row">
+      <div class="col-sm-3">
+        <h5 class="heading14 mbottom0">Booking for: </h5>
+      </div>
+      <div class="col-sm-9">
+        <a [ngClass]="showUHID==true ? 'btn-primary' : 'btn-default'" (click)="self()" class="btn btn-sm roundBtn wdth-100">Self</a> &nbsp;
+        <a [ngClass]="showUHID==true? 'btn-default' : 'btn-primary'" (click)="relative()" class="btn btn-sm roundBtn wdth-100" tooltip="{{relativeToolTip}}" placement="top">Relative</a>
+      </div>
+    </div>
+    <p class="bdr-bottom mtop10"></p>
+
+    <div class="form-group">
+      <label class="font-nrml dropdown" style="    display: flex;">UHID’s Linked to your mobile no.:
+        <span class="asterisk">*</span>
+        <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown" href="#1">i</a>
+
+        <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+          Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID while registering at the hospital;
+          this unique number is used to identify you and will be linked with you lifelong. Using this number, the hospital
+          will store all your medical records and prescriptions while you are being treated at Apollo Hospitals.
+
+        </div>
+      </label>
+      <div class="dropdown bootstrap-select btn-group">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="true">
+          {{ selectedUHID.uhid }}
+          <span  class="text-info font-12">({{ selectedUHID.firstName }} {{ selectedUHID.lastName }})</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" *ngIf="showUhidOfRelative">
+          <li (click)="showNewPatient()">
+            <a>Not Sure.. Proceed!
+              <span class="text-info font-12">(New)</span>
+            </a>
+
+          </li>
+          <li *ngFor="let id of availableUHIDs" (click)="setUHID(id)">
+            <a>{{ id.uhid }}
+              <span class="text-info font-12">({{ id.firstName }} {{ id.lastName }})</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <small class="form-text text-muted">Any change in UHID can be done at hospital/Clinic.</small>
+    </div>
+    <div *ngIf="!showAddPatient">
+      <h4 class="heading14 mbottom0">My Details</h4>
+      <ul class="list-bdr font-big">
+        <li>
+          <label class="text-grey font-nrml">First Name:</label>
+          <span class="text-info">{{selectedUHID.firstName}}</span>
+        </li>
+        <li>
+          <label class="text-grey font-nrml">Last Name:</label>
+          <span class="text-info">{{selectedUHID.lastName}}</span>
+        </li>
+
+        <li>
+          <label class="text-grey font-nrml">Mobile:</label>
+          <span class="text-info">{{selectedUHID.mobileNumber}}
+           <span *ngIf="userData.IsPhoneVerified" class="text-primary">(
+            <i class="glyphicon glyphicon-ok"></i> Verified )
+          </span>
+          </span>
+        </li>
+        <li>
+          <label class="text-grey font-nrml">Email:</label>
+          <span class="text-info">{{selectedUHID.email}}
+           <span *ngIf="userData.IsEmailVerified=='1'" class="text-primary">(
+            <i class="glyphicon glyphicon-ok"></i> Verified )
+          </span>
+
+          </span>
+        </li>
+        <li>
+          <label class="text-grey font-nrml">DOB:</label>
+          <span class="text-info">{{selectedUHID.dob}}</span>
+        </li>
+        <li>
+          <label class="text-grey font-nrml">Gender:</label>
+          <span class="text-info">{{selectedUHID.gender}}</span>
+        </li>
+      </ul>
+    </div>
+
+
+    <div *ngIf="showAddPatient">
+      <form #piform="ngForm" (ngSubmit)="processPatientInfo(piform)">
+
+        <div class="form-group ">
+          <section class="row">
+            <div class="pr-md0 col-sm-6">
+              <label class="font-nrml">First Name:
+            <span class="asterisk">*</span>
+          </label>
+              <input type="text" class="form-control" [ngModel]="pi.fn" name="fn" required>
+
+            </div>
+            <div class="col-sm-6">
+              <label class="font-nrml">Last Name:
+            <span class="asterisk">*</span>
+          </label>
+              <input type="text" class="form-control" [ngModel]="pi.ln" name="ln" required>
+
+            </div>
+          </section>
+
+        </div>
+
+        <div class="form-group">
+          <label class="font-nrml">Mobile no.
+        <span class="asterisk">*</span>
+      </label>
+          <input type="text" maxlength="10" [disabled]="!showEmailOrMobile" class="form-control"  [(ngModel)]="phone" name="pn" required>
+          <small class="form-text text-muted">International patients
+        <a href="https://www.apollohospitals.com/international-patient-services/" target="_blank">Click here</a>
+      </small>
+        </div>
+
+        <div class="form-group">
+          <section class="row">
+            <div class="pr-md0 col-sm-6">
+              <label for="EmailID" class="font-nrml">Email:</label>
+              <input type="email" [disabled]="!showEmailOrMobile" class="form-control"  [(ngModel)]="email" name="email" ngModel email required>
+
+            </div>
+            <div class="col-sm-6">
+              <label class="font-nrml">Date of birth (Age):
+            <span class="asterisk">*</span>
+          </label>
+              <div class="input-group add-on date datetimepicker">
+                <input  [maxDate]="maxDate" class="form-control" placeholder="Click to select" type="text" #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig"
+                  name="dob" [(ngModel)]="dob" required>
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default" (click)="dp.toggle()">
+                <span class="icon-calendar-daily-page-on-day-31"></span>
+              </button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <div class="form-group">
+          <label class="font-nrml">Gender:
+        <span class="asterisk">*</span>
+      </label>
+          <div class="radio radio-inline mLeft10">
+            <input id="2" [value]="2" [(ngModel)]="pi.gender" type="radio" name="gender" ngModel required>
+            <label for="2" class="font-300 text-black"> Female </label>
+          </div>
+          <div class="radio radio-inline">
+            <input id="1" [value]="1" [(ngModel)]="pi.gender" type="radio" name="gender" ngModel required>
+            <label for="1" class="font-300 text-black"> Male </label>
+          </div>
+          <div class="radio radio-inline ">
+            <input name="gender" id="3" [value]="3" type="radio" [(ngModel)]="pi.gender">
+            <label for="3" class="font-300 text-black"> Others </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <small class="form-text text-muted">
+        <input id="check32" type="checkbox" name="tnc" checked required ngModel />
+        <label for="check32" class="font-nrml">I Agree to the </label>
+        <a (click)="terms(template)">Terms &amp; Conditions</a>.</small>
+          <button class="btn btn-info btn-block" type="submit" [disabled]="!piform.valid || booking">{{ buttonString }}</button>
+          <div class="form-error" *ngIf="!piform.valid">(Please fill all the fields to book your appointment)</div>
+          <div class="form-error" *ngIf="bookingErrorMsg != ''">{{ bookingErrorMsg }}</div>
+        </div>
+
+      </form>
+    </div>
+
+
+  </section>
+
+  <div class="form-group" *ngIf="!showAddPatient">
+    <small class="form-text text-muted">
+      <input id="check32" type="checkbox" [(ngModel)]="agreeTeram">
+      <label for="check32" class="font-nrml">I Agree to the </label>
+      <a (click)="terms(template)">Terms &amp; Conditions</a>.</small>
+    <button class="btn btn-info btn-block" [disabled]="!agreeTeram" (click)="bookAppointment()">{{ buttonString }}</button>
+    <div class="form-error" *ngIf="bookingErrorMsg != ''">{{ bookingErrorMsg }}</div>
+  </div>
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Terms &amp; Conditions</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul class="list-bdr">
+        <li><p class="mLeft20">At the hospital, please contact the Helpdesk for assistance to meet your doctor.</p></li>
+        <li><p class="mLeft20">You are requested to be present at least 15 minutes before your appointment to complete the necessary paperwork. Please bring your appointment Id or printout of the confirmation mail while coming for consultation.</p></li>
+        <li><p class="mLeft20">Presence of the patient along with the past reports/medical summary (if applicable) is required</p></li>
+        <li><p class="mLeft20">Apollo Hospitals will make all efforts to honor the appointment. However, in the event of any unforeseen circumstances beyond our control, the appointment may be delayed or rescheduled. A new appointment date and/or time, according to the patient's convenience, and availability of slot with the same specialist, or a new specialist, will be proposed.</p></li>
+        <li><p class="mLeft20">Confirmed appointments for Physical Consultations can be booked between 9 AM and 7.30 PM. Appointments requests submitted post 7.30 PM for the next day will be confirmed the following day after 10 AM. For further information, call 1860 500 1066 or for medical emergency dial 1066.</li>
+        </ul>
+
+    </div>
+  </ng-template>
+
+</aside>

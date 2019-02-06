@@ -1,0 +1,113 @@
+/*---------------------------------------Book Health Check homepage--------------------------*/
+.header .book-health-search .tab-pane .bootstrap-select.input-group-btn{width:35%;}
+.header .book-health-search .tab-pane .input-group-btn.ctlocate{ width:25%;}
+.header  .book-health-search  .btn-gps{/*position: absolute; right: 0px; top: 0px; z-index: 5000;*/ margin-left: -35px;
+position: relative;z-index: 5000;-webkit-border-radius: 0px!important;border-radius: 0px!important;}
+.slider-form{ border-radius:20px; padding:20px; background-color: rgba(255,255,255,0.5); position: absolute; right:10%; top:10px; z-index: 5; box-shadow: 0px 0px 5px rgba(0,0,0,0.5); width: 350px;}
+.home-features {padding: 50px 0 30px;  background-color: #fff;}
+.features-title {  margin: 0 0 30px;   font-weight: 300; font-family: 'Poppins', sans-serif;}
+.home-features .features-intro .read-more {  background-color: #d2ac67;  color: #fff;  padding: 15px 30px;  text-transform: uppercase;  font-size: 16px;}
+.home-features .features-intro .read-more:hover {  background-color: #41caea;  color: #fff;}
+.main-head {font-weight: 400;margin: 0 0 30px;}
+.heading {font-weight: 400;}
+.home-features .single-feature {margin: 0px 0px 10px 10px;padding-top: 0px;	width: 365px;}
+.home-features .single-feature  p{ font-size:12px; line-height:18px;}
+.home-features .single-feature .row{border: 1px solid #e9e9e9;min-height: 150px; margin-bottom:17px; border-radius: 2px;padding-bottom: 10px;}  
+.home-features .single-feature h3 {margin:10px 0 10px;font-size: 20px;}
+.home-features .icon-wrapper {font-size: 60px;  color: #007c9d; padding-right: 0px!important;}
+.home-features .icon-wrapper span{ margin-top:40px; display: block;}
+.dis-blck{ display:block;}
+.single-feature .txt-cont{ max-height: 58px; }
+.single-feature .txt-cont.read-more{ max-height: inherit; }
+.top-locations {position:relative; }
+.top-locations::before{border-color: rgba(255,255,255,1) transparent;border-style:solid;border-width:20px 30px 0px 30px;content:"";display:table;height:0;right:auto;line-height:0;margin-left:-30px;position:absolute;top:0px; left:50%;width:0}
+.img-cont{ height: 100px; border-radius:4px 4px 0px 0px; -webkit-border-radius:4px 4px 0px 0px; border-bottom: 1px solid #ddd; position: relative; overflow: hidden;}
+.img-cont img{width: 100%;height: auto;}
+.logo-disp{background-color: #007c9d; padding: 3px; border-radius:50%; height: 45px; width: 45px;color:#fff; font-size: 28px; text-align: center; position: absolute; right: 5px; top:-25px; z-index: 10;border:2px solid #fff}
+.logo-disp:after{ border: 1px dashed #ddd; content: ""; position: absolute;margin: 0; width: 93%; height: 93%; background: transparent; border-radius:50%;-webkit-border-radius:50%; left: 4%; top: 4%;transition: all 0.6s;animation-duration: 3s;}
+
+@keyframes rotating {    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes rotating {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg)
+    }
+}
+
+.package-inner:hover .logo-disp:after{
+    -webkit-animation: rotating .9s linear infinite;
+    -moz-animation: rotating .9s linear infinite;
+    -ms-animation: rotating .9s linear infinite;
+    -o-animation: rotating .9s linear infinite;
+    animation: rotating .9s linear infinite
+}
+.package{padding-bottom:15px !important;}
+.package-inner{border:1px solid #e9e9e9;border-radius:4px;}
+.text-bottom {padding:10px; background-color: #f6f6f6; overflow: hidden; border-radius:0px 0px 4px 4px; -webkit-border-radius:0px 0px 4px 4px; border-top: 1px solid #ddd;}
+.text-cont{ padding: 10px; position: relative;}
+.text-cont p.fix-height{height:52px;overflow: hidden; margin-bottom: 5px; }
+.text-cont p a{ text-align: right;}
+.pb-0{ padding-bottom:0px!important;}
+.package-price{ font-size:18px; }
+.doctor-img.big-img .round-tab{ width: 150px; height: 150px;}
+
+@media (max-width: 1367px){
+	.slider-form{ width:290px; padding: 12px;}
+}
+@media (max-width: 1260px){	}
+@media (max-width: 1199px){	}
+@media (max-width: 991px){.slider-form{ position: relative; margin: 0px auto; left: auto; right: auto; top:auto; background-color: rgba(255,255,255,0.9);}
+}
+
+@media (max-width: 767px){
+	/*--------------------book-health-check homepage--------------------*/
+	.header .book-health-search .tab-pane .bootstrap-select.input-group-btn{ width:	56%; }
+	.header .book-health-search .tab-pane .bootstrap-select.input-group-btn > .btn{border-radius: 6px 0px 0px 6px!important;-webkit-border-radius: 6px 0px 0px 6px!important;}
+	.header .book-health-search .tab-pane .input-group-btn.ctlocate {width: 78%;margin-bottom: 8px;}
+	.header .book-health-search .btn-gps{ border-radius: 0px 6px 6px 0!important;-webkit-border-radius:0px 6px 6px 0!important;}
+	.home-features .single-feature{ width:100%; margin: 0px; display: block;overflow: hidden;}
+	.plr-20-xs{ padding-left: 15px !important; padding-right: 15px !important;}
+	.home-features .icon-wrapper, .home-features .single-feature h3{text-align: center;}
+	.home-features .single-feature .row{ padding-bottom: 15px; }
+	.home-features .icon-wrapper{ font-size:35px;}
+	.home-features .icon-wrapper span{ margin-top:15px;}
+	.img-cont{height:auto;}
+	.consultation-fee {-moz-border-radius: 20px;-webkit-border-radius: 20px;border-radius: 20px;}
+}
+
+@media (max-width: 575px){.slider-form{ width:90%;}	
+}
+@media (min-width: 768px) {
+	
+}
+@media (min-width: 992px) {}
+@media (min-width: 1200px) {}
+
+
+
+

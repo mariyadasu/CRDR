@@ -1,0 +1,59 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- mini-header start-->
+    <section class="mini-header">
+	    <div class="brn-btm">
+	      <div class="container filter-sec">
+	      </div>
+	    </div>
+    </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+    
+		<aside class="col-sm-12 fadeInLeft animated wt-bg">
+
+			<section class="row bdr-bottom">
+	          <div class="col-sm-6">
+	            <h4 class="text-primary margin0">Medical Glossary for Diseases and Complications (A-Z)</h4>
+	          </div>
+	          <div class="col-sm-6 pb-5">
+	            <form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="searchMedical(f)" novalidate>
+	                  <label>Search : </label>
+
+	                  <input class="form-control input-sm mtop5-xs" 
+	                   type="text" placeholder="Enter Disease Name" 
+	                  maxlength="300" [(ngModel)]="medicalFilter.GlossaryShortName"
+	                   [typeahead]="medicalComplex"
+	                   [typeaheadScrollable]="true"
+	                   [typeaheadOptionsInScrollableView]="8"
+	                   (typeaheadOnSelect)="onSelect($event)"
+	                   typeaheadOptionField="GlossaryShortName" name="medicalname"
+	                    >
+	                </form>
+	            </div>
+        	</section>
+			<section class="mtop20" >
+			  	<section class="sort-name" >	  
+		  			<a class="{{activeclass==''?'active':''}}" (click)="medicalglosary('all','')">All</a>
+		  			<a  *ngFor="let al of alphabet; let i =index " (click)="medicalglosary(al,i)" class="{{(activeclass==i && activeclass!='')?'active':''}}">{{al.toUpperCase()}}</a>
+
+	  			</section>
+    			<!--sort-name closed-->
+    			<div *ngFor="let mi of medicalindex | filterBy: medicalFilter;">
+				<h5 class="text-info mtop20">{{mi.GlossaryShortName}}</h5>		
+				<p>{{mi.GlossaryLongName}}</p>
+				</div>
+				
+			</section>
+			<!--/ accord-content closed-->
+		
+      	</aside>
+      	<!-- /wt-bg closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->

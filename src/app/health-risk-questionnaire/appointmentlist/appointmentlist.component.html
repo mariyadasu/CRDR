@@ -1,0 +1,235 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<aside class="col-sm-12 right-content fadeInLeft animated">
+	<section class="r	ow">
+		<div class="col-sm-12">
+			<h4>Physical Consultations</h4>
+		</div>
+	</section>
+	<section class="wt-bg">
+
+		<div class="wt-tabs dashboard-tabs">
+			<ul class="nav nav-pills hidden-xs">
+				<li class="active">
+					<a href="#1b" data-toggle="tab">
+						<span class="icon-calendar-daily-page-on-day-31"></span> Upcoming Consultations</a>
+				</li>				
+			</ul>
+
+			<div class="tab-content clearfix">
+				<div class="tab-pane active" id="1b">
+					<div class="jumbotron" *ngIf="!isFutureAppointments">
+						<h4 class="margin0">There Are No Upcoming Consultations </h4>
+					</div>
+					<div class="doctor-list" *ngFor="let futureData of futureAppointmentDetails; let i = index">
+						<figure>
+							<a class="round-tab" href="javascript:void(0)" title="AskApollo">
+								<img src="{{futureData.doctorProfileURL}}" alt="AskApollo">
+							</a>
+						</figure>
+						<figcaption>
+							<h3 class="heading14 bdr-btm mtop0"> {{futureData.doctorName}} &nbsp;
+								<small class="app-date">{{futureData.appointmentDate}}
+									<span class="text-drkGrey">{{futureData.slotTime}}</span>
+								</small>
+							</h3>
+							<section class="row">
+								<div class="col-sm-4">
+									<ul class="list-arrow font-12">
+										<li>
+											<a href="javascript:void(0)">{{futureData.speciality | titlecase}}</a>
+										</li>
+										<li>{{futureData.doctorExperience}} Years of experience</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<ul class="font-11 list-arrow">
+										<li>Appointment ID:
+											<label class="text-primary">{{futureData.appointmentId}}</label>
+										</li>
+										<li>{{futureData.hospitalName}}</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<p class="font-11">Status:
+										<span class="text-green">{{futureData.status}}</span>
+									</p>
+									<a class="btn-infoLine btn-xs btn" routerLink="/health-risk-questionnaire/diagnoseslist">Patient Questionnaire</a>
+								</div>
+							</section>
+							<section class="row showHide mtop10" id='showHide{{i}}' style="display:none;">
+								<div class="col-sm-12">
+									<h4 class="heading14 margin0">Patient Details</h4>
+								</div>
+								<div class="col-sm-4">
+									<ul class="list-arrow font-12">
+										<li>
+											<label class="font-nrml text-grey">Name:</label> {{futureData.objDashboardPatientSpecificAppointmentDetailsBO.patientName}}</li>
+										<li>
+											<label class="font-nrml text-grey">Gender/Age: </label> {{futureData.objDashboardPatientSpecificAppointmentDetailsBO.gender}}({{futureData.objDashboardPatientSpecificAppointmentDetailsBO.age}}y)</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<ul class="font-11 list-arrow">
+										<li>
+											<label class="font-nrml text-grey">Mobile: </label> {{futureData.objDashboardPatientSpecificAppointmentDetailsBO.mobileNo ? futureData.objDashboardPatientSpecificAppointmentDetailsBO.mobileNo
+											: '--'}}</li>
+										<li>
+											<label class="font-nrml text-grey">Email:</label> {{futureData.objDashboardPatientSpecificAppointmentDetailsBO.email ? futureData.objDashboardPatientSpecificAppointmentDetailsBO.email
+											: '--'}}</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<a href="javascript:void(0)" class="btn-primaryLine btn-xs btn" (click)="cancelappointement(futureData.appointmentId)">Cancel</a>
+								</div>
+
+							</section>
+
+							<a href="javascript:void(0)" class="pull-left show-btn" (click)="showHide(i)">
+								<span id="moreLessText{{i}}">Show more</span>
+								<span class="icon-right-arrow"></span>
+							</a>
+							<p></p>
+						</figcaption>
+						<section id="rescheduleShowHide{{i}}" class="panel-collapse collapse">
+							<a href="javascriph:void(0)" class="close-btn" (click)="upcomingBookAgainShowHide(i)">x close</a>
+
+							<section class="mtop20">
+								<form class="form-horizontal">
+								</form>
+							</section>
+							<h5 class="text-info text-center mtop15">Select a time slot to book an appointment</h5>
+							<div class="caldar-block">
+								<div id="mhlyCarousel{{i}}" class="carousel slide monthly-view" data-interval="false">
+									<!-- Carousel items -->
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="row-fluid">
+												<div class="col-xs-2" *ngFor="let d of firstWeek" (click)="getSlotsDate(d.fullDate, true, false)">
+													<a [ngClass]="{'active': d.fullDate == selectedDate}">
+														<span class="date-view">{{ d.date }}</span>
+														<span class="day-view"> {{ d.weekday }}
+															<br /> {{ d.month }}</span>
+													</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="item">
+											<div class="row-fluid">
+												<div class="col-xs-2" *ngFor="let d of secondWeek" (click)="getSlotsDate(d.fullDate, true, false)">
+													<a [ngClass]="{'active': d.fullDate == selectedDate}">
+														<span class="date-view">{{ d.date }}</span>
+														<span class="day-view"> {{ d.weekday }}
+															<br /> {{ d.month }}</span>
+													</a>
+												</div>
+
+												<div class="col-xs-2" *ngIf="pickedFromCalendar" (click)="getPickedDateSlots()">
+													<a [ngClass]="{'active': datePickedFromCalendar.fullDate == selectedDate}">
+														<span class="date-view">{{ datePickedFromCalendar.date }}</span>
+														<span class="day-view"> {{ datePickedFromCalendar.weekday }}
+															<br /> {{ datePickedFromCalendar.month }}</span>
+													</a>
+												</div>
+
+												<div class="col-xs-4">
+													<a class="calview" (click)="toggleCalendar()">
+														<span class="icon-calendar-daily-page-on-day-31" #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" [minDate]="minDate"
+														 [maxDate]="maxDate" (onHidden)="hideDP()" (bsValueChange)="onDatePicked($event)">
+														</span> Monthly
+													</a>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<!--/carousel-inner-->
+									<a class="left carousel-control" href="#mhlyCarousel{{i}}" data-slide="prev">
+										<span class="icon-left-arrow"></span>
+									</a>
+									<a class="right carousel-control" href="#mhlyCarousel{{i}}" data-slide="next">
+										<span class="icon-right-arrow"></span>
+									</a>
+								</div>
+								<!--/mhlyCarousel-->
+
+								<div class="col-sm-12 slots-sec">
+									<div class="row">
+										<div class="col-sm-2 period">
+											<span class="icon-tea-cup" aria-hidden="true"></span> Morning
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.morningSlots!=null">
+											<a class="btn btn-sm btn-primaryLine" (click)="slotSelected(ms,futureData)" *ngFor="let ms of currentDaySlots.morningSlots">{{ ms.slotTime }}</a>
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.morningSlots==null || currentDaySlots.morningSlots.length==0 "> No slots available </div>
+									</div>
+								</div>
+
+								<div class="col-sm-12 slots-sec lunch">
+									<div class="row">
+										<div class="col-sm-2 period">
+											<span class="icon-sun" aria-hidden="true"></span> Afternoon
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.afternoonSlots!=null">
+											<a class="btn btn-sm btn-primaryLine" (click)="slotSelected(afs,futureData)" *ngFor="let afs of currentDaySlots.afternoonSlots">{{ afs.slotTime }}</a>
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.afternoonSlots==null || currentDaySlots.afternoonSlots.length==0 "> No slots available </div>
+									</div>
+								</div>
+
+								<div class="col-sm-12 slots-sec night">
+									<div class="row">
+										<div class="col-sm-2 period">
+											<span class="icon-half-moon" aria-hidden="true"></span> Evening
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.eveningSlots!=null">
+											<a class="btn btn-sm btn-primaryLine" (click)="slotSelected(es,futureData)" *ngFor="let es of currentDaySlots.eveningSlots">{{ es.slotTime }}</a>
+										</div>
+										<div class="col-sm-10" *ngIf="currentDaySlots.eveningSlots==null || currentDaySlots.eveningSlots.length==0 "> No slots available </div>
+									</div>
+								</div>
+
+							</div>
+						</section>
+					</div>
+					<!--/doctor-list -->
+				</div>				
+			</div>
+		</div>
+		<!--wt-tabs closed-->
+	</section>
+</aside>
+
+<ng-template #cancelappointment>
+	<form id="cancelform" class="mtop20" role="form" (ngSubmit)="submitCancelAppointment(cancelAppointmentForm)" [formGroup]="cancelAppointmentForm">
+		<div class="modal-header">
+			<h4 class="modal-title pull-left">Confirmation</h4>
+			<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<h4 class="heading14 text-center">Are you sure want to cancel the appointment?</h4>
+			<p class="text-center">
+				<a (click)="showCancel(true)" class="btn btn-default btn-sm">Yes</a>
+				<a (click)="showCancel(false)"  class="btn btn-info btn-sm mleft7" (click)="modalRef.hide()">No</a>
+			</p>
+			<section id="Confirmation" *ngIf="showReason" class="mtop15-xs form-horizontal collapse" aria-expanded="true">
+				<div class="form-group">
+					<label class="control-label col-sm-4 font-nrml">Cancellation Reason:</label>
+					<div class="col-sm-8">
+						<textarea class="form-control" rows="2" formControlName="cancelReason"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4 font-nrml"></label>
+					<div class="col-sm-8">
+						<button type="submit" class="btn btn-primaryLine" [disabled]="!cancelAppointmentForm.valid">Submit</button>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+	</form>
+</ng-template>

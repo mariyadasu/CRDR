@@ -1,0 +1,121 @@
+<aside class="col-sm-5 col-sm-push-7 fadeInLeft animated">
+  <h3 class="bdr-bottom text-primary" *ngIf="isLead">Request Confirmed</h3>
+  <h3 class="bdr-bottom text-primary" *ngIf="!isLead">Appointment Confirmed</h3>
+  <div class="wt-bg  text-center thnk-you">
+    <span class="circle">
+      <span class="icon-check"></span>
+    </span>
+    <h1 class="text-info">Thank you!</h1>
+
+    <h4 class="text-info" *ngIf="isLead">We have taken your request</h4>
+    <h4 class="text-info" *ngIf="!isLead">
+      <h4 class="text-info">Your appointment has been confirmed</h4>
+    </h4>
+
+    <!-- <h5 class="text-primary ">Your appointment ID is {{ bookingId }}</h5> -->
+
+    <!-- <p class="margin0 font-12" *ngIf="isLead">Our executive will get in touch with you in next 24-48 hours</p> -->
+    <p class="margin0 font-12" *ngIf="!isLead">We have sent you an email and SMS with the details.</p>
+  </div>
+
+  <section *ngIf="!showUHIDRegistration">
+    <div class="form-group">
+      <label class="font-nrml">First Name:
+        <span class="asterisk">*</span>
+      </label>
+      <input type="text" class="form-control" disabled="disabled" [ngModel]="bs.patientInfo.fn">
+    </div>
+
+
+    <div class="form-group">
+      <label class="font-nrml">Mobile:
+        <span class="asterisk">*</span>
+      </label>
+      <div class="input-group">
+        <input name="name" disabled="disabled" class="form-control" type="text" [ngModel]="bs.patientInfo.pn">
+        <div class="input-group-btn">
+          <button class="btn btn-default">
+            <span class="icon-india">
+              <span class="path1"></span>
+              <span class="path2"></span>
+              <span class="path3"></span>
+              <span class="path4"></span>
+              <span class="path5"></span>
+              <span class="path6"></span>
+              <span class="path7"></span>
+              <span class="path8"></span>
+              <span class="path9"></span>
+              <span class="path10"></span>
+              <span class="path11"></span>
+              <span class="path12"></span>
+              <span class="path13"></span>
+              <span class="path14"></span>
+              <span class="path15"></span>
+              <span class="path16"></span>
+              <span class="path17"></span>
+              <span class="path18"></span>
+              <span class="path19"></span>
+              <span class="path20"></span>
+              <span class="path21"></span>
+              <span class="path22"></span>
+              <span class="path23"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="EmailID" class="font-nrml">Email:</label>
+      <input type="email" id="EmailID" class="form-control" disabled="disabled" [ngModel]="bs.patientInfo.email">
+    </div>
+
+    <div class="form-group ">
+      <section class="row">
+        <div class="col-sm-7">
+          <a routerLink="/my/dashboard" class="btn btn-info btn-block" *ngIf="!enableManageAppointment">Manage my Appointments</a>
+        </div>
+        <div class="col-sm-5 mtop15-xs">
+          <a routerLink="/" class="btn btn-primaryLine btn-block">&lt;&lt;Homepage</a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section *ngIf="showUHIDRegistration">
+    <ul class="howWork-valign mtop30 wt-bg">
+      <li>
+        <span class="icon-doc icon-sec" aria-hidden="true"></span>
+        <div class="how-text">
+          <h4 class="text-primary mbottom5">{{ ca.docName }}</h4>
+          <p class="font-11">{{ ca.docSpeciality }}</p>
+        </div>
+
+      </li>
+      <li>
+        <span class="icon-calendar icon-sec" aria-hidden="true"></span>
+        <div class="how-text">
+          <h4 class="text-primary mbottom5">{{ ds }}</h4>
+          <p class="font-11">Appointment Date</p>
+        </div>
+
+      </li>
+      <li>
+        <span class="icon-clock icon-sec" aria-hidden="true"></span>
+        <div class="how-text">
+          <h4 class="text-primary mbottom5">{{ ca.timeSlot }}</h4>
+          <p class="font-11">Appointment Time</p>
+        </div>
+
+      </li>
+      <li>
+        <span class="icon-location icon-sec" aria-hidden="true"></span>
+        <div class="how-text">
+          <h4 class="text-primary mbottom5">{{ ca.docHospital }}</h4>
+          <p class="font-11">Location</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</aside>

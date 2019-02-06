@@ -1,0 +1,86 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container  filter-sec">
+
+        <div class="row bs-wizard" style="border-bottom:0;">
+          <div class="col-xs-3 bs-wizard-step" [ngClass]="{'active': completionLevel == 0, 'complete': completionLevel > 0}">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Appointment
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step" [ngClass]="{'active': completionLevel == 1, 'complete': completionLevel > 1, 'disabled': completionLevel < 1}">
+            <!-- active -->
+            <div class="text-center bs-wizard-stepnum">Patient
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step" [ngClass]="{'active': completionLevel == 2, 'complete': completionLevel > 2, 'disabled': completionLevel < 2}">
+            <div class="text-center bs-wizard-stepnum">Verify
+              <br class="visible-xs" />Mobile no.</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step" [ngClass]="{'active': completionLevel == 3, 'complete': completionLevel > 3, 'disabled': completionLevel < 3}">
+            <div class="text-center bs-wizard-stepnum">{{ LeadOrAppointment }}
+              <br class="visible-xs" />Confirmed!</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+
+    <div class="row">
+      <router-outlet></router-outlet>
+
+      <app-appointment-info *ngIf="completionLevel != 3 || bookingPrams != aaa.BOOKING_PARAMS_S_NU"></app-appointment-info>
+      <app-register-uhid [ca]="ca" *ngIf="completionLevel == 3 && bookingPrams == aaa.BOOKING_PARAMS_S_NU"></app-register-uhid>
+    </div>
+
+    <!-- /row -->
+    <div class="clearfix text-center mgnBtns-xs" *ngIf="completionLevel >= 3">
+      <a class="btn btn-infoLine" (click)="printIPR()" *ngIf="isPrintAppointmentDisplay">Print IPR Form</a>
+      <a class="mleft7 btn btn-infoLine" (click)="printAppointmentConfirmation()" *ngIf="isPrintAppointmentDisplay">Print Appointment Confirmation</a>
+      <!-- <a class="mleft7 btn btn-infoLine" (click)="saveAppointmentConfirmation()">Save Appointment Confirmation</a> -->
+      <a class="mleft7 btn btn-infoLine" (click)="goBackToSearch()">Book Another Appointment</a> 
+    </div>
+    <!--/row closed-->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->
+<!-- bottom -app banner start-->
+<section class="app-bannerBtm visible-xs">
+  <div class="container">
+    <h3>AskApollo Mobile App</h3>
+    <h5>One stop destination for all healthcare and wellness needs</h5>
+    <p>
+      <a class="btn-whtLine btn">Install App</a>
+    </p>
+    <a>
+      <img src="../../../assets/app-mobile.png" alt="AskApoll App">
+    </a>
+  </div>
+</section>
+<!-- bottom -app banner start-->

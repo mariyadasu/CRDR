@@ -1,0 +1,146 @@
+<!-- inner-pages start -->
+<section class="inner-pages"> 
+  <!-- mini-header start-->
+  <!-- /mini-header closed--> 
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+		 <aside class="col-sm-3 col-sm-push-9 fadeInLeft animated ">
+        <h5 class="heading14 bdr-bottom ">Appointment Info</h5>
+        <ul class="howWork-valign mtop30 ">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{prescriptionDetails.DoctorName}}</small> </h5>
+              <p class="font-11" *ngIf="prescriptionDetails.Speciality != null">{{prescriptionDetails.Speciality}}</p>
+              <p class="font-11" *ngIf="prescriptionDetails.Speciality == null">-</p>
+            </div>
+          </li>
+          <li><span class="icon-language icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>Qualification</small> </h5>
+              <p class="font-11 ">{{prescriptionDetails.Qualification}}</p>
+            </div>
+          </li>
+          <li><span class="icon-edit-document icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>Regd. No.</small> </h5>
+              <p class="font-11 ">{{prescriptionDetails.Registrationnumber}}</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+      <!-- /right-content closed --> 
+      <aside class="col-sm-9 col-sm-pull-3 fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li routerLink="/my/dashboard-oc"><a href="javascript:void(0)"></a></li>
+              <li><a routerLink="/my/dashboard-oc">Dashboard</a></li>
+              <li>View Prescription</li>
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg  border-btm " >
+                    <!-- heading closed-->
+          								<h3 class="heading14 text-info mtop5">Case no. </h3>
+								<section class="row"><div class="col-sm-6"><ul class="list-arrow">
+                                            <li><label class="text-grey font-nrml">Patient's Name: </label>
+                                                <span class="text-primary">{{prescriptionDetails.FirstName}} {{prescriptionDetails.LastName}}</span></li>
+                                            <li><label class="text-grey font-nrml">UHID:</label>
+                                                <span class="text-primary">{{prescriptionDetails.Uhid}}</span></li>
+											 <li><label class="text-grey font-nrml">Age:</label>
+                                                <span class="text-primary">{{prescriptionDetails.Age}}</span></li>
+											<li><label class="text-grey font-nrml">Gender:</label>
+                                                <span class="text-primary" [ngSwitch]=prescriptionDetails.Gender>
+                                                  <span *ngSwitchCase="'1'">Male</span>
+                                                  <span *ngSwitchCase="'M'">Male</span>
+                                                  <span *ngSwitchCase="'2'">FeMale</span>
+                                                  <span *ngSwitchCase="'F'">FeMale</span>
+                                                  <span *ngSwitchCase="'3'">Other</span>
+                                                  <span *ngSwitchCase="'O'">Other</span>
+                                                </span></li>
+										
+										</ul></div><div class="col-sm-6"><ul class="list-arrow">
+                                            
+											<li><label class="text-grey font-nrml">Height:</label>
+                                                <span class="text-primary">{{prescriptionDetails.Height}} Feet</span></li>										
+											<li><label class="text-grey font-nrml">Weight:</label>
+                                                <span class="text-primary">{{prescriptionDetails.Weight}} kg</span></li>										
+											<li><label class="text-grey font-nrml">Address:</label>
+                                                <span class="text-primary">{{prescriptionDetails.Address}}</span></li>
+											<li><label class="text-grey font-nrml">Mobile No:</label>
+                                                <span class="text-primary">{{prescriptionDetails.MobileNO}}</span></li>
+										</ul></div></section>
+          								
+				
+			
+          
+			  <section class="accord-content ptop-5" id="accord">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a href="#collapseOne" data-parent="#accord" data-toggle="collapse" class="" aria-expanded="false">Present Complaints:  <i class="accord glyphicon glyphicon-plus"></i></a> </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapseOne" aria-expanded="false">
+                                <div class="panel-body"> 
+                                    <p class="margin0">{{prescriptionDetails.Presentcomplaints}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /panel ends -->
+                       <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a href="#collapseTwo" data-parent="#accord" data-toggle="collapse" class="" aria-expanded="false"> Provisional Diagnosis: <i class="accord glyphicon glyphicon-plus"></i></a> </h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapseTwo" aria-expanded="false">
+                                 <div class="panel-body"> 
+                                      <p class="margin0">{{prescriptionDetails.ProvisionalDiagnosis}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /panel ends -->
+				  <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a href="#collapseThree" data-parent="#accord" data-toggle="collapse" class="collapsed" aria-expanded="false">  Advice & Treatment:   <i class="accord glyphicon glyphicon-plus"></i></a> </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseThree" aria-expanded="false">
+                                 <div class="panel-body"> 
+                                    <p class="margin0">{{prescriptionDetails.AdviceAndTreatment}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /panel ends -->
+				  <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a href="#collapseFour" data-parent="#accord" data-toggle="collapse" class="collapsed" aria-expanded="false"> Attachments<i class="accord glyphicon glyphicon-plus"></i></a> </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseFour" aria-expanded="false">
+                                 <div class="panel-body"> 
+                                      <ol class="list-order margin0">
+                                        <li *ngFor="let att of attachments"><a href="javascript:void(0)" class="text-grey"><span class="icon-file-text-o"></span> {{att.DocumentName}}</a> <a href="javascript:void(0)" class="btn btn-primaryLine btn-xs mtop10" (click) = "viewPrescription(att)"><span class="icon-prescription"></span> View </a></li>
+									</ol>
+							    </div>
+                            </div>
+                        </div>
+                        <!-- /panel ends -->
+                    </section>
+                    <!--/ accord-content closed-->
+			
+		<h3 class="heading14 text-info mbottom0">For Pharmacy Use</h3>
+			<ul class="font-12 text-Darkgrey">
+				<li>Dispensed: {{prescriptionDetails.HospitalName}} </li>
+				<li>Name & Signature of the Phatmacist : {{prescriptionDetails.Signature}} </li>
+				<li>Address: {{prescriptionDetails.Address}} </li>
+				<li>Phone: 1860 500 1066, Email: <a class="text-info" href="mailto:info@askapollo.com">info@askapollo.com</a>, Website: <a class="text-info" href="index.html">www.askapollo.com</a></li>
+			</ul>
+        </section>
+        <!-------------------------wt-bg closed--------------------> 
+        
+      </aside>
+      <!-- /left-content closed-->
+     
+    </div>
+    <!-- /row --> 
+  </section>
+  <!-- /content-wrap closed --> 
+</section>
+<!--/ inner-pages closed --> 

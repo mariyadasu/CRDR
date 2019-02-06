@@ -1,0 +1,150 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li><a routerLink="/my/dashboard-oc"></a></li>
+              <li><a routerLink="/my/dashboard-oc">Dashboard</a></li>
+              <li>Casesheet</li>
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg  border-btm ">
+          <h3 class="bdr-btm mtop5">View Casesheet</h3>
+          <!-- heading closed-->
+          <h3 class="heading14 text-info">1. Basic Information</h3>
+          <ul class="list-arrow">
+            <li><label class="text-grey font-nrml">Name:</label>
+              <span class="text-primary">{{casesheetDetails.PatientName}}</span></li>
+          
+            <li><label class="text-grey font-nrml">Gender:</label>
+              <span class="text-primary">{{casesheetDetails.gender}}</span></li>
+            <li><label class="text-grey font-nrml">Mobile:</label>
+              <span class="text-primary">{{ocUserInfo.Mobileno}}</span></li>
+            <li><label class="text-grey font-nrml">Email:</label>
+              <span class="text-primary">{{ocUserInfo.EmailId}}</span></li>
+          </ul>
+          <h3 class="heading14 text-info">2. Patient Details</h3>
+
+
+
+          <section class="accord-content ptop-5" id="accord">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a href="#collapseOne" data-parent="#accord" data-toggle="collapse" class="" aria-expanded="false">Complaints <i class="accord glyphicon glyphicon-plus"></i></a>                  </h4>
+              </div>
+              <div class="panel-collapse collapse in" id="collapseOne" aria-expanded="false">
+                <div class="panel-body">
+                  <p>{{casesheetDetails.PresentComplains}}</p>
+                </div>
+              </div>
+            </div>
+            <!-- /panel ends -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a href="#collapseTwo" data-parent="#accord" data-toggle="collapse" class="collapsed" aria-expanded="false"> Documents<i class="accord glyphicon glyphicon-plus"></i></a>                  </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapseTwo" aria-expanded="false">
+                <div class="panel-body">
+                  
+                  <ol class="list-order margin0" *ngIf="attachments">
+                     <li *ngFor="let att of attachments"><a href="javascript:void(0)" class="text-grey"><span class="icon-file-text-o"></span> {{att.DocumentName}}</a> <a href="javascript:void(0)" class="btn btn-primaryLine btn-xs mtop10" (click) = "viewCasesheet(att)"><span class="icon-prescription"></span> View </a></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <!-- /panel ends -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a href="#collapseThree" data-parent="#accord" data-toggle="collapse" class="collapsed" aria-expanded="false">  Allergies  <i class="accord glyphicon glyphicon-plus"></i></a>                  </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapseThree" aria-expanded="false">
+                <div class="panel-body">
+                  <ul class="list-arrow-link wdt-30-md bdr-btm-link">
+                    <li *ngFor="let a of allergiesArray">
+                      <a href="javascript:void(0)">{{a}}</a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /panel ends -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a href="#collapseFour" data-parent="#accord" data-toggle="collapse" class="collapsed" aria-expanded="false">   Medications  <i class="accord glyphicon glyphicon-plus"></i></a>                  </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapseFour" aria-expanded="false">
+                <div class="panel-body">
+                  <ul class="div-table div-bordered">
+                     <li>
+                      <div class="wdth-5p div-cell text-primary">Sl.#</div>
+                      <div class="wdth-40p div-cell text-primary">Medicine name</div>
+                      <div class="wdth-30p div-cell text-primary">Dosage</div>
+                      <div class="wdth-20p div-cell text-primary">Started From</div>
+                    </li>
+                    <li *ngFor="let m of medictionsArray;let i = index">
+                      <div class="wdth-5p div-cell text-primary">{{i+1}}</div>
+                      <div class="wdth-40p div-cell text-primary">{{m.name}}</div>
+                      <div class="wdth-30p div-cell text-primary">{{m.time}}</div>
+                      <div class="wdth-20p div-cell text-primary">{{m.sDate}}</div>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /panel ends -->
+          </section>
+          <!--/ accord-content closed-->
+        </section>
+        <!-------------------------wt-bg closed-------------------->
+
+      </aside>
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated ">
+        <h5 class="heading14 bdr-bottom ">Appointment Info</h5>
+        <ul class="howWork-valign mtop30 ">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{appointmentDetails.doctorname}}</small> </h5>
+              <p class="font-11 ">{{appointmentDetails.Speciality}}</p>
+            </div>
+          </li>
+          <li><span class="icon-calendar icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{appointmentDetails.DisplayDate}}</small> </h5>
+              <p class="font-11 ">Appointment Date</p>
+            </div>
+          </li>
+          <li><span class="icon-clock icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{appointmentDetails.DisplayTime}}</small> </h5>
+              <p class="font-11 ">Appointment Time</p>
+            </div>
+          </li>
+          <li><span class=" icon-video-camera icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5"><small>Mode of consultation</small></h5>
+              <p class="font-11">{{appointmentDetails.Category}}</p>
+            </div>
+          </li>
+          <li><span class="icon-location icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{appointmentDetails.HospitalName}}</small> </h5>
+              <p class="font-11 ">Location</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+      <!-- /right-content closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->

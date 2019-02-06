@@ -1,0 +1,43 @@
+<h4 class="text-info mtop10">Select a UHID to simplify your booking process</h4>
+
+<form>
+  <div class="form-group mtop40">
+    <input type="text" class="form-control input-lg" [placeholder]="MobileOrEmail" name="EmailorMobile" disabled>
+  </div>
+
+  <div class="linked-div">
+    <h4 class="headin16">UHID’s Linked to your mobile number or email address</h4>
+    <div class="form-group">
+      <label class="font-nrml">Please choose UHID</label>
+      <div class="dropdown bootstrap-select btn-group">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="true">
+          {{ selectedUHID.uhid }}
+          <span class="text-info font-12">({{ selectedUHID.fullName }})</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+          <li *ngFor="let id of availableUHIDs" (click)="setUHID(id)">
+            <a data-value="Experience">{{ id.uhid }}
+              <span class="text-info font-12">({{ id.fullName }})</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="form-text text-muted mtop5 font-12 text-right dropdown ">What is UHID?
+        <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown" href="#1">i</a>
+        <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+          Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID while registering at the hospital;
+          this unique number is used to identify you and will be linked with you lifelong. Using this number, the hospital
+          will store all your medical records and prescriptions while you are being treated at Apollo Hospitals.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mtop20">
+    <button class="btn btn-info btn-block btn-lg" (click)="finish()">Continue</button>
+  </div>
+
+</form>

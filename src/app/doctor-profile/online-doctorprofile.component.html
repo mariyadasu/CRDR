@@ -1,0 +1,258 @@
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container  filter-sec">
+
+        <div class="row bs-wizard" style="border-bottom:0;">
+          <div class="col-xs-3 bs-wizard-step active">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Appointment
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <!-- active -->
+            <div class="text-center bs-wizard-stepnum">Patient
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Verify
+              <br class="visible-xs" />Mobile no.</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Appointment
+              <br class="visible-xs" />Confirmed!</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              </li>
+              <li>
+                <a (click)="direct(1)">{{ breadcrumbs[1] | titlecase }}</a>
+              </li>
+              <li>
+                <a (click)="direct(breadcrumbs[3])">{{ breadcrumbs[3] | titlecase}}</a>
+              </li>
+              <li>
+                <a (click)="goToDoctorSearch()">{{ breadcrumbs[4] | titlecase}}</a>
+              </li>
+              <li>
+                <a>{{ docSummary.docName | titlecase}}</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="wt-bg">
+          <figure class="doctor-img">
+            <a class="round-tab" title="AskApollo">
+              <img src="{{ doc.CompletePhotoUrl }}" alt="AskApollo">
+            </a>
+          </figure>
+
+          <figcaption class="doc-txt">
+            <h1 class="mtop0 text-primary" style="font-size: x-large">{{ docSummary.docName }} </h1>            <p> {{ docSummary.docQualification }} </p>
+            <ul class="data-list">
+              <li class="text-primary">
+                <span class="icon-doctor pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">
+                  <h2 style="font-size: 15px"><a class="text-primary">{{ docSummary.docSpeciality | titlecase }}</a></h2>
+                </div>
+              </li>
+              <li>
+                <span class="icon-file-text-o pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">{{ doc.Experience }} Years of experience</div>
+              </li>
+              <li>
+                <span class="icon-language pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">{{ doc.LanguagesKnown }}</div>
+              </li>
+              <li>
+                <p class="social-links mbottom0">
+                  <a>
+                    <share-button button="facebook" text="Share"></share-button>
+
+                    <!-- <span class="icon-facebook-logo-button" aria-hidden="true"></span> -->
+                  </a>
+                  <a>
+                     <share-button button="twitter" text="Tweet"></share-button>
+                    <!-- <span class="icon-twitter" aria-hidden="true"></span> -->
+                  </a>
+                  <!-- <a><share-button button="google" text="google"></share-button> -->
+                    <!-- <span class="icon-googleplus-logo" aria-hidden="true"></span> -->
+                  <!-- </a> -->
+                  <a class="in"><share-button button="linkedin" text="in"></share-button></a>
+                   
+                </p>
+              </li>
+            </ul>
+            <!--p class="mbottom0 text-right"><a class="btn btn-primaryLine">Submit Feedback</a> </p-->
+          </figcaption>
+          <div class="clearfix"></div>
+        </section>
+
+        <div class="wt-tabs mtop20">
+          <!-- <ul class="nav nav-pills ">
+            <li class="active">
+              <a data-toggle="tab">Location</a>
+            </li>
+            <li class="">
+              <a data-toggle="tab">Info</a>
+            </li>
+            <li>
+              <a data-toggle="tab">Healthfeed</a>
+            </li>
+          </ul> -->
+
+          <div class="tab-content clearfix">
+            <tabset #staticTabs>
+              <tab heading="Location">
+                <div class="tab-pane active" id="1b" *ngIf="isDataAvailable">
+                  <!-- <online-summary-card [d]="docC"></online-summary-card> -->
+                  <online-location-summary-card [dl]="docDetailLocation" [doc]="doc" [ds]="docSummary"></online-location-summary-card>
+
+                </div>
+              </tab>
+
+              <tab heading="Info">
+                <div class="tab-pane" id="2b">
+                  <h4 class="text-primary" *ngIf="doc.Qualification!==null" >Qualification</h4>
+                  <p> {{ doc.Qualification }} </p>
+
+                  <h4 class="text-primary">Work Experience</h4>
+                  <ul class="list-view">
+                    <li> {{ doc.Experience }} years </li>
+                  </ul>
+
+                  <h4 class="text-primary">Registration No</h4>
+                  <ul class="list-view">
+                    <li> {{ doc.RegistrationNo }} </li>
+                  </ul>
+
+                  <!-- <h4 class="text-primary" *ngIf="docInfoTab.ServicesList!==null" >Services</h4>
+                  <p class="mLeft20">
+                    <a class="label-service blk" *ngFor="let s of docInfoTab.ServicesList">{{ s.ServiceName }} </a>
+                  </p> -->
+
+                  <h4 class="text-primary">Gender</h4>
+                  <ul class="list-view">
+                    <li>{{ doc.Gender}}</li>
+                  </ul>
+
+                  <h4 class="text-primary" *ngIf="doc.Achievements!==null" >Awards and Achievements</h4>
+                  <ul class="list-view">
+                     <div [innerHTML]="doc.Achievements"></div>
+                    
+                  </ul>
+
+                  <h4 class="text-primary" *ngIf="doc.Publications!==null" >Research and Publications</h4>
+                  <ul class="list-view">
+                    <div [innerHTML]="doc.Publications"></div>
+                  </ul>
+
+                  <!-- <h4 class="text-primary">Summary</h4>
+                  <ul class="list-view">
+                    <div [innerHTML]="doc.SemContent"></div>
+                  </ul> -->
+                </div>
+              </tab>
+             
+            </tabset>
+          </div>
+
+        </div>
+      </aside>
+
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated afixed">
+        <h5 class="heading14 bdr-bottom ">How it works?</h5>
+        <ul class="howWork-valign mtop15">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">1. Choose <small> a doctor</small></h5>
+              <p class="font-11">Choose your preferred doctor , mode of consultation , preferred date and time.</p>
+            </div>
+          </li>
+          <li><span class="icon-credit-card icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">2. Pay <small> for consultation</small></h5>
+              <p class="font-11">Pay the consultation fees to initiate consultation.</p>
+            </div>
+          </li>
+          <li><span class="icon-edit-document icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">3. Fill <small> Medical Symptoms</small></h5>
+              <p class="font-11">Share Medical symptoms and reports.</p>
+            </div>
+          </li>
+
+          <li><span class="icon-prescription icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">4. Get <small> Doctor Consultation</small></h5>
+              <p class="font-11">Complete your consultation at your requested date & time.</p>
+            </div>
+          </li>
+          <li><span class="icon-pills icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info  mbottom5">5. Get <small> Prescription</small></h5>
+              <p class="font-11">Get medical prescription or advise for your consultation.</p>
+            </div>
+          </li>
+        </ul>
+
+      </aside>
+    </div>
+  </section>
+</section>
+<!--/ inner-pages closed -->
+<!-- bottom - app banner start-->
+<section class="app-bannerBtm visible-xs">
+  <div class="container">
+    <h3>AskApollo Mobile App</h3>
+    <h5>One stop destination for all healthcare and wellness needs</h5>
+    <p>
+      <a class="btn-whtLine btn">Install App</a>
+    </p>
+    <a>
+      <img src="../../assets/app-mobile.png" alt="AskApoll App">
+    </a>
+  </div>
+</section>
+<!-- bottom -app banner start-->
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+  <div class="container">
+    {{message}}
+  </div>
+</section>
+
+<!-- /seo-text-closed -->

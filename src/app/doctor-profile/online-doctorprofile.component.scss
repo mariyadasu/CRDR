@@ -1,0 +1,580 @@
+.doctor-list::after, .doctor-section::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.doctor-img {
+    width: 150px;
+    float: left;
+
+    .round-tab {
+        background: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        transform: scale(1);
+        transition: all .7s ease 0s;
+        height: 130px;
+        width: 130px;
+    }
+}
+
+.doc-img img {
+    border-radius: 3px;
+    height: auto;
+    width: 100%;
+}
+
+.doc-txt {
+    margin-left: 140px;
+    padding: 0px 15px 0px;
+}
+
+.data-list li {
+    padding: 0px 0px 8px;
+    font-size: 12px;
+
+    [class^="icon-"], [class*=" icon-"] {
+        color: #007c9d;
+        font-size: 16px;
+    }
+
+    a {
+        color: #333;
+
+        &:hover {
+            color: #ec7323;
+        }
+    }
+}
+
+// .nav-tabs {
+//     border-bottom: 1px solid #ddd;
+//     background-color: #eee !important;
+
+//     >li.active > a {
+//         background-color: #fff;
+//         color: #ec7323 !important;
+//     }
+// }
+
+// .tab-pane {
+//     padding: 0 15px;
+// }
+
+.wt-tabs {
+    .nav-pills > li {
+        > a {
+            border-radius: 4px 4px 0 0;
+            color: #333;
+            font-size: 16px;
+            font-family: 'Roboto Condensed', sans-serif;
+
+            &:hover {
+                background-color: #f9f9f9;
+            }
+        }
+
+        &.active > a {
+            background-color: #fff;
+            color: #ec7323;
+        }
+    }
+
+    .tab-content {
+        background-color: #fff;
+        padding: 5px 15px;
+        border-radius: 0px 4px 4px 4px;
+    }
+}
+
+.label-service.blk {
+    color: #333;
+    font-size: 11px;
+
+    &:hover {
+        color: #fff;
+        font-size: 11px;
+    }
+}
+
+.border-btm {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.txt-cont {
+    max-height: 45px;
+    overflow: hidden;
+    position: relative;
+    transition: .25s ease;
+    display: block;
+}
+
+.read-more.txt-cont {
+    max-height: inherit;
+    transition: .25s ease;
+}
+
+.show-btn {
+    color: #ec7323;
+    text-decoration: none;
+
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.more-filter {
+    position: relative;
+    display: inline-block;
+}
+
+.fltr-list {
+    position: absolute;
+    top: 29px;
+    left:10px;
+    padding: 8px;
+    background: #ec7323;
+    right: 0px;
+    width: 480px;
+    z-index: 99999;
+    border-radius: 3px 0px 3px 3px;
+    display: none;
+}
+
+.list-view {
+    padding-left: 20px;
+
+    li {
+        padding: 0px 0px 8px;
+        font-size: 12px;
+
+        &::before {
+            content: "\e912 ";
+            display: inline-block;
+            font-family: 'icomoon';
+            font-size: 8px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.social-links, .data-list li .social-links span {
+    font-size: 24px;
+}
+
+.social-links a.in {
+    width: 25px;
+    height: 25px;
+    background: #007c9d;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 0px 3px 5px;
+    line-height: 24px;
+}
+
+.data-list li .social-links a:hover span {
+    color: #ec7323;
+}
+
+.social-links a.in:hover {
+    background-color: #ec7323;
+    color: #fff;
+}
+
+.font-nrml {
+    font-weight: normal;
+}
+
+.asterisk {
+    color: #f00;
+}
+
+a {
+    color: #007c9d;
+}
+
+.panel-sm {
+    border-color: #eeeff1;
+    display: inline-block;
+    min-width: 196px;
+    margin-bottom: 0px;
+
+    .panel-heading {
+        height: 28px;
+        padding: 4px 10px;
+        background-color: #007c9d;
+        display: block;
+        min-width: 198px;
+        text-align: center;
+    }
+
+    .panel-body {
+        padding: 10px;
+        background-color: #eeeff1;
+        text-align: center;
+    }
+
+    .btn {
+        padding: 5px 15px;
+        font-size: 18px;
+    }
+
+    .tooltip {
+        .tooltip-inner {
+            background-color: #007c9d;
+        }
+
+        > .tooltip-arrow {
+            border-bottom-color: #007c9d;
+        }
+    }
+}
+
+.mleft7 {
+    margin-left: 7px;
+}
+
+.filter-sec .mLeft10 {
+    margin-right: 10px;
+}
+
+.alert-primary {
+    background-color: #e8faff;
+    border-color: #cae7ef;
+    color: #007c9d;
+}
+
+.min-wdt150px {
+    min-width: 196px;
+}
+
+.pb-5 {
+    padding-bottom: 5px;
+}
+
+.font-16 {
+    font-size: 20px;
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    background-color: #18e01c;
+    float: right;
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+    animation: sk-scaleout 1.0s infinite ease-in-out;
+    margin-top: -5px;
+}
+
+.spinner-img {
+    height: 10px;
+    width: 10px;
+    background-color: #18e01c;
+    float: right;
+    margin-top: 5px;
+    border-radius: 50%;
+    margin-right: -20px;
+}
+
+.doctor-list {
+    .spinner {
+        position: absolute;
+        right: 10px;
+        bottom: 0px;
+        margin: 0px;
+    }
+
+    .spinner-img {
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+        margin: 0px;
+    }
+}
+
+@-webkit-keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.jumbo {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.icon-cont {
+    background-color: #007c9d;
+    padding: 20px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    &::before {
+        border-color: transparent rgba(0, 124, 157, 1);
+        border-style: solid;
+        border-width: 6px 0px 6px 8px;
+        content: "";
+        display: table;
+        height: 0;
+        right: -8px;
+        line-height: 0;
+        margin-top: -8px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+}
+
+.jumbo-txt {
+    padding-left: 20px;
+}
+
+@media (max-width: 767px) {
+    .doctor-list figure {
+        width: 50px;
+        height: 50px;
+
+        .round-tab {
+            width: 50px;
+            height: 50px;
+            line-height: 18px;
+        }
+    }
+
+    .doctor-img {
+        width: 50px;
+        height: 50px;
+        line-height: 18px;
+
+        .round-tab {
+            width: 50px;
+            height: 50px;
+            line-height: 18px;
+        }
+    }
+
+    .doctor-list figcaption {
+        &::before {
+            display: none;
+        }
+
+        margin-left: 55px;
+        padding: 10px 5px;
+    }
+
+    ul.list-bdr li {
+        border: none;
+        padding: 0px;
+
+        label {
+            display: none;
+        }
+    }
+
+    .left-block, .doctor-list figcaption .right-block {
+        width: 100%;
+        display: block;
+        padding: 4px 0 0;
+    }
+
+    .data-list li {
+        [class^="icon-"], [class*=" icon-"] {
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        padding: 0px 0px 2px;
+    }
+
+    .doctor-list {
+        .btn-info.mtop20 {
+            margin-top: 5px;
+        }
+
+        .heading14 {
+            &.bdr-btm::after {
+                display: none;
+            }
+
+            margin: 0px;
+            padding-bottom: 0;
+            border: none;
+        }
+    }
+
+    .caldar-block {
+        width: 100%;
+    }
+
+    .monthly-view {
+        .col-xs-2 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .carousel-inner {
+            padding: 8px 0;
+        }
+    }
+
+    .date-view {
+        font-size: 20px;
+        padding: 0px 2px;
+    }
+
+    .day-view {
+        padding: 0px 2px;
+        font-size: 10px;
+    }
+
+    .monthly-view .carousel-control {
+        left: 3px;
+
+        &.right {
+            left: auto;
+            right: 3px;
+        }
+    }
+
+    .slots-sec .btn-primaryLine {
+        margin: 3px 1px;
+    }
+
+    .close-btn {
+        top: -18px;
+    }
+
+    .app-bannerBtm {
+        text-align: center;
+        background: #007c9d;
+        padding-top: 20px;
+        text-align: center;
+        color: #fff;
+
+        h5, h3 {
+            padding: 0px 0px 10px;
+        }
+
+        .btn {
+            margin-bottom: 15px;
+        }
+    }
+
+    .relevance-mob {
+        .btn {
+            background: url(../../assets/ref.png) no-repeat 0px center;
+            border: none;
+            padding: 0px 10px;
+            margin-top: 10px;
+            color: #007c9d;
+            font-size: 12px;
+        }
+
+        .dropdown-menu > li > a {
+            padding: 3px 5px;
+        }
+
+        .open > .dropdown-toggle.btn-default {
+            background-color: transparent;
+            box-shadow: none;
+
+            &:hover {
+                background-color: none;
+            }
+
+            &:active {
+                &:focus, &:hover {
+                    background-color: none;
+                }
+            }
+        }
+    }
+
+    .content-wrap {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .doc-txt {
+        margin-left: 55px;
+        padding: 0px 5px;
+
+        p {
+            font-size: 11px;
+        }
+    }
+
+    .fltr-list {
+        width: 330px;
+    }
+
+    /*----------------------------------Patient detail css-------------------------------*/
+    .bs-wizard > .bs-wizard-step {
+        > .progress {
+            margin: 7px 0;
+        }
+
+        .bs-wizard-stepnum {
+            font-size: 10px;
+            margin-bottom: 5px;
+            min-height: 35px;
+        }
+
+        > .bs-wizard-dot {
+            top: 45px;
+        }
+    }
+
+    .doctor-list {
+        .spinner-img {
+            right: 0px;
+            bottom: 0px;
+        }
+
+        .spinner {
+            right: -10px;
+            bottom: -10px;
+        }
+    }
+
+    .social-links a.in {
+        margin: -10px 0px 3px 5px;
+    }
+}

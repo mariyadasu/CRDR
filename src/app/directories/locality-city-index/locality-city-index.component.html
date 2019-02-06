@@ -1,0 +1,63 @@
+<section class="inner-pages">
+  	<!-- mini-header start-->
+  	<section class="mini-header">
+    	<div class="brn-btm">
+      		<div class="container filter-sec">
+	  	
+		
+      		</div>
+    	</div>
+  	</section>
+  	<!-- /mini-header closed-->
+  	<!-- content-wrap start -->
+  	<section class="container content-wrap">
+    	<div class="row">
+			<aside class="col-sm-12 fadeInLeft animated wt-bg">
+	    	<section class="row bdr-bottom">
+	    		<div class="col-sm-6">
+            <h4 class="text-primary margin0">Locality City Index</h4></div>
+            <div class="col-sm-6 pb-5">
+              <form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="searchCityLocality(f)" novalidate>
+                  <label>Search : </label>
+                  <input class="form-control input-sm mtop5-xs" 
+                   type="text" placeholder="Enter City Name" 
+                  maxlength="300" [(ngModel)]="cityLocalistFilter.CityName"
+                   [typeahead]="citylistLocalityComplex"
+                   [typeaheadScrollable]="true"
+                   [typeaheadOptionsInScrollableView]="8"
+                   (typeaheadOnSelect)="onSelect($event)"
+                   typeaheadOptionField="CityName" name="cityname"
+                    >
+              </form>             
+          </div>
+        </section>	
+	        <section class="accord-content" id="accord">
+            <div class="panel panel-default" *ngFor="let cl of cityLocalityIndex| filterBy: cityLocalistFilter; let i=index ">
+              <div class="panel-heading" >
+                <h4 class="panel-title"><a href="#collapseOne{{i}}" data-parent="#accord" data-toggle="collapse" class="{{i==0?'':'collapsed'}}" aria-expanded="false">{{cl.CityName}}<i class="accord glyphicon glyphicon-plus"></i></a> 
+                </h4>
+              </div>
+              <div class="panel-collapse collapse {{i==0?'in':''}}" id="collapseOne{{i}}"aria-expanded="false" >
+                <div class="panel-body" > 
+                    <ul class="list-arrow-link wdt-30-md bdr-btm-link" >
+                      <li *ngFor="let hcl of cl.HyperLocationList;"><a [routerLink]="['/',cl.CityName | lowercase,'hyperlocal',hcl.UrlHyperLocation]">{{hcl.HyperLocation}}</a></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /panel ends -->                     
+				  
+          </section>
+          <!--/ accord-content closed-->
+		
+		
+      </aside>
+      <!-- /wt-bg closed -->
+	  
+	  
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+

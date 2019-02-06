@@ -1,0 +1,231 @@
+<div class="doctor-list panel" id="{{doc.doctorId}}" #{{doc.doctorId}}>
+  <figure class="round-tab">
+    <a title="AskApollo" routerLink="{{ profileURL }}">
+      <img [src]="doc.completePhotoURL" alt="AskApollo" (error)="error($event,doc.gender)">
+    </a>
+  </figure>
+  <figcaption>
+    <h2 class="heading14 bdr-btm mtop0">{{ doc.doctorName }}
+      <a class="mini" routerLink="{{ profileURL }}">View Profile</a>
+    </h2>
+    <div class="left-block">
+      <ul class="list-bdr">
+        <li *ngIf="doc.qualification.length > 0">
+          <label>Qualification:</label> {{ doc.qualification }}</li>
+        <li>
+          <label>Speciality:</label> {{ doc.MultiSpecialityName | titlecase }}</li>
+        <li>
+          <label>Experience:</label> {{ doc.YearsOfExperience }} years
+          <span class="visible-xs-inline-block">of experience</span>
+        </li>
+        <li class="hidden-xs"> 
+          <label>Language:</label> {{ doc.RegionalLanguage }}</li>
+        <!-- <li class="hidden-xs" *ngIf="doc.ApiServicesBos && doc.ApiServicesBos.length > 0">
+          <label class="pull-left">Services:</label>
+          <div class="mLeft95">
+            <div class="txt-cont">
+              <div *ngIf="moreServices">
+                <a  routerLink="/treatments/{{replaceLinks(s.serviceName)}}" class="label-service" *ngFor="let s of doc.ApiServicesBos | slice:0:2;" (click)="selectedService(s)">{{ s.serviceName }}</a>
+              </div>
+
+              <div *ngIf="!moreServices">
+                <a  routerLink="/treatments/{{replaceLinks(s.serviceName)}}" class="label-service" *ngFor="let s of doc.ApiServicesBos" (click)="selectedService(s)">{{ s.serviceName }}</a>
+              </div>
+            </div>
+              <span *ngIf="doc.ApiServicesBos.length > 2">
+                <a *ngIf="moreServices" (click)="showMoreService()" class="pull-left show-btn">Show more
+                <span class="icon-right-arrow"></span>
+              </a>
+              </span>
+              
+
+              <a *ngIf="!moreServices" (click)="showMoreService()" class="pull-left show-btn">Show less
+                <span class="icon-right-arrow"></span>
+              </a>
+          </div>
+        </li> -->
+
+      </ul>
+      <ngx-json-ld [json]="seoSchemaForDoctorProfile"></ngx-json-ld>
+    </div>
+
+    <div class="right-block">
+      <ul class="data-list">
+        <li *ngIf="doc.DisplayDays != ''">
+          <span class="icon-clock pull-left" aria-hidden="true"></span>
+          <div class="mLeft20"> {{ doc.DisplayDays }}
+            <p class="text-info margin0"> ({{ doc.DisplayTime }})</p>
+          </div>
+        </li>
+
+        <li *ngIf="doc.HospitalNames != ''">
+          <span class="icon-location pull-left" aria-hidden="true"></span>
+          <div class="mLeft20">{{ doc.HospitalNames | titlecase }}</div>
+        </li>
+      </ul>
+
+ 
+      <button type="button" class="btn btn-info mtop20" *ngIf="doc.notInterestedIneDoc == 0" (click)="makeAppointment()" [ngx-scroll-to]="doc.doctorId">
+        <span class="icon-electric-current-symbol" aria-hidden="true"></span> Book Appointment
+      </button>
+
+      <button type="button" class="btn btn-infoLine mtop20" *ngIf="doc.notInterestedIneDoc == 1" (click)="requestAppointment()">
+        <span class="icon-electric-current-symbol" aria-hidden="true"></span> Request Appointment
+      </button>
+
+    </div>
+  </figcaption>
+
+  <section [collapse]="isCollapsed" class="panel-collapse collapse">
+    <a class="close-btn" (click)="isCollapsed = !isCollapsed">x close</a>
+    <section class="mtop20" *ngIf="availableHospitals.length > 1">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-3 font-nrml text-primary">Select Hospital:</label>
+
+          <div class="col-sm-7">
+            <div class="dropdown bootstrap-select btn-group ">
+              <select class="btn btn-default dropdown-toggle" name="" id="" (change)="onSelectedHos($event)">
+                <option *ngFor="let h of availableHospitals" value="{{ h.hospitalId }}">{{ h.hospitalName }}</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </section>
+    <h5 class="text-info text-center mtop20">Select a time slot to book an appointment</h5>
+
+    <div class="caldar-block">
+      <div class="carousel slide monthly-view" data-interval="false">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row-fluid">
+              <div class="col-xs-2" *ngFor="let d of firstWeek" (click)="getSlotsDate(d.fullDate, true, false)">
+                <a [ngClass]="{'active': d.fullDate == selectedDate}">
+                  <span class="date-view">{{ d.date }}</span>
+                  <span class="day-view"> {{ d.weekday }}
+                    <br /> {{ d.month }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="row-fluid">
+              <div class="col-xs-2" *ngFor="let d of secondWeek" (click)="getSlotsDate(d.fullDate, true, false)">
+                <a [ngClass]="{'active': d.fullDate == selectedDate}">
+                    <span class="date-view">{{ d.date }}</span>
+                    <span class="day-view"> {{ d.weekday }}
+                      <br /> {{ d.month }}</span>
+                </a>
+              </div>
+
+              <div class="col-xs-2" *ngIf="pickedFromCalendar" (click)="getPickedDateSlots()">
+                <a [ngClass]="{'active': datePickedFromCalendar.fullDate == selectedDate}">
+                  <span class="date-view">{{ datePickedFromCalendar.date }}</span>
+                  <span class="day-view"> {{ datePickedFromCalendar.weekday }}
+                    <br /> {{ datePickedFromCalendar.month }}</span>
+                </a>
+              </div>
+
+              <div class="col-xs-4">
+                <a class="calview" (click)="toggleCalendar()">
+                  <span class="icon-calendar-daily-page-on-day-31" #dp="bsDatepicker" bsDatepicker 
+                    [bsConfig]="bsConfig" [minDate]="minDate" [maxDate]="maxDate" 
+                    (onHidden)="hideDP()" (bsValueChange)="onDatePicked($event)">
+                  </span> Monthly
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!--/carousel-inner-->
+        <a class="left carousel-control" href="#{{doc.doctorId}}" data-slide="prev">
+          <span class="icon-left-arrow"></span>
+        </a>
+        <a class="right carousel-control" href="#{{doc.doctorId}}" data-slide="next">
+          <span class="icon-right-arrow"></span>
+        </a>
+
+      </div>
+      <!--/mhlyCarousel-->
+      <div class="col-sm-12 slots-sec">
+        <div class="row">
+          <div class="col-sm-2 period">
+            <span class="icon-tea-cup" aria-hidden="true"></span> Morning
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.morningSlots!=null">
+            <a class="btn btn-sm btn-primaryLine" (click)="slotSelected(ms)" *ngFor="let ms of currentDaySlots.morningSlots">{{ ms.slotTime }}</a>
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.morningSlots==null || currentDaySlots.morningSlots.length==0 "> 
+            <button type="button" class="btn btn-infoLine mtop20" *ngIf="currentDaySlots.morningSlotRequestApptEnabled" (click)="requestAppointment()">
+              <span class="icon-electric-current-symbol" aria-hidden="true"></span> Request Appointment
+            </button>
+             <span *ngIf="!currentDaySlots.morningSlotRequestApptEnabled">
+              No slots available
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 slots-sec lunch">
+        <div class="row">
+          <div class="col-sm-2 period">
+            <span class="icon-sun" aria-hidden="true"></span> Afternoon
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.afternoonSlots!=null">
+            <a class="btn btn-sm btn-primaryLine" (click)="slotSelected(afs)" *ngFor="let afs of currentDaySlots.afternoonSlots">{{ afs.slotTime }}</a>
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.afternoonSlots==null || currentDaySlots.afternoonSlots.length==0 ">
+            <button type="button" class="btn btn-infoLine mtop20" *ngIf="currentDaySlots.afternoonSlotRequestApptEnabled" (click)="requestAppointment()">
+              <span class="icon-electric-current-symbol" aria-hidden="true"></span> Request Appointment
+            </button>
+            
+            <span *ngIf="!currentDaySlots.afternoonSlotRequestApptEnabled">
+              No slots available
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 slots-sec night">
+        <div class="row">
+          <div class="col-sm-2 period">
+            <span class="icon-half-moon" aria-hidden="true"></span> Evening
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.eveningSlots!=null">
+            <a class="btn btn-sm btn-primaryLine" (click)="slotSelected(es)" *ngFor="let es of currentDaySlots.eveningSlots">{{ es.slotTime }}</a>
+          </div>
+          <div class="col-sm-10" *ngIf="currentDaySlots.eveningSlots==null || currentDaySlots.eveningSlots.length==0 ">
+            <button type="button" class="btn btn-infoLine mtop20" *ngIf="currentDaySlots.eveningSlotRequestApptEnabled" (click)="requestAppointment()">
+              <span class="icon-electric-current-symbol" aria-hidden="true"></span> Request Appointment
+            </button>
+            
+            <span *ngIf="!currentDaySlots.eveningSlotRequestApptEnabled">
+              No slots available
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  <ng-template #template>
+    <div class="modal-body">
+       <div class="modal-body ptop15"> <button type="button" class="close" data-dismiss="modal" (click)="modalRef.hide()">&times;</button>
+        <div class="text-center mtop10 ">
+          <span class="oops text-info "><span class="glyphicon glyphicon-exclamation-sign"></span></span>
+          <h4 class="mtop0">We are not able to fetch doctor's slot</h4>
+          <p class="mtop20 font-12 text-grey">Please give us a call to Book an Appointment: </p><h4 ><span class="icon-telephone icon-sec text-primary" aria-hidden="true"></span> <a href="tel:18605001066">1860-500-1066</a>  </h4>
+          <p class="visible-xs"><a href="tel:18605001066" class="btn btn-info "> &nbsp; Call &nbsp; </a></p>
+        
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

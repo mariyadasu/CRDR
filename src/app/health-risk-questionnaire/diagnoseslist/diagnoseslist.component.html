@@ -1,0 +1,44 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<section class="container content-wrap">
+	<div class="row">
+		<aside class="col-md-12 right-content ">
+			<section class="row">
+			  <div class="col-xs-7 col-sm-10">
+			    <ul class="breadcrumb">
+			      <li><a href="index.html"></a></li>
+			      <li>Health Risk Assessment</li>
+			    </ul>
+			  </div>
+			</section>
+			
+			<section class="wt-bg">
+				
+				<div class="fadeInRight animated" id="dignosed" *ngIf="HelathCheckDiagnoses['HRAStatusCode'] == hcs.startHRAStatusCode">
+				<h1 class="heading mtop5 mleft-xs-0">Have you been diagnosed with any of these conditions. </h1>
+				<section class="row mtop10 hra-home">					
+					<div class="col-sm-3 col-xs-4 mb-15" *ngFor="let hc of HelathCheckDiagnoses['objHRQSymptomBO']; let i=index ">
+						<input id="{{hc.SymptomId}}" class="custom-check" type="checkbox" (change)="onChange(hc.SymptomId, $event.target.checked)" >
+						<label for="{{hc.SymptomId}}"><span class="{{hcs.icon[i]}} icon-sec hidden-xs"></span>  <span class="txt-sec">{{hc.SymptomName}} </span> </label>
+					</div>
+
+				</section>
+				<section class="lightgrey-box radius25 mtop10">
+				<button id="step-1-next" class="btn btn-info radius25 btn-sm pull-right" type="button" (click)="nextClick(HelathCheckDiagnoses['RegionID'],HelathCheckDiagnoses['AppointmentId'],HelathCheckDiagnoses['SystemId'])"> Next <span class="icon-right-arrow"></span></button>
+				<!-- <a id="step-1-next" class="btn btn-info radius25 btn-sm pull-right"> Next <span class="icon-right-arrow"></span></a> -->
+				</section>				
+				</div>
+				<div *ngIf="HelathCheckDiagnoses['HRAStatusCode'] == hcs.initiateHRAStatusCode">
+					HRA Request already initiated for this appointment.
+				</div>	
+				<div *ngIf="HelathCheckDiagnoses['HRAStatusCode'] == hcs.submitHRAStatusCode">
+					HRA Request already submited for this appointment. 
+				</div>
+				<div *ngIf="HelathCheckDiagnoses['HRAStatusCode'] == hcs.AppointmentHRAStatusCode">
+					HRA is not allowed as appointment time is passed.
+				</div>
+								
+            </section>
+        <!-- /wt-bg closed -->
+		</aside>
+	</div>
+</section>

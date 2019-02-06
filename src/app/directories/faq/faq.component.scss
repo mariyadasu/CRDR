@@ -1,0 +1,27 @@
+.faq {    margin: 20px 0 80px ;}
+.faq ul {    margin: 30px 0 ;}
+.faq ul li {background-color: #f7f7f7 ;    margin-bottom: 1px ;    padding: 1px 10px ;}
+.faq ul h5 {    font-size: 18px ;    color: #707070 ;    cursor: pointer ;}
+.faq ul h5 span .fa {    width: 15px ;}
+.faq ul .answer {    color: #666 ;    padding: 0 10px 10px ;    display: none ;}
+.faq .online-consult-img {    background-color: #f7f7f7 ;    border-radius: 50% ;    padding: 10px ;    height: 310px ;    text-align: center ;    padding-top: 62px ;    width: 310px ;    margin: 30px auto 0 ;    border: 7px solid #fff ;    -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) ;    -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) ;    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) ;}
+
+
+.faq-content{display:block; padding-top:20px;}
+.faq-content .panel-heading{ background:#f7f7f7; border:none; padding:0px;}
+.faq-content .panel-heading a.collapsed{ color:#007c9d; background:#f7f7f7;}
+.faq-content .panel-heading a:hover,.faq-content .panel-heading  a:active, .faq-content .panel-heading a:focus,.faq-content .panel-heading a{ background:#ec7323; text-decoration:none; color:#fff; display:block; font-weight:400; font-size:16px; padding:6px 15px; border-radius:4px;}
+.faq-content  .panel-title   a .accord{float: right;    font-size: 9px;    margin-top: 5px;}
+.faq-content  .panel-title   a .accord.glyphicon-plus:before{content:"\2212";}
+.faq-content  .panel-title   a.collapsed .accord.glyphicon-plus:before { content:"\002b";}
+.ans-circle{ height:23px; width:23px; font-size:14px; line-height:22px; text-align:center; vertical-align:middle; color:#fff; background:#007c9d; margin-right:10px; display:inline-block; font-weight:600; -webkit-transition: all 0.7s ease;transition: all 0.7s ease;}
+.panel-body .ans-circle{ position:absolute; display:none;}
+.panel-collapse.collapse.in .panel-body .ans-circle{ display:block; left:16px;}
+.panel-heading a .ans-circle{ background:#ffffff; color:#ec7323;}
+.panel-heading a.collapsed .ans-circle{ background:#007c9d; color:#fff;}
+.faq-content  .panel-body{ padding-left:52px}
+.faq-content  .panel-body p{ margin:0px;}
+.faq-content  .panel{ margin-bottom:10px;}
+.app-bannerBtm{ text-align:center; background:#007c9d; padding-top:20px; text-align:center; color:#fff;}
+.app-bannerBtm h5,.app-bannerBtm h3{ padding:0px 0px 10px; }
+.app-bannerBtm .btn{ margin-bottom:15px;}

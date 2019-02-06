@@ -1,0 +1,223 @@
+.font-wht {
+    color: #fff;
+}
+
+.next-arrow:after {
+    content: "";
+    display: block;
+    font-size: 50px;
+    color: #eee;
+    content: "\e912";
+    font-family: 'icomoon' !important;
+    position: absolute;
+    left: -20px;
+    top: 0;
+}
+
+.rotate {
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    display: inline-block;
+
+    &:hover {
+        -webkit-transform: rotateY(180deg);
+        -webkit-transform-style: preserve-3d;
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+    }
+}
+
+.sprite {
+    background-image: url(/assets/sprite.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.medical-report {
+    background-position: 0px 0px;
+    height: 65px;
+    width: 65px;
+}
+
+.note {
+    background-position: -76px 0px;
+    height: 65px;
+    width: 65px;
+}
+
+.board {
+    background-position: -152px 0px;
+    height: 65px;
+    width: 65px;
+}
+
+.roundBtn {
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+}
+
+.btnPrimary {
+    padding: 5px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    background-color: #007c9d;
+    width: 45px;
+    height: 45px;
+    margin: -16px -18px -15px 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.roundBtn .icon-user {
+    font-size: 32px;
+    line-height: 33px;
+}
+
+.marketing-div {
+    background-color: #ddd;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    margin-top: 40px;
+}
+
+.header .tab-content .oncology {
+    background-color: #007c9d;
+}
+
+.delay-1 {
+    animation-delay: .50s;
+}
+
+.delay-2 {
+    animation-delay: 1s;
+}
+
+.delay-3 {
+    animation-delay: 1.50s;
+}
+
+.delay-4 {
+    animation-delay: 2s;
+}
+
+.user-btn {
+    a {
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .dropdown-menu {
+        margin-top: -30px;
+    }
+}
+
+.navyalog {
+    padding: 80px 0px;
+    color: #007c9d;
+    text-align: center;
+}
+
+/*===========Why Ask Apollo==========*/
+
+.why-apollo {
+    h4 {
+        color: #007d9e;
+        margin-bottom: 4px;
+    }
+
+    li {
+        width: 48%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        margin: 8px 0;
+        background-color: #f4f2f3;
+
+        &:nth-child(odd) {
+            text-align: right;
+            margin-right: 3%;
+        }
+
+        .icon-content {
+            display: inline-block;
+            max-width: 83%;
+        }
+
+        &:nth-child(odd) i {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        i {
+            width: 60px;
+            height: 60px;
+            background-color: #ec7324;
+            text-align: center;
+            color: #fff;
+            font-size: 35px;
+            padding-top: 12px;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #999;
+        }
+    }
+
+    .icon {
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.free-follow {
+            background-image: url("../../../assets/icon-free-followup.png");
+        }
+
+        &.connect-options {
+            background-image: url("../../../assets/icon-connect-options.png");
+        }
+
+        &.clarification {
+            background-image: url("../../../assets/icon-clarification.png");
+        }
+
+        &.pay-options {
+            background-image: url("../../../assets/icon-pay-options.png");
+        }
+
+        &.health-records {
+            background-image: url("../../../assets/icon-health-records.png");
+        }
+
+        &.transparency {
+            background-image: url("../../../assets/icon-transparency.png");
+        }
+
+        &.medicine {
+            background-image: url("../../../assets/icon-medicine.png");
+        }
+    }
+}
+
+ol.nh > li {
+    list-style-type: decimal;
+    margin-top: 5px;
+}
+
+.form-group label, .fltr-btn label {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.btn-lg {
+    font-size: 16px;
+}

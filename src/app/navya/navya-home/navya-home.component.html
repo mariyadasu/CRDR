@@ -1,0 +1,249 @@
+<!-- content-wrap start -->
+<section class="wow">
+	<div class="pbottom15 container mtop20">
+		<section class="row mtop20">
+			<div class="col-sm-8">
+				<h2 class="heading mb-30">Cancer Opinion</h2>
+				<section class="row">
+
+					<div class="col-sm-4 text-center fadeInLeft animated mtop15-xs">
+						<figure>
+							<a href="#1" class="rotate">
+								<span class="sprite medical-report"></span>
+							</a>
+						</figure>
+						<figcaption>
+							<h4 class="text-primary mtop5">Upload Patient Information</h4>
+							<p class="font-12 text-grey">Please register and complete the online form with scanned copies of medical reports such as biopsy, imaging, blood
+								reports, etc. Your treatment plan will be determined by the reports you upload.</p>
+						</figcaption>
+					</div>
+					<div class="col-sm-4 text-center  mtop15-xs fadeInLeft animated delay-2">
+						<figure class="next-arrow">
+							<a href="#1" class="rotate">
+								<span class="sprite note"></span>
+							</a>
+						</figure>
+						<figcaption>
+							<h4 class="text-primary mtop5">Treatment plan from Apollo</h4>
+							<p class="font-12 text-grey">Apollo Hospitals team of organ specific oncologists review patient information and provide an online opinion and treatment
+								plan.
+							</p>
+						</figcaption>
+					</div>
+					<div class="col-sm-4 text-center mtop15-xs fadeInLeft animated  delay-4">
+						<figure class="next-arrow">
+							<a href="#1" class="rotate">
+								<span class="sprite board"></span>
+							</a>
+						</figure>
+						<figcaption>
+							<h4 class="text-primary mtop5">Expert opinion on treatment</h4>
+							<p class="font-12 text-grey">Apollo Hospitals provide a treatment plan based on the opinion of its specialist oncologists and international guidelines
+								before you arrive to receive treatment.</p>
+						</figcaption>
+					</div>
+				</section>
+				<!-- /row closed -->
+				<section class="row mtop40">
+					<div class="col-sm-12 text-center">
+						<a class="btn btn-info btn-lg roundBtn" (click)="openSignup()">Login to get an online treatment plan
+							<span class="btnPrimary hidden-xs">
+								<span class="icon-user"></span>
+							</span>
+						</a>
+					</div>
+				</section>
+
+			</div>
+			<div class="col-sm-4 mtop15-xs">
+
+				<section class="form-box">
+					<h2 class="heading mtop0 margin0-xs">Request a call</h2>
+					<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+					<form id="loginform" class="mtop20" role="form" (ngSubmit)="getInTouch(gitf)" #gitf="ngForm">
+
+						<div class="form-group ">
+							<label class="font-nrml">Name:</label>
+							<input type="text" class="form-control input-sm" name="name" ngModel required placeholder="">
+						</div>
+						<div class="form-group ">
+							<label class="font-nrml">Email Id:</label>
+							<input type="text" class="form-control  input-sm" name="emailId" ngModel required email placeholder="">
+						</div>
+						<!--div class="form-group ">
+											<label class="font-nrml">Country:</label>
+											<div class="dropdown bootstrap-select">
+				  <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					India
+					<span class="caret"></span>
+				  </button>
+				 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="#" data-value="Afghanistan">Afghanistan</a></li>
+					<li><a href="#" data-value="Albania">Albania</a></li>
+					<li><a href="#" data-value="Algeria">Algeria</a></li>
+				  </ul>
+				</div>
+								 </div-->
+						<div class="form-group ">
+							<section class="row">
+								<div class="pr-md0 col-sm-4">
+									<label class="font-nrml">Country code:</label>
+									<div class="dropdown bootstrap-select">
+										<button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+										 aria-expanded="true">
+											+{{ cc }}
+											<small class="text-muted">({{ cctag  }})</small>
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+											<li (click)="setCC('91', 'IND')">
+												<a> +91
+													<small class="text-muted">(IND)</small>
+												</a>
+											</li>
+											<li (click)="setCC('1', 'USA')">
+												<a> +1
+													<small class="text-muted">(USA)</small>
+												</a>
+											</li>
+											<li (click)="setCC('44', 'UK')">
+												<a> +44
+													<small class="text-muted">(UK)</small>
+												</a>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+								<div class="col-sm-8">
+									<label class="font-nrml">Mobile no.:</label>
+									<input type="text" class="form-control input-sm" name="mobileNumber" ngModel required placeholder="Mobile no.">
+
+								</div>
+							</section>
+						</div>
+
+						<div class="mtop20">
+							<button type="submit" class="btn btn-primary roundBtn btn-block" [disabled]="!gitf.valid">Submit </button>
+						</div>
+					</form>
+				</section>
+			</div>
+		</section>
+		<!-- /row closed -->
+
+		<section class="wow visible-md visible-lg">
+			<div class="container">
+				<div class="row">
+					<h2 class="heading mtop40">Why Ask Apollo</h2>
+					<section class="row mtop40 why-apollo">
+						<ul class="m-t-20">
+							<li>
+								<div class="icon-content">
+									<h4 class="m-t-10">Online opinion anytime, anywhere</h4>
+									<p>Receive cancer opinion and treatment plan - online</p>
+								</div>
+								<i class="icon-clock"></i>
+							</li>
+							<li>
+								<i class="icon-user-md"></i>
+								<div class="icon-content">
+									<h4 class="m-t-10">Asia’s best oncologists</h4>
+									<p>Receive treatment plan from Asia’s best cancer specialists</p>
+								</div>
+							</li>
+							<li>
+								<div class="icon-content">
+									<h4 class="m-t-10">Visibility before treatment</h4>
+									<p>Transparent treatment plan before embarking on medical care</p>
+								</div>
+								<i class="fa icon health-records">&nbsp;</i>
+							</li>
+							<li>
+								<i class="fa icon connect-options">&nbsp;</i>
+								<div class="icon-content">
+									<h4 class="m-t-10">Evidence based oncology opinion</h4>
+									<p>Opinions backed by international guidelines</p>
+								</div>
+							</li>
+
+						</ul>
+
+					</section>
+					<!-- /row closed -->
+					<p class="mtop40"></p>
+
+				</div>
+			</div>
+		</section>
+	</div>
+
+</section>
+
+<!-- /content-wrap closed -->
+
+<!--/ inner-pages closed -->
+<!-- bottom -app banner start-->
+<section class="app-bannerBtm visible-xs">
+	<div class="container">
+		<h3>AskApollo Mobile App</h3>
+		<h5>One stop destination for all healthcare and wellness needs</h5>
+		<p>
+			<a class="btn-whtLine btn">Install App</a>
+		</p>
+		<a href="#">
+			<img src="../../assets/app-mobile.png" alt="AskApoll App">
+		</a>
+	</div>
+</section>
+<!-- bottom -app banner start-->
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+	<div class="container">
+		<h2 class="heading mtop15">The right treatment plan - is the best step to cancer cure.</h2>
+		<h4>Treatment opinion from the best oncologists at Apollo.</h4>
+		<p class="mtop20">Navigating a healthcare system when diagnosed with cancer is sometimes very exhausting and overwhelming. Accepting and acknowledging the cancer diagnosis, evaluating different opinions on treatments, (radiation or chemotherapy after surgery or before surgery), meeting doctors, undergoing biopsy and PET CT and MRi can be very challenging.
+		</p>
+		<p class="mtop20">Choosing the right health care facility for your treatment is a major decision.
+		<br/>
+        Once you have been diagnosed, seek the best treatment plan.  
+        <br/>
+        And once you have been offered a treatment plan, do not hesitate to seek a second opinion.  It matters.  </p>
+
+		<p class="mtop20">The following considerations improve the chances of a successful treatment for cancer patients.</p>
+
+		<ol class="mtop20 nh">
+			<li> Reputation and treatment facilities of the cancer care center.  Is there a good surgical and radiation department? </li>
+			<li> Expertise of the treating doctors.  Are they reputed and known as the best oncologists in the country? </li>
+			<li> Evidence based treatment plan.  Am I receiving the right treatment based on the world's best cancer research? </li>
+			<li> Comprehensive cancer center.  Can I get biomarker mutation tests and take care of chemotherapy side effects? </li>
+			<li>Multidisciplinary specialists and teamwork.  Can my doctors and I get a second opinion from other specialists? </li>
+		</ol>
+
+		<p class="mtop20">Apollo Hospitals brings to you a unique Online Cancer Opinion service for patients and families seeking information on cancer from specialist oncologists.  You can know the best treatment for your cancer within days of diagnosis. </p>
+
+        <p class="mtop20">Through this service, patients anywhere in the world upload their medical reports and have their cases reviewed by some of the best oncologists in the world. With its large network of 71 hospitals, and 7 comprehensive cancer centers, Apollo aims to provide patients the best possible treatment plans keeping in mind the latest cancer research, and then providing cutting edge treatments at its cancer centers. Given the criticality of getting the correct treatment at the right time, which can often be stressful and time consuming, the Apollo Cancer Opinion service will simplify the process by providing detailed treatment plans to patients who then can be better prepared and informed on their treatment modality, length of stay at cancer centers, and overall prognosis.</p>	
+
+		<p class="mtop20"><strong>Personalized Service</strong></p>
+
+		<p class="mtop20">These are customized treatment plans based on the reports and medical history and matched against international guidelines and latest cancer research.  The referral opinion is written in easy language that you can understand.</p>
+
+	</div>
+</section>
+<!-- /seo-text-closed -->
+
+<ng-template #thankyou>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Thank you for your request.</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<p>Our customer executive will get in touch with you shortly.</p>
+		<button type="button" class="btn btn-default" (click)="closeThankyou()">Close</button>
+	</div>
+</ng-template>

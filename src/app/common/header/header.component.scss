@@ -1,0 +1,71 @@
+.welcome {
+    color: #fff;
+
+    & a {
+        color: #fff;
+    }
+}
+
+.iFrame-btn {
+    position: absolute;
+    right: 16px;
+    margin-top: 16px;
+}
+
+.dropdown {
+    /*z-index: 999999 !important;*/
+}
+
+.wtsp-no {
+    display: block;
+    padding: 10px 5px;
+    font-size: 13px;
+    text-align: right;
+    letter-spacing: 0.05em;
+    a {
+        color: #fff;
+    }
+
+    .icon-whatsapp-logo-variant {
+        background-color: #18e01c;
+        border-radius: 100%;
+    }
+}
+
+.header .tab-pane .form-control.search.online-consult-search {
+    width: 100%;
+}
+
+.suggestion-list {
+    position: absolute;
+    top: 47px;
+    background: #fff;
+    width: 80%;
+    padding: 10px;
+    border-radius: 0 0 4px 4px;
+    display: none;
+
+    li {
+        padding: 8px 5px;
+        overflow: hidden;
+        border-bottom: 1px dotted #D7D7D7;
+
+        a {
+            display: block;
+        }
+
+        span {
+            float: right;
+            color: #868686;
+        }
+    }
+}
+
+.font-wht {
+    color: #fff;
+}
+
+h4 {
+    margin: 0;
+}
+

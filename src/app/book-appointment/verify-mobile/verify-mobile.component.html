@@ -1,0 +1,44 @@
+<aside class="col-sm-5 col-sm-push-7 fadeInLeft animated">
+  <h3 class="bdr-bottom text-primary">Verify Mobile number</h3>
+  <form #vm="ngForm" (ngSubmit)="verifyOTP(vm)">
+    <div class="form-group">
+      <label class="font-nrml">First Name:
+        <span class="asterisk">*</span>
+      </label>
+      <input type="text" class="form-control" disabled="disabled" value="{{ pi.fn }} {{ pi.ln }}">
+    </div>
+    <div class="form-group">
+      <label class="font-nrml">Mobile:
+        <span class="asterisk">*</span>
+      </label>
+      <input name="name" value="{{ pi.pn }}" disabled="disabled" class="form-control" type="text" >
+    </div>
+    <div class="form-group">
+      <label for="EmailID" class="font-nrml">Email:</label>
+      <input type="email" id="EmailID" class="form-control" disabled="disabled" value="{{ pi.email }}">
+    </div>
+    <div class="form-group">
+      <label class="font-nrml">Enter OTP sent on your mobile no.:
+        <span class="asterisk">*</span>
+      </label>
+      <input type="text" class="form-control" name="otp" placeholder="_ _ _ _" ngModel required>
+      <p class="text-right">
+        <small class="form-text text-muted ">
+          <a>Still not received OTP?</a>
+        </small>
+      </p>
+    </div>
+    <div class="form-group ">
+      <section class="row">
+        <div class="col-sm-6">
+          <button class="btn btn-info btn-block" type="submit" [disabled]="!vm.valid || !sendOTPEnabled">{{ sendOTPButtonText }}</button>
+        </div>
+        <div class="col-sm-6 mtop15-xs">
+          <button class="btn btn-primaryLine btn-block" (click)="resendOTP()" [disabled]="!resendOTPEnabled">{{ resendOTPButtonText }}</button>
+        </div>
+      </section>
+      <div class="form-error" *ngIf="verifyErrorMsg != ''">{{ verifyErrorMsg }}</div>
+    </div>
+  </form>
+
+</aside>

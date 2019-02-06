@@ -1,0 +1,52 @@
+.panel-heading a {
+    background: #ec7323;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 6px 20px 6px 15px;
+    border-radius: 4px;
+    line-height: 21px;
+    position: relative;
+}
+.accord-content .panel-title a .accord {
+    font-size: 9px;
+    margin-top: -5px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.list-accord  .panel-title   a.collapsed .accord.glyphicon-plus:before { content:"\002b";}
+.list-accord  .panel-title   a .accord.glyphicon-plus:before{content:"\2212";}
+.accord-content  .panel-title   a .accord.glyphicon-plus:before{content:"\2212";}
+.accord-content  .panel-title   a.collapsed .accord.glyphicon-plus:before { content:"\002b";}
+.howWork-valign .icon-sec{ 
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #007c9d;
+    text-align: center;
+    font-size: 20px;
+    line-height: 38px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);}
+.howWork-valign .how-text{ margin-left:58px;}
+.howWork-valign h5 small{ color:#007c9d; font-size:14px;}
+.howWork-valign li { padding-bottom:10px;}
+.app-bannerBtm{ text-align:center; background:#007c9d; padding-top:20px; text-align:center; color:#fff;}
+.app-bannerBtm h5,.app-bannerBtm h3{ padding:0px 0px 10px; }
+.app-bannerBtm .btn{ margin-bottom:15px;}

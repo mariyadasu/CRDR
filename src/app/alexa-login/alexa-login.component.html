@@ -1,0 +1,377 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<div class="container">
+	<div class="row" id="desktoplogin">
+		<div class="col-md-6">
+			<div id="loginModal" class="loginModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-body">
+            <section class="row">
+              <div class="col-sm-6 col-sm-push-6 login-form">
+                <div class="form-container">
+                  </div>
+              </div>
+              <div class="col-sm-6 col-sm-pull-6">
+                <h1 class="text-center mtop0">
+                  <a href="javascript:void(0)" title="AskApollo">
+                    <img src="./assets/ask-logo.png" alt="AskApollo">
+                  </a>
+                </h1>
+                <h4 class="text-center">
+                  <span class="text-primary"> Welcome to the</span>
+                  <span class="text-info">World of 24/7 CARE! </span>
+                </h4>
+                <ul class="list-unstyled logicons">
+                  <li>
+                    <figure>
+                      <a href="javascript:void(0)" title="AskApollo">
+                        <img src="./assets/doc-icon.png" alt="AskApollo">
+                      </a>
+                    </figure>
+                    <figcaption>
+                      <h5 class="headin16">Book an Appointment</h5>
+                      <p class="font-12 margin0">Book an Appointment with a doctor of your choice across 220 specialties.</p>
+                    </figcaption>
+
+                  </li>
+                  <li>
+                    <figure>
+                      <a href="javascript:void(0)" title="AskApollo">
+                        <img src="./assets/record-icon.png" alt="AskApollo">
+                      </a>
+                    </figure>
+                    <figcaption>
+                      <h5 class="headin16">Carry your health records with you</h5>
+                      <p class="font-12 margin0">Manage your consultations and health records</p>
+                    </figcaption>
+                  </li>
+                  <li>
+                    <figure>
+                      <a href="javascript:void(0)" title="AskApollo">
+                        <img src="./assets/online-icon.png" alt="AskApollo">
+                      </a>
+                    </figure>
+                    <figcaption>
+                      <h5 class="headin16">Consult Doctors Online</h5>
+                      <p class="font-12 margin0">Consult Doctors over Video/Voice/Email..</p>
+                    </figcaption>
+                  </li>
+
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>			
+		</div>
+		<div class="col-md-6 loginform">
+			<h3 class="text-info mtop10">Login
+			  <span class="text-primary">Ask</span>Apollo</h3>
+			<div class="form-group mtop40">
+			  <div class="font-nrml dropdown">Login with
+			    <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown">i</a>
+			    <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+			      <h4>Why is social login required?</h4>
+			      <ul class="list-arrow font-12">
+			        <li>Don't worry, we don't post anything on your behalf.</li>
+			        <li>We don't want you to remember multiple passwords.</li>
+			        <li>We don't read or query anything other than your Name and Email ID.</li>
+			        <li>We don't save or see your password.</li>
+			      </ul>
+
+			    </div>
+			  </div>
+
+			</div>
+			<div *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_BASIC" class="row mtop10">
+			  <div class="col-sm-6 mtop15">
+			    <a class="btn btn-google btn-block" (click)="signIn('google')">
+			      <span class="icon-google-plus"></span> Google
+			    </a>
+        </div>
+        <div class="col-sm-6 mtop15">
+			    <a class="btn btn-facebook  btn-block" (click)="signIn('facebook')">
+			      <span class="icon-facebook"></span> Facebook
+			    </a>
+			  </div>
+			</div>
+      <!-- signup satus -2 start-->
+      <div *ngIf="signupStatus == aaa.SINGUP_STATUS_SHOW_DETAILS">
+        <h3 class="text-info mtop10">Patient Details </h3>
+        <form (ngSubmit)="saveUserDetails(f)" #f="ngForm">
+          <div class="form-group ">
+            <label class="font-nrml">First Name:</label>
+            <input type="text" class="form-control" placeholder="Your First Name" name="firstName" disabled="disabled" [(ngModel)]="ui.firstName" required>
+          </div>
+          <div class="form-group ">
+            <label class="font-nrml">Last Name:</label>
+            <input type="text" class="form-control" placeholder="Your Last Name" name="lastName" disabled="disabled" [(ngModel)]="ui.lastName" required>
+          </div>
+          <div class="form-group ">
+            <label class="font-nrml">Email:</label>
+            <input type="text" class="form-control" placeholder="abc@example.com" name="email" [disabled]="ui.email != ''" [(ngModel)]="ui.email" required>
+          </div>
+          <div class="form-group ">
+            <label class="font-nrml">Mobile no.:</label>
+            <input type="text" class="form-control" placeholder="10 digit phone number" name="mobileNumber" [(ngModel)]="ui.mobileNumber" required>
+          </div>
+          <div class="form-group">
+            <label class="font-nrml">Date of birth (Age):
+              <span class="asterisk">*</span>
+            </label>
+
+            <div class="input-group add-on date datetimepicker">
+              <input  [maxDate]="maxDateNew" class="form-control" placeholder="dd/mm/yyyy" type="text" name="dob" [(ngModel)]="ui.dateofBirth" required #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="button" (click)="dp.toggle()">
+                  <span class="icon-calendar-daily-page-on-day-31"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="font-nrml">Gender:
+              <span class="asterisk">*</span>
+            </label>
+            <div class="radio radio-inline mLeft10">
+              <input name="gender" id="radio1" value="1" checked="ui.gender == 1" type="radio" [(ngModel)]="ui.gender" required>
+              <label for="radio1" class="font-300 text-black"> Male </label>
+            </div>
+            <div class="radio radio-inline ">
+              <input name="gender" id="radio2" value="2" checked="ui.gender == 2" type="radio" [(ngModel)]="ui.gender" required>
+              <label for="radio2" class="font-300 text-black"> Female </label>
+            </div>
+          </div>
+          <div class="form-group mtop20">
+            <button type="submit" class="btn btn-info btn-block" [disabled]="!f.valid">Proceed</button>
+          </div>
+        </form>
+      </div>
+      <!-- signup satus -2 end-->
+
+      <!-- OTP verification start-->
+      <div *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_OTP">
+        <h3 class="text-info mtop10 ">Verify Mobile number</h3>
+          <form #vm="ngForm" (ngSubmit)="verifyOTP(vm)">
+            <div class="form-group">
+              <label class="font-nrml">Mobile no.:</label>
+              <input type="text" class="form-control" disabled="disabled" name="mobile" [ngModel]="loginPhone">
+              <!-- <small class="form-text text-muted">
+                <a href="javascript:void(0)">Change Number</a>
+              </small> -->
+            </div>
+            <div class="form-group">
+              <label class="font-nrml">Enter OTP sent on your mobile no.:
+                <span class="asterisk">*</span>
+              </label>
+              <input type="text" class="form-control" placeholder="_ _ _ _ _ _" name="otp" ngModel required>
+              <p class="text-right">
+                <small class="form-text text-muted ">
+                  <a (click)="resendOTP()">Still not received OTP? </a>
+                </small>
+              </p>
+            </div>
+            <div class="form-group ">
+              <section class="row">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-info btn-block">Submit OTP</button>
+                </div>
+                <div class="col-sm-6 mtop15-xs">
+                  <a (click)="resendOTP()" class="btn btn-primaryLine btn-block"> Resend OTP</a>
+                </div>
+              </section>
+            </div>
+          </form>
+      </div>
+      <!-- OTP verification end-->
+		</div>
+	</div>
+
+    <div class="row" id="mobilelogin">
+      <div class="col-md-6">
+        <div id="loginModal" class="loginModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-body">
+              <section class="row">
+                <div class="col-sm-6 col-sm-pull-6 loginform">
+                  <h1 class="text-center mtop0">
+                    <a href="javascript:void(0)" title="AskApollo">
+                      <img src="./assets/ask-logo.png" alt="AskApollo">
+                    </a>
+                  </h1>
+
+
+           
+              <h3 class="text-info mtop10">Login with
+                <span class="text-primary">Ask</span>Apollo</h3>
+              <!-- <div class="form-group mtop40">
+                <div class="font-nrml dropdown">Login with
+                  <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown">i</a>
+                  <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+                    <h4>Why is social login required?</h4>
+                    <ul class="list-arrow font-12">
+                      <li>Don't worry, we don't post anything on your behalf.</li>
+                      <li>We don't want you to remember multiple passwords.</li>
+                      <li>We don't read or query anything other than your Name and Email ID.</li>
+                      <li>We don't save or see your password.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
+              <div *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_BASIC" class="row mtop10">
+                <div class="col-sm-6 mtop15">
+                  <a class="btn btn-google btn-block" (click)="signIn('google')">
+                    <span class="icon-google-plus"></span> Google
+                  </a>
+                </div>
+                <div class="col-sm-6 mtop15">
+                  <a class="btn btn-facebook  btn-block" (click)="signIn('facebook')">
+                    <span class="icon-facebook"></span> Facebook
+                  </a>
+                </div>
+                
+              </div>
+              <!-- signup satus -2 start-->
+              <div *ngIf="signupStatus == aaa.SINGUP_STATUS_SHOW_DETAILS">
+                <h3 class="text-info mtop10">Patient Details </h3>
+                <form (ngSubmit)="saveUserDetails(f)" #f="ngForm">
+                  <div class="form-group ">
+                    <label class="font-nrml">First Name:</label>
+                    <input type="text" class="form-control" placeholder="Your First Name" name="firstName" disabled="disabled" [(ngModel)]="ui.firstName" required>
+                  </div>
+                  <div class="form-group ">
+                    <label class="font-nrml">Last Name:</label>
+                    <input type="text" class="form-control" placeholder="Your Last Name" name="lastName" disabled="disabled" [(ngModel)]="ui.lastName" required>
+                  </div>
+                  <div class="form-group ">
+                    <label class="font-nrml">Email:</label>
+                    <input type="text" class="form-control" placeholder="abc@example.com" name="email" [disabled]="ui.email != ''" [(ngModel)]="ui.email" required>
+                  </div>
+                  <div class="form-group ">
+                    <label class="font-nrml">Mobile no.:</label>
+                    <input type="text" class="form-control" placeholder="10 digit phone number" name="mobileNumber" [(ngModel)]="ui.mobileNumber" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="font-nrml">Date of birth (Age):
+                      <span class="asterisk">*</span>
+                    </label>
+
+                    <div class="input-group add-on date datetimepicker">
+                      <input [maxDate]="maxDateNew" class="form-control" placeholder="dd/mm/yyyy" type="text" name="dob" [(ngModel)]="ui.dateofBirth" required #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" (click)="dp.toggle()">
+                          <span class="icon-calendar-daily-page-on-day-31"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="font-nrml">Gender:
+                      <span class="asterisk">*</span>
+                    </label>
+                    <div class="radio radio-inline mLeft10">
+                      <input name="gender" id="radio1" value="1" checked="ui.gender == 1" type="radio" [(ngModel)]="ui.gender" required>
+                      <label for="radio1" class="font-300 text-black"> Male </label>
+                    </div>
+                    <div class="radio radio-inline ">
+                      <input name="gender" id="radio2" value="2" checked="ui.gender == 2" type="radio" [(ngModel)]="ui.gender" required>
+                      <label for="radio2" class="font-300 text-black"> Female </label>
+                    </div>
+                  </div>
+                  <div class="form-group mtop20">
+                    <button type="submit" class="btn btn-info btn-block" [disabled]="!f.valid">Proceed</button>
+                  </div>
+                </form>
+              </div>
+              <!-- signup satus -2 end-->
+
+              <!-- OTP verification start-->
+              <div *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_OTP">
+                <h3 class="text-info mtop10 ">Verify Mobile number</h3>
+                  <form #vm="ngForm" (ngSubmit)="verifyOTP(vm)">
+                    <div class="form-group">
+                      <label class="font-nrml">Mobile no.:</label>
+                      <input type="text" class="form-control" disabled="disabled" name="mobile" [ngModel]="loginPhone">
+                      <!-- <small class="form-text text-muted">
+                        <a href="javascript:void(0)">Change Number</a>
+                      </small> -->
+                    </div>
+                    <div class="form-group">
+                      <label class="font-nrml">Enter OTP sent on your mobile no.:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input type="text" class="form-control" placeholder="_ _ _ _ _ _" name="otp" ngModel required>
+                      <p class="text-right">
+                        <small class="form-text text-muted ">
+                          <a (click)="resendOTP()">Still not received OTP? </a>
+                        </small>
+                      </p>
+                    </div>
+                    <div class="form-group ">
+                      <section class="row">
+                        <div class="col-sm-6">
+                          <button type="submit" class="btn btn-info btn-block">Submit OTP</button>
+                        </div>
+                        <div class="col-sm-6 mtop15-xs">
+                          <a (click)="resendOTP()" class="btn btn-primaryLine btn-block"> Resend OTP</a>
+                        </div>
+                      </section>
+                    </div>
+                  </form>
+              </div>
+              <!-- OTP verification end-->
+              
+
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-6 ">
+
+
+            <h4 class="text-center">
+              <span class="text-primary"> Welcome to the</span>
+              <span class="text-info">World of 24/7 CARE! </span>
+            </h4>
+            <ul class="list-unstyled logicons">
+              <li>
+                <figure>
+                  <a href="javascript:void(0)" title="AskApollo">
+                    <img src="./assets/doc-icon.png" alt="AskApollo">
+                  </a>
+                </figure>
+                <figcaption>
+                  <h5 class="headin16">Book an Appointment</h5>
+                  <p class="font-12 margin0">Book an Appointment with a doctor of your choice across 220 specialties.</p>
+                </figcaption>
+
+              </li>
+              <li>
+                <figure>
+                  <a href="javascript:void(0)" title="AskApollo">
+                    <img src="./assets/record-icon.png" alt="AskApollo">
+                  </a>
+                </figure>
+                <figcaption>
+                  <h5 class="headin16">Carry your health records with you</h5>
+                  <p class="font-12 margin0">Manage your consultations and health records</p>
+                </figcaption>
+              </li>
+              <li>
+                <figure>
+                  <a href="javascript:void(0)" title="AskApollo">
+                    <img src="./assets/online-icon.png" alt="AskApollo">
+                  </a>
+                </figure>
+                <figcaption>
+                  <h5 class="headin16">Consult Doctors Online</h5>
+                  <p class="font-12 margin0">Consult Doctors over Video/Voice/Email..</p>
+                </figcaption>
+              </li>
+
+            </ul>
+      </div>
+    </div>
+</div>
+

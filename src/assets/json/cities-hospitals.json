@@ -1,0 +1,1311 @@
+[
+    {
+        "hospitalId": 1,
+        "hospitalName": "Apollo Health City Jubilee Hills",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 2,
+        "hospitalName": "Apollo Hospitals Greams Road Chennai",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 12,
+        "hospitalName": "Apollo Hospitals Delhi",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 13,
+        "hospitalName": "Apollo Hospitals Hyderguda",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 16,
+        "hospitalName": "Apollo Hospitals Bannerghatta Road",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 17,
+        "hospitalName": "Apollo Hospitals Ram Nagar Vizag",
+        "cityId": 1983,
+        "cityName": "Visakhapatnam",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 18,
+        "hospitalName": "Apollo Hospitals Noida",
+        "cityId": 6009,
+        "cityName": "Noida",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 19,
+        "hospitalName": "Apollo Hospitals International Limited Ahmedabad",
+        "cityId": 2761,
+        "cityName": "Ahmedabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 20,
+        "hospitalName": "Apollo Gleneagles Hospital Limited",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 22,
+        "hospitalName": "Apollo Cancer Institutes",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 25,
+        "hospitalName": "Apollo Firstmed Hospital",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 26,
+        "hospitalName": "Jehangir Hospital",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 28,
+        "hospitalName": "Apollo Children Hospital Chennai",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 31,
+        "hospitalName": "Apollo Speciality Hospitals Madurai",
+        "cityId": 5081,
+        "cityName": "Madurai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 33,
+        "hospitalName": "Apollo Gleneagles Cancer Hospital",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 44,
+        "hospitalName": "Apollo Medical Center Kondapur",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 48,
+        "hospitalName": "Apollo Clinic Frazer Town",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 49,
+        "hospitalName": "Apollo Clinic Basavanagudi",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 50,
+        "hospitalName": "Apollo Clinic Viman Nagar Pune",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 51,
+        "hospitalName": "Apollo Clinic Koramangala",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 52,
+        "hospitalName": "Test Sugar Clinic",
+        "cityId": 3175,
+        "cityName": "Mysore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 53,
+        "hospitalName": "Apollo Clinic Mysore",
+        "cityId": 3175,
+        "cityName": "Mysore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 54,
+        "hospitalName": "Apollo Clinic Seethammapeta Vizag",
+        "cityId": 1983,
+        "cityName": "Visakhapatnam",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 55,
+        "hospitalName": "Apollo Bgs Hospitals Mysore",
+        "cityId": 3175,
+        "cityName": "Mysore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 56,
+        "hospitalName": "Apollo Hospitals Secunderabad",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 57,
+        "hospitalName": "Apollo Clinic A S Rao Nagar",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 58,
+        "hospitalName": "Apollo Hospitals Bhubaneswar",
+        "cityId": 4199,
+        "cityName": "Bhubaneswar",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 61,
+        "hospitalName": "Apollo Clinic Velachery",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 62,
+        "hospitalName": "Apollo Clinic T Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 64,
+        "hospitalName": "Apollo Medical Centre Kotturpuram",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 65,
+        "hospitalName": "Apollo Hospitals Tondiarpet",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 66,
+        "hospitalName": "Apollo City Center Hospital Sowcarpet",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 67,
+        "hospitalName": "Apollo Hospital Karur",
+        "cityId": 4951,
+        "cityName": "Karur",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 68,
+        "hospitalName": "Apollo Reach Hospital Karaikudi",
+        "cityId": 4945,
+        "cityName": "Karaikudi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 69,
+        "hospitalName": "Apollo Hospitals Kakinada",
+        "cityId": 663,
+        "cityName": "Kakinada",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 70,
+        "hospitalName": "Apollo Hospitals Bilaspur",
+        "cityId": 6373,
+        "cityName": "Bilaspur",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 71,
+        "hospitalName": "Apollo Reach Hospital Karimnagar",
+        "cityId": 753,
+        "cityName": "Karim Nagar",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 72,
+        "hospitalName": "Apollo Hospitals D R D O",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 75,
+        "hospitalName": "Apollo Hospitals Aragonda",
+        "cityId": 95,
+        "cityName": "Aragonda",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 76,
+        "hospitalName": "Apollo Hospitals City Centre Ahmedabad",
+        "cityId": 2761,
+        "cityName": "Ahmedabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 79,
+        "hospitalName": "Apollo Bsr Hospitals",
+        "cityId": 6374,
+        "cityName": "Bhilai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 80,
+        "hospitalName": "Apollo Clinic Aundh Pune",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 81,
+        "hospitalName": "The Apollo Heart Centre",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 83,
+        "hospitalName": "Apollo Clinic Nallakunta",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 89,
+        "hospitalName": "Apollo Clinic Nizampet",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 91,
+        "hospitalName": "Apollo Clinic Chanda Nagar",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 92,
+        "hospitalName": "Apollo Clinic Wanowrie",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 94,
+        "hospitalName": "Apollo Clinic Indirapuram",
+        "cityId": 5899,
+        "cityName": "Ghaziabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 100,
+        "hospitalName": "Apollo Clinic H S R Layout",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 101,
+        "hospitalName": "Apollo Clinic Indiranagar",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 104,
+        "hospitalName": "Apollo Clinic Bellandur",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 105,
+        "hospitalName": "Apollo Clinic Sarjapur Road",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 106,
+        "hospitalName": "Apollo Medical Centre Anna Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 114,
+        "hospitalName": "Apollo Clinic Rajnagar Ghaziabad",
+        "cityId": 5899,
+        "cityName": "Ghaziabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 119,
+        "hospitalName": "Apollo Speciality Hospitals Vanagaram",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 120,
+        "hospitalName": "Apollo Speciality Hospitals Jayanagar Bangalore",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 121,
+        "hospitalName": "Apollo Spectra Hospitals Alwarpet",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 122,
+        "hospitalName": "Apollo Clinic Nigdipradhikaran",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 124,
+        "hospitalName": "Apollo Speciality Hospitals Trichy",
+        "cityId": 5641,
+        "cityName": "Trichy",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 125,
+        "hospitalName": "Apollo Clinic Ambattur",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 126,
+        "hospitalName": "Apollo Medical Centre Karapakkam",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 129,
+        "hospitalName": "Apollo Sugar Clinic Banashankari",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 130,
+        "hospitalName": "Apollo Sugar Clinic Janakpuri",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 131,
+        "hospitalName": "Apollo Sugar Clinic Rohini",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 132,
+        "hospitalName": "Apollo Sugar Clinic Tolichowki",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 134,
+        "hospitalName": "Apollo Speciality Hospitals O M R",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 136,
+        "hospitalName": "Apollo Specialty Hospitals Nellore",
+        "cityId": 1223,
+        "cityName": "Nellore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 137,
+        "hospitalName": "Apollo Sugar Clinic Koramangala",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 138,
+        "hospitalName": "Apollo Clinic Gorakhpur",
+        "cityId": 5907,
+        "cityName": "Gorakhpur",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 140,
+        "hospitalName": "Apollo Sugar Clinic Jubileehills",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 142,
+        "hospitalName": "Apollo Sugar Clinic Nizampet",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 143,
+        "hospitalName": "Apollo Sugar Clinic Kondapur",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 144,
+        "hospitalName": "Apollo Sugar Clinic Secunderabad",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 145,
+        "hospitalName": "Apollo Sugar Clinic Seethammapeta Vizag",
+        "cityId": 1983,
+        "cityName": "Visakhapatnam",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 148,
+        "hospitalName": "Apollo Sugar Frazer Town",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 149,
+        "hospitalName": "Apollo Sugar Clinic Banerghatta Road",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 150,
+        "hospitalName": "Apollo Sugar Clinic Mysore",
+        "cityId": 3175,
+        "cityName": "Mysore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 152,
+        "hospitalName": "Apollo Sugar Clinic Greams Road",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 153,
+        "hospitalName": "Apollo Sugar Clinic Anna Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 154,
+        "hospitalName": "Apollo Sugar Clinic T Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 155,
+        "hospitalName": "Apollo Sugar Clinic Kotturpuram",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 157,
+        "hospitalName": "Apollo Sugar Clinic Bhubaneshwar",
+        "cityId": 4199,
+        "cityName": "Bhubaneswar",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 158,
+        "hospitalName": "Apollo Sugar Clinic City Centre Bilaspur",
+        "cityId": 6373,
+        "cityName": "Bilaspur",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 160,
+        "hospitalName": "Apollo Sugrar Clinic Raipur",
+        "cityId": 6388,
+        "cityName": "Raipur",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 162,
+        "hospitalName": "Apollo Clinic Vadodara",
+        "cityId": 2873,
+        "cityName": "Vadodara",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 163,
+        "hospitalName": "Apollo Clinic Colaba",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 166,
+        "hospitalName": "Apollo Clinic Andheri East",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 167,
+        "hospitalName": "Apollo Clinic Surat",
+        "cityId": 2867,
+        "cityName": "Surat",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 169,
+        "hospitalName": "Apollo Clinic Rajouri Garden",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 170,
+        "hospitalName": "Apollo Clinic Thane",
+        "cityId": 4037,
+        "cityName": "Thane",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 171,
+        "hospitalName": "Apollo Hospitals Nashik",
+        "cityId": 3999,
+        "cityName": "Nasik",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 172,
+        "hospitalName": "Apollo Clinic Tirupati",
+        "cityId": 1827,
+        "cityName": "Tirupati",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 173,
+        "hospitalName": "Apollo Sugar Clinic Omr",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 175,
+        "hospitalName": "Apollomedics Super Specialty Hospitals",
+        "cityId": 5955,
+        "cityName": "Lucknow",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 177,
+        "hospitalName": "Apollo Clinic Nashik",
+        "cityId": 3999,
+        "cityName": "Nasik",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 178,
+        "hospitalName": "Apollo Clinic Coimbatore",
+        "cityId": 4791,
+        "cityName": "Coimbatore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 179,
+        "hospitalName": "Apollo Sugar Clinic Bellandur",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 180,
+        "hospitalName": "Apollo Clinic Prince Anwar Shah Road",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 181,
+        "hospitalName": "Apollo Clinic Jessore Road",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 182,
+        "hospitalName": "Apollo Clinic Garia",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 183,
+        "hospitalName": "Apollo Clinic Salt Lake",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 184,
+        "hospitalName": "Apollo Clinic Howrah",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 185,
+        "hospitalName": "Apollo Clinic Marathahalli",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 186,
+        "hospitalName": "Apollo Sugar Clinic Kandivali",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 187,
+        "hospitalName": "Apollo Clinic Dehradun",
+        "cityId": 5867,
+        "cityName": "Dehradun",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 188,
+        "hospitalName": "Apollo Clinic Aurangabad",
+        "cityId": 3897,
+        "cityName": "Aurangabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 190,
+        "hospitalName": "Apollo Sugar Clinic Ville Parle West",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 191,
+        "hospitalName": "Apollo Sugar Clinic Deonar Chembur",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 192,
+        "hospitalName": "Apollo Sugar Clinic Tardeo",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 193,
+        "hospitalName": "Apollo Sugar Clinic Trichy",
+        "cityId": 5641,
+        "cityName": "Trichy",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 194,
+        "hospitalName": "Apollo Sugar Clinics Kailash Colony",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 195,
+        "hospitalName": "Apollo Teleclinic",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 196,
+        "hospitalName": "Apollo Hospitals Sheshadripuram",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 197,
+        "hospitalName": "Apollo Sugar Clinic Sheshadripuram",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 198,
+        "hospitalName": "Apollo Sugar Clinic Banjara Hills",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 199,
+        "hospitalName": "Apollo Sugar Clinic Swargate",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 200,
+        "hospitalName": "Apollo Spectra Hospitals Chembur",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 201,
+        "hospitalName": "Apollo Spectra Hospitals Koramangala",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 202,
+        "hospitalName": "Apollo Womens Hospital",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 203,
+        "hospitalName": "Apollo Clinic Trivandrum",
+        "cityId": 3571,
+        "cityName": "Trivandrum",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 205,
+        "hospitalName": "Apollo Clinic Kannur",
+        "cityId": 3371,
+        "cityName": "Kannur",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 206,
+        "hospitalName": "Apollo Clinic New Town",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 207,
+        "hospitalName": "Apollo Spectra Hospitals Pune",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 208,
+        "hospitalName": "Apollo Hospitals Indore",
+        "cityId": 3707,
+        "cityName": "Indore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 209,
+        "hospitalName": "Apollo Spectra Hospitals C Scheme",
+        "cityId": 4539,
+        "cityName": "Jaipur",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 210,
+        "hospitalName": "Apollo Spectra Hospitals Kailash Colony",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 211,
+        "hospitalName": "Apollo Spectra Hospitals Karol Bagh",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 212,
+        "hospitalName": "Apollo Spectra Hospitals Chunni Ganj",
+        "cityId": 5939,
+        "cityName": "Kanpur",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 213,
+        "hospitalName": "Apollo Spectra Hospitals Mrc Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 214,
+        "hospitalName": "Apollo Spectra Hospitals Tardeo",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 215,
+        "hospitalName": "Apollo Cosmetic Clinics Mrc Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 216,
+        "hospitalName": "Apollo Sugar Clinic J P Nagar",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 217,
+        "hospitalName": "Apollo Clinic Thane G B Road",
+        "cityId": 4037,
+        "cityName": "Thane",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 218,
+        "hospitalName": "Apollo Sugar Clinic Hyderguda",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 219,
+        "hospitalName": "Apollo Sugar Clinic Madurai",
+        "cityId": 5081,
+        "cityName": "Madurai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 222,
+        "hospitalName": "Apollo Sugar Clinic Sarita Vihar",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 226,
+        "hospitalName": "Apollo Cradle Jayanagar",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 227,
+        "hospitalName": "Apollo Cradle Jubileehills",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 228,
+        "hospitalName": "Apollo Hospitals Health City Arilova Vizag",
+        "cityId": 1983,
+        "cityName": "Visakhapatnam",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 229,
+        "hospitalName": "Apollo Cradle Koramangala",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 230,
+        "hospitalName": "Apollo Sugar Clinic Newtown",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 231,
+        "hospitalName": "Apollo Clinic J P Nagar",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 232,
+        "hospitalName": "Apollo C B C C Bhat",
+        "cityId": 2803,
+        "cityName": "Gandhinagar",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 234,
+        "hospitalName": "Apollo Cradle Kondapur",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 235,
+        "hospitalName": "Apollo Cradle Brookefield",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 236,
+        "hospitalName": "Apollo Cradle Nehru Place",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 237,
+        "hospitalName": "Apollo Cradle Moti Nagar",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 238,
+        "hospitalName": "Apollo Clinic Faridabad",
+        "cityId": 2895,
+        "cityName": "Faridabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 239,
+        "hospitalName": "Apollo Sugar Clinic Gwalior",
+        "cityId": 3699,
+        "cityName": "Gwalior",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 240,
+        "hospitalName": "Apollo Hospitals Navi Mumbai",
+        "cityId": 3989,
+        "cityName": "Mumbai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 241,
+        "hospitalName": "Apollo Sugar Clinic Valasaravakkam",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 242,
+        "hospitalName": "Apollo Clinic Barrackpore",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 243,
+        "hospitalName": "Apollo Clinic Valasaravakam",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 244,
+        "hospitalName": "Apollo Clinic Electronic City",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 245,
+        "hospitalName": "Apollo Sugar Clinic Electronic City",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 246,
+        "hospitalName": "Apollo Fertility Kondapur",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 247,
+        "hospitalName": "Ivf Cradle Motinagar",
+        "cityId": 2741,
+        "cityName": "Delhi",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 250,
+        "hospitalName": "Apollo Fertility Brokefield",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 251,
+        "hospitalName": "Apollo Fertility Anna Nagar",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 253,
+        "hospitalName": "Apollo White Dental Spa Jubilee Hills",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 254,
+        "hospitalName": "Apollo White Dental Madhapur",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 255,
+        "hospitalName": "Apollo White Dental Nallakunta",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 257,
+        "hospitalName": "Apollo White Dental Somajiguda",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 258,
+        "hospitalName": "R J N Apollo Spectra Hospital",
+        "cityId": 3699,
+        "cityName": "Gwalior",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 286,
+        "hospitalName": "Apollo Clinic Manikonda",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 287,
+        "hospitalName": "Apollo Clinic Barasat",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 288,
+        "hospitalName": "Apollo Clinic Uppal",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 289,
+        "hospitalName": "Apollo Cradle Amritsar",
+        "cityId": 4395,
+        "cityName": "Amritsar",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 291,
+        "hospitalName": "Apollo Clinic Amritsar",
+        "cityId": 4395,
+        "cityName": "Amritsar",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 293,
+        "hospitalName": "Apollo Fertility Jp Nagar",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 295,
+        "hospitalName": "Apollo Clinic Chinarpark",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 296,
+        "hospitalName": "Apollo Clinic Chandigarh",
+        "cityId": 4413,
+        "cityName": "Chandigarh",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 297,
+        "hospitalName": "Apollo Hospitals Guwahati",
+        "cityId": 2207,
+        "cityName": "Guwahati",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 298,
+        "hospitalName": "Apollo Clinic Kharadi",
+        "cityId": 4007,
+        "cityName": "Pune",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 299,
+        "hospitalName": "Apollo Clinic Siliguri",
+        "cityId": 6303,
+        "cityName": "Siliguri",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 300,
+        "hospitalName": "Apollo Clinic Sodepur",
+        "cityId": 13,
+        "cityName": "Kolkata",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 303,
+        "hospitalName": "Apollo Sugar Clinic Jayanagar Bangalore",
+        "cityId": 3015,
+        "cityName": "Bangalore",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 304,
+        "hospitalName": "Apollo Sugar Clinic Drdo",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 305,
+        "hospitalName": "Apollo Sugar Clinic Srinagar Colony",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 307,
+        "hospitalName": "Apollo Sugar Clinic Noida",
+        "cityId": 6009,
+        "cityName": "Noida",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 310,
+        "hospitalName": "Apollo Sugar Clinic Warangal",
+        "cityId": 2003,
+        "cityName": "Warangal",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 311,
+        "hospitalName": "Apollo Cradle Clinic Manikonda",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "1"
+    },
+    {
+        "hospitalId": 312,
+        "hospitalName": "Apollo Sugar Clinic Vanagaram",
+        "cityId": 1,
+        "cityName": "Chennai",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 313,
+        "hospitalName": "Apollo Sugar Clinic Tirupati",
+        "cityId": 1827,
+        "cityName": "Tirupati",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 326,
+        "hospitalName": "Apollo Symptomatic Clinic Knee Pain",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 327,
+        "hospitalName": "Apollo Symptomatic Clinic Joint Pain And Headache",
+        "cityId": 12,
+        "cityName": "Hyderabad",
+        "hospitalType": "2"
+    },
+    {
+        "hospitalId": 329,
+        "hospitalName": "Apollo Hospital Amritsar",
+        "cityId": 4395,
+        "cityName": "Amritsar",
+        "hospitalType": "1"
+    }
+]

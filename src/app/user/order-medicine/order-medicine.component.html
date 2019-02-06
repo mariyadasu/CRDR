@@ -1,0 +1,138 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  	<section class="container content-wrap">
+    	<div class="row">
+			<aside class="col-sm-9 right-content fadeInLeft animated">
+	  			<section class="r	ow">
+	  				<div class="col-sm-12">
+						<h4>Order Medicine</h4>
+					</div>
+	  			</section>
+       			<section class="wt-bg">
+	   				<div class="wt-tabs dashboard-tabs" >	
+						<ul class="nav nav-pills">
+							<li class="active" (click)="tabSelection()"><a href="#1b" data-toggle="tab"><span class="icon-pills"></span> Order Medicine</a></li>
+							<li class="" (click)="tabSelection()"><a href="#ordered-med" data-toggle="tab"><span class="icon-medkit"></span> Ordered Medicines</a></li>
+						</ul>
+
+						<div class="tab-content clearfix  mtop15-xs">
+							<div *ngIf="isFirstTab">
+								<form [formGroup]='orderMedicine.getForm()' (ngSubmit)="postOrderMedicine()" method="post">
+					    			<section class="tab-pane edit-form active" id="1b">
+		          				   		<section class="wt-bg">
+										
+			  			 		 			<div class="radio radio-inline mLeft10">
+												<input id="homeDelivery" value="homeDelivery" type="radio" formControlName="ShippingMethod">
+												<label for="homeDelivery" class="font-300 text-black"> Home Delivery </label>
+								  			</div>	&nbsp;
+							 				<div class="radio radio-inline ">
+												<input id="storepickup" value="storepickup"  type="radio" formControlName="ShippingMethod">
+												<label for="storepickup" class="font-300 text-black"> Store Pickup </label>
+								  			</div>
+								  			<div *ngIf="orderMedicine.hasError('ShippingMethod')" class="err">
+												{{orderMedicine.getError('ShippingMethod')}}
+											</div>
+						
+						 				</section>
+		     							<h3 class="heading14 text-primary">Delivery Address</h3>
+										<div class="form-group ">
+										 	<section class="row">
+										 		<div class="pr-md0 col-sm-6">
+													<label class="font-nrml">Pin:<span id="required" class="asterisk" >*</span></label>
+													<input type="text" class="form-control input-sm"   placeholder="" formControlName="zipCode">
+													<div *ngIf="orderMedicine.hasError('zipCode')" class="err">
+														{{orderMedicine.getError('zipCode')}}
+													</div>
+												</div>
+												
+												<div class="col-sm-6">
+													<label class="font-nrml">City:<span id="required" class="asterisk" >*</span></label>
+			  			 							<input type="text" class="form-control input-sm" placeholder="" formControlName="city">
+			  			 							<div *ngIf="orderMedicine.hasError('city')" class="err">
+														{{orderMedicine.getError('city')}}
+													</div>
+												</div>
+												
+										 	</section>
+										</div>
+										<div class="form-group ">
+											<label class="font-nrml">Address:<span id="required" class="asterisk" >*</span></label>
+											<textarea  class="form-control input-sm" rows="1" placeholder="Enter Address here..." formControlName="address"></textarea>
+										</div>
+										<div *ngIf="orderMedicine.hasError('address')" class="err">
+											{{orderMedicine.getError('address')}}
+										</div>
+							
+										<h4 class="heading14 text-primary">Contact</h4>
+										<ul class="list-bdr font-big ">
+		                                    <li>
+		                                    	<label class="text-grey font-nrml">First Name:</label>
+		                                        <span class="text-info">{{ocUserInfo.FirstName}}</span>
+		                                    </li>
+		                                    <li>
+		                                    	<label class="text-grey font-nrml">Last Name:</label>
+		                                        <span class="text-info">{{ocUserInfo.LastName ? ocUserInfo.LastName:'--'}}</span>
+		                                    </li>
+													
+											<li>
+												<label class="text-grey font-nrml">Mobile:</label>
+		                                        <span class="text-info">{{ocUserInfo.Mobileno}}</span>
+		                                    </li>
+											<li>
+												<label class="text-grey font-nrml">Email:</label>
+		                                        <span class="text-info">{{ocUserInfo.EmailId}}</span>
+		                                    </li>
+							 			</ul>
+							 			<p class="text-center mtop20 bdr-t-primary ptop15">
+											<button type="submit"class="btn btn-info btn-lg">Place Order</button>
+										</p>
+						
+									</section>
+								</form>
+							</div>
+							<div class="tab-pane list-accord" id="ordered-med" *ngIf="!isFirstTab">
+								<div class="panel panel-default" *ngFor="let order of orderMedicines; let i=index">
+                            		<div class="panel-heading">
+                                		<h4 class="panel-title"> 
+                                			<a href="#collapseOne{{i}}" data-parent="#ordered-med" data-toggle="collapse" class="" aria-expanded="false">
+											<div class="order-date">
+												<p class="text-muted mbottom5"><span class="icon-calendar"></span> Order date</p>
+												{{order.CreatedDate | orderMedicineDate}}
+											</div>
+											<div class="order-no">
+												<p class="text-muted mbottom5"><span class="icon-file-text-o"></span>  Order No.</p>
+												<h5 class="text-info margin0">{{order.OrderID}}</h5>
+											</div>	
+												
+											<i class="accord glyphicon glyphicon-plus"></i>
+											</a> 
+										</h4>
+                            		</div>
+                            		<div class="panel-collapse collapse" id="collapseOne{{i}}" aria-expanded="false">
+                                		<div class="panel-body row"> 
+											<div class="col-sm-6">
+												<ul class="list-arrow font-12">
+													<li>Amount: <label class="text-primary font-nrml">{{order.PharmacyOrderValue ? order.PharmacyOrderValue:'N/A'}}</label></li>
+													<li>Delivery Status: <label class="text-primary font-nrml">{{order.PharmacyResponce}}</label></li>
+													<li>Delivery Address: <label >{{order.Address}}</label></li>
+												</ul>					
+											</div>
+											<div class="col-sm-6">
+												<ul class="list-arrow font-12">
+													<li>Mobile: <label  >{{order.MobileNo}}</label></li>
+													<li>Email: <label>{{order.MailID}}</label></li>
+												</ul>					
+											</div>
+							    		</div>
+                            		</div>
+                        		</div>
+                        		<!-- /panel ends -->
+								
+               				</div>
+						</div>
+  					</div>
+	   			</section>
+      		</aside>
+    	</div>
+  	</section>
+</section>

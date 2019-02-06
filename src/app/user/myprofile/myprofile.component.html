@@ -1,0 +1,390 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<aside class="col-sm-9 right-content fadeInLeft animated">
+  <section class="row">
+    <div class="col-sm-12">
+      <h4>My Profile</h4>
+    </div>
+
+  </section>
+
+  <form [formGroup]='myProfileForm.getForm()' enctype="multipart/form-data">
+    <section class="wt-bg my-profile">
+      <section class="row">
+        <div class="profile-bg">
+          <section class="form-group photo-sec">
+            <figure class="box-pic">
+              <img src="{{url}}" alt="">
+            </figure>
+            <div class="btn btn-primary btn-sm btn-theme btn-upload">
+              <span class="icon-camera"></span>
+              <input type="file" class="upload-file-btn" (change)="onSelectFile($event)" name="profileImage" id="fileUpload">
+              <!-- <input #myInput type="file" id="file"
+       					 (change)="handleFileInput($event.target.files)"> -->
+            </div>
+          </section>
+        </div>
+      </section>
+
+
+      <div class="form-group col-sm-8 col-sm-offset-2 grey-box">
+        <div class="row">
+          <label class="col-sm-4 control-label text-info ptop-5 dropdown margin0">UHID no:
+            <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown" href="#1">i</a>
+            <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+              Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID while registering at the hospital;
+              this unique number is used to identify you and will be linked with you lifelong. Using this number, the hospital
+              will store all your medical records and prescriptions while you are being treated at Apollo Hospitals.
+            </div>
+          </label>
+
+          <div class="dropdown bootstrap-select btn-group col-sm-8">
+            <button disabled="true" class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true">
+              {{myProfileForm.getValue('uhid')}}
+              <span class="text-info font-12">({{myProfileForm.getValue('firstName')}})</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li>
+                <a href="javascript:void(0)" data-value="Experience">{{myProfileForm.getValue('uhid')}} ({{myProfileForm.getValue('firstName')}}) </a>
+              </li>
+            </ul>
+            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						  	<li>
+						  		<a href="javascript:void(0)" data-value="Experience">Not sure.. proceed! </a>
+						  	</li>
+							<li>
+								<a href="javascript:void(0)" data-value="Experience">AC01.000012344 <span class="text-info  font-12">(Santosh Kumar)</span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" data-value="Recommendations">AC01.000012344 <span class="text-info  font-12">(Santosh Kumar)</span></a>
+							</li>
+						</ul> -->
+          </div>
+        </div>
+	  </div>
+	  <br>
+	  <br>
+	  <br>
+<!-- wallet points -->
+      <div class="row visible-xs mb-15">
+          <div class="col-sm-12">
+            <h5 class="bdr-binfo mtop20"><span class="glyphicon glyphicon-briefcase text-info"></span>&nbsp; Wallet</h5>
+            <ul class="div-table mini-table div-bordered mtop10 font11">
+             <li><div class="wdth-70p div-cell pleft0">One Apollo Wallet Points:</div><div class="wdth-30p div-cell text-primary">{{wallet.walletPoints}}</div></li>
+             <li><div class="wdth-70p div-cell pleft0">Customer Slab:</div><div class="wdth-30p div-cell text-primary">{{wallet.walletSlab}}</div></li>
+           </ul></div>
+      </div>
+
+
+      <section class="row ">
+        <div class="form-group col-sm-6">
+          <label>First Name:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" value="" type="text" formControlName='firstName' [readonly]="true">
+          <!-- <div *ngIf="myProfileForm.hasError('firstName')" class="err">
+						{{myProfileForm.getError('firstName')}}
+					</div> -->
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Email ID:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" value="" type="email" formControlName='emailId' [readonly]="true">
+          <!-- <div *ngIf="myProfileForm.hasError('emailId')" class="err">
+						{{myProfileForm.getError('emailId')}}
+					</div> -->
+        </div>
+      </section>
+
+
+
+      <section class="row">
+        <div class="form-group col-sm-6">
+          <section class="row">
+            <div class="pr-md0 col-sm-4">
+              <label class="font-nrml">Country code:</label>
+              <div class="dropdown bootstrap-select">
+                <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true" disabled="true" > 
+                  <!-- <span  *ngFor="let c of code" >
+                    
+                    <small class="text-muted">{{code.Code}}</small>
+                  </span>
+                  <span class="caret"></span> -->
+                  +{{countryCode}}
+                </button>
+             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                  <li (click)="setCountryCode(c.Code)" *ngFor="let c of code" >
+                    <a href="javascript:void(0)" data-value=""> +{{c.Code}}
+                      <small class="text-muted">({{c.ShortName}})</small>
+                    </a>
+                  </li>
+                  <!-- <li (click)="setCountryCode(44)">
+                    <a href="javascript:void(0)" data-value="+44(UK)"> +44
+                      <small class="text-muted">(UK)</small>
+                    </a>
+                  </li>
+                  <li (click)="setCountryCode(91)">
+                    <a href="javascript:void(0)" data-value="+91(IND)"> +91
+                      <small class="text-muted">(IND)</small>
+                    </a>
+                  </li> -->
+                </ul> 
+              </div>
+
+            </div>
+            <div class="col-sm-8">
+              <label class="font-nrml">Mobile no.:
+                <span class="asterisk">*</span>
+              </label>
+              <input type="text" class="form-control input-sm" value="" formControlName='phoneNo' [readonly]="true">
+              <!-- <div *ngIf="myProfileForm.hasError('phoneNo')" class="err">
+								{{myProfileForm.getError('phoneNo')}}
+							</div> -->
+
+            </div>
+          </section>
+        </div>
+        <div class="form-group col-sm-6">
+          <section class="row">
+            <div class="pr-md0 col-sm-4">
+              <label class="font-nrml">Country code:</label>
+              <div class="dropdown bootstrap-select">
+                <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true" disabled="true">
+                  +{{countryCode}}
+                  <!-- <span *ngIf="countryCode == '1'">
+                    +1
+                    <small class="text-muted">(USA)</small>
+                  </span>
+                  <span *ngIf="countryCode == '44'">
+                    +44
+                    <small class="text-muted">(UK)</small>
+                  </span>
+                  <span *ngIf="countryCode == '91'">
+                    +91
+                    <small class="text-muted">(IND)</small>
+                  </span>
+                  <span class="caret"></span> -->
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                  <li (click)="setCountryCode(1)">
+                    <a href="javascript:void(0)" data-value="+1(USA)"> +1
+                      <small class="text-muted">(USA)</small>
+                    </a>
+                  </li>
+                  <li (click)="setCountryCode(44)">
+                    <a href="javascript:void(0)" data-value="+44(UK)"> +44
+                      <small class="text-muted">(UK)</small>
+                    </a>
+                  </li>
+                  <li (click)="setCountryCode(91)">
+                    <a href="javascript:void(0)" data-value="+91(IND)"> +91
+                      <small class="text-muted">(IND)</small>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="col-sm-8">
+              <label class="font-nrml">Aleternate Mobile no.:</label>
+              <input type="text" class="form-control input-sm" value="" formControlName='altPhoneNo' [readonly]="true">
+              <!-- <div *ngIf="myProfileForm.hasError('altPhoneNo')" class="err">
+								{{myProfileForm.getError('altPhoneNo')}}
+							</div> -->
+            </div>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="row">
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Date of birth (Age):
+            <span class="asterisk">*</span>
+          </label>
+          <!-- <input type="text" class="form-control input-sm" id="datetimepicker4" formControlName='dob' bsDatepicker /> -->
+          <input type="text" class="form-control input-sm" id="datetimepicker4" formControlName='dob' [readonly]="true" />
+          <!-- <div *ngIf="myProfileForm.hasError('dob')" class="err">
+						{{myProfileForm.getError('dob')}}
+					</div> -->
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Blood Group:</label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" disabled="true">
+              <span *ngIf="bloodGroup == 'A+ve'">A+</span>
+              <span *ngIf="bloodGroup == 'B+ve'">B+</span>
+              <span *ngIf="bloodGroup == 'O+ve'">O+</span>
+              <span *ngIf="bloodGroup == 'AB+ve'">AB+</span>
+
+              <span *ngIf="bloodGroup == 'A-ve'">A-</span>
+              <span *ngIf="bloodGroup == 'B-ve'">B-</span>
+              <span *ngIf="bloodGroup == 'O-ve'">O-</span>
+              <span *ngIf="bloodGroup == 'AB-ve'">AB-</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li (click)="setBloodGroup('A+ve')">
+                <a href="javascript:void(0)" data-value="A+ve"> A+ </a>
+              </li>
+              <li (click)="setBloodGroup('B+ve')">
+                <a href="javascript:void(0)" data-value="B+ve"> B+ </a>
+              </li>
+              <li (click)="setBloodGroup('O+ve')">
+                <a href="javascript:void(0)" data-value="O+ve"> O+ </a>
+              </li>
+              <li (click)="setBloodGroup('AB+ve')">
+                <a href="javascript:void(0)" data-value="AB+ve"> AB+ </a>
+              </li>
+
+              <li (click)="setBloodGroup('A-ve')">
+                <a href="javascript:void(0)" data-value="A-ve"> A- </a>
+              </li>
+              <li (click)="setBloodGroup('B-ve')">
+                <a href="javascript:void(0)" data-value="B-ve"> B- </a>
+              </li>
+              <li (click)="setBloodGroup('O-ve')">
+                <a href="javascript:void(0)" data-value="O-ve"> O- </a>
+              </li>
+              <li (click)="setBloodGroup('AB-ve')">
+                <a href="javascript:void(0)" data-value="AB-ve"> AB- </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="row">
+
+        <div class="form-group col-sm-6">
+          <label>Gender :
+            <span class="asterisk">*</span>
+          </label>
+          <div class="clearfix"></div>
+          <div class="radio radio-inline ">
+            <input name="gender" id="radio1" value="1" type="radio" formControlName='gender' [attr.disabled]="false" [checked]="myProfileForm.getValue('gender') == 1">
+            <label for="radio1" class="font-300 text-black"> Male </label>
+          </div>
+          <div class="radio radio-inline ">
+            <input name="gender" id="radio2" value="2" [checked]="myProfileForm.getValue('gender') == 2" formControlName='gender' type="radio"
+              [attr.disabled]="false">
+            <label for="radio2" class="font-300 text-black"> Female </label>
+          </div>
+          <div class="radio radio-inline ">
+            <input name="gender" id="radio3" value="3" type="radio" formControlName='gender' [attr.disabled]="false" [checked]="myProfileForm.getValue('gender') == 3">
+            <label for="radio3" class="font-300 text-black"> Others </label>
+          </div>
+          <!-- <div *ngIf="myProfileForm.hasError('gender')" class="err">
+					{{myProfileForm.getError('gender')}}
+				</div> -->
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label>Zip code:</label>
+          <input class="form-control input-sm" value="133001" type="text" formControlName='zipCode' disabled="true">
+          <!-- <div *ngIf="myProfileForm.hasError('zipCode')" class="err">
+						{{myProfileForm.getError('zipCode')}}
+					</div> -->
+        </div>
+      </section>
+
+      <section class="row">
+
+        <div class="form-group col-sm-6">
+          <label>Country:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" disabled="true">
+              {{ selectedCountry.CountryName }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let co of countries;" (click)="setCurrentCountry(co)" value="{{ co.CountryId }}">
+                <a data-value="co.CountryId">
+                  {{ co.CountryName }}</a>
+              </li>
+            </ul>
+            <!-- <div *ngIf="myProfileForm.hasError('countryId')" class="err">
+							{{myProfileForm.getError('countryId')}}
+						</div> -->
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>State:</label>
+          <span class="asterisk">*</span>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" disabled="true">
+              {{ selectedState.StateName }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let st of states;" (click)="setCurrentState(st)">
+                <a data-value="st.StateId">
+                  {{ st.StateName }}</a>
+              </li>
+            </ul>
+            <!-- <div *ngIf="myProfileForm.hasError('stateId')" class="err">
+							{{myProfileForm.getError('stateId')}}
+						</div> -->
+          </div>
+        </div>
+      </section>
+
+      <section class="row">
+
+        <div class="form-group col-sm-6">
+          <label>City:</label>
+          <span class="asterisk">*</span>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true" disabled="true">
+              {{ selectedCity.CityName }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let ci of cities;" (click)="setCurrentCity(ci)">
+                <a data-value="ci.CityId">
+                  {{ ci.CityName }}</a>
+              </li>
+            </ul>
+            <!-- <div *ngIf="myProfileForm.hasError('cityId')" class="err">
+							{{myProfileForm.getError('cityId')}}
+						</div> -->
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Address:</label>
+          <textarea class="form-control input-sm" rows="1" formControlName='address' rows="1" disabled="true"></textarea>
+        </div>
+      </section>
+      <section class="row" id="mobileotpsection" *ngIf="show">
+        <div class="form-group col-sm-6">
+          <label>Otp:</label>
+          <span class="asterisk">*</span>
+          <input class="form-control input-sm" type="text" formControlName='MobileOTP'>
+          <!-- <div *ngIf="myProfileForm.hasError('MobileOTP')" class="err">
+						{{myProfileForm.getError('MobileOTP')}}
+					</div> -->
+          <a href="javascript:void(0)" (click)="sendOTP(myProfileForm.getValue('emailId'),myProfileForm.getValue('phoneNo'))">Resend OTP </a>
+        </div>
+      </section>
+      <section class="row text-center" style="display:none">
+        <button type="submit" class="btn btn-success">Save &amp; Proceed </button>
+      </section>
+    </section>
+
+  </form>
+  <!--wt-bg closed-->
+</aside>
+<!-- /right-content closed -->

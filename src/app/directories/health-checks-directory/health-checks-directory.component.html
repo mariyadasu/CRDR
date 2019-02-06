@@ -1,0 +1,58 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+	<!-- mini-header start-->
+	<section class="mini-header">
+		<div class="brn-btm">
+			<div class="container filter-sec">
+
+
+			</div>
+		</div>
+	</section>
+	<!-- /mini-header closed-->
+	<!-- content-wrap start -->
+	<section class="container content-wrap">
+		<div class="row">
+			<aside class="col-sm-12 fadeInLeft animated wt-bg">
+				<section class="row bdr-bottom">
+					<div class="col-sm-6">
+						<h4 class="text-primary margin0">Health Check Up Packages Across Apollo Hospitals</h4>
+					</div>
+					<div class="col-sm-6 pb-5">
+						<form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="searchHealthHospital(f)" novalidate>
+							<label>Health Check Name: </label>
+							<!-- Modified By Saravama	 -->
+							<input type="text" class="form-control input-sm mtop5-xs" name="hospitalname" maxlength="30" [(ngModel)]="searchString" placeholder="{{ searchPlaceholder }}"
+							 [ngModelOptions]="{standalone: true}" (typeaheadOnSelect)="AutoSuggestiononSelect($event)" (keyup)="getAutoSuggestion($event)"
+							 [typeahead]="healthCheckListComplex" [typeaheadWaitMs]="300">
+						</form>
+					</div>
+				</section>
+
+				<section class="accord-content" id="accord">
+					<div class="panel panel-default" *ngFor="let hc of healthchecks| filterBy: hospitallistFilter; let i=index ">
+						<div class="panel-heading">
+							<h4 class="panel-title"><a href="#collapseOne{{i}}" data-parent="#accord" data-toggle="collapse" class="{{i==0?'':'collapsed'}}"
+								 aria-expanded="false"> {{hc.HospitalName}} <i class="accord glyphicon glyphicon-plus"></i></a> </h4>
+						</div>
+						<div class="panel-collapse collapse {{i==0?'in':''}}" id="collapseOne{{i}}" aria-expanded="false">
+							<div class="panel-body">
+								<ul class="list-arrow-link wdt-30-md bdr-btm-link">
+									<!-- <li *ngFor="let hl of hc.HealthCheckList;"><a [routerLink]="['/healthcheck', hl.UrlCityName, hl.UrlHospitalName, hl.UrlHealthCheckName]">{{hl.HealthCheckName}}</a></li> -->
+									<!-- Changed By Saravana -->
+									<li *ngFor="let hl of hc.HealthCheckList;"><a href="https://www.askapollo.com/physical-appointment/bookhealthcheckappointment.aspx" target="_blank">{{hl.HealthCheckName}}</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /panel ends -->
+				</section>
+				<!--/ accord-content closed-->
+			</aside>
+			<!-- /wt-bg closed -->
+		</div>
+		<!-- /row -->
+	</section>
+	<!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->

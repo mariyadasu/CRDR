@@ -1,0 +1,92 @@
+<div id="loginModal" class="loginModal">
+  	<div class="modal-dialog modal-lg">
+    	<div class="modal-body">
+      		<section class="row">
+        		<div class="col-sm-6 col-sm-push-6 login-form">
+          			<div class="form-container">
+            			<section class="login-form-top">
+              				<button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+              				
+              				<app-signup-basic-health-library *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_BASIC"></app-signup-basic-health-library>
+
+              				<app-signup-details-health-library *ngIf="signupStatus == aaa.SINGUP_STATUS_SHOW_DETAILS"></app-signup-details-health-library>
+
+                      <app-signup-otp-health-library *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_OTP"></app-signup-otp-health-library>
+
+
+
+
+
+              
+              				<app-signup-mobile-otp *ngIf="signupStatus == aaa.SIGNUP_STATUS_SHOW_MOBILE_OTP"></app-signup-mobile-otp>
+              				
+              				<app-signup-uhid *ngIf="signupStatus == aaa.SIGNUP_STATUS_SELECT_UHID"></app-signup-uhid>
+
+            			</section>
+            			<section class="login-form-bottom">
+              				<h4 class="margin0">Download our<span class="text-primary">Ask</span><span class="text-info">Apollo</span> App</h4>
+              				<div class="mtop10 row">
+                				<div class="col-xs-6">
+                  					<a  href="https://play.google.com/store/apps/details?id=com.apollo.android&hl=en" target="_blank" >
+                    					<img src="./assets/google-play.png" class="img-responsive" alt="AskApollo" width="187" height="65">
+                  					</a>
+                				</div>
+	                			<div class="col-xs-6">
+	                  				<a href="https://itunes.apple.com/in/app/one-apollo/id1272088560?mt=8" target="_blank">
+	                    				<img src="./assets/apply.png" class="img-responsive" alt="AskApollo" width="194" height="65">
+	                  				</a>
+	                			</div>
+              				</div>
+            			</section>
+          			</div>
+        		</div>
+        		<div class="col-sm-6 col-sm-pull-6 hidden-xs">
+          			<h1 class="text-center mtop0">
+            			<a href="https://play.google.com/store/apps/details?id=com.apollo.android&hl=en" target="_blank" title="AskApollo">
+              				<img src="./assets/ask-logo.png" alt="AskApollo">
+            			</a>
+          			</h1>
+          			<h4 class="text-center">
+            			<span class="text-primary"> Welcome to the</span>
+            			<span class="text-info">World of 24/7 CARE! </span>
+          			</h4>
+          			<ul class="list-unstyled logicons">
+            			<li>
+              				<figure>
+                				<a href="https://itunes.apple.com/in/app/one-apollo/id1272088560?mt=8" target="_blank" title="AskApollo">
+                  					<img src="./assets/doc-icon.png" alt="AskApollo">
+                				</a>
+              				</figure>
+              				<figcaption>
+                				<h5 class="headin16">Book an Appointment</h5>
+                				<p class="font-12 margin0">Book an Appointment with a doctor of your choice across 220 specialties.</p>
+              				</figcaption>
+						</li>
+            			<li>
+              				<figure>
+                				<a href="#1" title="AskApollo">
+                  					<img src="./assets/record-icon.png" alt="AskApollo">
+                				</a>
+              				</figure>
+              				<figcaption>
+                				<h5 class="headin16">Carry your health records with you</h5>
+                				<p class="font-12 margin0">Manage your consultations and health records</p>
+              				</figcaption>
+            			</li>
+            			<li>
+              				<figure>
+                				<a href="#1" title="AskApollo">
+                  					<img src="./assets/online-icon.png" alt="AskApollo">
+                				</a>
+              				</figure>
+              				<figcaption>
+                				<h5 class="headin16">Consult Doctors Online</h5>
+                				<p class="font-12 margin0">Consult Doctors over Video/Voice/Email..</p>
+              				</figcaption>
+            			</li>
+          			</ul>
+        		</div>
+      		</section>
+    	</div>
+  	</div>
+</div>

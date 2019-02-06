@@ -1,0 +1,63 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container filter-sec">
+	  	
+		
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">     
+    
+	<aside class="col-sm-12 fadeInLeft animated wt-bg">
+	    <section class="row bdr-bottom">
+	    	<div class="col-sm-6">
+	    	<h4 class="text-primary margin0">List of Apollo Hospital Doctors</h4>
+	        </div>
+	        <div class="col-sm-6 pb-5">
+	    		<form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="searchdoctor(f)" novalidate>
+  	    		  <label>Search : </label>
+                  <input class="form-control input-sm mtop5-xs" 
+                   type="text" placeholder="Enter Doctor Name" 
+                  maxlength="300" [(ngModel)]="docFillter.FullName"
+                   [typeahead]="docComplex"
+                   [typeaheadScrollable]="true"
+                   [typeaheadOptionsInScrollableView]="8"
+                   (typeaheadOnSelect)="onSelect($event)"
+                   typeaheadOptionField="FullName" name="doctorname"
+                    >
+  	    		</form>		
+	    	</div>
+		</section>
+
+	
+		<p class="mtop15 font-12">Book Appointments at all Apollo Hospital Doctors across Chennai, Ahmedabad, Delhi, Ranchi, Kolkata, Hyderabad Jubilee hills, Gandhinagar, Guwahati, Madurai, Vizag, Trichy, Bilaspur, Nashik, Apollo clinics & more. Find a icon-doctorctor near your city and book appointments instantly!</p>
+			<section class="mtop20 row">
+				<div class="col-sm-3" *ngFor="let doc of doctors | filterBy: docFillter ">
+					<ul class="data-list box-shad bouncee">
+					  <li><h3 class="heading14 margin0 padd0"><a class="text-primary" 
+					  	[routerLink]="['/', doc.UrlCityName, doc.UrlSpecialityKeyword , doc.UrlFullName]">{{doc.FullName}}</a></h3></li>
+	                  <li><span class="icon-doctor pull-left font-11" aria-hidden="true"></span> <div class="mLeft20">
+	                  	<a [routerLink]="['/india', doc.UrlSpecialityKeyword ]">{{doc.SpecilaityKeyword}}</a> </div></li>
+					   <li><span class="icon-location pull-left font-11" aria-hidden="true"></span> <div class="mLeft20"><a [routerLink]="['/', doc.UrlCityName]">{{doc.CityName}}</a> </div></li>
+	                </ul>
+	            	<br/>
+				</div>					
+			</section>
+		<!--row-closed-->
+		
+    </aside>
+      <!-- /wt-bg closed -->
+	  
+	  
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->

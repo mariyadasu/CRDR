@@ -1,0 +1,40 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  	<!-- mini-header start-->
+  	<section class="mini-header">
+    	<div class="brn-btm">
+      		<div class="container filter-sec">
+	  	
+			</div>
+    	</div>
+  	</section>
+  	<!-- /mini-header closed-->
+  	<!-- content-wrap start -->
+  	<section class="container content-wrap">
+    	<div class="row">
+	     
+			<aside class="col-sm-12 fadeInLeft animated wt-bg">
+	    		<section class="row bdr-bottom">
+	    			<div class="col-sm-6">
+	    				<h4 class="text-primary margin0">City Index</h4>
+	    			</div>
+	    			<div class="col-sm-6 pb-5">
+	    				<form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="search(f)" novalidate>
+	    					<label>Search : </label>
+	    					<input class="form-control input-sm mtop5-xs" type="text" placeholder="Enter City Name" maxlength="300" [(ngModel)]="cityFilter.name" name="searchItem"> 
+	    					
+	    				</form>
+	    			</div>
+	    		</section>	
+	
+				<section class="mtop20">
+					<ul class="list-arrow-link wdt-30-md bdr-btm-link">
+                        <li *ngFor="let city of cities | filterBy: cityFilter">
+                        	<a [routerLink]="['/', removeSpaces(city.name)]">{{city.name}}</a>
+                        </li>
+                   	</ul>	
+				</section>
+			</aside>
+    	</div>
+  	</section>
+</section>

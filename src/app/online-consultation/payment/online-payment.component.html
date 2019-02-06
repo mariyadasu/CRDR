@@ -1,0 +1,358 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- mini-header start-->
+  
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              <li><a>Consultation Summary</a></li>
+
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg  border-btm ">
+          <h1 class="heading mtop5 mleft-xs-0">Consultation Summary</h1>
+          <!-- heading closed-->
+          <!-- <section class="consult-payment"> -->
+            <!-- <div class="" id="accord">
+
+              <div class="row pbottom5">
+
+
+                <div class=" col-sm-4">
+
+                  <div class="text-info font11">For Coupon Code <a (click)="showCouponCode()" aria-expanded="false">Click Here</a></div>
+                </div>
+                <div class=" col-sm-8 col-md-5">
+                  <div *ngIf="isShowCoupon">
+                    <h6 class="promocode m-t-0">
+                      <p class="applyCode">Apply Coupon Code</p>
+                    </h6>
+                    <div class="input-group input-group-sm">
+                      <input [(ngModel)]="paymentInfo.couponCode" class="form-control" placeholder="Enter Coupon Code" type="text">
+                      <span class="input-group-btn">
+                          <input (click)="Coupon()()" value="Apply coupon" class="btn btn-primary" type="submit">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row"> -->
+
+
+
+                <!-- <div class="col-sm-4">
+                  <div class="text-info font11">One Apollo Wallet Users <a (click)="showWallet()" aria-expanded="false">Click Here</a></div>
+                </div> -->
+
+                <!-- <div class=" col-sm-8 col-md-5">
+                  <div *ngIf="isShowWallet">
+
+                    <h6 class="promocode m-t-0">
+                      <p class="applyCode">Apply One Apollo Health Credits</p>
+                    </h6>
+
+
+                    <div class="input-group input-group-sm">
+                      <input [(ngModel)]="paymentInfo.wallet" class="form-control" placeholder="Enter Health Credits" type="text">
+                      <span class="input-group-btn">
+                          <input (click)="applyWallet(templateUpdateSub)"  value="Apply"   class="btn btn-primary" type="submit">
+                      </span>
+                    </div>
+                    <small class="rupee_font m-t-0">Your Available Health Credits :
+                      <span id="Label1" style="color:#EC7323;">₹</span><span id="lblWalletPointsValue" style="color:#EC7323;">{{AppointmentDocInfo.walletBalanceCredits}}</span>
+                      &nbsp;/&nbsp;<span id="lblwalletPoints" style="color:#EC7323;">{{AppointmentDocInfo.walletBalanceCredits}}</span><span class="heading10" style="color: #007c9d">   {{AppointmentDocInfo.walletBalanceCredits}}
+                        Credits </small>
+                  </div>
+                </div>
+              </div>
+
+
+            </div> 
+            <!-- <div class="paytable div-table div-bordered">
+              <table>
+                <thead></thead>
+                <tbody>
+                  <tr>
+                    <td>Consultation Fee</td>
+                    <td>{{AppointmentDocInfo.feeType}} {{AppointmentDocInfo.fee}}</td>
+                  </tr>
+                  <tr>
+                    <td>Coupon Code Applied</td>
+                    <td>{{AppointmentDocInfo.feeType}} {{AppointmentDocInfo.couponAmount}}</td>
+                  </tr>
+                  <tr>
+                    <td>Wallet Points Redeemed</td>
+                    <td>{{AppointmentDocInfo.feeType}} {{wallet}} </td>
+                  </tr>
+                  <!-- {{AppointmentDocInfo.walletAmount}} -->
+                  <!-- <tr>
+                    <td>Final Amount Payable</td>
+                    <td>{{AppointmentDocInfo.feeType}} {{AppointmentDocInfo.afterDiscount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> -->
+
+
+          <!-- </section> -->
+
+          <section class="consult-payment" >
+				
+            <ul class="div-table div-bordered">
+              <li class="bg-active"><div class="wdth-70p div-cell text-primary">Total amount payable</div><div class="wdth-30p div-cell text-info font16  text-right">{{AppointmentDocInfo.displayFeeType}} {{AppointmentDocInfo.fee}}</div></li>
+              <li><div class="wdth-70p div-cell">One Apollo Health Credits <span class="text-info font-11"> <br class="visible-xs"/>({{AppointmentDocInfo.walletBalanceCredits}} Credits)</span> 
+                <button class="btn btn-sm btn-primaryLine roundBtn mleft7" (click)="lmsSmsRequest()" *ngIf="walletValid === '1' " [disabled]="AppointmentDocInfo.walletBalanceCredits==0 || redeem " >Redeem</button>
+                <a class="btn btn-sm btn-infoLine roundBtn mleft7" aria-expanded="false" (click)="lmsCancel()" *ngIf="walletValid == '2' "   >Remove</a>
+                <div class="mtop10  wdth-70p wdth-100-xs" id="points" *ngIf=" redeem " >
+                  <form #otpRef = "ngForm" (ngSubmit) = "lmsOTPvalidate(otpRef.value)" ><div class="input-group input-group-sm">
+                    
+                                                    <input class="form-control" placeholder="_ _ _ _ _ _" type="text" [(ngModel)]="walletOTP" name = "otp" [disabled]="walletValid == '2'"  required>
+                                                    <span class="input-group-btn">
+                                                        <input  value="Apply" class="btn btn-primary" type="submit" minlength="6" [disabled]="!otpRef.valid || walletValid == '2'" >
+                                                    </span>
+                                                </div>
+                                              </form>
+                                              <p class="mtop5"><a (click)="lmsSmsResend()" class="btn-link"> Didn't received OTP ? Resend </a></p>
+                                                
+                             </div>
+                <!--coupon-code closed-->
+              
+                
+                </div><div class="wdth-30p div-cell text-info  font16  text-right" > <span style="font-size: 10px" >[ - ]</span> {{AppointmentDocInfo.displayFeeType}} {{this.AppointmentDocInfo.walletAmount}}</div></li>
+              <li><div class="wdth-70p div-cell">Have a Coupon Code?
+                <div class="coupon-code  mtop10 wdth-70p wdth-100-xs" >
+                    <form #couponRef = "ngForm" (ngSubmit) = "Coupon(couponRef.value)" >
+                                               
+                                                <div class="input-group input-group-sm">
+                                                    <input class="form-control" placeholder="Enter Coupon Code" name="code" type="text" [(ngModel)]="paymentInfo.couponCode" [disabled]="couponValid" >
+                                                    <span class="input-group-btn">
+                                                        <input value="Apply" class="btn btn-primary" type="submit" [disabled]="couponValid" >
+                                                        <button class="btn btn-xs btn-infoLine" *ngIf="couponValid" (click)="couponCancel()" ><span class="glyphicon glyphicon-remove"></span></button>
+                                                    </span>
+                                                  
+                                                </div>
+                                              </form>
+                                                
+                             </div>
+                <!--coupon-code closed-->
+                <!-- <p class="mtop5"><a href="#1" class="btn-link">View Offers</a></p> -->
+                </div><div class="wdth-30p div-cell text-info  font16  text-right">{{AppointmentDocInfo.displayFeeType}} {{AppointmentDocInfo.couponAmount}}</div></li>
+              
+              <li class="bg-info text-white  fonts-16"><div class="wdth-70p div-cell">Final Amount Payable</div><div class="wdth-30p div-cell  text-right">{{AppointmentDocInfo.displayFeeType}} {{AppointmentDocInfo.afterDiscount}}</div></li>
+            </ul>	
+            
+            
+          </section>
+          <!-- tab-content closed-->
+          <!-- tabs left -->
+          <div class="tabbable tabs-left mtop20">
+            <h4 class="text-primary"> Payment options </h4>
+
+            <div class="mynavtabs">
+              <div class="row">
+                <div class="col-md-3 navleft">
+                  <ul class="nav nav-tabs hidden-xs">
+                    <li class="active"><a href="#a" data-toggle="tab" (click)="selectType('1')">Credit card</a></li>
+                    <li><a href="#a" data-toggle="tab" (click)="selectType('2')">Debit card</a></li>
+                    <li><a href="#a" data-toggle="tab" (click)="selectType('3')">Debit card + ATM pin</a></li>
+                    <li><a href="#a" data-toggle="tab" (click)="selectType('4')">Net banking</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-9 navright">
+                  <div class="tab-content mleft-xs-0">
+                    <div class="tab-pane active padd15" id="a">
+                      <ul class="list-arrow pay-options">
+                        <li class="bdr-bottom" *ngIf="selectedType != '3' &&  location !=='International' ">
+                          <div class="radio radio-inline ">
+                            <ul>
+                              <li><input name="radi" id="cr1" value="paytm" 
+                                [(ngModel)]="paymentType" 
+                                (click)="selectPaymentMethod('paytm')" type="radio"><label for="cr1"
+                                  class="font-300 text-black">  <span class="hidden-xs">Powered by</span></label></li>
+                              <li><img src="../../../assets/paytm.png" alt="" /></li>
+                            </ul>
+                          </div>
+                        </li>
+
+                        <li class="bdr-bottom">
+                          <div class="radio radio-inline ">
+                            <ul>
+                              <li>
+                                <input name="radi" id="cr2" value="fss" type="radio" 
+                                [(ngModel)]="paymentType"  (click)="selectPaymentMethod('fss')" checked="checked">
+                                <label for="cr2" class="font-300 text-black"><span class="hidden-xs">Powered by</span></label>
+                              </li>
+                              <li>
+                                <img src="../../../assets/ffs.png" alt="" />
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+
+
+                    </div>
+                    <!-- / #a closed -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+          <!-- /tabs-left -->
+          <div class="note-txt">
+
+            <ol>
+              <li> <strong class="text-info">Note:</strong> APPOINTMENT WILL ONLY BE CONFIRMED AFTER YOU'VE SHARED THE MEDICAL
+                SYMPTOMS. </li>
+
+            </ol>
+          </div>
+
+          <!-- FSS gateway form -->
+          <form [formGroup]="fssForm" (ngSubmit)="onSubmit($event)" method="post" 
+          action="{{FSSpaymentUrl}}">
+            
+            <div style="display:none;">
+              SourceApp:
+              <input name='sourceApp' type='text' value='{{AppointmentDocInfo.sourceApp}}'> PatientId:
+              <input name='patientId' type='text' value='{{AppointmentDocInfo.patientId}}'>PatientName
+              <input name='patientName' type='text' value='{{AppointmentDocInfo.PatientName}} '>EmailId
+              <input name='patientEmailId' type='text' value='{{AppointmentDocInfo.EmailId}}'>MobileNo
+              <input name='patientMobile' type='text' value='{{AppointmentDocInfo.MobileNo}}'>merchantId
+              <input name='trackId' type='text' value='{{AppointmentDocInfo.merchantId}}'>afterDiscount Amount:
+              <input name='totalAmount' type='text' value='{{AppointmentDocInfo.afterDiscount}}'>fee
+              <input name='actualAmount' type='text' value='{{AppointmentDocInfo.fee}}'> DiscAmount:
+              <input name='discountAmount' type='text' value='{{AppointmentDocInfo.discountAmount}}'> InterBookAppointmentId:
+              <input name='interBookAppointmentId' type='text' value='{{AppointmentDocInfo.blockId}}'> CouponId:
+              <input name='couponId' type='text' value='{{AppointmentDocInfo.couponId}}'>IsCouponApplied
+              <input name='couponApplicable' type='text' value='{{AppointmentDocInfo.IsCouponApplied}}'> WalletPoints:
+              <input name='walletPoints' type='text' value='{{AppointmentDocInfo.walletAmount}}'>ReturnURL
+              <input name='returnUrl' type='text' value='{{AppointmentDocInfo.ReturnURL}}'>
+              <input name='currencyFormat' type='text' value='{{AppointmentDocInfo.feeType}}'> AppointmentID:
+              <input name='appointmentID' type='text' value='0'> BoardappDetailsId:
+              <input name='boardAppDetailsId' type='text' value='0'>boardPayment
+              <input name='boardPayment' type='text' value=false>
+            </div>
+ 
+            <button class="btn btn-info btn-lg" type="submit" *ngIf="paymentType==='fss'" >Proceed to pay</button>
+            
+          </form>
+
+          <form [formGroup]="appForm" (ngSubmit)="onSubmit($event)" method="post" action="{{paymentURL}}">
+            <div style="display:none;" >
+              SourceApp:<input name='SourceApp' type='text' value='{{AppointmentDocInfo.sourceApp}}'> PatientId:
+              <input name='PatientId' type='text' value='{{AppointmentDocInfo.patientId}}'>
+              <input name='PatientName' type='text' value='{{AppointmentDocInfo.PatientName}} '>
+              <input name='EmailId' type='text' value='{{AppointmentDocInfo.EmailId}}'>
+              <input name='PhoneNo' type='text' value='{{AppointmentDocInfo.MobileNo}}'> MarchantId:
+              <input name='MarchantId' type='text' value='{{AppointmentDocInfo.merchantId}}'> Amount:
+              <input name='Amount' type='text' value='{{AppointmentDocInfo.afterDiscount}}'>
+              <!-- Amount:<input name='Amount' type='text' value='1'> -->
+              <!-- DiscAmount:<input name='DiscAmount' type='text' value='0'> -->
+              DiscAmount:<input name='DiscAmount' type='text' value='{{AppointmentDocInfo.discountAmount}}'> InterBookAppointmentId:
+              <input name='InterBookAppointmentId' type='text' value='{{AppointmentDocInfo.blockId}}'> IsCouponApplied:
+              <input name='IsCouponApplied' type='text' value='{{AppointmentDocInfo.IsCouponApplied}}'> CouponId:
+              <input name='CouponId' type='text' value='{{AppointmentDocInfo.couponId}}'>
+              <input name='GatewayName' type='text' value='{{AppointmentDocInfo.GatewayName}}'>
+              <!-- TransactionAmount:<input name='TransactionAmount' type='text' value='1'>  -->
+              TransactionAmount:<input name='TransactionAmount' type='text' value='{{AppointmentDocInfo.afterDiscount}}'>              WalletPoints:
+              <input name='WalletPoints' type='text' value='{{AppointmentDocInfo.walletAmount}}'>
+              <input name='ReturnURL' type='text' value='{{AppointmentDocInfo.ReturnURL}}'>
+              <input name='CurrencyFormat' type='text' value='INR'>
+              <input name='AuthenticationToken' type='text' value='{{AppointmentDocInfo.authenticationTicket}}'> IsboardPayment:
+              <input name='IsboardPayment' type='text' value='false'> AppointmentID:
+              <input name='AppointmentID' type='text' value='0'> BoardappDetailsId:
+              <input name='BoardappDetailsId' type='text' value='0'>
+            </div>
+            <button class="btn btn-info btn-lg" *ngIf="paymentType=='paytm'" 
+            type="submit">Proceed to pay</button>
+            <!-- <p class="text-center mtop15"><a class="btn btn-info btn-lg">Proceed to pay</a></p> -->
+          </form>
+
+
+        </section>
+        <!-------------------------wt-bg closed-------------------->
+
+      </aside>
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+        <h5 class="heading14 bdr-bottom ">Appointment Info</h5>
+        <ul class="howWork-valign mtop30 ">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.doctorname}}</small> </h5>
+              <p class="font-11 ">{{AppointmentDocInfo.Speciality}}</p>
+            </div>
+          </li>
+          <li><span class="icon-calendar icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentDate}}</small> </h5>
+              <p class="font-11 ">Appointment Date</p>
+            </div>
+          </li>
+          <li><span class="icon-clock icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentDisplayTime}}</small> </h5>
+              <p class="font-11 ">Appointment Time</p>
+            </div>
+          </li>
+          <li><span class=" icon-video-camera icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5"><small>Mode of consultation</small></h5>
+              <p class="font-11">{{AppointmentDocInfo.Category}}</p>
+            </div>
+          </li>
+          <li><span class="icon-location icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.location}}</small> </h5>
+              <p class="font-11 ">Location</p>
+            </div>
+          </li>
+          <li class="text-center"><a (click)="changeSearch()" class="btn btn-infoLine btn-sm roundBtn"><i class="glyphicon glyphicon-edit"></i> Change</a></li>
+        </ul>
+      </aside>
+      <!-- /right-content closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed  -->
+
+<ng-template #templateUpdateSub>
+  <div class="modal-header">
+    <h3 class="modal-title pull-center">Verify OTP</h3>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onModelClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="font-nrml">Please enter verification code (OTP):</label>
+      <input maxlength="5" type="text" name="otp" required [(ngModel)]="otp" class="form-control input-lg" placeholder="_ _ _ _ _ _">
+
+      <span class="form-text text-muted mtop5 font-12" (click)="resendOTP()">
+      <a class="text-info">Resend OTP</a>
+    </span>
+    </div>
+  </div>
+
+  <div class="form-group mtop20 col-md-3">
+    <button type="button" class="btn btn-info btn-block btn-lg" (click)="verifyOTP()">Verify OTP</button>
+
+  </div>
+</ng-template>

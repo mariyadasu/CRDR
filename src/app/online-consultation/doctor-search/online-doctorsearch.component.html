@@ -1,0 +1,479 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <!-- <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container  filter-sec">
+        <div class="row">
+          <div class="col-sm-8">
+           
+
+            <div class="more-filter">
+              <section class="fltr-list form-inline" [collapse]="isCollapsed">
+
+                <div class="dropdown bootstrap-select btn-group">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Gender
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>
+                      <a (click)="filterBy('g', 1)">Male Doctor</a>
+                    </li>
+                    <li>
+                      <a (click)="filterBy('g', 2)">Female Doctor</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dropdown bootstrap-select btn-group">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Language
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                    <li *ngFor="let lng of availableLanguages">
+                      <a (click)="filterBy('l', lng)">{{lng | titlecase}}</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </section>
+
+              <button type="button" class="btn btn-info btn-sm mLeft10 fltr-btn" (click)="isCollapsed = !isCollapsed">
+                <span class="icon-funnel " aria-hidden="true"></span>
+                <label class="hidden-mobi">More filters</label>
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-4 text-right relevance">
+            <label class="mright10">Sort by:</label>
+
+            <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                {{ sortByString }}
+                <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                  <a data-value="highlow" (click)="sortBy('ohl')">Experience High-Low</a>
+                </li>
+                <li>
+                  <a data-value="lowhigh" (click)="sortBy('olh')">Experience Low-High</a>
+                </li>
+              
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section> -->
+
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container filter-sec">
+        <div class="row">
+          <div class="col-sm-8">
+
+            <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        {{gender}}
+                                        <span class="caret"></span> </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li *ngFor="let gen of availableGenders">
+                  <a *ngIf="gen == '1'" (click)="filterBy('g', 1)">Male Doctor</a>
+                  <a *ngIf="gen == '2'" (click)="filterBy('g', 2)">Female Doctor</a>
+                </li>
+                <!-- <li><a (click)="filterBy('g', 3)">No Preference</a></li> -->
+              </ul>
+            </div>
+            <!-- <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Time
+                                        <span class="caret"></span> </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" data-value="Morning">Morning</a></li>
+                <li><a href="#" data-value="Afternoon">Afternoon</a></li>
+                <li><a href="#" data-value="Evening">Evening</a></li>
+              </ul>
+            </div> -->
+            <!-- <div class="dropdown bootstrap-select btn-group mini">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                                        Hyderabad
+                                        <span class="caret"></span>
+                                    </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#" data-value="Experience">Hyderabad</a></li>
+                <li><a href="#" data-value="PriceLowHigh">Mumbai</a></li>
+                <li><a href="#" data-value="PriceHighLow">Chennai</a></li>
+                <li><a href="#" data-value="PriceHighLow">Delhi</a></li>
+              </ul>
+            </div> -->
+
+            <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{citiesSelected}}
+                    <span class="caret"></span>
+                  </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li *ngIf="city===undefined" ><a (click)="filterBy('city', 'All')">All</a></li>
+                <li *ngFor="let lng of availableCities">
+                  <a (click)="filterBy('city', lng)">{{lng | titlecase}}</a>
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="dropdown bootstrap-select btn-group mini visible-xs-inline-block">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                                        Sort by:
+                                        <span class="caret"></span>
+                                    </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a (click)="applySortNew('ohl')">Experience High - Low</a></li>
+                <li><a (click)="applySortNew('olh')">Experience Low - High</a></li>
+                <li><a (click)="applySortNew('olh')" data-value="PriceHighLow">Price High - Low</a></li>
+                <li><a (click)="applySortNew('olh')" data-value="PriceHighLow">Price Low - High</a></li>
+              </ul>
+            </div>
+            <!-- <div class="dropdown bootstrap-select btn-group">
+              <button (click)="showMoreFilterClick()" type="button" class="btn btn-info btn-block btn-sm  doclist-fltr-btn"><span class="icon-funnel" aria-hidden="true"></span> More filters</button>
+
+            </div> -->
+
+          </div>
+          <div class="col-sm-4 text-right  hidden-xs">
+            <div class="dropdown bootstrap-select btn-group mini">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                                        {{sortString}}
+                                        <span class="caret"></span>
+                                    </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a (click)="applySortNew('ohl')" data-value="Experience">Experience High - Low</a></li>
+                <li><a (click)="applySortNew('olh')" data-value="PriceLowHigh">Experience Low - High</a></li>
+                <li><a (click)="applySortFee('ohl')" data-value="PriceHighLow">Price High - Low</a></li>
+                <li><a (click)="applySortFee('olh')" data-value="PriceHighLow">Price Low - High</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doclist-more-filters filter-sec" *ngIf="showMore">
+      <div class="container">
+        <div class="col-xs-12 col-md-6">
+          <h4>Languages</h4>
+          <ul class="languages">
+            <li>
+              <label class="checkbox">
+                                        English
+                                        <input type="checkbox" name="language" value="English">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Telugu
+                                        <input type="checkbox" name="language" value="Telugu">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Bengali
+                                        <input type="checkbox" name="language" value="Bengali">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Hindi
+                                        <input type="checkbox" name="language" value="Hindi">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Oriya
+                                        <input type="checkbox" name="language" value="Oriya">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Arabic
+                                        <input type="checkbox" name="language" value="Arabic">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+
+
+              <label class="checkbox">
+                                        Urdu
+                                        <input type="checkbox" name="language" value="Urdu">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Kannada
+                                        <input type="checkbox" name="language" value="Kannada">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Tamil
+                                        <input type="checkbox" name="language" value="Tamil">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Marathi
+                                        <input type="checkbox" name="language" value="Marathi">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Assamese
+                                        <input type="checkbox" name="language" value="Assamese">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Malayalam
+                                        <input type="checkbox" name="language" value="Malayalam">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        French
+                                        <input type="checkbox" name="language" value="French">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                                        Gujarati
+                                        <input type="checkbox" name="language" value="Gujarati">
+                                        <span class="checkmark"></span>
+                                    </label>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <h4>Consultation Fee</h4>
+          <div class="dropdown bootstrap-select btn-group">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    From
+                                    <span class="caret"></span> </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#" data-value="200">200</a></li>
+              <li><a href="#" data-value="300">300</a></li>
+              <li><a href="#" data-value="500">500</a></li>
+            </ul>
+          </div>
+          <div class="dropdown bootstrap-select btn-group">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    To
+                                    <span class="caret"></span> </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#" data-value="400">400</a></li>
+              <li><a href="#" data-value="600">600</a></li>
+              <li><a href="#" data-value="700">700</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <h5 class="hidden-xs">&nbsp;</h5>
+          <button class="btn-primaryLine btn btn-sm">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9 right-content fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-10">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              </li>
+             <li>
+              <a (click)="direct()">{{ breadcrum[1]| titlecase }}</a>
+            </li>
+            <li>
+              <a (click)="speRoute(breadcrum[3])" >{{breadcrum[3]| titlecase}}</a>
+            </li>
+            <li *ngIf="city!==undefined" >
+              <a>{{city| titlecase}}</a>
+            </li>
+          </ul>
+          </div>
+
+          <!-- <div class="col-xs-5  col-sm-2 pleft0 relevance-mob visible-xs">
+            <div class="dropdown bootstrap-select btn-group mini">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                Sort by:
+                <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                  <a data-value="Experience">Experience</a>
+                </li>
+                <li>
+                  <a data-value="Recommendations">Recommendations</a>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+        </section>
+
+        <section class="listing mtop10" id="accordion">
+          <online-summary-card [ngClass]="{'hidden': doctors.length==0}" *ngFor="let d of doctorsPaginated" [d]="d"></online-summary-card>
+          <div *ngIf="gettingDataFromServer" class="mtop30">Finding the right doctors for you. Please wait ... </div>
+          <div *ngIf="doctors.length==0 && !gettingDataFromServer" class="mtop30">No relevant doctors available</div>
+        </section>
+
+        <pagination *ngIf="doctors.length>0" [itemsPerPage]="itemsPerPage" [boundaryLinks]="true" [totalItems]="doctors.length" [(ngModel)]="currentPage"
+          class="pagination-sm" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="&raquo;"></pagination>
+
+      </aside>
+
+
+      <!-- /left-content closed-->
+      <!-- <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+        <h5 class="heading14 bdr-bottom ">Most Searched Localities In {{ currentCity }}</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li *ngFor="let trend of trends">
+            <a routerLink='/doctorsearch/{{ currentCity }}/{{ trend.SpecialityKeyword | lowercase }}/hyperlocal/{{ trend.HyperLocation | lowercase }}'>{{ trend.DisplayText }}</a>
+          </li>
+        </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Health Articles</h5>
+        <ul class="data-list font11 arr-bullet">
+            <li>
+              <a href="https://blog.askapollo.com/category/cancer-care/" target="_blank">Cancer Care</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/general-health/" target="_blank">General Health</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/healthy-living/" target="_blank">Healthy Living</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/heart-care/" target="_blank">Heart Care</a>
+            </li>
+            <li>
+                <a href="https://blog.askapollo.com/category/ortho-care/" target="_blank">Ortho Care</a>
+              </li>
+            <li>
+              <a href=" https://blog.askapollo.com/category/top-slider/" target="_blank">Others</a>
+            </li>
+          </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Get the free Askapollo App</h5>
+        <div class="form-group telblock">
+          <label>Enter your mobile no.</label>
+          <input type="tel" class="form-control input-sm" [(ngModel)]="pn">
+         
+          <img class="indflag2" src="../../assets/tel-num.png" />
+        </div>
+        <div class="form-group">
+          <a class="btn btn-info btn-sm" (click)="sendAppLink()">Send App Link</a>
+        </div>
+
+      </aside> -->
+
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated afixed">
+        <h5 class="heading14 bdr-bottom ">How it works?</h5>
+        <ul class="howWork-valign mtop15">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">1. Choose <small> a doctor</small></h5>
+              <p class="font-11">Choose your preferred doctor , mode of consultation , preferred date and time.</p>
+            </div>
+          </li>
+          <li><span class="icon-credit-card icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">2. Pay <small> for consultation</small></h5>
+              <p class="font-11">Pay the consultation fees to initiate consultation.</p>
+            </div>
+          </li>
+          <li><span class="icon-edit-document icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">3. Fill <small> Medical Symptoms</small></h5>
+              <p class="font-11">Share Medical symptoms and reports.</p>
+            </div>
+          </li>
+
+          <li><span class="icon-prescription icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5">4. Get <small> Doctor Consultation</small></h5>
+              <p class="font-11">Complete your consultation at your requested date & time.</p>
+            </div>
+          </li>
+          <li><span class="icon-pills icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info  mbottom5">5. Get <small> Prescription</small></h5>
+              <p class="font-11">Get medical prescription or advise for your consultation.</p>
+            </div>
+          </li>
+        </ul>
+
+      </aside>
+
+      <!-- /right-content closed -->
+
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+  <div class="container">
+
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.SpecialityContent"></p>
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.BoilerContent"></p>
+
+  </div>
+</section>
+<!-- /seo-text-closed -->
+
+
+<!-- <ng-template #confirmDelete>
+  <div class="modal-header">
+    <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+    <h4 class="modal-title">Confirmation</h4>
+  </div>
+  <div class="modal-body text-center">
+    <h4 class="heading14">Are you sure you want to delete this relative?</h4>
+    <p>
+      <a href="javascript:void(0)" class="btn btn-default btn-sm" (click)="deleteMember(PatRelationId)">Yes</a>
+      <a href="javascript:void(0)" class="btn btn-info btn-sm mleft7" (click)="modalRef.hide()">No</a>
+    </p>
+
+
+  </div>
+</ng-template> -->

@@ -1,0 +1,631 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<aside class="col-sm-9 right-content fadeInLeft animated">
+	<section class="r	ow">
+		<div class="col-sm-12">
+			<h4>Online Consultations</h4>
+		</div>
+
+
+	</section>
+	<section class="wt-bg">
+
+		<div class="wt-tabs dashboard-tabs">
+			<ul class="nav nav-pills">
+				<li class="active">
+					<a href="#1b" data-toggle="tab">
+						<span class="icon-calendar-daily-page-on-day-31"></span> Upcoming Appointments</a>
+				</li>
+				<li class="">
+					<a href="#2b" data-toggle="tab">
+						<span class="icon-calendar"></span> Past Appointments</a>
+				</li>
+
+				<li class="">
+					<a href="#4b" data-toggle="tab">
+						<span class="icon-support"></span> Support</a>
+				</li>
+			</ul>
+
+			<div class="tab-content clearfix">
+				<div class="tab-content clearfix  mtop15-xs">
+					<!--Upcomming appointments tab starts-->
+			    	<div class="tab-pane active" id="1b">
+     					<div class="doctor-list panel">
+     						<div *ngFor="let up of ocUpcomingAppointmentDetails; let i=index">
+								<figure>
+	            					<a class="round-tab" href="javascript:void(0)" title="AskApollo">
+	            						<img src="{{up.Photo}}" alt="AskApollo">
+	            					</a>
+	            				</figure>
+	            				<figcaption>
+	              					<h3 class="heading14 bdr-btm mtop0"> {{up.doctorname}} &nbsp; <small class="app-date">{{up.DisplayDate}}   <span class="icon-clock text-primary"></span><span class="text-drkGrey"> ({{up.DisplayTime}})</span></small> </h3>
+	              					<section class="row">
+				  						<div class="col-sm-4">
+											<ul class="list-arrow font-12">
+												<li><a href="javascript:void(0)">{{up.consultationType}}</a></li>
+												<li>{{up.YearsOfExperience || '0'}} Years of experience</li>
+											</ul>					
+										</div>
+										<div class="col-sm-4">
+											<ul class="font-11 list-arrow">
+												<li>Status:  
+													<label class="font-nrml text-green">{{up.AppointmentStatus}}</label>
+												</li>
+												<li>Mode:  
+													<label class="margin0">{{up.Category}}</label> <a href="javascript:void(0)" title="Change mode" class="btn btn-infoLine btn-xs roundBtn" (click)="showHideMode(i)">
+														<i class="glyphicon glyphicon-edit"></i>
+													</a>
+													<form id="changeMode" role="form" (ngSubmit)="changeMode(m,up.AppointmentId,i)" #m="ngForm">
+														<section id="selectMode" class="form-group row collapse mtop10" id="showHideMode{{i}}">
+															<div class="row">
+								 								<div class="col-sm-8">
+								 									<div class="dropdown bootstrap-select">
+								 										<select class="btn btn-default btn-xs dropdown-toggle" ngModel required  #consultationMode="ngModel" name="consultationMode">
+								 											<option value="">
+								 											Select Mode
+								 											</option>
+								 											<option *ngIf="up.Category != 'Video'" value="2">
+								 											Video
+								 											</option>
+								 											<option *ngIf="up.Category != 'Voice'" value="3">
+								 											Voice
+								 											</option>
+								 											<option *ngIf="up.Category != 'Email'" value="1">
+								 											Email
+								 											</option>
+								 										</select>
+																	</div>
+																</div>
+																<div class="col-sm-4 pleft0-md mtop5-xs">
+																	<button class="btn btn-xs btn-primary btn-block" type="submit" [disabled]="m.invalid">Submit</button>
+																</div>
+									 						</div>
+	                               						</section>
+	                               					</form>
+												</li>
+											</ul>
+						  				</div>
+										<div class="col-sm-4 mtop5-xs">
+											<a href="javascript:void(0)" class="btn btn-primaryLine btn-xs" (click)="viewCaseSheet(up)"><span class="icon-edit-document"></span> View Casesheet</a>
+										</div>
+				  					</section>
+									<section class="clearfix ">
+										<section class="inline-blck display-blx-xs">
+											<div  data-toggle="tooltip" data-placement="bottom" title=".JPG, .GIF, .PNG, .PDF, .JPEG" class="btn btn-default btn-xs btn-theme btn-upload mtop5-xs blue-tooltip">
+												<span>Upload reports</span>
+	                    						<input type="file" class="upload-file-btn" name="reportUpload" id="reportUpload" #file (change)="reportUpload($event,up)">	
+	                    					</div>
+											<p class="font-10">Max size 30MB</p>
+										</section>	
+										<section class="inline-blck  display-blx-xs">
+												<a href="javascript:void(0)" class="btn-infoLine btn-xs btn" [attr.disabled]="up.Category == 'Email' ? false : null" (click)="up.Category != 'Email' ? reschedule(i,up): null">Reschedule</a>
+											<!-- <button href="javascript:void(0)" class="btn-infoLine btn-xs btn" (click)="reschedule(i,up)">Reschedule</button> -->
+										</section>
+									</section>
+	              					<section class="row showHide mtop10" id="showMoreUpcoming{{i}}" style="display: none;">
+									  	<div class="col-sm-12">
+									  		<h4 class="heading14 margin0">Patient Details</h4>
+									  	</div>
+									  		<div class="col-sm-4">
+												<ul class="list-arrow font-12">
+													<li><label class="font-nrml text-grey">Name:</label> {{up.PatientName}}</li>
+													<li><label class="font-nrml text-grey">Gender/Age: </label>  {{up.Gender}}({{up.Age}}y)</li>
+												</ul>					
+											</div>
+											<div class="col-sm-4">
+												<ul class="font-11 list-arrow">
+													<li><label class="font-nrml text-grey">Mobile: </label> {{ocUserInfo.Mobileno}}</li>
+													<li><label class="font-nrml text-grey">Email:</label> {{ocUserInfo.EmailId}}</li>
+												</ul>
+											  </div>
+											<div class="col-sm-4">
+												<a href="javascript:void(0)" (click)="cancelappointement(up.AppointmentId,up.VisitId)" class="btn-primaryLine btn-xs btn">Cancel</a>
+											</div>
+									</section>
+									<a href="javascript:void(0)" (click)="showMoreUpcoming(i)" class="show-btn">
+										<span id="moreLessTextUpcomming{{i}}">Show more</span>
+										<span class="icon-right-arrow"></span>
+									</a>
+									<p></p>
+	            				</figcaption>
+	            				<!--doctors slots --start -->
+	            				<section id="rescheduleShowHide{{i}}" class="panel-collapse collapse">
+									<a href="javascriph:void(0)" class="close-btn" (click)="rescheduleShowHide(i)">x close</a>
+
+									<section class="mtop20">
+										<form class="form-horizontal">
+										</form>
+									</section>
+									<h5 class="text-info text-center mtop15">Select a time slot to book an appointment</h5>
+									<div class="caldar-block">
+										<div id="mhlyCarousel{{i}}" class="carousel slide monthly-view" data-interval="false">
+										<!-- Carousel items -->
+											<div class="carousel-inner">
+												<div class="item active">
+													<div class="row-fluid">
+														<div class="col-xs-2" *ngFor="let d of firstWeek" (click)="getSlotsDateReschedule(d.fullDate, true, false)">
+															<a [ngClass]="{'active': d.fullDate == selectedDate}">
+																<span class="date-view">{{ d.date }}</span>
+																<span class="day-view"> {{ d.weekday }}
+																	<br /> {{ d.month }}</span>
+															</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="item">
+													<div class="row-fluid">
+														<div class="col-xs-2" *ngFor="let d of secondWeek" (click)="getSlotsDateReschedule(d.fullDate, true, false)">
+															<a [ngClass]="{'active': d.fullDate == selectedDate}">
+																<span class="date-view">{{ d.date }}</span>
+																<span class="day-view"> {{ d.weekday }}
+																<br> {{ d.month }}</span>
+															</a>
+														</div>
+
+														<div class="col-xs-2" *ngIf="pickedFromCalendar" (click)="getPickedDateSlotsReschedule()">
+															<a [ngClass]="{'active': datePickedFromCalendar.fullDate == selectedDate}">
+																<span class="date-view">{{ datePickedFromCalendar.date }}</span>
+																<span class="day-view"> {{ datePickedFromCalendar.weekday }}
+																	<br /> {{ datePickedFromCalendar.month }}</span>
+															</a>
+														</div>
+
+														<div class="col-xs-4">
+															<a class="calview" (click)="toggleCalendarFreeReview()">
+																<span class="icon-calendar-daily-page-on-day-31" #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" [minDate]="minDate"
+																 [maxDate]="maxDate" (onHidden)="hideDP()" (bsValueChange)="onDatePickedReschedule($event)">
+																</span> Monthly
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<!--/carousel-inner-->
+											<a class="left carousel-control" href="#mhlyCarousel{{i}}" data-slide="prev">
+												<span class="icon-left-arrow"></span>
+											</a>
+											<a class="right carousel-control" href="#mhlyCarousel{{i}}" data-slide="next">
+												<span class="icon-right-arrow"></span>
+											</a>
+										</div>
+										<!--/mhlyCarousel-->
+
+										<div class="col-sm-12 slots-sec">
+									        <div class="row">
+									          	<div class="col-sm-2 period">
+									            	<span class="icon-tea-cup" aria-hidden="true"></span>
+									          	</div>
+									          	<div class="col-sm-10" *ngIf="currentDaySlotsReshedule!=null">
+									            	<a class="btn btn-sm btn-primaryLine" (click)="slotSelectedReshedule(ms,up)" *ngFor="let ms of currentDaySlotsReshedule">{{ ms.DisplayTime }}</a>
+									          	</div>
+									          	<div class="col-sm-10" *ngIf="currentDaySlotsReshedule.length==0"> No slots available </div>
+									        </div>
+									    </div>
+									</div>
+								</section>
+							</div>
+						</div>
+          				<!--/doctor-list -->	
+		  			</div>
+					<!--Upcomming appointments tab ends-->
+
+					<!--Past appointments tab starts-->
+					<div class="tab-pane" id="2b">
+						<div class="doctor-list">
+							<div *ngFor="let past of ocpastAppointmentDetails; let i=index">
+								<figure>
+	            					<a class="round-tab" href="javascript:void(0)" title="AskApollo"><img src="{{past.Photo}}" alt="AskApollo"></a>
+	            				</figure>
+	            				<figcaption>
+	              					<h3 class="heading14 bdr-btm mtop0"> {{past.doctorname}} &nbsp; <small class="app-date">{{past.DisplayDate}}   <span class="icon-clock text-primary"></span><span class="text-drkGrey"> ({{past.DisplayTime}})</span></small> </h3>
+	              					<section class="row">
+				  						<div class="col-sm-4">
+											<ul class="list-arrow font-12">
+												<li><a href="javascript:void(0)">{{past.consultationType}}</a></li>
+												<li>{{past.YearsOfExperience || '0'}} Years of experience</li>
+											</ul>					
+										</div>
+										<div class="col-sm-4">
+											<ul class="font-11 list-arrow">
+												<li>Status:  <label class="font-nrml text-grey">{{past.AppointmentStatus}}</label></li>
+												<li>Mode:  <label>{{past.Category}}</label></li>
+											</ul>
+						  				</div>
+										<div class="col-sm-4">
+											<p>
+												<button class="btn-info btn btn-xs" [disabled]="past.AppointmentStatus == 'Cancelled'" (click)="gotoOrderMedicine(past.AppointmentId)" [disabled]="past.AppointmentStatus == 'Cancelled'"><span class="icon-medicine"></span> Order Medicine</button>
+											</p>
+											<button class="btn btn-primaryLine btn-xs" download (click)="downloadPrescription(past)" [disabled]="past.AppointmentStatus == 'Cancelled'">
+												<span class="icon-prescription"></span> Download Prescription 
+											</button>
+										</div>
+				  					</section>
+									<section class="clearfix">
+										<button class="btn-default btn btn-xs mtop5-xs" (click)="openFeedBackModal(feedback,past.AppointmentId)" [disabled]="past.AppointmentStatus == 'Cancelled'">Feedback</button> 					
+										<button class="btn-default btn btn-xs mtop5-xs" [disabled]="past.AppointmentStatus == 'Cancelled'" (click)="viewPrescription(past)">View Prescription</button> 
+										<a href="javascript:void(0)" class="btn-default btn btn-xs mtop5-xs" (click)="viewCaseSheet(past)">View Casesheet</a>
+										<button class="btn-default btn btn-xs mtop5-xs" (click)="submitInvoice(past.Category,past.AppointmentId)" [disabled]="past.AppointmentStatus == 'Cancelled'">Invoice</button>
+									</section>
+	              					<section class="row showHide mtop10" id="showMorePast{{i}}" style="display: none;">
+				  						<div class="col-sm-12">
+				  							<h4 class="heading14 margin0">Patient Details</h4>
+				  						</div>
+								  		<div class="col-sm-4">
+											<ul class="list-arrow font-12">
+												<li><label class="font-nrml text-grey">Name:</label> {{past.PatientName}}</li>
+												<li><label class="font-nrml text-grey">Gender/Age: </label>  {{past.Gender}}({{past.Age}}y)</li>
+											</ul>					
+										</div>
+										<div class="col-sm-4">
+											<ul class="font-11 list-arrow">
+												<li><label class="font-nrml text-grey">Mobile: </label> {{ocUserInfo.Mobileno}}</li>
+												<li><label class="font-nrml text-grey">Email:</label> {{ocUserInfo.EmailId}}</li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<p><button class="btn-primaryLine btn-xs btn blue-tooltip" (click)="openClarificationModel(clarification,past.AppointmentId)" [disabled]="past.AppointmentStatus == 'Cancelled'">Clarification</button> </p>
+											<button class="btn-primaryLine btn-xs btn blue-tooltip" (click)="freeReview(i,past,freeReviewModel)" [disabled]="past.AppointmentStatus == 'Cancelled' || past.IsReview">Free Review</button>
+											
+										</div>
+				  					</section>
+				  					<a href="javascript:void(0)" (click)="showMorePast(i)" class="show-btn">
+										<span id="moreLessTextPast{{i}}">Show more</span>
+										<span class="icon-right-arrow"></span>
+									</a>
+				  					<p></p>
+	            				</figcaption>
+	            				<!--free review slot selection --start -->
+	            				<section id="freeReviewShowHide{{i}}" class="panel-collapse collapse">
+									<a href="javascriph:void(0)" class="close-btn" (click)="freeReviewShowHide(i)">x close</a>
+
+									<section class="mtop20">
+										<form class="form-horizontal">
+										</form>
+									</section>
+									<h5 class="text-info text-center mtop15">Select a time slot to book an appointment</h5>
+									<div class="caldar-block">
+										<div id="mhlyCarouselFreeReview{{i}}" class="carousel slide monthly-view" data-interval="false">
+										<!-- Carousel items -->
+											<div class="carousel-inner">
+												<div class="item active">
+													<div class="row-fluid">
+														<div class="col-xs-2" *ngFor="let d of firstWeek" (click)="getSlotsDateFreeReview(d.fullDate, true, false)">
+															<a [ngClass]="{'active': d.fullDate == selectedDate}">
+																<span class="date-view">{{ d.date }}</span>
+																<span class="day-view"> {{ d.weekday }}
+																	<br /> {{ d.month }}</span>
+															</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="item">
+													<div class="row-fluid">
+														<div class="col-xs-2" *ngFor="let d of secondWeek" (click)="getSlotsDateFreeReview(d.fullDate, true, false)">
+															<a [ngClass]="{'active': d.fullDate == selectedDate}">
+																<span class="date-view">{{ d.date }}</span>
+																<span class="day-view"> {{ d.weekday }}
+																<br> {{ d.month }}</span>
+															</a>
+														</div>
+
+														<div class="col-xs-2" *ngIf="pickedFromCalendar" (click)="getPickedDateSlotsFreeReview()">
+															<a [ngClass]="{'active': datePickedFromCalendar.fullDate == selectedDate}">
+																<span class="date-view">{{ datePickedFromCalendar.date }}</span>
+																<span class="day-view"> {{ datePickedFromCalendar.weekday }}
+																	<br /> {{ datePickedFromCalendar.month }}</span>
+															</a>
+														</div>
+
+														<div class="col-xs-4">
+															<a class="calview" (click)="toggleCalendarFreeReview()">
+																<span class="icon-calendar-daily-page-on-day-31" #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" [minDate]="minDate"
+																 [maxDate]="maxDate" (onHidden)="hideDPfreeReview()" (bsValueChange)="onDatePickedFreeReview($event)">
+																</span> Monthly
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--/carousel-inner-->
+											<a class="left carousel-control" href="#mhlyCarouselFreeReview{{i}}" data-slide="prev">
+												<span class="icon-left-arrow"></span>
+											</a>
+											<a class="right carousel-control" href="#mhlyCarouselFreeReview{{i}}" data-slide="next">
+												<span class="icon-right-arrow"></span>
+											</a>
+										</div>
+										<!--/mhlyCarousel-->
+
+										<div class="col-sm-12 slots-sec">
+									        <div class="row">
+									          	<div class="col-sm-2 period">
+									            	<span class="icon-tea-cup" aria-hidden="true"></span>
+									          	</div>
+									          	<div class="col-sm-10" *ngIf="currentDaySlotsFreeReview!=null">
+									            	<a class="btn btn-sm btn-primaryLine" (click)="slotSelectedFreeReview(freeReviewModel,ms,past)" *ngFor="let ms of currentDaySlotsFreeReview">{{ ms.SlotTime }}</a>
+									          	</div>
+									          	<div class="col-sm-10" *ngIf="currentDaySlotsFreeReview.length==0"> No slots available </div>
+									        </div>
+									    </div>
+									
+										
+									</div>
+								</section>
+								<!-- free review slot selection -- end -->
+	            			</div> <!--Loop ends-->
+            			</div>
+					</div>
+					<!--Past appointments tab ends-->
+				
+				<!--#3b Closed--->
+				<div class="tab-pane" id="4b">
+					<form [formGroup]="supportForm.getForm()" (ngSubmit)="saveSupportForm()">
+						<ul class="list-unstyled support">
+							<li class="radio">
+								<input name="supportOption" id="radoa" type="radio" formControlName="supportOption" value="My amount has been deducted but i can't see my consultation details." (click)="supportOptionSelection(1)">
+								<label for="radoa" class="font-300 text-black"> My amount has been deducted but i can't see my consultation details. </label>
+							</li>
+							<li class="radio">
+								<input name="supportOption" id="radob" type="radio" formControlName="supportOption" value="Unable to book the Review Consultation." (click)="supportOptionSelection(2)">
+								<label for="radob" class="font-300 text-black"> Unable to book the Review Consultation. </label>
+							</li>
+							<li class="radio">
+								<input name="supportOption" id="radoc" type="radio" formControlName="supportOption" value="Refund not processed." (click)="supportOptionSelection(3)">
+								<label for="radoc" class="font-300 text-black"> Refund not processed. </label>
+							 </li>
+								
+							<li  class="radio">
+								<input name="supportOption" id="radoe" type="radio" formControlName="supportOption" value="I want to change my mobile number." (click)="supportOptionSelection(4)">
+								<label for="radoe" class="font-300 text-black"> I want to change my mobile number. </label>
+							 </li>
+						</ul>
+						 <div *ngIf="supportForm.hasError('supportOption')" class="err">
+							{{supportForm.getError('supportOption')}}
+						</div>
+						<section class="tab-content">
+							<!--supp2 closed-->
+							<section class="collapse1" *ngIf="isMobileNumberChange">
+                            	<h3 class="heading14 mtop0 text-info bdr-bottom">Change Mobile Number Here</h3>
+								<div class="form-group col-sm-6">
+                                	<label class="font-nrml">Current Mobile no.:</label>
+									<input class="form-control input-sm" value="{{ocUserInfo.Mobileno}}" disabled  type="text" name="MobileNo">	
+                        		</div>
+					 			<div class="form-group col-sm-6">
+                                	<label>New Mobile no.:</label> 
+                                	<input class="form-control input-sm" placeholder="Enter new mobile no." type="text" formControlName="mobileNumber" name="mobileNumber">	
+                        		</div>
+                        		<div *ngIf="supportForm.hasError('mobileNumber')" class="err">
+									{{supportForm.getError('mobileNumber')}}
+								</div>
+                      		</section>
+							<!--supp2 closed-->
+						</section>
+						<p class="text-center">
+							<button type="submit" class="btn btn-info">
+								<span class="icon-support"></span> Request 
+							</button>
+						</p>
+					</form>
+					<!-- <section class="device-test mtop30">
+  						<h2 class="margin0 headin16 bdr-bottom">Test your device</h2>
+  						<a href="javascript:void(0)" (click)="testMicroPhone()"> <span class="round"><span class="icon-microphone"></span></span> <strong>Microphone</strong> </a> <a href="javascript:void(0)" (click)="testCamera()"> <span class="round"><span class="icon-video-camera"></span></span> <strong>Camera</strong> </a> 
+  					</section>
+			
+					<section class="video-plugin mtop20">
+						<h2 class="margin0 headin16 bdr-bottom">Video Plugin</h2>   
+						<p class="mtop10">
+ 				 			<button class="btn btn-info btn roundBtn" (click)="downloadVideoPlugin()">
+ 				 				<span class="icon-download add-round"></span> Download Video plug-in 
+ 				 			</button>
+ 				 		</p>
+			 			<p>For Video consultations please ensure to download the below Vidyo plug-in.</p>
+					</section> -->
+				</div>
+        		
+          
+			</div>
+				
+
+				
+			</div>
+		</div>
+		<!-- wt-tabs closed-->
+
+	</section>
+
+</aside>
+
+<ng-template #cancelAppointment>
+	<form id="cancelform" class="mtop20" role="form" (ngSubmit)="submitCancelAppointment(g)" #g="ngForm">
+		<div class="modal-header">
+			<h4 class="modal-title pull-left">Cancel Appointement</h4>
+			<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="form-group ">
+				<label class="font-nrml">Cancellation reason:</label>
+				<textarea name="cancelReason" rows="2" cols="20" id="txtCancelReason" placeholder="Enter Cancel Reason" class="form-control"
+				 ngModel required maxlength="250" #cancelReason="ngModel"></textarea>
+
+				<div *ngIf="cancelReason.errors && (cancelReason.dirty || cancelReason.touched)">
+  					<p *ngIf="cancelReason.errors.required" class="err">Cancellation reason is required</p>
+  					<p *ngIf="cancelReason.errors.maxlength" class="err">Length of the reason must be less than 250 characters.</p>
+				</div>
+
+				<input type="hidden" [(ngModel)]="appId" id="appId" name="appId" value="">
+				<input type="hidden" [(ngModel)]="visitId" id="visitId" name="visitId" value="">
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-secondary" [disabled]="g.invalid">cancel</button>
+		</div>
+	</form>
+</ng-template>
+
+<ng-template #feedback>
+  	<div class="modal-header">
+    	<h4 class="modal-title pull-left">Feedback</h4>
+    	<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      		<span aria-hidden="true">&times;</span>
+    	</button>
+  	</div>
+  	<div class="modal-body">
+    	<div class="modal-body edit-form" id="acc-feed">
+    		<form [formGroup]="feedBackForm.getForm()" (ngSubmit)="saveFeedback()">
+			 	<h4>Please tell us what do you think, any kind of <span class="text-info">feedback</span> is highly appreciated.</h4>
+			  	<div class="faces">
+				    <ul class="nav nav-tabs">
+						<li class="chk-cont" >
+							<a href="#1aa" data-toggle="tab" (click)="selectRating(1)">
+		                        <i class="tick glyphicon glyphicon-ok"></i>
+		                        <input id="feedback1" name="rating" type="radio" class="hideradio" formControlName="rating" value="1" />
+		                        <label title="Poor" class="chkview" for="feedback1">
+		                            <img src="assets/poor.png" alt="Poor"></label>
+								<span class="title-rate">Poor</span>
+	                    	</a>
+	                    </li>
+						<li class="chk-cont" >
+							<a href="#1aa" data-toggle="tab" (click)="selectRating(2)">
+		                        <i class="tick glyphicon glyphicon-ok"></i>
+		                        <input id="feedback2" name="rating" type="radio" class="hideradio" formControlName="rating" value="2" />
+		                        <label title="Average" class="chkview" for="feedback2">
+		                            <img src="assets/avg.png" alt="Average"></label><span class="title-rate">Average</span>
+		                    </a>
+	                    </li>
+	                    <li class="chk-cont" >
+	                    	<a href="#1aa" data-toggle="tab" (click)="selectRating(3)">
+		                        <i class="tick glyphicon glyphicon-ok"></i>
+		                        <input id="feedback3" name="rating" type="radio" class="hideradio" formControlName="rating" value="3" />
+		                        <label title="Good" class="chkview" for="feedback3">
+		                            <img src="assets/good.png" alt="Good"></label><span class="title-rate">Good</span>
+		                    </a>
+	                    </li>
+	                    <li  class="chk-cont ">
+	                    	<a href="#1bb"  data-toggle="tab" (click)="selectRating(4)">
+		                        <i class="tick glyphicon glyphicon-ok"></i>
+		                        <input id="feedback4" name="rating" type="radio" class="hideradio" formControlName="rating" value="4" />
+		                        <label title="Very Good" class="chkview" for="feedback4">
+		                            <img src="assets/vgood.jpg" alt="Very Good"></label><span class="title-rate">Very Good</span>
+		                    </a>
+	                    </li>
+	                    <li class="chk-cont">
+	                    	<a href="#1bb"  data-toggle="tab" (click)="selectRating(5)">
+		                        <i class="tick glyphicon glyphicon-ok"></i>
+		                        <input id="feedback5" name="rating" type="radio" class="hideradio" formControlName="rating" value="5" />
+		                        <label title="Excellent" class="chkview" for="feedback5">
+		                            <img src="assets/excellent.png" alt="Excellent"></label><span class="title-rate">Excellent</span>
+		                    </a>
+	                    </li>
+
+	                </ul>
+	                <div *ngIf="feedBackForm.hasError('rating')" class="err">
+							{{feedBackForm.getError('rating')}}
+					</div>
+	            </div>
+				<section class="tab-content mtop20">
+			      	<div class="form-group tab-pane fade in active" id="1aa">
+			      		<select class="form-control" formControlName="question">
+			      			<option *ngFor="let item of questionOptions" [value]="item.value">
+					    		{{item.label}}
+					  		</option>
+			      			<!-- <option value="">Select Question</option>
+			      			<option value="Which aspect of the website should we improve upon?">Which aspect of the website should we improve upon?</option>
+			      			<option value="What did you like on the website?">What did you like on the website?</option> -->
+			      		</select>
+	                    <textarea class="form-control" placeholder="Please give your valuable feedback" rows="1" formControlName="answer"></textarea>
+	                    <div *ngIf="feedBackForm.hasError('answer')" class="err">
+							{{feedBackForm.getError('answer')}}
+						</div>
+					</div>
+				</section>
+			    <div class="form-group">
+	                <label class="font-nrml">Please help us with your Email ID</label>
+					<input type="text" class="form-control" formControlName="email" />
+					<div *ngIf="feedBackForm.hasError('email')" class="err">
+						{{feedBackForm.getError('email')}}
+					</div>
+									
+	            </div>
+				<div class="form-group text-center">
+	                            
+	                <button type="submit" class="btn btn-info">Submit</button> <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal" (click)="modalRef.hide()">Cancel</a>
+									 
+	            </div>
+	        </form>
+	    </div>
+  	</div>
+</ng-template>
+<ng-template #clarification>
+	<div id="clarify" role="dialog">
+	<form id="clarification" class="mtop20" role="form" (ngSubmit)="submitClarification(c)" #c="ngForm">
+		<div class="modal-header">
+			<h4 class="modal-title pull-left">Clarify your doubts</h4>
+			<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<div class="modal-body ">
+			<div class="form-group" *ngFor="let cls of clarifications; let i=index">
+				<label class="font-nrml">{{i+1}}. {{cls.ClarificationCategory}}</label>
+				<textarea class="form-control" rows="2" maxlength="250"  name="{{cls.ClarificationCategoryId}}" [(ngModel)]="this[cls.ClarificationCategoryId]"></textarea>
+			</div>
+		</div>
+      
+		<!-- <div class="modal-body">
+			<div class="form-group ">
+				<label class="font-nrml">Cancellation reason:</label>
+				<textarea name="cancelReason" rows="2" cols="20" id="txtCancelReason" placeholder="Enter Cancel Reason" class="form-control"
+				 ngModel required maxlength="250" #cancelReason="ngModel"></textarea>
+
+				<div *ngIf="cancelReason.errors && (cancelReason.dirty || cancelReason.touched)">
+  					<p *ngIf="cancelReason.errors.required" class="err">Cancellation reason is required</p>
+  					<p *ngIf="cancelReason.errors.maxlength" class="err">Length of the reason must be less than 250 characters.</p>
+				</div>
+
+				<input type="hidden" [(ngModel)]="appId" id="appId" name="appId" value="">
+				<input type="hidden" [(ngModel)]="visitId" id="visitId" name="visitId" value="">
+			</div>
+
+		</div> -->
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-info" [disabled]="c.invalid">Submit your request</button>
+			<a href="javascript:void(0)" class="btn btn-default" (click)="modalRef.hide()">Close</a>
+		</div>
+	</form>
+</div>
+</ng-template>
+
+<ng-template #freeReviewModel>
+	<div id="Review" role="dialog">
+		<form id="Review" class="mtop20" role="form" (ngSubmit)="submitReasonForReview(r)" #r="ngForm">
+			<div class="modal-header">
+				<h4 class="modal-title pull-left">Reason for review</h4>
+				<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body ">
+				<div class="form-group">
+					<div class="row">
+						<label class="font-nrml col-sm-4">Reason for review <span class="asterisk">*</span>:</label>
+						<textarea class="form-control col-sm-8" rows="2" required maxlength="250"  name="reasonReview" [(ngModel)]="reasonReview"></textarea>
+					</div>
+				</div>
+			</div>
+		  
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-info" [disabled]="r.invalid">Submit</button>
+				<a href="javascript:void(0)" class="btn btn-default" (click)="modalRef.hide()">Close</a>
+			</div>	
+		</form>
+	</div>
+</ng-template>
+

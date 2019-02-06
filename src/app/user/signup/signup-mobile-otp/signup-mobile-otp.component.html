@@ -1,0 +1,34 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<h3 class="text-info mtop10">Login/Sign up on
+  <span class="text-primary">Ask</span>Apollo</h3>
+
+<form #vm="ngForm">
+
+  <div class="form-group mtop40">
+    <label class="font-nrml">Enter Mobile number or Email.</label>
+    <input value="+91" name="EmailorMobile" required [(ngModel)]="phoneOrEmail" class="form-control input-lg" type="text">
+    <small class="form-text text-muted">International patients
+      <a href="https://www.apollohospitals.com/international-patient-services/" target="_blank">Click here</a>
+    </small>
+  </div>
+
+
+  <div class="form-group" *ngIf="requestedOTP">
+    <label class="font-nrml">Please enter verification code (OTP):</label>
+    <input type="text" name="otp" required [(ngModel)]="otp" class="form-control input-lg" placeholder="_ _ _ _ ">
+    <span class="form-text text-muted mtop5 font-12 pull-right" (click)="goBackToSocial()">
+      <a class="text-info">Back to Login</a>
+    </span>
+    <span class="form-text text-muted mtop5 font-12" (click)="resendOTP()">
+      <a class="text-info">Resend OTP</a>
+    </span>
+  </div>
+
+  <div class="form-group mtop20">
+    <button type="button" class="btn btn-info btn-block btn-lg" (click)="processForm()">{{ requestedOTP ? "Verify OTP" : "Send OTP" }}</button>
+    <!-- <a href="2.PatientDetail.html" class="btn btn-info btn-block btn-lg mtop20 blue-tooltip" data-toggle="tooltip" data-placement="bottom"
+    title="Else (*To understand flow only)">Verify2</a> -->
+    <p class="form-text text-muted mtop5 font-12">We have switched to social logins, existing users
+      <a href="https://www.askapollo.com/physical-appointment/" target="_blank" class="text-info">click here</a> for Old site.</p>
+  </div>
+</form>

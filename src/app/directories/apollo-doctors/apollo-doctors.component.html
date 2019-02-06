@@ -1,0 +1,103 @@
+<section class="inner-pages">
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9 right-content fadeInRight animated" id="scrolTop">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+                </li>
+              <li *ngFor="let c of breadcrumbs; let i = index">
+                <a routerLink="{{ c.url }}">{{ c.name | titlecase }}</a>
+              </li>
+            </ul>
+          </div>
+          <br />
+        </section>
+        <div class="pagelist mysort-name">
+            <a (click)="getAll()" [class.tab_active]="allIndex === 1">All</a>  
+          <span *ngFor="let alp of availableAlphabets; let i = index" [class.tab_active]="selectedIndex == i">
+            <a (click)="setAlphabet(alp,i)">{{alp | titlecase}}</a>  
+          </span>
+        </div>
+        <section class="listing mtop10" id="accordion">
+          <h1>{{ heading }}</h1>  
+
+          <directory-summary-card [ngClass]="{'hidden': doctors.length==0}" *ngFor="let d of doctors | paginate: { id: 'server', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalDoctors }" [d]="d"></directory-summary-card>
+
+
+          <div *ngIf="gettingDataFromServer" class="mtop30">Finding the right doctors for you. Please wait ... </div>
+          <div *ngIf="doctors.length==0 && !gettingDataFromServer" class="mtop30">No relevant doctors available</div>
+        </section>
+
+          <pagination-controls (pageChange)="getPage($event)" id="server" *ngIf="doctors.length>0"></pagination-controls>
+        <div *ngIf="doctors.length>0">
+          {{message}}
+        </div>
+
+      </aside>
+
+
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+        <h5 class="heading14 bdr-bottom ">Most Searched Localities In {{ currentCity | titlecase}}</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li *ngFor="let trend of trends">
+
+            <a routerLink='/{{ currentCity }}/{{ trend.SpecialityKeyword | lowercase }}/hyperlocal/{{ removeSpaces(trend.HyperLocation | lowercase) }}'>{{
+              trend.DisplayText }}</a>
+          </li>
+        </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Health Articles</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li>
+            <a href="https://blog.askapollo.com/category/cancer-care/" target="_blank">Cancer Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/general-health/" target="_blank">General Health</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/healthy-living/" target="_blank">Healthy Living</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/heart-care/" target="_blank">Heart Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/ortho-care/" target="_blank">Ortho Care</a>
+          </li>
+          <li>
+            <a href=" https://blog.askapollo.com/category/top-slider/" target="_blank">Others</a>
+          </li>
+        </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Get the free Askapollo App</h5>
+        <div class="form-group telblock">
+          <label>Enter your mobile no.</label>
+          <input type="tel" class="form-control input-sm" [(ngModel)]="pn">
+          <img class="indflag2" src="../../assets/tel-num.png" />
+        </div>
+        <div class="form-group">
+          <a class="btn btn-info btn-sm" (click)="sendAppLink()">Send App Link</a>
+        </div>
+
+      </aside>
+      <!-- /right-content closed -->
+
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+  <div class="container">
+
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.SpecialityContent"></p>
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.BoilerContent"></p>
+
+    
+  </div>
+</section>
+<!-- /seo-text-closed -->

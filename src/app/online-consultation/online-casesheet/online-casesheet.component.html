@@ -1,0 +1,1428 @@
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header"> </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              <li>
+                <a routerLink="/my/dashboard-oc">Dashboard</a>
+              </li>
+              <li>Casesheet</li>
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg  border-btm ">
+          <section class="col-sm-offset-1 col-sm-10 box-slide mar-15-xs">
+            <section class="box-head">
+              <section class="row progress-top">
+                <div class="col-xs-3">Personal</div>
+                <div class="col-xs-3">Lifestyle</div>
+                <div class="col-xs-3">Medical</div>
+                <div class="col-xs-3">Reports</div>
+              </section>
+              <div class="progress mini">
+                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                  aria-valuemin="0" aria-valuemax="100" style="width: 13%;">11%</div>
+              </div>
+            </section>
+            <div class="alert alert-success hide mtop15"></div>
+
+            <div id="regiration_form" class="edit-form" novalidate="">
+              <!--presonal info Start-->
+              <fieldset class="fadeInRight animated " id="fldsetPersonalinfo">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <div class="form-group mtop20">
+                  <label class="text-primary">1) Appointment booked for:<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+
+                  <ul class="nav-tabs custom-tabs">
+                    <li [ngClass]="{'active':AppointmentPatientInfo.type === 'Self'}" (click)="setType('Self')"><a class="big-btn" data-toggle="tab" href="#slf">
+                        <label for="bookedFor1" class="cust-btn"><span class="glyphicon glyphicon-user hidden-xs cont-icon"></span>
+                          <span class="txt-icons">Self </span> </label>
+                      </a></li>
+
+                    <li [ngClass]="{'active':AppointmentPatientInfo.type !== 'Self'}" (click)="setType('Relative')"> <a data-toggle="tab" class="big-btn" href="#rtv">
+                        <label for="bookedFor2" class="cust-btn"><span class="icon-plus-user hidden-xs cont-icon"></span>
+                          <span class="txt-icons ">Relative </span> </label>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <section class="tab-content">
+                  <section id="slf" [ngClass]="{'tab-pane fade in active mtop20':AppointmentPatientInfo.type === 'Self','tab-pane fade in mtop20':AppointmentPatientInfo.type !== 'Self'}">
+                    <div class="form-group">
+
+                      <label class="text-primary ptop-5 dropdown margin0" style="display: block">a) UHID no:
+                        <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown" href="#1">i</a>
+                        <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+                          Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID
+                          while registering at the hospital; this unique number is used to identify you and will be
+                          linked with you lifelong. Using this number, the hospital will store all your medical records
+                          and prescriptions while you are being treated at Apollo Hospitals.
+                        </div>
+                      </label>
+
+                      <div class="dropdown bootstrap-select btn-group ">
+                        <button class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false" value="Experience">{{AppointmentPatientInfo.patientUHID}}
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li>
+                            <a data-value="Experience">Not sure.. proceed! </a>
+                          </li>
+                          <li *ngFor="let id of availableUHIDSelf" (click)="setUHIDSelf(id)">
+                            <a data-value="Experience">{{ id.uhid }}
+                              <span class="text-primary  font-12">({{ id.firstName }} {{ id.lastName }})</span>
+                            </a>
+                          </li>
+                          <!-- <li><a href="#1" data-value="Recommendations">AC01.000012344 <span class="text-primary  font-12">(Santosh Kumar)</span></a></li> -->
+                        </ul>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">b) First Name:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ userData.firstName }}" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">c) Last Name:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ userData.lastName }}" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="font-nrml text-primary">d) Date of birth (Age):
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ userData.dateofBirth }}" id="datetimepicker4" type="text">
+                    </div>
+                    <div class="form-group ">
+                      <label class="text-primary">e) Gender:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <div class="clearfix"></div>
+                      <div class="radio radio-inline ">
+                        <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen1" value="Male"
+                          checked="checked" type="radio">
+                        <label for="radiogen1" class="font-300 text-black"> Male </label>
+                      </div>
+                      <div class="radio radio-inline ">
+                        <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen2" value="Female"
+                          type="radio">
+                        <label for="radiogen2" class="font-300 text-black"> Female </label>
+                      </div>
+                      <div class="radio radio-inline ">
+                        <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen3" value="UnKnown"
+                          type="radio">
+                        <label for="radiogen3" class="font-300 text-black"> Others </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">f) City:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input [(ngModel)]="AppointmentPatientInfo.city" class="form-control" name="city" value="" type="text">
+                    </div>
+
+
+                  </section>
+
+                  <section id="rtv" [ngClass]="{'tab-pane fade in active mtop30':AppointmentPatientInfo.type === 'Relative','tab-pane fade in mtop30':AppointmentPatientInfo.type !== 'Relative'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) Select UHID:</label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false" value="Recommendations">Add New+
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let id of availableRelatives" (click)="setRelative(id)">
+                            <a data-value="Experience">{{ id.uhid }}
+                              <span class="text-primary  font-12">({{ id.firstName }} {{ id.lastName }})</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a data-toggle="modal" (click)="openModal(AddRelative)" data-value="Recommendations">Add
+                              New
+                              <span class="text-primary">+</span>
+                            </a>
+                          </li>
+
+                          <!-- <li><a href="#1" data-value="Recommendations">AC01.000012322 <span class="text-primary  font-12">(Richa Dua)</span></a></li> -->
+
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">b) First Name:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ selectedRelative.firstName }} {{ selectedRelative.lastName }}"
+                        type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">c) Last Name:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ selectedRelative.lastName }}" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label class="font-nrml text-primary">d) Date of birth (Age):
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input class="form-control " value="{{ selectedRelative.dob }}" id="datetimepicker5" type="text">
+                    </div>
+                    <div class="form-group ">
+                      <label class="text-primary">Gender:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <div class="clearfix"></div>
+                      <div class="radio radio-inline ">
+                        <input name="radio" id="geno1" value="option1" [checked]="selectedRelative.gender == 'male' || selectedRelative.gender == 'm' || selectedRelative.gender == 'Male' || selectedRelative.gender == 'M' || selectedRelative.gender == '1'"
+                          type="radio">
+                        <label for="geno1" class="font-300 text-black"> Male </label>
+                      </div>
+                      <div class="radio radio-inline ">
+                        <input name="radio" id="geno2" value="option1" [checked]="selectedRelative.gender == 'female' || selectedRelative.gender == 'f' || selectedRelative.gender == 'Female' || selectedRelative.gender == 'F' || selectedRelative.gender == '2'"
+                          type="radio">
+                        <label for="geno2" class="font-300 text-black"> Female </label>
+                      </div>
+                      <div class="radio radio-inline ">
+                        <input name="radio" id="geno3" value="option1" [checked]="selectedRelative.gender == 'others' || selectedRelative.gender == 'o' || selectedRelative.gender == 'Others' || selectedRelative.gender == 'O' || selectedRelative.gender == '3'"
+                          type="radio">
+                        <label for="geno3" class="font-300 text-black"> Others </label>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary">f) City:
+                        <span class="asterisk">*</span>
+                      </label>
+                      <input [(ngModel)]="AppointmentPatientInfo.city" class="form-control " value="" type="text">
+                    </div>
+
+                    <!--Modal-->
+                    <ng-template #AddRelative>
+                      <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
+                        <h4 class="modal-title"><span class="icon-plus-user cont-icon"></span> Add Family Member</h4>
+                      </div>
+                      <div class="modal-body ">
+
+                        <section id="collapseBasic" class="panel-collapse edit-form mtop20">
+                          <form [formGroup]='addmember' (ngSubmit)="postAddMember(addmember)" method="post" enctype="multipart/form-data">
+                            <section class="row">
+                              <div class="profile-bg">
+                                <section class="form-group photo-sec">
+                                  <figure class="box-pic">
+                                    <img src="{{url =='' ? 'assets/profile1.png' : url}}" alt="">
+                                  </figure>
+                                  <div class="btn btn-primary btn-sm btn-theme btn-upload">
+                                    <span class="icon-camera"></span>
+                                    <input type="file" class="upload-file-btn" (change)="onSelectFile($event)" name="filecontent"
+                                      id="fileUpload">
+                                    <input type="hidden" formControlName="filecontent">
+
+                                  </div>
+                                </section>
+                              </div>
+                            </section>
+                            <section class="row"></section>
+                            <section class="row">
+                              <div class="form-group col-sm-6">
+                                <label>First Name:
+                                  <span class="asterisk">*</span>
+                                </label>
+                                <input class="form-control input-sm" type="text" formControlName='relationFirstName'>
+                                <div *ngIf="addmember.controls['relationFirstName'].touched && !addmember.controls['relationFirstName'].valid"
+                                  class='err'>
+                                  <span *ngIf="addmember.controls['relationFirstName'].hasError('required')">First Name
+                                    is required </span>
+                                  <span *ngIf="addmember.controls['relationFirstName'].hasError('maxlength')">First
+                                    Name must be at lessthan 50 characters long. </span>
+                                </div>
+                              </div>
+                              <div class="form-group col-sm-6">
+                                <label>Last Name:
+                                  <span class="asterisk">*</span>
+                                </label>
+                                <input class="form-control input-sm" type="text" formControlName='relationLastName'>
+                                <div *ngIf="addmember.controls['relationLastName'].touched && !addmember.controls['relationLastName'].valid"
+                                  class='err'>
+                                  <span *ngIf="addmember.controls['relationLastName'].hasError('required')">Last Name
+                                    is required </span>
+                                  <span *ngIf="addmember.controls['relationLastName'].hasError('maxlength')">Last Name
+                                    must be at lessthan 50 characters long. </span>
+                                </div>
+                              </div>
+                            </section>
+                            <section class="row">
+                              <div class="form-group col-sm-6">
+                                <label>Relationship:
+                                  <span class="asterisk">*</span>
+                                </label>
+                                <div class="dropdown bootstrap-select">
+                                  <select class="btn btn-default dropdown-toggle" formControlName='relationId'>
+                                    <option value="">Select Relationship</option>
+                                    <option *ngFor="let data of relationshipTypes" value="{{data.RelationId}}">
+                                      {{data.Relation}}
+                                    </option>
+                                  </select>
+                                  <div *ngIf="addmember.controls['relationId'].touched && !addmember.controls['relationId'].valid"
+                                    class='err'>
+                                    <span *ngIf="addmember.controls['relationId'].hasError('required')">Relationship is
+                                      required </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group col-sm-6">
+                                <label class="font-nrml">Date of birth (Age):
+                                  <span class="asterisk">*</span>
+                                </label>
+                                <input type="text" class="form-control input-sm" id="datetimepicker4" formControlName='dob'
+                                  bsDatepicker [maxDate]="maxDateNew" />
+                                <div *ngIf="addmember.controls['dob'].touched && !addmember.controls['dob'].valid"
+                                  class='err'>
+                                  <span *ngIf="addmember.controls['dob'].hasError('required')">Date of birth is
+                                    required </span>
+                                </div>
+                              </div>
+                            </section>
+                            <section class="row">
+                              <div class="form-group col-sm-6">
+                                <label>Gender:
+                                  <span class="asterisk">*</span>
+                                </label>
+                                <div class="clearfix"></div>
+                                <div class="radio radio-inline ">
+                                  <input id="radio1" value="1" type="radio" formControlName='gender'>
+                                  <label for="radio1" class="font-300 text-black"> Male </label>
+                                </div>
+                                <div class="radio radio-inline ">
+                                  <input id="radio2" value="2" type="radio" formControlName='gender'>
+                                  <label for="radio2" class="font-300 text-black"> Female </label>
+                                </div>
+                                <div class="radio radio-inline ">
+                                  <input id="radio3" value="3" type="radio" formControlName='gender'>
+                                  <label for="radio3" class="font-300 text-black"> Others </label>
+                                </div>
+                                <div *ngIf="addmember.controls['gender'].touched && !addmember.controls['gender'].valid"
+                                  class='err'>
+                                  <span *ngIf="addmember.controls['gender'].hasError('required')">Gender is required
+                                  </span>
+                                </div>
+                              </div>
+                              <!-- <div class="form-group col-sm-6">
+                                        <div class="dropdown bootstrap-select btn-group">
+                                          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="true">
+                                          {{ selectedUHID.firstName  }} {{ selectedUHID.lastName  }}                                          
+                                          <span class="caret"></span>
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li (click)="showNewPatient()">
+                                              <a>Choose
+                                              <span class="text-info font-12">(New)</span>
+                                              </a>
+                                            </li>
+                                            <li *ngFor="let id of uhids" (click)="setUHID(id)">
+                                              <a>{{ id.uhid }}
+                                              <span class="text-info font-12">({{ id.firstName }} {{ id.lastName }})</span>
+                                              </a>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div> -->
+                            </section>
+                            <section class="row text-center">
+                              <button class="btn btn-info" type="submit" [disabled]="!addmember.valid">
+                                <span class="icon-user" aria-hidden="true"></span> Add </button>
+                            </section>
+                          </form>
+                        </section>
+
+
+                      </div>
+                    </ng-template>
+
+                  </section>
+                  <div class="form-group ">
+                    <label class="text-primary">g) Height:<span class="asterisk">*</span></label>
+                    <div class="dropdown bootstrap-select">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> {{AppointmentPatientInfo.heightText}}
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li *ngFor="let fd of feetData">
+                          <a (click)="setHeight(fd.ft,fd.in)" data-value="fd.ft,fd.in">{{fd.ft}} Foot - {{fd.in}} Inch</a>
+                        </li>
+                        <!-- <li><a href="#1" data-value="+2">3'4"  (103.6 cms)</a></li>
+                    <li><a href="#1" data-value="+3">3'5"  (106.7 cms)</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label class="text-primary">h) Weight:<span class="asterisk">*</span></label>
+                    <div class="dropdown bootstrap-select">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> {{AppointmentPatientInfo.weightText}}
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li *ngFor="let w of weightData">
+                          <a (click)="setWeight(w.wt)" data-value="w.wt" data-value="w.wt">{{w.wt}}</a>
+                        </li>
+                        <!-- <li><a href="#1" class="next-call" data-value="+2">3'4"  (103.6 cms)</a></li>
+                    <li><a href="#1" class="next-call" data-value="+3">3'5"  (106.7 cms)</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+
+              <fieldset class="fadeInRight animated" id="fldsetHabbits">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10 hide">
+                  <span class="icon-cigarette"></span><span class="slash">/</span><span class="icon-wine"></span><span
+                    class="slash">/</span><span class="icon-diet"></span><span class="slash">/</span><span class="icon-excercise"></span>
+                </section>
+                <p class="text-primary mtop20 ">1) Do you smoke?</p>
+
+                <ul class="nav-tabs custom-tabs">
+                  <li (click)="smoker('Yes')" [ngClass]="{'active':AppointmentPatientInfo.isSmoker === 'Yes','big-btn':AppointmentPatientInfo.isSmoker !== 'Yes'}">
+                    <a class="big-btn" data-toggle="tab" href="#smokeyes">
+                      <label class="cust-btn">
+                        <span class="glyphicon glyphicon-ok hidden-xs cont-icon"></span>
+                        <span class="txt-icons">Yes </span>
+                      </label>
+                    </a>
+                  </li>
+                  <li (click)="smoker('No')" [ngClass]="{'active':AppointmentPatientInfo.isSmoker === 'No','big-btn':AppointmentPatientInfo.isSmoker !== 'No'}">
+                    <a data-toggle="tab" class="big-btn" href="#hidenone">
+                      <label class="cust-btn">
+                        <span class="glyphicon glyphicon-remove hidden-xs cont-icon"></span>
+                        <span class="txt-icons ">No </span>
+                      </label>
+                    </a>
+                  </li>
+                  <li (click)="smoker('Not Anymore')" [ngClass]="{'active':AppointmentPatientInfo.isSmoker === 'Not Anymore','big-btn':AppointmentPatientInfo.isSmoker !== 'Not Anymore'}">
+                    <a data-toggle="tab" class="big-btn" href="#smokenomore">
+                      <label class="cust-btn">
+                        <span class="icon-cigarette no-more hidden-xs cont-icon"></span>
+                        <span class="txt-icons ">Not Anymore </span>
+                      </label>
+                    </a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+                <section class="tab-content">
+                  <section id="smokeyes" [ngClass]="{'tab-pane fade mtop20 active':AppointmentPatientInfo.isSmoker === 'Yes','tab-pane fade mtop20':AppointmentPatientInfo.isSmoker !== 'Yes'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) How many cigarettes do you smoke daily? </label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          {{AppointmentPatientInfo.howManyCigarretesperDay}}
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('howManyCigarretesperDay',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="text-primary">b) Smoking since how many years:</label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          {{AppointmentPatientInfo.howManyYearsSmoked}} <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('howManyYearsSmoked',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </section>
+                  <section id="hidenone" [ngClass]="{'active in':AppointmentPatientInfo.isSmoker === 'No','':AppointmentPatientInfo.isSmoker !== 'No'}"></section>
+                  <section id="smokenomore" [ngClass]="{'tab-pane fade mtop20 active':AppointmentPatientInfo.isSmoker === 'Not Anymore','tab-pane fade mtop20':AppointmentPatientInfo.isSmoker !== 'Not Anymore'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) When did you stop smoking?</label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          {{AppointmentPatientInfo.whendidyoustoppedSmoking}} <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('whendidyoustoppedSmoking',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="text-primary">b) How many cigarettes did you smoke? </label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          {{AppointmentPatientInfo.howManyCigarretesperDay}} <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('howManyCigarretesperDay',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="text-primary">c) How many years did you smoke? </label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"> {{AppointmentPatientInfo.howManyYearsSmoked}}
+                          <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('howManyYearsSmoked',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+                <!-- smoke section closed-->
+                <p class="text-primary mtop20 ">2) Do you consume alcohol?</p>
+
+                <ul class="nav-tabs custom-tabs">
+                  <li (click)="drinker('Yes')" [ngClass]="{'active':AppointmentPatientInfo.isDrinker === 'Yes','big-btn':AppointmentPatientInfo.isDrinker !== 'Yes'}">
+                    <a class="big-btn" data-toggle="tab" href="#alcoyes">
+                      <label class="cust-btn">
+                        <span class="glyphicon glyphicon-ok hidden-xs cont-icon"></span>
+                        <span class="txt-icons">Yes </span>
+                      </label>
+                    </a>
+                  </li>
+                  <li (click)="drinker('No')" [ngClass]="{'active':AppointmentPatientInfo.isDrinker === 'No','big-btn':AppointmentPatientInfo.isDrinker !== 'No'}">
+                    <a data-toggle="tab" class="big-btn" href="#hideTwo">
+                      <label class="cust-btn">
+                        <span class="glyphicon glyphicon-remove hidden-xs cont-icon"></span>
+                        <span class="txt-icons ">No </span>
+                      </label>
+                    </a>
+                  </li>
+                  <li (click)="drinker('Not Anymore')" [ngClass]="{'active':AppointmentPatientInfo.isDrinker === 'Not Anymore','big-btn':AppointmentPatientInfo.isDrinker !== 'Not Anymore'}">
+                    <a data-toggle="tab" class="big-btn" href="#alconomore">
+                      <label class="cust-btn">
+                        <span class="icon-wine no-more hidden-xs cont-icon"></span>
+                        <span class="txt-icons ">Not Anymore </span>
+                      </label>
+                    </a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+                <section class="tab-content ">
+                  <section id="alcoyes" [ngClass]="{'tab-pane fade  mtop20 active':AppointmentPatientInfo.isDrinker === 'Yes','tab-pane fade  mtop20':AppointmentPatientInfo.isDrinker !== 'Yes'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) How long are you consuming Alcohol? </label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"> {{AppointmentPatientInfo.howlongUrDrinking}}
+                          <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('howlongUrDrinking',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label class="text-primary">b) How Frequently?</label>
+                      <div class="clearfix"></div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq1" value="Occasionaly" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq1"> Occasionaly </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq2" value="Weekly" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq2"> Weekly </label>
+                      </div>
+                      <div class=" radio-inline custom-radio">
+                        <input name="freq-liq" id="liq3" value="Daily" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq3"> Daily </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq4" value="Monthly" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq4"> Monthly </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq5" value="Twice a week" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq5"> Twice a week </label>
+                      </div>
+
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq6" value="Thrice a week" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq6"> Thrice a week </label>
+                      </div>
+
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq7" value="4 Days a week" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq7"> 4 Days a week </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq8" value="5 Days a week" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq8"> 5 Days a week </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq9" value="6 Days a week" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq9"> 6 Days a week </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="freq-liq" id="liq10" value="Socially" type="radio" [(ngModel)]="AppointmentPatientInfo.HowFrequentlyDrink">
+                        <label for="liq10"> Socially</label>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="hideTwo" [ngClass]="{'active in':AppointmentPatientInfo.isDrinker === 'No','':AppointmentPatientInfo.isDrinker !== 'No'}"></section>
+                  <section id="alconomore" [ngClass]="{'tab-pane fade  mtop20 active':AppointmentPatientInfo.isDrinker === 'Not Anymore','tab-pane fade  mtop20':AppointmentPatientInfo.isDrinker !== 'Not Anymore'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) When did you stop consuming alcohol?</label>
+                      <div class="dropdown bootstrap-select">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          {{AppointmentPatientInfo.whendidyoustoppedDrinking}} <span class="caret"></span> </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li *ngFor="let c of cigarDrinkData">
+                            <a (click)="setcigarDrinkData('whendidyoustoppedDrinking',c.cg)" data-value="c.cg">{{c.cg}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+                <!-- Alcohol section closed-->
+                <div class="form-group mtop10">
+                  <label class="text-primary">3) Diet:</label>
+                  <div class="clearfix"></div>
+                  <div class="radio-inline custom-radio big-btn">
+                    <input name="Diet" id="veg" type="radio" value="Veg" [(ngModel)]="AppointmentPatientInfo.Diet">
+                    <label for="veg">
+                      <span class="glyphicon  glyphicon-apple hidden-xs cont-icon"></span>
+                      <span class="txt-icons ">Veg </span>
+                    </label>
+                  </div>
+                  <div class="radio-inline custom-radio big-btn">
+                    <input name="Diet" id="non-veg" type="radio" value="Non Veg" [(ngModel)]="AppointmentPatientInfo.Diet">
+                    <label for="non-veg">
+                      <span class="icon-fish hidden-xs cont-icon"></span>
+                      <span class="txt-icons ">Non Veg </span>
+                    </label>
+                  </div>
+
+                </div>
+                <!-- Diet section closed-->
+                <div class="form-group mtop10">
+                  <label class="text-primary">4) Do you exercise regularly?</label>
+                  <div class="clearfix"></div>
+                  <div class="radio-inline custom-radio big-btn">
+                    <input name="exerCise" id="exYes" type="radio" value="Yes" [(ngModel)]="AppointmentPatientInfo.doyouExcerciseDaily">
+                    <label for="exYes"><span class="glyphicon glyphicon-ok hidden-xs cont-icon"></span>
+                      <span class="txt-icons ">Yes </span> </label>
+                  </div>
+                  <div class="radio-inline custom-radio big-btn">
+                    <input name="exerCise" id="exNo" type="radio" value="No" [(ngModel)]="AppointmentPatientInfo.doyouExcerciseDaily">
+                    <label for="exNo"><span class="glyphicon glyphicon-remove hidden-xs cont-icon"></span>
+                      <span class="txt-icons ">No </span> </label>
+                  </div>
+
+                </div>
+                <!-- Exercise section closed-->
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--Alcohol and Smoke  Closed-->
+
+
+              <fieldset class="fadeInRight animated " id="fldsetSymptoms">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10">
+                  <span class="icon-heartbeat"></span>
+                </section>
+
+                <div class="form-group mtop10">
+                  <label class="text-primary">1) Complaints/Symptoms<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+                  <div class="checkbox-inline custom-check" *ngFor="let sym of casesheetSymptoms">
+                    <input (click)=setSymptoms(sym.symptomsId,sym.symptoms) id="sym{{sym.symptomsId}}" class="custom-check"
+                      type="checkbox" value="{{sym.symptomsId}}" [checked]='sym.status'>
+                    <label for="sym{{sym.symptomsId}}" *ngIf="sym.symptoms!=='Others'">{{sym.symptoms}} </label>
+                    <label for="sym{{sym.symptomsId}}" data-toggle="collapse" data-target="#otr-symptoms" *ngIf="sym.symptoms==='Others' && isSymptomsOthersDisplay === true">
+                      {{sym.symptoms}} </label>
+                  </div>
+                  <!-- <div class="checkbox-inline custom-check">
+                    <input id="Heart2" class="custom-check" type="checkbox">
+                    <label for="Heart2">Racing heart beat </label>
+                  </div>
+                  <div class="checkbox-inline custom-check">
+                    <input id="Heart3" class="custom-check" type="checkbox">
+                    <label for="Heart3">Swelling of both the feet </label>
+                  </div>
+
+                  <div class="checkbox-inline custom-check">
+                    <input id="Heart4" class="custom-check" type="checkbox">
+                    <label for="Heart4">Swelling of both legs </label>
+                  </div>
+
+                  <div class="checkbox-inline custom-check">
+                    <input id="Heart5" class="custom-check" type="checkbox">
+                    <label for="Heart5">Difficulty in breathing </label>
+                  </div>
+
+                  <div class="checkbox-inline custom-check">
+                    <input id="Heart6" class="custom-check" type="checkbox">
+                    <label for="Heart6">Fainting </label>
+                  </div>
+
+                  <div class="checkbox-inline custom-check">
+                    <input id="Heart7" class="custom-check" type="checkbox">
+                    <label for="Heart7">Dizziness /Giddiness </label>
+                  </div> -->
+                  <!-- <div class="checkbox-inline custom-check">
+                    <input id="Heart8" class="custom-check" value="option1" type="checkbox">
+                    <label for="Heart8" data-toggle="collapse" data-target="#otr-symptoms"> Others </label>
+
+                  </div> -->
+                  <div id="otr-symptoms" [ngClass]="{'collapse in form-group':isSymptomsEmpty===true,'collapse form-group':isSymptomsEmpty===false}">
+                    <label></label>
+                    <textarea rows="1" type="text" class="form-control" placeholder="Please enter symptoms" name="OtherpresentComplaints"
+                      [(ngModel)]="AppointmentPatientInfo.OtherpresentComplaints"></textarea>
+                  </div>
+                </div>
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--diagnosed Closed-->
+              <fieldset class="fadeInRight animated " id="fldsetMedication">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10"><span class="icon-pills"></span></section>
+
+
+                <div class="form-group mtop10">
+                  <label class="text-primary">1) Do you take any medicine?<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+                  <ul class="nav-tabs custom-tabs">
+                    <li (click)="Medication('Yes')" [ngClass]="{'active':AppointmentPatientInfo.isMedication === 'Yes','big-btn':AppointmentPatientInfo.isMedication !== 'Yes'}">
+                      <a class="big-btn" data-toggle="tab" href="#medyes">
+                        <label for="Medications1" class="cust-btn">
+                          <span class="glyphicon glyphicon-ok hidden-xs cont-icon"></span>
+                          <span class="txt-icons">Yes </span>
+                        </label>
+                      </a>
+                    </li>
+
+                    <li (click)="Medication('No')" [ngClass]="{'active':AppointmentPatientInfo.isMedication === 'No','big-btn':AppointmentPatientInfo.isMedication !== 'No'}">
+                      <a data-toggle="tab" class="big-btn" href="#medno">
+                        <label for="Medications2" class="cust-btn">
+                          <span class="glyphicon glyphicon-remove hidden-xs cont-icon"></span>
+                          <span class="txt-icons ">No </span>
+                        </label>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <section class="tab-content ">
+                  <section id="medyes" [ngClass]="{'tab-pane fade in active mtop20':AppointmentPatientInfo.isMedication === 'Yes','tab-pane fade in mtop20':AppointmentPatientInfo.isMedication !== 'Yes'}">
+                    <div class="form-group repeat-cont ">
+                      <label class="font-nrml text-primary">1) Present Medications</label>
+                      <div *ngFor="let m of medications; let in=index">
+                        <section class="row repeat-row">
+                          <div class="col-sm-5">
+                            <input type="text" [(ngModel)]="m.medicine" placeholder="Enter Medicine Name" class="form-control" [disabled]="m.index!==0"/>
+                          </div>
+                          <div class="col-sm-3 mtop15-xs pleft0-md">
+                            <div class="dropdown bootstrap-select">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" [disabled]="m.index!==0"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{m.dosage}}
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+                                <li>
+                                  <a (click)="setDossage('Once in a day',m)" value="Once in a day">Once in a day</a>
+                                </li>
+                                <li>
+                                  <a (click)="setDossage('Twice in a day',m)" value="Twice in a day">Twice in a day</a>
+                                </li>
+                                <li>
+                                  <a (click)="setDossage('Thrice in a day',m)" value="Thrice in a day">Thrice in a day</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="col-sm-3 mtop15-xs pleft0-md">
+                            <input class="form-control" type="text" readonly="readonly" #dp="bsDatepicker" placeholder="MM/DD/YYYY"
+                              bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate" name="started" [(ngModel)]="m.started" [disabled]="m.index!==0">
+                          </div>
+                          <div class="col-sm-1 pr-0 pleft0-md mtop15-xs">
+                            <a *ngIf="m.index===0" (click)="addMedication()" title="Add row" class="btn btn-infoLine roundBtn btn-sm clone-btn">
+                              <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                            <a *ngIf="m.index!==0" (click)="deleteMedication(m.index)" title="Delete row" class="btn btn-primaryLine roundBtn btn-sm  remove-btn">
+                              <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="medno" [ngClass]="{'active in':AppointmentPatientInfo.isMedication === 'No','':AppointmentPatientInfo.isMedication !== 'No'}"></section>
+
+                </section>
+
+
+
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous "><span
+                      class="icon-left-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--Medications Closed-->
+              <fieldset class="fadeInRight animated " id="fldsetAllergies">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10">
+                  <span class="icon-allergy"></span>
+                </section>
+
+                <div class="form-group mtop10">
+                  <label class="text-primary">1) Do you have any allergies?<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+                  <ul class="nav-tabs custom-tabs">
+                    <li (click)="Allergetic('Yes')" [ngClass]="{'active':AppointmentPatientInfo.isAllergetic === 'Yes','big-btn':AppointmentPatientInfo.isAllergetic !== 'Yes'}"><a
+                        class="big-btn" data-toggle="tab" href="#allergyYes">
+                        <label for="bookedFor1" class="cust-btn"><span class="glyphicon glyphicon-ok hidden-xs cont-icon"></span>
+                          <span class="txt-icons">Yes </span> </label>
+                      </a></li>
+
+                    <li (click)="Allergetic('No')" [ngClass]="{'active':AppointmentPatientInfo.isAllergetic === 'No','big-btn':AppointmentPatientInfo.isAllergetic !== 'No'}"><a
+                        data-toggle="tab" class="big-btn" href="#allergyNo">
+                        <label for="bookedFor2" class="cust-btn"><span class="glyphicon glyphicon-remove hidden-xs cont-icon"></span>
+                          <span class="txt-icons ">No </span> </label>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <section class="tab-content ">
+                  <section id="allergyYes" [ngClass]="{'tab-pane fade in active mtop20':AppointmentPatientInfo.isAllergetic === 'Yes','tab-pane fade in mtop20':AppointmentPatientInfo.isAllergetic !== 'Yes'}">
+                    <div class="form-group ">
+                      <label class="text-primary">a) Please Select allergy</label>
+                      <div class="clearfix"></div>
+                      <!-- <div class="checkbox-inline custom-check" *ngFor="let al of Allergies">
+                        <input (click)="setAllergies(al.item_id,al.item_text)" id="alr{{al.item_id}}" name="item_id" type="radio"
+                          value="{{al.item_id}}" [checked]='al.status'>
+                        <label for="alr{{al.item_id}}" class="hide-btn" *ngIf="al.item_text!=='Others'">{{al.item_text}}
+                        </label>
+                        <label for="alr{{al.item_id}}" data-toggle="collapse" data-target="#otr-allergy" *ngIf="al.item_text==='Others'">
+                          {{al.item_text}} </label>
+                      </div> -->
+
+                      <div class="checkbox-inline custom-check" *ngFor="let al of Allergies">
+                        <input (click)=setAllergies(al.item_id,al.item_text) id="al{{al.item_id}}" class="custom-check"
+                          type="checkbox" value="{{al.item_id}}" [checked]='al.status'>
+                        <label for="al{{al.item_id}}" *ngIf="al.item_text!=='Others'">{{al.item_text}} </label>
+                        <label for="al{{al.item_id}}" data-toggle="collapse" data-target="#otr-allergy" *ngIf="al.item_text==='Others'">
+                          {{al.item_text}} </label>
+                      </div>
+                      <!-- <div class="radio-inline custom-radio" *ngFor="let sym of casesheetSymptoms">
+                        <input name="allergy" id="allergy1" value="Food" type="radio">
+                        <label for="allergy1" class="hide-btn  next-call"> Food </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="allergy" id="allergy2" value="Medicine" type="radio">
+                        <label for="allergy2" class="hide-btn next-call"> Medicine </label>
+                      </div>
+                      <div class=" radio-inline custom-radio">
+                        <input name="allergy" id="allergy3" value="option1" type="radio">
+                        <label for="allergy3" class="hide-btn next-call"> Air borne allergies </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="allergy" id="allergy4" value="Seasonal Variations" type="radio">
+                        <label for="allergy4" class="hide-btn next-call"> Seasonal Variations </label>
+                      </div>
+
+                      <div class="radio-inline custom-radio">
+                        <input name="allergy" id="allergy5" value="Latex or any substance you touch" type="radio">
+                        <label for="allergy5" class="hide-btn next-call"> Latex or any substance you touch </label>
+                      </div>
+                      <div class="radio-inline custom-radio">
+                        <input name="allergy" id="allergy6" value="Others" type="radio">
+                        <label for="allergy6" data-toggle="collapse" data-target="#otr-allergy"> Others </label>
+
+                      </div> -->
+                      <div id="otr-allergy" [ngClass]="{'collapse in form-group':AppointmentPatientInfo.OtherAllergies!=='','collapse form-group':AppointmentPatientInfo.OtherAllergies===''}">
+                        <label></label>
+                        <textarea rows="1" type="text" class="form-control" placeholder="Please enter allergy" name="OtherAllergies"
+                          [(ngModel)]="AppointmentPatientInfo.OtherAllergies"></textarea>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="allergyNo" [ngClass]="{'active in':AppointmentPatientInfo.isAllergetic === 'No','':AppointmentPatientInfo.isAllergetic !== 'No'}"></section>
+
+                </section>
+
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--Allergy Closed-->
+              <fieldset class="fadeInRight animated " id="fldsetHistory">
+                <h4 class="heading mtop15"><span class="icon-family  text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10">
+                  <span class="icon-family"></span>
+                </section>
+
+                <div class="form-group  mbottom0 mtop10">
+                  <label class="text-primary">1) History:</label>
+                </div>
+                <section class="row">
+                  <div class="col-sm-6">
+                    <h5 class="text-info bdr-bottom pb-5 fonts-16">Personal</h5>
+                    <div class="form-group  ">
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Hypertension</label>
+                        <section class="col-sm-8 pr-0">
+
+                          <div class="radio radio-inline ">
+                            <input name="Hypertension" id="Hypertension1" name="hypertension" value="Yes" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.hypertension">
+                            <label for="Hypertension1" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Hypertension" id="Hypertension2" name="hypertension" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.hypertension">
+                            <label for="Hypertension2" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Hypertension" id="Hypertension3" name="hypertension" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.hypertension">
+                            <label for="Hypertension3" class="font-300 text-black"> Don't Know </label>
+                          </div>
+
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Diabetes</label>
+                        <section class="col-sm-8 pr-0">
+
+                          <div class="radio radio-inline ">
+                            <input name="Diabetes" id="Diabetes1" name="diabeties" value="Yes" type="radio" [(ngModel)]="AppointmentPatientInfo.diabeties">
+                            <label for="Diabetes1" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Diabetes" id="Diabetes2" name="diabeties" value="No" type="radio" [(ngModel)]="AppointmentPatientInfo.diabeties">
+                            <label for="Diabetes2" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Diabetes" id="Diabetes3" name="diabeties" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.diabeties">
+                            <label for="Diabetes3" class="font-300 text-black"> Don't Know </label>
+                          </div>
+
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Heart desease</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Heartt" id="Heart1" name="heartDisease" value="Yes" type="radio" [(ngModel)]="AppointmentPatientInfo.heartDisease">
+                            <label for="Heart1" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Heartt" id="Heart2" name="heartDisease" value="No" type="radio" [(ngModel)]="AppointmentPatientInfo.heartDisease">
+                            <label for="Heart2" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Heartt" id="Heart3" name="heartDisease" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.heartDisease">
+                            <label for="Heart3" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Anemia</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Anemia" id="Anemia1" name="anemia" value="Yes" type="radio" [(ngModel)]="AppointmentPatientInfo.anemia">
+                            <label for="Anemia1" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Anemia" id="Anemia2" name="anemia" value="No" type="radio" [(ngModel)]="AppointmentPatientInfo.anemia">
+                            <label for="Anemia2" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Anemia" id="Anemia3" name="anemia" value="Dont Know" type="radio" [(ngModel)]="AppointmentPatientInfo.anemia">
+                            <label for="Anemia3" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label">Cancer</label>
+                        <section class="col-sm-8 pr-0">
+
+                          <div class="radio radio-inline ">
+                            <input name="Cancer" id="Cancer1" name="cancer" value="Yes" type="radio" [(ngModel)]="AppointmentPatientInfo.cancer">
+                            <label for="Cancer1" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Cancer" id="Cancer2" name="cancer" value="No" type="radio" [(ngModel)]="AppointmentPatientInfo.cancer">
+                            <label for="Cancer2" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Cancer" id="Cancer3" name="cancer" value="Dont Know" type="radio" [(ngModel)]="AppointmentPatientInfo.cancer">
+                            <label for="Cancer3" class="font-300 text-black"> Don't Know </label>
+                          </div>
+
+                        </section>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- Personal Closed here-->
+                  <div class="col-sm-6">
+                    <h5 class="text-info bdr-bottom pb-5 fonts-16">Family</h5>
+                    <div class="form-group  ">
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Hypertension</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Hypertensionb" id="Hypertension1a" name="hypertensioninFamily" value="Yes"
+                              type="radio" [(ngModel)]="AppointmentPatientInfo.hypertensioninFamily">
+                            <label for="Hypertension1a" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Hypertensionb" id="Hypertension2b" name="hypertensioninFamily" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.hypertensioninFamily">
+                            <label for="Hypertension2b" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Hypertensionb" id="Hypertension3c" name="hypertensioninFamily" value="Dont Know"
+                              type="radio" [(ngModel)]="AppointmentPatientInfo.hypertensioninFamily">
+                            <label for="Hypertension3c" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Diabetes</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Diabetesb" id="Diabetes1a" name="diabetiesinFamily" value="Yes" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.diabetiesinFamily">
+                            <label for="Diabetes1a" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Diabetesb" id="Diabetes2b" name="diabetiesinFamily" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.diabetiesinFamily">
+                            <label for="Diabetes2b" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Diabetesb" id="Diabetes3c" name="diabetiesinFamily" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.diabetiesinFamily">
+                            <label for="Diabetes3c" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Heart desease</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Heartb" id="Heart1a" name="heartDiseaseinFamily" value="Yes" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.heartDiseaseinFamily">
+                            <label for="Heart1a" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Heartb" id="Heart2b" name="heartDiseaseinFamily" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.heartDiseaseinFamily">
+                            <label for="Heart2b" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Heartb" id="Heart3c" name="heartDiseaseinFamily" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.heartDiseaseinFamily">
+                            <label for="Heart3c" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label pr-0">Anemia</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Anemiab" id="Anemia1a" name="anemiainFamily" value="Yes" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.anemiainFamily">
+                            <label for="Anemia1a" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Anemiab" id="Anemia2b" name="anemiainFamily" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.anemiainFamily">
+                            <label for="Anemia2b" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Anemiab" id="Anemia3c" name="anemiainFamily" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.anemiainFamily">
+                            <label for="Anemia3c" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="row">
+                        <label class="text-primary col-sm-4 control-label">Cancer</label>
+                        <section class="col-sm-8 pr-0">
+                          <div class="radio radio-inline ">
+                            <input name="Cancerb" id="Cancer1a" name="cancerinFamily" value="Yes" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.cancerinFamily">
+                            <label for="Cancer1a" class="font-300 text-black"> Yes </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Cancerb" id="Cancer2b" name="cancerinFamily" value="No" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.cancerinFamily">
+                            <label for="Cancer2b" class="font-300 text-black"> No </label>
+                          </div>
+                          <div class="radio radio-inline ">
+                            <input name="Cancerb" id="Cancer3c" name="cancerinFamily" value="Dont Know" type="radio"
+                              [(ngModel)]="AppointmentPatientInfo.cancerinFamily">
+                            <label for="Cancer3c" class="font-300 text-black"> Don't Know </label>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Family Closed here-->
+                </section>
+
+
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a> <a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--History Closed-->
+
+              <fieldset class="fadeInRight animated " id="fldsetReports">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10"><span class="glyphicon glyphicon-open-file"></span></section>
+                <div class="form-group mtop10">
+                  <label class="font-nrml text-primary">Please upload your medical reports <br><small class="text-grey font-12">(Eg
+                      – Diagnostics reports , Old prescriptions , CT Scans , MRI etc)</small></label>
+
+                  <section class="display-blx-xs help-block">
+                    <div data-toggle="tooltip" data-placement="bottom" title=".JPG, .GIF, .PNG, .PDF, .JPEG" class="grey-btn btn-upload mtop5-xs blue-tooltip"
+                      data-original-title="Upload (.JPG, .GIF, .PNG, .PDF, .JPEG)"><span><i class="glyphicon glyphicon-paperclip"></i>
+                        Upload reports / prescriptions </span>
+                      <input type="file" class="upload-file-btn" name="reportUpload" id="reportUpload" #file (change)="reportUpload($event)"></div>
+                    <p class="font-12 mtop5">Max size 30MB (.JPG, .GIF, .PNG, .PDF, .JPEG)</p>
+                  </section>
+                </div>
+                <div class="form-group mtop10" id="dvInternational" style="display:none;">
+                  <label class="font-nrml text-primary">Please download and upload a duly signed consent form <br><small
+                      class="text-grey font-12">(By the Patient or the Patient’s Relative)</small></label>
+
+                  <section class="display-blx-xs help-block">
+                    <a href="https://www.askapollo.com/online-consultation/img/PatientConsentForm.pdf" class="btn btn-primaryLine"><span class="icon-download"></span> Download consent form</a>
+                    &nbsp;<div data-toggle="tooltip" data-placement="bottom" title="" class="grey-btn btn-upload mtop5-xs blue-tooltip"
+                      data-original-title="Upload (.JPG, .GIF, .PNG, .PDF, .JPEG)"><span><i class="glyphicon glyphicon-paperclip"></i>
+                        Upload consent form </span>
+                        <input type="file" class="upload-file-btn" name="reportConsent" id="reportConsent" #file (change)="reportConsent($event)"></div>
+                    <p class="font-12 mtop5">Max size 30MB</p>
+
+                  </section>
+
+                </div>
+                <ol class="list-order margin0">
+                  <li *ngFor="let d of uploadedDocuments"><a target="_blank" href="{{d.StaorageImagePath}}" class="text-grey"><span
+                        class="icon-file-text-o"></span> {{d.DocumentName}}</a>
+                    &nbsp;<a (click)="deleteReports(d.DocumentId,d.DocumentName)" title="Delete row" class="btn  roundBtn btn-xs  remove-btn"><span
+                        class="glyphicon glyphicon-trash"></span></a></li>
+                  <!-- <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C Akshara.doc</a>
+                    &nbsp;<a href="#1" title="Delete row" class="btn  roundBtn btn-xs  remove-btn"><span class="glyphicon glyphicon-trash"></span></a></li>
+                  <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C Akshara.pdf</a>
+                    &nbsp;<a href="#1" title="Delete row" class="btn  roundBtn btn-xs  remove-btn"><span class="glyphicon glyphicon-trash"></span></a></li> -->
+                </ol>
+                <section class="lightgrey-box radius25 mtop10"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next mleft7">Next
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a><a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--Upload Reports Closed-->
+              <fieldset class="fadeInRight animated " id="fldsetSummary">
+                <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                <section class="icon-center mtop10"><span class="icon-medkit"></span></section>
+
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">1. Personal Information <a href="javascript:void(0)"
+                    class="btn btn-default btn-xs roundBtn pull-right" id="callfldsetPersonalinfo"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="grey-box clearfix padd10 mtop10">
+                  <ul class="list-arrow wdt-30-md">
+                    <li class="text-grey font-nrml">First Name: <span class="text-primary">{{AppointmentPatientInfo.firstName}}</span></li>
+                    <li class="text-grey font-nrml">Last Name: <span class="text-primary">{{AppointmentPatientInfo.lastName}}</span></li>
+                    <li class="text-grey font-nrml">Date of birth (Age): <span class="text-primary">{{AppointmentPatientInfo.dob}}</span></li>
+                    <li class="text-grey font-nrml">Gender: <span class="text-primary">{{AppointmentPatientInfo.gender}}</span></li>
+                    <li class="text-grey font-nrml">Height: <span class="text-primary">{{AppointmentPatientInfo.heightText}}</span></li>
+                    <li class="text-grey font-nrml">Weight: <span class="text-primary">{{AppointmentPatientInfo.weightText}}</span></li>
+                    <li class="text-grey font-nrml">City: <span class="text-primary">{{AppointmentPatientInfo.city}}</span></li>
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">2. Smoke <a href="javascript:void(0)" class="btn btn-default btn-xs roundBtn pull-right"
+                    id="callfldsetHabbits"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix">
+                  <ul class="list-arrow ">
+                    <li class="text-grey font-nrml">Do you smoke? <span class="text-primary">{{AppointmentPatientInfo.isSmoker}}</span>
+                    </li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Yes'">How many
+                      cigarettes do you smoke daily? <span class="text-primary">{{AppointmentPatientInfo.howManyCigarretesperDay}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Yes'">Smoking since how
+                      many years: <span class="text-primary">{{AppointmentPatientInfo.howManyYearsSmoked}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">When did
+                      you stop smoking? <span class="text-primary">{{AppointmentPatientInfo.whendidyoustoppedSmoking}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">How many
+                      cigarettes did you smoke? <span class="text-primary">{{AppointmentPatientInfo.howManyCigarretesperDay}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">How many
+                      years did you smoke? <span class="text-primary">{{AppointmentPatientInfo.howManyYearsSmoked}}</span></li>
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0  bdr-bottom ">3. Alcohol <a href="javascript:void(0)" class="btn btn-default btn-xs roundBtn pull-right"
+                    id="callfldsetHabbits"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix">
+                  <ul class="list-arrow ">
+                    <li class="text-grey font-nrml">Do you consume alcohol? <span class="text-primary">{{AppointmentPatientInfo.isDrinker}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Yes'">How long are you
+                      consuming Alcohol? <span class="text-primary">{{AppointmentPatientInfo.howlongUrDrinking}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Yes'">How Frequently?
+                      <span class="text-primary">{{AppointmentPatientInfo.HowFrequentlyDrink}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Not Anymore'">When did
+                      you stop consuming alcohol? <span class="text-primary">{{AppointmentPatientInfo.whendidyoustoppedDrinking}}</span></li>
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0 bdr-bottom">4. Diet <a href="javascript:void(0)" class="btn btn-default btn-xs roundBtn pull-right"
+                    id="callfldsetHabbits"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix">
+                  <ul class="list-arrow ">
+                    <li class="text-grey font-nrml">Diet <span class="text-primary">{{AppointmentPatientInfo.Diet}}</span></li>
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0  bdr-bottom ">5. Exercise <a href="javascript:void(0)" class="btn btn-default btn-xs roundBtn pull-right"
+                    id="callfldsetHabbits"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <ul class="list-arrow ">
+                    <li class="text-grey font-nrml">Do you exercise regularly? <span class="text-primary">{{AppointmentPatientInfo.doyouExcerciseDaily}}</span></li>
+                    <!-- <li class="text-grey font-nrml">Which exercise you do? <span class="text-primary">Swimming</span></li>
+                    <li class="text-grey font-nrml">How many days in a week? <span class="text-primary">Daily </span></li>
+                    <li class="text-grey font-nrml">How long do you exercise? <span class="text-primary">30 mint.</span></li> -->
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">6. Complaints/Symptoms <a href="javascript:void(0)"
+                    data-toggle="modal" class="btn btn-default btn-xs roundBtn pull-right" id="callfldsetSymptoms"><span
+                      class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <ul class="list-arrow wdt-30-md">
+                    <li class="text-grey font-nrml" *ngFor="let sym of AppointmentPatientInfo.presentComplaintsObject">
+                        <span *ngIf="sym.symptoms!=='Others'">{{sym.symptoms}}</span>
+                        <span *ngIf="sym.symptoms==='Others'">{{AppointmentPatientInfo.OtherpresentComplaints}}</span>
+                      
+                    </li>
+                    <!-- <li class="text-grey font-nrml">Fainting</li> -->
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">7. Present Medications <a href="javascript:void(0)"
+                    class="btn btn-default btn-xs roundBtn pull-right" id="callfldsetMedication"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <ul class="div-table div-bordered">
+                    <li>
+                      <!-- <div class="wdth-5p div-cell text-primary">Sl.#</div> -->
+                      <div class="wdth-40p div-cell text-primary">Medicine name</div>
+                      <div class="wdth-30p div-cell text-primary">Dosage</div>
+                      <div class="wdth-20p div-cell text-primary">Started From</div>
+                    </li>
+                    <li *ngFor="let m of AppointmentPatientInfo.presentMedicationObject">
+                      <!-- <div class="wdth-5p div-cell">1</div> -->
+                      <div class="wdth-40p div-cell">{{m.medicine}}</div>
+                      <div class="wdth-30p div-cell">{{m.dosage}}</div>
+                      <div class="wdth-25p div-cell "> {{m.started}}</div>
+                    </li>
+                    <!-- <li>
+                      <div class="wdth-5p div-cell">2</div>
+                      <div class="wdth-40p div-cell">ABS</div>
+                      <div class="wdth-30p div-cell">Twice in a day</div>
+                      <div class="wdth-25p div-cell "> 3/7/2018</div>
+                    </li>
+                    <li>
+                      <div class="wdth-5p div-cell">3</div>
+                      <div class="wdth-40p div-cell">Paracip</div>
+                      <div class="wdth-30p div-cell">Once in a day</div>
+                      <div class="wdth-25p div-cell "> 3/7/2018</div>
+                    </li> -->
+                  </ul>
+                </div>
+
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">8. Allergies <a href="javascript:void(0)" class="btn btn-default btn-xs roundBtn pull-right"
+                    id="callfldsetAllergies"><span class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <ul class="list-arrow ">
+                      <li class="text-grey font-nrml">Do you have any allergies? <span class="text-primary">{{AppointmentPatientInfo.isAllergetic}}</span></li>
+                    <li class="text-grey font-nrml" *ngFor="let al of AppointmentPatientInfo.allergiesObject">
+                      <span *ngIf="al.item_text!=='Others'">{{al.item_text}}</span>
+                      <span *ngIf="al.item_text==='Others'">{{AppointmentPatientInfo.OtherAllergies}}</span> 
+                    </li>
+                  </ul>
+                </div>
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">9. History <a href="javascript:void(0)"
+                    data-toggle="modal" class="btn btn-default btn-xs roundBtn pull-right" id="callfldsetHistory"><span
+                      class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <h5 class="text-primary fonts-16 mbottom0">Personal</h5>
+                  <ul class="list-arrow wdt-30-md">
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.hypertension">Hypertension <span
+                        class="text-primary">{{AppointmentPatientInfo.hypertension}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.diabeties">Diabeties <span class="text-primary">{{AppointmentPatientInfo.diabeties}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.heartDisease">HeartDisease <span
+                        class="text-primary">{{AppointmentPatientInfo.heartDisease}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.anemia">Anemia <span class="text-primary">{{AppointmentPatientInfo.anemia}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.cancer">Cancer <span class="text-primary">{{AppointmentPatientInfo.cancer}}</span></li>
+                  </ul>
+                </div>
+                <div class="clearfix ">
+                  <h5 class="text-primary fonts-16 mbottom0">Family </h5>
+                  <ul class="list-arrow wdt-30-md">
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.hypertensioninFamily">Hypertension
+                      <span class="text-primary">{{AppointmentPatientInfo.hypertensioninFamily}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.diabetiesinFamily">Diabeties <span
+                        class="text-primary">{{AppointmentPatientInfo.diabetiesinFamily}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.heartDiseaseinFamily">HeartDisease
+                      <span class="text-primary">{{AppointmentPatientInfo.heartDiseaseinFamily}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.anemiainFamily">Anemia <span class="text-primary">{{AppointmentPatientInfo.anemiainFamily}}</span></li>
+                    <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.cancerinFamily">Cancer <span class="text-primary">{{AppointmentPatientInfo.cancerinFamily}}</span></li>
+                  </ul>
+                </div>
+
+                <h3 class="heading14 text-info mbottom0 bdr-bottom ">10. Reports <a href="javascript:void(0)"
+                    data-toggle="modal" class="btn btn-default btn-xs roundBtn pull-right" id="callfldsetReports"><span
+                      class="glyphicon glyphicon-edit"></span>
+                    Edit</a></h3>
+                <div class="clearfix ">
+                  <ol class="list-order margin0">
+                    <li *ngFor="let d of uploadedDocuments"><a target="_blank" href="{{d.StaorageImagePath}}" class="text-grey"><span
+                          class="icon-file-text-o"></span> {{d.DocumentName}}</a></li>
+                    <!-- <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C
+                        Akshara.doc</a></li>
+                    <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C
+                        Akshara.pdf</a></li> -->
+                  </ol>
+                </div>
+                <section class="lightgrey-box radius25 mtop10"> <a (click)="saveAndSubmit()" id="step-1-next" class="btn btn-info radius25 btn-sm pull-right mleft7">Submit
+                    <span class="icon-right-arrow"></span></a> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a><a id="step-1-next" (click)="saveAsDraft()" class="btn btn-primary radius25 btn-sm pull-right "><span
+                      class="icon-document"></span> Save as draft </a></section>
+              </fieldset>
+              <!--Summary Closed-->
+              <!-- <fieldset class="fadeInRight animated">
+                <div class=" text-center thnk-you mtop40"><span class="circle"><span class="icon-check"></span></span></div>
+                <h4 class="text-info text-center" style="margin-top: 80px;">{{submitResponseData}}</h4>
+                <div class="form-group text-center">
+                  <a (click)="gotoDashboard()" class="btn btn-sm btn-primaryLine ">&lt;&lt; Manage your consultations</a>
+                </div>
+                <section class="lightgrey-box radius25 mtop10"> <a href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span
+                      class="icon-left-arrow"></span></a></section>
+              </fieldset> -->
+              <!-- <nav aria-label="..." class="text-center">
+                            <ul class="pagination ">
+                                <li class="page-item disabled"><a href="#">&lt;&lt;</a></li>
+                                
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link"> 2 <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="page-item"><a class="page-link" href="#">5</a></li>
+								<li class="page-item"><a class="page-link" href="#">6</a></li>
+								<li class="page-item"><a class="page-link" href="#">7</a></li>
+								<li class="page-item"><a class="page-link" href="#">8</a></li>
+                               
+                                <li class="page-item "><a href="#">&gt;&gt;</a></li>
+                            </ul>
+                        </nav> -->
+            </div>
+          </section>
+        </section>
+        <!-------------------------wt-bg closed-------------------->
+      </aside>
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated afixed">
+        <h5 class="heading14 bdr-bottom ">Appointment Info</h5>
+        <ul class="howWork-valign mtop30 ">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.doctorname}}</small> </h5>
+              <p class="font-11 ">Doctor</p>
+            </div>
+          </li>
+          <li><span class="icon-heartbeat icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.Speciality}}</small> </h5>
+              <p class="font-11 ">Speciality</p>
+            </div>
+          </li>
+          <li><span class="icon-calendar icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentDate}}</small> </h5>
+              <p class="font-11 ">Appointment Date</p>
+            </div>
+          </li>
+          <li><span class="icon-clock icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentTime}}</small> </h5>
+              <p class="font-11 ">Appointment Time</p>
+            </div>
+          </li>
+          <li><span class=" icon-video-camera icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5"><small>Mode of consultation</small></h5>
+              <p class="font-11">{{AppointmentDocInfo.Category}}</p>
+            </div>
+          </li>
+          <!-- <li><span class="icon-location icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>Apollo Health City Jubilee hills</small> </h5>
+              <p class="font-11 ">Location</p>
+            </div>
+          </li> -->
+        </ul>
+      </aside>
+      <!-- /right-content closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>

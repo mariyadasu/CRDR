@@ -1,0 +1,22 @@
+<div *ngFor="let sy of HRQQuestionAndAnswersLeveTwo; let i = index ">
+	<div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswersLeveTwo[i]?.lstHRAQuestionsAnswersBO let questionid = index ">
+		<label class="text-primary" *ngIf="question.HRAQuestion!='-'">{{str[i]}}) {{question.HRAQuestion}}:</label>
+		<div class="clearfix"></div>
+		<div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let q = index ">
+			<div class="clearfix"></div>
+			<div class="radio-inline custom-radio" *ngIf="answers.ControlID == hcs.radiocontrol">
+				<input id="{{question.AttributeID}}_{{q}}" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" class="next-call"
+				 value="{{answers.AttributeValue}}" type="radio">
+				<label for="{{question.AttributeID}}_{{q}}" class="font-300 text-black">{{answers.AttributeValue}} </label>
+			</div>
+			<div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+				<input id="{{question.AttributeID}}_{{q}}" name="check_{{question.AttributeID}}_{{q}}" class="custom-check" value="{{answers.AttributeValue}}"
+				 [(ngModel)]="answers.checked" type="checkbox">
+				<label for="{{question.AttributeID}}_{{q}}" class="font-300 text-black"> {{answers.AttributeValue}} </label>
+			</div>
+			<div *ngIf="answers.ControlID == hcs.textcontrol">
+				<input type="text" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" />
+			</div>
+		</div>
+	</div>
+</div>

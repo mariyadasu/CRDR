@@ -1,0 +1,58 @@
+<h3 class="text-info mtop10">Patient Details </h3>
+<form (ngSubmit)="saveUserDetails(f)" #f="ngForm">
+  <div class="form-group ">
+    <label class="font-nrml">First Name:</label>
+    <input type="text" class="form-control" placeholder="Your First Name" name="firstName" disabled="disabled" [(ngModel)]="ui.firstName"
+      required>
+  </div>
+  <div class="form-group ">
+    <label class="font-nrml">Last Name:</label>
+    <input type="text" class="form-control" placeholder="Your Last Name" name="lastName" disabled="disabled" [(ngModel)]="ui.lastName"
+      required>
+  </div>
+  <div class="form-group ">
+    <label class="font-nrml">Email:</label>
+    <input type="text" class="form-control" placeholder="abc@example.com" name="email" [disabled]="ui.email != ''" [(ngModel)]="ui.email"
+      required>
+  </div>
+  <div class="form-group ">
+    <label class="font-nrml">Mobile no.:</label> <span class="asterisk">*</span>
+    <section class="row">  <div class="col-sm-4 "><select class="form-control" name="countryCode" placeholder="country Code" [(ngModel)]="ui.countryCode" required > 
+      <option value="{{code.Code}}" *ngFor="let code of countryCode" >{{code.CountryShortName}}</option>
+    </select></div>  <div class="col-sm-8 pleft0-md mtop-15-xs">
+      <input type="text" class="form-control" placeholder="10 digit phone number" name="mobileNumber" [(ngModel)]="ui.mobileNumber" required></div></section>
+    
+  </div>
+  <div class="form-group">
+    <label class="font-nrml">Date of birth (Age):
+      <span class="asterisk">*</span>
+    </label>
+
+    <div class="mydatepic input-group add-on date datetimepicker">
+      <ng-datepicker [options]="options" [(ngModel)]="ui.dateofBirth" name="dob"></ng-datepicker>
+      <!-- <input  [maxDate]="maxDate" class="form-control" placeholder="dd/mm/yyyy" type="text" name="dob" [(ngModel)]="ui.dateofBirth" required #dp="bsDatepicker"
+        bsDatepicker [bsConfig]="bsConfig" > -->
+      <!-- <div class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="dp.toggle()">
+          <span class="icon-calendar-daily-page-on-day-31"></span>
+        </button>
+      </div> -->
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="font-nrml">Gender:
+      <span class="asterisk">*</span>
+    </label>
+    <div class="radio radio-inline mLeft10">
+      <input name="radio6" id="radio1" value="1" checked="ui.gender == 1" type="radio" [(ngModel)]="ui.gender">
+      <label for="radio1" class="font-300 text-black"> Male </label>
+    </div>
+    <div class="radio radio-inline ">
+      <input name="radio6" id="radio2" value="2" checked="ui.gender == 2" type="radio" [(ngModel)]="ui.gender" >
+      <label for="radio2" class="font-300 text-black"> Female </label>
+    </div>
+  </div>
+  <div class="form-group mtop20">
+    <button type="submit" class="btn btn-info btn-block" [disabled]="!f.valid">Proceed</button>
+  </div>
+</form>

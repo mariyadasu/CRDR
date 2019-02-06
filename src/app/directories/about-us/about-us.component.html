@@ -1,0 +1,131 @@
+<!-- inner-pages start -->
+<section class="inner-pages" id="myaboutus">
+  <!-- mini-header start-->
+  <section class="mini-header">
+
+  </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9 right-content fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-7 col-sm-10">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/"></li>
+              <li>About Us</li>
+            </ul>
+          </div>
+
+
+        </section>
+        <section class="wt-bg">
+          <h1 class="heading mtop5 mleft-xs-0">Ask Apollo - About Us </h1>
+          <section class="row mtop20">
+            <div class="col-sm-4 hidden-xs">
+
+              <img class="img-rounded img-responsive bdr-grey" src="./assets/about-pc.jpg" width="300" height="300" alt="" />
+
+            </div>
+            <div class="col-sm-8">
+
+              <p class="font-large text-grey mtop30 mtop5-xs">Health plays an intrinsic role in the development of nations and we have implemented a number of strategies
+                that addresses and identifies people’s health needs. Apollo Hospitals believe in community engagement and
+                provides its customers more than just specific health treatments. Keeping this in mind, Apollo Hospitals
+                bring to you a solution that provides you with a greater accessibility to your healthcare needs.</p>
+
+            </div>
+          </section>
+          <div class="mtop20 mtop5-xs">
+            <p class="font-small">
+              <span class="text-primary">Ask Apollo is an appointment scheduler</span> to facilitate seeking confirming and fulfilling appointments
+              for doctor consultations, health checks and diagnostic services at any of the Apollo Hospitals across the group
+              through the website or by calling the dedicated Ask Apollo. </p>
+            <p class="font-small">
+              <span class="text-primary">Ask Apollo also offers virtual consult service</span> from Apollo Hospitals. It connects billions of patients
+              to Asia’s most advanced healthcare network. It is a patient-centric service that gives patients the freedom
+              to consult a doctor at his convenience from anywhere, anytime. It’s easy and interactive. Users can talk to
+              doctors face-to-face through video conferencing or connect with them via voice call or email, no matter where
+              you are in the world. All at the click of a button.</p>
+          </div>
+        </section>
+
+        <!-- /listing closed -->
+
+
+      </aside>
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+        <span *ngIf="currentCity">
+          <h5 class="heading14 bdr-bottom ">Most Searched Localities In {{ currentCity }}</h5>
+          <ul class="data-list font11 arr-bullet">
+            <li *ngFor="let trend of trends">
+              <a routerLink='/{{ currentCity }}/{{ trend.SpecialityKeyword | lowercase }}/hyperlocal/{{ removeSpaces(trend.HyperLocation | lowercase) }}'
+                *ngIf="trend.HyperLocation">{{ trend.DisplayText }}</a>
+            </li>
+          </ul>
+        </span>
+        <span *ngIf="!currentCity">
+          <h5 class="heading14 bdr-bottom ">Most Searched Cities</h5>
+          <ul class="data-list font11 arr-bullet">
+            <li *ngFor="let city of cities">
+              <a routerLink='/doctorsearch/{{ city.name | lowercase }}'>Doctors in {{ city.name | titlecase }}</a>
+            </li>
+          </ul>
+        </span>
+
+
+        <h5 class="heading14 bdr-bottom mtop20">Health Articles</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li>
+            <a href="https://blog.askapollo.com/category/cancer-care/" target="_blank">Cancer Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/general-health/" target="_blank">General Health</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/healthy-living/" target="_blank">Healthy Living</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/heart-care/" target="_blank">Heart Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/ortho-care/" target="_blank">Ortho Care</a>
+          </li>
+          <li>
+            <a href=" https://blog.askapollo.com/category/top-slider/" target="_blank">Others</a>
+          </li>
+        </ul>
+        <h5 class="heading14 bdr-bottom mtop20">Get the free Askapollo App</h5>
+        <div class="form-group telblock">
+          <label>Enter your mobile no.</label>
+          <input type="tel" class="form-control input-sm" [(ngModel)]="pn" (keyup.enter)="sendAppLinkEnter()">
+          <img class="indflag2" src="../../assets/tel-num.png" />
+        </div>
+        <div class="form-group">
+          <a class="btn btn-info btn-sm" (click)="sendAppLink()">Send App Link</a>
+        </div>
+
+      </aside>
+      <!-- /right-content closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->
+<!-- bottom -app banner start-->
+<section class="app-bannerBtm visible-xs">
+  <div class="container">
+    <h3>AskApollo Mobile App</h3>
+    <h5>One stop destination for all healthcare and wellness needs</h5>
+    <p>
+      <a href="#1" class="btn-whtLine btn">Install App</a>
+    </p>
+    <a href="#">
+      <img src="assets/app-mobile.png" alt="AskApoll App">
+    </a>
+  </div>
+</section>
+
+<!-- bottom -app banner start-->

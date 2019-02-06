@@ -1,0 +1,691 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<!--Slider Start-->
+<div id="main-slider" class="carousel onConsult slide hidden-sm hidden-xs" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+    <li data-target="#main-slider" data-slide-to="1"></li>
+    <li data-target="#main-slider" data-slide-to="2"></li>
+    <li data-target="#main-slider" data-slide-to="3"></li>
+    <li data-target="#main-slider" data-slide-to="4"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner physical-slide" role="listbox"> 
+    <div class="item active">
+        <img src="../../assets/oc-banners/discount.jpg" alt="Ask Apollo">
+          <div class="carousel-caption  text-left mtop10">
+            <div class="col-sm-offset-5 col-sm-6 text-right">
+           <h1 class="text-primary "><strong class="text-info">Get 10% off</strong> on all Consultations, <span class="spacer visible-lg ">&nbsp; </span>  <br class="visible-lg visible-md"/> by using coupon code <strong>“</strong><span class="text-info">APOLLO10</span><strong>”</strong></h1>
+        <p class="mtop10 "><span class="asterisk">*</span><em class="text-Darkgrey">Valid for all specialties till 31st January.</em></p>
+        </div>
+          </div>
+        </div> 
+  <div class="item ">
+    <img src="../../assets/oc-banners/gastroenterologist.jpg" alt="Ask Apollo">
+      <div class="carousel-caption  text-left mtop10">
+      <div class="col-sm-8">
+       <h1 class="text-primary"><strong>“</strong>Consult a <strong class="text-info">Gastroenterologist</strong> for <span class="text-info">acidity</span>, <br class="visible-lg visible-md"/><span class="spacer visible-lg ">&nbsp; </span> <span class="text-info">hepatitis</span> &amp; <span class="text-info">indigestion</span> related issues<strong>”</strong></h1>
+        <p class="mtop30"><a  (click)="topSpecialityRedirection('gastroenterology')" class="btn btn-info">Consult <span class="icon-right-arrow"></span></a></p>
+      </div>
+      </div>
+    </div>
+    <div class="item"> <img src="../../assets/oc-banners/gynaecology.jpg" alt="Ask Apollo">
+    <div class="carousel-caption  text-left ">
+    <div class="col-sm-offset-5">
+        <h1 class="text-primary text-right"><strong>“</strong>Consult a <strong class="text-info">gynaecologist  </strong> for <span class="text-info"> laparoscopic</span>,<span class="spacer visible-lg ">&nbsp; </span>  <br class="visible-lg visible-md"/><span class="text-info">hysteroscopic   </span> &amp; <span class="text-info">IVF  </span> relates issues<strong>”</strong></h1>
+        <p class="mtop30 text-right"><a (click)="topSpecialityRedirection('gynaecology')" class="btn btn-info">Consult <span class="icon-right-arrow"></span></a></p>
+    </div>
+    </div>
+    </div>
+  <div class="item">
+    <img src="../../assets/oc-banners/urologist.jpg" alt="Ask Apollo">
+      <div class="carousel-caption  text-left mtop10">
+        <div class="col-sm-8">
+       <h1 class="text-primary"><strong>“</strong>Consult a <strong class="text-info">Urologist</strong> for <span class="text-info">Erectile dysfunction</span>, <span class="spacer visible-lg">&nbsp; </span> <br class="visible-lg visible-md"/> <span class="text-info">prostatitis</span> &amp; <span class="text-info">premature</span> ejactulation<strong>”</strong></h1>
+        <p class="mtop30"><a (click)="topSpecialityRedirection('urology')" class="btn btn-info">Consult <span class="icon-right-arrow"></span></a></p>
+       </div>
+      </div>
+    </div>
+   <div class="item"> <img src="../../assets/oc-banners/psychiatrist.jpg" alt="Ask Apollo">
+     <div class="carousel-caption  text-left ">
+    <div class="col-sm-offset-5 text-right">
+        <h1 class="text-primary "><strong>“</strong>Consult a <strong class="text-info">Psychiatrist </strong> for <span class="text-info"> depression</span>,<span class="spacer visible-lg ">&nbsp; </span>  <br class="visible-lg visible-md"/><span class="text-info">insomnia  </span> &amp; <span class="text-info">stress  </span> related issues<strong>”</strong></h1>
+        <p class="mtop30"><a  (click)="topSpecialityRedirection('psychiatry')"  class="btn btn-info">Consult <span class="icon-right-arrow"></span></a></p>
+    </div>
+      </div>
+  </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#main-slider" data-slide="prev">
+    <span class="icon-left-arrow"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#main-slider" data-slide="next">
+    <span class="icon-right-arrow"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!--Slider Closed-->
+<!-- special-offers start-->
+<section class="how-works online-consult wow fadeInLeftBig animated hidden-xs">
+  <div class="container">
+    <div class="row">
+      <div class="easy-three only">
+        <a class="pull-left" (click)="openVideo(video)" data-toggle="modal"><img src="../../assets/play-video.png" width="66" height="76" alt="Play Video"/></a>
+        <div class="mleft80"><h2><a (click)="openVideo(video)"  data-toggle="modal">How it Works?</a></h2>
+        <h5 class="fonts-16"><a (click)="openVideo(video)"  data-toggle="modal">Watch video <i class="glyphicon glyphicon-play-circle"></i></a></h5></div>
+      </div>
+      <ul>
+        <li>
+          <span class="icon-doc icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Choose
+            <small> doctor</small>
+          </h5>
+        </li>
+        <li>
+          <span class="icon-credit-card icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Pay for
+            <small>consultation</small>
+          </h5>
+        </li>
+        <li>
+          <span class="icon-edit-document icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Fill
+            <small>symptoms</small>
+          </h5>
+        </li>
+        <li>
+          <span class="icon-prescription icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Get
+            <small>prescription</small>
+          </h5>
+        </li>
+        <li class="last">
+          <span class="icon-pills icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Get
+            <small>medicines</small>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /special-offers closed-->
+<!-- top-speciality-start -->
+<section class="top-speciality wow fadeInRightBig animated wow2">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading">Top Specialities</h2>
+      <div id="topspl" class="carousel slide" data-ride="carousel">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row-fluid">
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('gastroenterology')" title="" class="round-tab ts6">
+                </a>
+                <h5 class="acr-txt">Gastroenterology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('gynaecology')" title="" class="round-tab ts11">
+                </a>
+                <h5 class="acr-txt">Gynaecology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('urology')" title="" class="round-tab ts10">
+                </a>
+                <h5 class="acr-txt">Urology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('psychiatry')" title="" class="round-tab ts9">
+                </a>
+                <h5 class="acr-txt">Psyhciatry</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('neurology')" title="" class="round-tab ts5">
+                </a>
+                <h5 class="acr-txt">Neurology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4 lastcol2">
+                <a (click)="topSpecialityRedirection('dermatology')" title="" class="round-tab ts17">
+                </a>
+                <h5 class="acr-txt">Dermatology</h5>
+              </div>
+            </div>
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+          <div class="item">
+            <div class="row-fluid">
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('cardiology')" title="" class="round-tab ts1">
+                </a>
+                <h5 class="acr-txt">Cardiology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('nephrology')" title="" class="round-tab ts16">
+                </a>
+                <h5 class="acr-txt">Nephrology</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('paediatrics')" title="" class="round-tab ts12">
+                </a>
+                <h5 class="acr-txt">Paediatrics</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('ent')" title="" class="round-tab ts14">
+                </a>
+                <h5 class="acr-txt">ENT</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="topSpecialityRedirection('general-medicine')" title="" class="round-tab ts9">
+                </a>
+                <h5 class="acr-txt">General Medicine</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4 lastcol2">
+                <a (click)="topSpecialityRedirection('oncology')" title="" class="round-tab ts15">
+                </a>
+                <h5 class="acr-txt">Oncology</h5>
+              </div>
+            </div>
+            
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+        </div>
+        <a class="left carousel-control" href="#topspl" data-slide="prev">‹</a>
+        <a class="right carousel-control" href="#topspl" data-slide="next">›</a>
+      </div>
+      <!--/myCarousel-->
+    </div>
+  </div>
+</section>
+<!-- top-speciality-closed-->
+<!-- why-AskApollo-start-->
+<section class="health-tips why-askapollo">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading text-center">Why Ask Apollo</h2>
+      <div id="health" class=" mtop20">
+        <div class="row-fluid">
+          <div class="col-sm-3 ">
+            <div class="item-bg">
+              
+                <img alt="QUALITY &amp; TRUST" class="img-responsive" src="../../assets/trust.jpg"> 
+              <h4>QUALITY &amp; TRUST</h4>
+              <p>Get in touch with Asia’s best healthcare network at your convenience</p>
+              <p>1000+ Doctors are available across 80+ specialities</p>
+            </div>
+          </div>
+          <div class="col-sm-3 ">
+            <div class="item-bg">
+              
+                <img alt="CONSULT AT YOUR EASE" class="img-responsive" src="../../assets/ease.jpg"> 
+              <h4>CONSULT AT YOUR EASE</h4>
+              <p>Consult your doctor 24*7 from anywhere in the world</p>
+              <p>Connect via Video , Voice or mail</p>
+            </div>
+          </div>
+          <div class="col-sm-3 ">
+            <div class="item-bg">
+              
+                <img alt="PRIVATE AND SECURE" class="img-responsive" src="../../assets/secure.jpg"> 
+              <h4>PRIVATE AND SECURE</h4>
+              <p>Consult your preferred doctor and share reports anonymously</p>
+              <p>Save time, money and the hassle of visiting a hospital</p>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="item-bg">
+              
+                <img alt="FREE  FOLLOWUP" class="img-responsive" src="../../assets/follow.jpg"> 
+              <h4>FREE FOLLOWUP</h4>
+              <p>Consult your doctor free of cost after your consultation within 7 days</p>
+              <p>Get clarified by your doctor free of cost</p>
+            </div>
+          </div>
+        </div>
+        <!--/row-fluid-->
+      </div>
+      <!--/myCarousel-->
+    </div>
+  </div>
+</section>
+<!-- why-AskApollo-closed-->
+
+
+<!-- FAQs -->
+<section class="faq">
+  <div class="container">
+    <h2 class="heading">Frequently asked questions</h2>
+    <div class="row">
+      <section class="hidden-xs hidden-sm col-md-4">
+        <div class="online-consult-img">
+          <img src="../../assets/online-consult-img.png" title="Online doctor consultation" /> </div>
+      </section>
+      <section class="faq-content col-sm-12 col-md-8" id="faq-dis">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseOne" data-parent="#faq-dis" data-toggle="collapse" class="" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> Will my selected doctor solve my medical issue ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse in" id="collapseOne" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p>
+                <strong class="text-info"> Our doctors</strong> will give you the required medical opinion after diagnosis of your health issue. This
+                will help you identify next steps which may include prescription or diagnostics tests or an advise</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseTwo" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> Will I get a valid prescription ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseTwo" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p>
+                <strong class="text-info"> You will</strong> either get a prescription or suggestion for diagnostics tests or an advice from our doctors.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseThree" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> Do I get a refund in case of no consultation ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseThree" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p>
+                <strong class="text-info"> If you </strong> don’t get a response from the doctor , you are entitled for a 100% refund. Just drop a mail
+                to info@askapollo.com and your refund will be processed.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseFive" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> Is the consultation secure ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseFive" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p> All your
+                <strong class="text-info"> medical history</strong> &amp; online consultation done on Ask Apollo is completely private &amp; secure</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseSix" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> What if I don’t get any response from the doctor ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseSix" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p>
+                <strong class="text-info"> You are assured</strong> to get a response from your preferred doctor. In the unlikely case where you don't
+                get a response, we will refund the money, no questions asked!</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseSeven" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> What if I had to upload few reports asked by the doctor ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseSeven" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p> You are given a
+                <strong class="text-info">free review option</strong> in which you can consult the same doctor with your reports within 7 days.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#collapseEight" data-parent="#faq-dis" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                <span class="img-circle ans-circle">Q</span> If I don’t understand the dosage or medicine name , can I consult the doctor again ?
+                <i class="accord glyphicon glyphicon-plus"></i>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapseEight" aria-expanded="false">
+            <div class="panel-body">
+              <span class="img-circle ans-circle">A</span>
+              <p> You are entitled for a
+                <strong class="text-info">free clarification</strong> with your preferred doctor.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /panel ends -->
+      </section>
+      <!--/ faq-content closed-->
+    </div>
+  </div>
+</section>
+<!-- FAQs-closed-->
+<!-- app-section-start-->
+<section class="app-section hidden-xs hidden-sm" style="background-image: url(./assets/app-section.jpg); background-size: cover;">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-5 col-sm-5 hand  rightside animated">
+        <img src="../../assets/mobile.png" class="img-responsive" alt="AskApollo"> </div>
+      <div class="col-md-7 col-sm-7  leftside animated ">
+        <h1 class="title">GET
+          <strong class="text-info">Ask</strong><strong class="text-primary">Apollo</strong> APP</h1>
+        <p class="mtop10">AskApollo app is now available on both Google Play and the IOS.</p>
+        <div class="mtop30">
+          <a (click)="onlinePlayStore()">
+            <img src="../../assets/google-play.png" width="187" height="65" alt="AskApollo">
+          </a>
+          <a (click)="onlineAppStore()" class="mLeft10" class="mLeft10">
+            <img src="../../assets/apply.png" width="194" height="65" alt="AskApollo">
+          </a>
+        </div>
+        <div class="mobile-link mtop30">
+          <p>Enter below 10 digits mobile no. for app link.</p>
+          <div class="input-group add-on">
+            <span class="input-group-addon" id="basic-addon1">+91</span>
+            <input type="text" id="srch-term" name="srch-term" placeholder="Enter Your Mobile Number" class="form-control input-lg" [(ngModel)]="pn" (keyup.enter)="sendAppLinkEnter()">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-info btn-lg" (click)="sendAppLink()">Send App Link</button>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /app-section-closed -->
+<!-- tumor-board-->
+<section class="tumor-board-container" style="display:none;">
+  <!-- Background Image -->
+  <div class="container">
+    <div class="col-xs-12 col-md-8">
+      <h2>Tumor board consultation</h2>
+      <div class="input-group col-xs-12 col-md-7">
+        <select class="form-control">
+        </select>
+        <div class="input-group-btn">
+          <button class="btn btn-primary btn-brdr">Proceed</button>
+        </div>
+      </div>
+      <ul class="mtop10 mbtm10">
+        <li>Choose hospital</li>
+        <li>Pay token fee (non-refundable)</li>
+        <li>Get appointment confirmation by administrator</li>
+        <li>Pay balance consultation fee*</li>
+        <li>Get consultation &amp; prescription on appointment day</li>
+      </ul>
+      <div class="m-l-10 m-t-10">
+        <p>For more info please check Terms of Use</p>
+        <p class="m-b-0">
+          <small>* Consultation fee may vary subject to expert panel.</small>
+        </p>
+        <p>
+          <small>* Token fee will be adjusted in the final Board Consultation fee.</small>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="clear p-10"></div>
+</section>
+<!-- tumor-board-closed-->
+<!-- You Tube Video-->
+<section class="video clear">
+  <div class="container text-center">
+    <h3 class="mtop0">
+      <a data-keyboard="false" (click)="openModal(template)">Check our video presentation about ask Apollo</a>
+    </h3>
+
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">ASK APOLLO</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <youtube-player 
+        [videoId]="id" 
+        (ready)="savePlayer($event)"
+        (change)="onStateChange($event)"
+        width="570" 
+        height="360"
+      >
+      </youtube-player>
+    </div>
+  </ng-template>
+
+</section>
+<!-- You Tube Video-closed -->
+<!-- doctors-ofthe-week-start-->
+<section class="testimonials leftside doctors-ofthe-week">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading text-center">Doctors of the week</h2>      
+      <div *ngFor="let doc of topDoctorsAnonymous; let i=index;" class="col-md-4" >
+        <div class="client-say">
+          <figure>
+            <a href="javascript:void(0)" style="pointer-events: none; cursor: default;" class="round-tab">
+              <img alt="Doctor of the week" src="{{doc.CompletePhotoUrl}}"> </a>
+            <span class="quote">
+              <span class="icon-quote-left" aria-hidden="true"></span>
+            </span>
+          </figure>
+          <!-- <figcaption class="padd10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque leo metus, fermentum vel erat at, sollicitudin
+            pretium nulla. Ut ac orci finibus,</figcaption> -->
+          <h3>{{doc.FirstName}} {{doc.LastName}}</h3>
+          <h5 class="text-primary">{{doc.Speciality}}</h5>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<!-- doctors-ofthe-week-closed -->
+
+<!-- testimonials-start-->
+<section class="testimonials hidden-xs hidden-sm">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading text-center">Patient Speak</h2>
+      <div class="col-md-6 animated ">
+        <div class="client-say">
+            <figure >
+              <a href="#" class="round-tab">
+                <img alt="AskApollo" src="./assets/somika.jpg">
+              </a> 
+              <span class="quote">
+                <span class="icon-quote-left" aria-hidden="true">                  
+                </span>
+              </span>
+            </figure>
+          <figcaption>Doctor was very nice, good approach, proper guidelines and suggestion. Doctor tried to give much time for diagnosis, asked all aspects of diseases. Very careful and suggested medicine which is more effective than other local or regular doctors. </figcaption>
+          <!--She is very concern and co-operative to make patients comfortable. Such a good doctor , you never need any local inexpensive an inexperienced docs.-->
+          <h3>Patient Somikaa Mahapatra</h3>
+          <h5 class="text-primary">Australia</h5>
+        </div>
+      </div>
+
+      <div class="col-md-6 animated ">
+        <div class="client-say">
+            <figure ><a href="#" class="round-tab"><img alt="AskApollo" src="./assets/sneha.jpg"></a> <span class="quote"><span class="icon-quote-left" aria-hidden="true"></span></span></figure>
+          <figcaption>While I selected Email as mode of consultation, I am very happy to receive a phone call from the doctor himself to actually know my symptoms better. That was very sweet and touching. Great product and service</figcaption>
+          <h3>Patient Sneha </h3>
+          <h5 class="text-primary">India</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /testimonials-closed -->
+
+<!-- press-pieces-start-->
+<section class="press-pieces rightside hidden-sm hidden-xs ">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading">As Featured On</h2>
+      <ul class="list-inline ">
+        <li class="item active">
+          <a title="ibtn9" href="http://ibtn9.com/2015/10/apollo-hospitals-introduces-ask-apollo-a-first-of-its-kind-medical-platform-in-the-country/" target="_blank">
+            <img src="./assets/ibtn.png" alt="ibtn9">
+          </a>
+          <a title="PTInews" target="_blank" href="http://www.ptinews.com/pressrelease/15668_press-subApollo-Hospitals-Introduces-Ask-Apollo--a-First-of-its-Kind-Medical-Platform-in-the-Country">
+            <img src="./assets/pti.png" alt="PTInews">
+          </a>
+          <a title="Abhitak News" target="_blank" href="http://abhitaknews.com/news/businesswire.aspx?Value=5HXWCZI0frFmKQHdnfcLowiUY1Tz82evGgQ%3d">
+            <img src="./assets/abhi.png" alt="Abhitak News">
+          </a>
+          <a title="Investment Guru India" target="_blank" href="http://investmentguruindia.com/Forms/businesswire2.aspx?Value=LS8TJUO7qc3hXjMic9Y7cQj5Q4VcyCOE2AQ%3d">
+            <img src="./assets/guru.png" alt="Investment Guru India">
+          </a>
+          <a title="New Indian Express" target="_blank" href="http://www.newindianexpress.com/cities/bengaluru/2015/oct/18/Meet-on-Patient-Safety-Held-830939.html">
+            <img src="./assets/indian-express.png" alt="New Indian Express">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /press-pieces-closed -->
+
+<aside class="cont-form" id="cont-form">
+  <a (click)="openQuickEnquiry()"  class=" work-btn btn-sm btn btn-info visible-xs"><i class="glyphicon glyphicon-envelope"></i> &nbsp;  <i>E</i><i>n</i><i>q</i><i>u</i><i>i</i><i>r</i><i>y</i></a>
+  <button type="button" class="cont-form-close" (click)="closeQuickEnquiry()">&times;</button>
+  <form [formGroup]="submitQueryForm.getForm()" (ngSubmit)="addSubmitQuery()">
+    <div class="form-group">
+      <input type="hidden" name="adminId" value="AskApollo">
+      <input type="text" placeholder="Name" id="txtName" maxlength="90" class="form-control input-sm" formControlName="Name">
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Email" id="txtEmail" maxlength="100" class="form-control input-sm" formControlName="Email">
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Mobile Number" maxlength="10" id="txtMobileNumber" class="form-control input-sm" formControlName="Mobile">
+    </div>
+    <div class="form-group">
+      <textarea name="txtQuery" id="txtQuery" placeholder="Message (Max 250 Characters)" maxlength="250" class="form-control input-sm" formControlName="Query"></textarea>
+    </div>
+    <button class="btn btn-info btn-block" id="btnSubmitQuery" type="submit">Submit</button>
+  </form>
+</aside>
+<ng-template #video>
+  <div  role="dialog">
+    
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" (click)="modalRef.hide();"  aria-label="Close">&times;</button>
+            <h4 class="modal-title">Consult Online <small class="text-info">(How it works?)</small></h4>
+          </div>
+          <div class="modal-body">
+           <iframe width="100%" height="315" src="https://www.youtube.com/embed/OiX68PhAxzw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+          </div>
+          
+   
+    
+      </div>
+    </div>
+  </ng-template>
+    <!--playvideo modal closed-->
+    <a (click)="openModalwork(modalwork)" data-toggle="modal" class="work-btn btn-sm btn btn-info visible-xs"><i>H</i><i>o</i><i>w</i> <i>i</i><i>t</i> <i>w</i><i>o</i><i>r</i><i>k</i><i>s</i><i>?</i></a>
+  
+    <!--how it works modal start-->
+    <ng-template #modalwork>
+        <!-- Modal content-->
+        <div role="dialog">
+          <div class="modal-header">
+            <button type="button" type="button" class="close"  (click)="modalRef.hide();" aria-label="Close">&times;</button>
+            <h4 class="modal-title">Consult Online <small class="text-info">(How it works?)</small></h4>
+          </div>
+          <div class="modal-body">
+           <ul class="howWork-valign">
+                                <li class="mbottom0"><span class="icon-doc icon-sec" aria-hidden="true"></span>
+                    <div class="how-text">
+                         <h5 class="text-info mbottom5">1. Choose <small> a doctor</small></h5>
+                         <p class="font-11">Choose a doctor of your choice from different specialities and select preferred date and time for the consultation.</p>
+                    </div>					
+                  </li>							
+                  <li class="mbottom0"><span class="icon-credit-card icon-sec" aria-hidden="true"></span>
+                    <div class="how-text">
+                         <h5 class="text-info mbottom5">2. Pay <small> for consultation</small></h5>
+                         <p class="font-11">Pay the consultion fees online to initiate consultation process.</p>
+                    </div>							
+                  </li>
+                  <li class="mbottom0"><span class="icon-edit-document icon-sec" aria-hidden="true"></span>
+                    <div class="how-text">
+                         <h5 class="text-info mbottom5">3. Fill <small> Medical Symptoms</small></h5>
+                         <p class="font-11">Fill medical case sheet including symptoms and medicines.</p>
+                    </div>							
+                  </li>
+                  
+                  <li class="mbottom0"><span class="icon-smartphone-call icon-sec" aria-hidden="true"></span>
+                    <div class="how-text">
+                         <h5 class="text-info mbottom5">4. Get <small> Doctor Consultation</small></h5>
+                         <p class="font-11">Complete your consultation on your request date &amp; time.</p>
+                    </div>							
+                  </li>
+                               <li class="mbottom0" style="padding-bottom:0px;"><span class="icon-prescription icon-sec" aria-hidden="true"></span>
+                    <div class="how-text">
+                         <h5 class="text-info  mbottom5">5. Get <small> Prescription</small></h5>
+                         <p class="font-11">Post the consultation, receive the doctor's prescription/advise.</p>
+                    </div>							
+                  </li>
+                            </ul>
+   <div class="clearfix"></div>
+
+          </div>
+          <section class="modal-footer">
+          <div class="row">
+          <div class="col-xs-7 text-left font-12"><p class="mbottom0">For any query</p><span class="text-primary">Call <a href="tel:7093840123">7093840123</a></span></div>
+          <div class="col-xs-5"><a data-dismiss="modal" (click)="modalRef.hide();" class="btn btn-info btn-sm ">OK, GOT IT!</a></div>
+            </div>
+        </section>
+        </div>
+      </ng-template>
+   
+
+    <!--how it works modal closed-->
+
+ 
+ 

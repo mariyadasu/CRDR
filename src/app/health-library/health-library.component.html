@@ -1,0 +1,12 @@
+<iframe [src]="getHealthLibraryUri()" style="width: 100vw; height: 100vh;border:0px;" id="hl_iframe"></iframe>
+
+<ng-template #guestLoginErrorPopup>
+	<div class="modal-header">
+	    <h4 class="modal-title text-center">Kindly login using social login to access this feature.</h4>
+	</div>
+	<div class="modal-body text-center">
+	    <p>Do you want to continue ?</p>
+	    <button type="button" class="btn btn-primary" (click)="confirm()" >Yes</button>
+		<button type="button" class="btn btn-default" (click)="decline()" >No</button>
+	</div>
+</ng-template>

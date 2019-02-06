@@ -1,0 +1,31 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<section class="wt-bg">	
+	<section class="col-sm-offset-3 col-sm-6 box-slide mar-15-xs">
+		<h4 class="heading mtop15 "><span class="icon-pharmacy text-info"></span> Do you have any health complaints?</h4>
+        <div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[possymptomid]?.lstHRAQuestionsAnswersBO let questionid = index ">
+            <label class="text-primary">{{poshealthcheck+1}}) {{question.HRAQuestion}}:</label>
+        </div>
+
+        <div *ngFor="let sy of HRQQuestionAndAnswers; let s = index ">
+
+    		<div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[s]?.lstHRAQuestionsAnswersBO let questionid = index ">
+                <div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let i = index ">
+                	
+        	       <div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">    
+                        <input id="{{sy.SymptomId}}_{{i}}"
+                         name="check_{{question.AttributeID}}_{{i}}" 
+                         class="custom-check"  
+                         value="{{answers.AttributeValue}}"
+                         [(ngModel)]="answers.checked"  
+                         type="checkbox">
+                        <label for="{{sy.SymptomId}}_{{i}}" class="font-300 text-black"> {{answers.AttributeValue}} </label>
+                    </div>                   
+                </div>
+           </div>
+        </div>
+       <section class="lightgrey-box radius25 mtop20"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next" (click)="nextSymptom()">{{button}} <span class="icon-right-arrow"></span></a>
+        <!-- <a  href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span class="icon-left-arrow"></span></a> -->
+       </section>
+       
+	</section>
+</section>

@@ -1,0 +1,364 @@
+<!-- <ng4-loading-spinner> </ng4-loading-spinner> -->
+
+
+<div id="contentId1">
+  <h3 class="text-info mtop10">Login / Sign up on
+    <span class="text-primary">Ask</span>Apollo</h3>
+  <div class="form-group mtop10">
+    <div class="font-nrml dropdown">Login with
+      <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown">i</a>
+      <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+        <h4>Why is social login required?</h4>
+        <ul class="list-arrow font-12">
+          <li>Don't worry, we don't post anything on your behalf.</li>
+          <li>We don't want you to remember multiple passwords.</li>
+          <li>We don't read or query anything other than your Name and Email ID.</li>
+          <li>We don't save or see your password.</li>
+        </ul>
+  
+      </div>
+    </div>
+  
+  </div>
+  <div class=" mtop20">
+    <p>
+      <a class="btn btn-facebook  btn-block" (click)="signIn('facebook')">
+        <span class="icon-facebook"></span> Facebook
+      </a>
+    </p>
+    <p class="mtop20">
+      <a class="btn btn-google btn-block" (click)="signIn('google')">
+        <span class="icon-google-plus"></span> Google
+      </a>
+    </p>
+  </div>
+  
+  <div class="mtop5" >
+    <small class="form-text text-muted">
+      <input id="check321" [(ngModel)]="isTermsAccepted" type="checkbox" />
+      <label for="check321" class="font-nrml">I Agree to the </label>
+      <a (click)="showtnc(tnc)">Terms &amp; Conditions</a>.
+    </small>
+  </div>
+
+  <div id="loadingid"style="display: none;">
+    <div class="sk-circle" >
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+    </div>
+    
+  <!-- <div id="wrapper" id="loadingid" style="display:none">
+    <div class="circle-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</div> -->
+
+  <!-- <div id="loadingid" class="spinnerNew" style="display:none"></div> -->
+  <form (ngSubmit)="signInUsingPhoneEmail(sif)" #sif="ngForm" *ngIf="!showOnlySocial">
+    <div class="form-group mtop5 lgnmb">
+      <label class="font-nrml">OR guest login using Mobile number or Email.</label>
+      <input type="text" class="form-control input-lg" placeholder="Mobile Number / Email ID" name="EmailorMobile" required ngModel>
+      <img class="indflag2" src="../../../assets/tel-num.png"/>
+    </div>
+  
+    <div class="form-group mtop20">
+      <button type="submit" class="btn btn-info btn-block btn-lg" [disabled]="!sif.valid">Continue</button>
+      <p class="form-text text-muted mtop5 font-12">We have switched to social logins, existing users
+        <a href="https://www.askapollo.com/physical-appointment/" target="_blank" class="text-info">click here</a> for Old site.</p>
+    </div>
+  </form>
+  
+  <ng-template #tnc>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Terms & Conditions</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="ppadding">
+  
+        <h2>I. Physical Appointment Terms &amp; Conditions</h2>
+        <ul class="mylistterms">
+          <li>At the hospital, please contact the Helpdesk for assistance to meet your doctor.</li>
+          <li>You are requested to be present at least 15 minutes before your appointment to complete the necessary paperwork.
+            Please bring your appointment Id or printout of the confirmation mail while coming for consultation.</li>
+          <li>Presence of the patient along with the past reports/medical summary (if applicable) is required</li>
+          <li>Apollo Hospitals will make all efforts to honor the appointment. However, in the event of any unforeseen circumstances
+            beyond our control, the appointment may be delayed or rescheduled. A new appointment date and/or time, according
+            to the patient's convenience, and availability of slot with the same specialist, or a new specialist, will be proposed.</li>
+          <li>Confirmed appointments for Physical Consultations can be booked between 9 AM and 7.30 PM. Appointments requests submitted
+            post 7.30 PM for the next day will be confirmed the following day after 10 AM. For further information, call 1860
+            500 1066 or for medical emergency dial 1066.</li>
+  
+        </ul>
+        <h2>II. Online Consultations - Terms &amp; Conditions</h2>
+        <p>Ask Apollo (services run by Apollo Hospitals Enterprise Limited) is providing online consultations with Apollo Hospitals
+          Doctors using video conference/voice calling/offline consulting (E-MAIL) (“Tele-Consultation”) through its website/call
+          centre. The following terms and conditions govern all the transactions with respect to tele-consultations including
+          appointment booking and refund and all other transactions through the website or through its authorized third party
+          websites. The Ask Apollo services available on the Website do not in any way constitute an invitation or recommendation
+          to avail the tele-consultation Services. The services provided through the Website are not intended in any ways to
+          be a substitute for face to face consultation with a doctor. Ask Apollo advices the users to make independent assessment
+          in respect of its accuracy or usefulness and suitability prior to making any decision in reliance hereof. Terms 'you'
+          and 'your' hereafter refers to the user both registered and unregistered who is using/browsing through the Ask Apollo
+          website (www.askapollo.com) and/or partner websites and/or availing any of the services from Ask Apollo.</p>
+  
+        <ul class="mylistterms list2">
+          <h2>1. Availability, Appointment, Rescheduling, Free review and/or Cancellation :</h2>
+          <li>Tele-consultations shall be available for Family Physician &amp; multi specialties</li>
+          <li>Tele-consultation from a specific doctor/physician shall be available subject to his/her availability/willingness/discretion.
+            Confirmation of your appointment with a specific doctor/physician, as per his/her availability, shall be sent to
+            you via SMS and/or email. Ask Apollo reserves the right to reschedule or cancel an appointment without any prior
+            notice
+          </li>
+          <li>The time provided for consultation to you is indicative and actual consultation time may change depending on the
+            consulting Doctor's discretion</li>
+          <li>Your consulted Physician reserves the right to provide Post consultation free review</li>
+          <li>Consultations can be booked, rescheduled or cancelled only within the stipulate time limits mentioned below:</li>
+          <li>Table: Cancellation &amp; Rescheduling Deadlines* voice consultation not available for international patients</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>2. Information and Documents required :</h2>
+          <img src="NewAngularDesigns/img/infrmtn-table.png" alt="">
+          <li>You are solely responsible for the medical, health and personal information you provide in Ask Apollo. The advice
+            of the doctor will depend upon the information you provide in Ask Apollo</li>
+          <li>User discretion is advised while submitting/uploading your required personal and clinical information on the specified
+            place and selecting the Doctor for seeking appropriate advice related to condition of the patient. This information
+            shall include patient’s details including contact details, medical history, testing/investigations results/reports,
+            prescriptions, card holder name and other relevant details</li>
+          <li>Ask Apollo services are available for use for children, but the Registered Member for all patients under the age
+            of 18 must be the patient’s parent or legal guardian. If you register as the parent or legal guardian on behalf
+            of a minor, you will be fully responsible for complying with these Terms of Use</li>
+          <li>If the information provided by you is false/deceptive/inaccurate or misleading, Ask Apollo reserves the right to
+            cancel your appointment without assuming any liability whatsoever. Hence, it’s advised to submit/upload all relevant
+            and accurate information on the portal</li>
+          <li>The information provided by you may be used by for the purpose of services including analysis, research, training
+            and disclosure (where required) to its affiliates, agents and government authorities</li>
+          <li>The information provided by you can be kept with Ask Apollo indefinitely and can be used without revealing your identity</li>
+  
+        </ul>
+  
+        <ul class="mylistterms list2">
+          <h2>3. Equipment and connectivity requirement :</h2>
+          <li>The services available on the website shall be provided to you via audio/video consultation, or as an offline review
+            through e-mail. Please ensure that you are equipped with proper video conference equipment and internet connectivity
+            as mentioned or is relevant for the service you want to avail. In case of inadequate video conference equipment,
+            technical error or defective internet connectivity Ask Apollo reserves the right to reschedule or cancel your appointment
+            without any notice</li>
+          <li>You understand and acknowledge that there will not be any physical examination involved and the consultation services
+            shall be provided remotely. The opinion delivered by the doctor / physician shall solely be based on the verbal
+            communication between the concerned doctor or the physician and the patient and the test reports and other information
+            provided/uploaded by you on the website</li>
+          <li>Ask Apollo or the consulting Doctor/Medical Practitioner shall not be liable for misdiagnosis / faulty judgment /
+            interpretation error / perception error/Adverse events/ inefficacy of prescribed treatment or advice/validity of
+            the advice or prescription provided by the consulting Doctor in your country of residence/ unavailability of the
+            recommended or prescribed treatment or medication under any condition or circumstances. Users are advised to use
+            their discretion for following the advice obtained post consultation from Ask Apollo</li>
+          <li>Ask Apollo Services are not meant in any way for emergency and life-threatening conditions. It is advised to take
+            the patient to the nearest hospital in such cases</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>4. Cookies :</h2>
+          <li>Ask Apollo, like many other websites uses “Cookies”. Cookies are small data files that a Website stores on your web
+            browser. These are used for the purpose of storing your preferences previous activities browsing activities, profiling
+            and tracking behaviour on this Website. By visiting Ask Apollo Website you acknowledge, accept and expressly authorize
+            Ask Apollo for the placement of Cookies on your web browser</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>5. Electronic Payments/ Refunds :</h2>
+          <li>Ask Apollo offer’s online mode of payment. You may use internet banking or debit/credit card for making payment for
+            consultation charges. You shall be directed to our trusted payment gateway partners once you proceed to make payment
+            of Service Fees</li>
+          <li>Ask Apollo shall not be liable in any manner whatsoever, if incorrect or inaccurate credit / debit card details are
+            provided by you for making the payment of consultation Fees or you use a credit/ debit card which is not lawfully
+            owned by you or if you permit a third party to use your password or other means to access your account</li>
+          <li>Ask Apollo shall keep the aforesaid information confidential at all times and shall not utilize and share the same
+            with any of the third parties unless is an authorized third party website and / or required by law regulation or
+            court order</li>
+          <li>Refunds may be made in case a request is raised by the user by clicking the cancel button in the user dashboard in
+            Ask Apollo website within the stipulated deadline mentioned in the refund &amp; cancellation table above</li>
+          <li>Refunds will only be made against genuine and trackable cancellation requests generated by you by clicking on the
+            cancellation button provided in the Ask Apollo user dashboard in your Ask Apollo account. Refund request against
+            delays, nature of advice obtained, efficacy of treatment, health outcomes of consultation will not be entertained</li>
+          <li>Refunds may be processed within 15 working days from the receipt of a request from you. All communications with regards
+            to refund should be sent to info@askapollo.com</li>
+          <li>You have the option to reschedule or cancel a booked Specialist or Family physician appointment, strictly within
+            the stipulated deadlines as mentioned in the refunds and cancellations table above</li>
+          <li>Ask Apollo reserves the right to modify / implement a new pricing structure at any time prior to billing you for
+            your initial payment or for future payments</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>6. Use of content &amp; Copyright :</h2>
+          <li>Ask Apollo owns the website as well the intellectual property contained thereon including all programs, processes,
+            designs, software, technologies, trademark, trade names, inventions and materials therein and all the services
+            offered by the doctors / physicians or others on the Website</li>
+          <li>You shall not use the content available on the website without the prior written permission of Ask Apollo</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>7. Privacy and Security :</h2>
+          <li>Ask Apollo uses secure encryption technology to keep your information safe and secured at all time. Apollo is committed
+            towards maintaining the privacy of the information uploaded by you on the website and complies with the industry
+            standard security safeguards for the purpose of securing the website and the information provided/uploaded by you</li>
+          <li>Ask Apollo uses all reasonable endeavors to ensure the integrity of the online payment facility’s security. Despite
+            our endeavors, breaches of security and confidentiality could occur. You acknowledge that we are not liable for
+            any loss suffered by you as a result of any breaches in security</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>8. Indemnity :</h2>
+          <li>You agree and undertake to indemnify and keep indemnified Ask Apollo, the concerned doctor/physician and Apollo Hospitals
+            for any losses, costs, charges and expenses including reasonable attorney fees that the concerned doctor/physician
+            and Apollo may suffer on account of (a)misdiagnosis / faulty judgment /interpretation errors / perception error
+            arising from (i)your failure to provide correct and / or complete clinical information / history about the patient
+            in timely and clinically appropriate manner; or (ii)suppression of material facts; or your failure to provide relevant
+            clinical information about the patient; or (iv) misinterpretation of the advice / prescription / diagnosis by you;
+            or (v) failure to follow doctor’s advice / prescription by you; or (b) incorrect or inaccurate credit / debit card
+            details provided by you; or (c) using a credit / debit card which is not lawfully owned by you; or (d) if you permit
+            a third party to use your password or other means to access your account</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>9. Disclaimer :</h2>
+          <li>Ask Apollo provides the services on “as is” basis and expressly disclaims all representations, warranties or conditions
+            of any kind, either expressed or implied, as to the operations of the website, the information, content, service
+            provided through or in connection with the website</li>
+          <li>In no event shall Apollo be responsible for any third party misuse for the data and for any acts, deeds and circumstances
+            beyond the control of the management of Ask Apollo</li>
+          <li>You agree and acknowledge that you are solely responsible for your conduct</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>10. Limitations of liability :</h2>
+          <li>In no event shall Ask Apollo be liable for any direct, indirect, punitive, incidental, special or consequential damages
+            or any damages whatsoever including without limitations, damages for loss of use, data or profits, arising out
+            of or in any way connected with the use of Ask Apollo services</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>11. Termination :</h2>
+          <li>This arrangement may be terminated by either party at any time, with or without cause</li>
+          <li>Ask Apollo reserves the right to refuse the use of services immediately in case your conduct is deemed by Ask Apollo
+            to be in contravention of applicable acts, laws, rules and regulations or considered to be unethical / immoral</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>12. Modification of Terms and conditions of service :</h2>
+          <li>Ask Apollo may at any time, without any prior notification to you, modify these terms of conditions</li>
+          <li>Please review the latest version of the terms and conditions before proceeding to avail the service</li>
+          <li>If you continue to use the service, it shall be deemed that you agree and abide by the modified terms and conditions</li>
+        </ul>
+        <ul class="mylistterms list2">
+          <h2>13. General Terms and Conditions :</h2>
+          <li>This agreement shall be governed by the laws of India and shall be subject to the exclusive jurisdiction of the courts
+            at Hyderabad</li>
+          <li>Ask Apollo makes no representation that the services are appropriate for patients in any other location except India
+            as Apollo operates and controls this websites from India</li>
+          <li>If any part of the agreement is determined to be invalid or unenforceable pursuant to applicable law then the said
+            provision will be superseded by a valid, enforceable provision and the remainder of the agreement shall continue
+            in effect</li>
+          <li>You acknowledge that the relationship created through your use of this website shall be of principal to principal.
+            You shall not represent yourself as a representative agent or employee of Ask Apollo</li>
+          <li>You represent and warrant that you’re not a minor (i.e., you are above 18 years of age) and that you are competent
+            and eligible to enter into legally binding agreement</li>
+        </ul>
+  
+  
+        <p>The terms and condition herein form an agreement. Please read this agreement carefully and if you are not agreeable
+          to any terms and condition please do not proceed further. By clicking on “I Agree” and proceeding further you signify
+          that you read through, understood and accepted aforementioned terms and conditions of use of service. You must agree
+          to the above terms and conditions in order to avail the services through the website. If you have any queries or
+          need any clarification or assistance please contact us at
+          <a href="mailto:info@askapollo.com.">info@askapollo.com</a>.</p>
+  
+  
+  
+        <h2>III. Apollo Cancer Opinion </h2>
+        <p> “Apollo Cancer Opinion”(“ACO”) is an online service provided by Apollo Hospitals. The service is based on a software
+          solution that integrates data from the AskApollo Registry and providesinformation pertaining to the clinical diagnosis
+          and treatment planning for individuals who upload their medical reports and medical case history on the “Apollo Cancer
+          Opinion” services website“Apollo Cancer Opinion”software solutions and service provide information pertaining to
+          treatment plans specific to an previously diagnosed/treated and documented cases taking into account and individual’s
+          goals of care, based on nationally and internationally standard treatment guidelines in oncology as well as review
+          of data from oncologists affiliated with Apollo Hospitals.</p>
+        <p>The recommendations provided by “Apollo Cancer Opinion” shall not be construed for medical advice and “Apollo Cancer
+          Opinion”does not diagnose, prescribe or treat medical conditions.Information provided by “Apollo Cancer Opinion”
+          is purely informativeand does not replace an oncologist's or treating physician's expert judgement. Data uploaded
+          to “Apollo Cancer Opinion” software and online service solutions will be reasonably deidentified and stored, shared,
+          and commercialized by the “Apollo Cancer Opinion” database.</p>
+        <p>Users of “Apollo Cancer Opinion” software and online service solutionsshall evaluate the relevance and safety of the
+          information provided by “Apollo Cancer Opinion” in consultation with his/her oncologist/ treating physician.Further
+          the oncologist/treating physician may consider other courses of treatment not recommended by “Apollo Cancer Opinion”
+          at their sole discretion. Effectively, “Apollo Cancer Opinion” does not have any influence or control on the treatments
+          received by users or patients whose data was processed by “Apollo Cancer Opinion” software and online service solutions.
+          The treating oncologist/treating physician has the ultimate authority over the medical care and treatment of all
+          users or patients whose data was processed by “Apollo Cancer Opinion.”</p>
+  
+  
+  
+        <h2>Informed disclaimer Form</h2>
+        <br>
+        <table class="table">
+  
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>I acknowledge and certify that I have read in the language I know and understood by me /it has been explained
+                to me in the language I know and understood by me and I have clearly understood the contents of the information
+                material provided along with this data form and the contents of this data form. </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>I confirm that I have provided accurate details of my medical history/medication if any/allergies and furnished
+                all my medical records. I understand that me or my nominee or a data analysis shall upload my medical information
+                as provided by me to “Apollo Cancer Opinion”. I understand that Apollo will not be liable in any manner whatsoever
+                for consequences arising out of incorrect/ incomplete information provided.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>I confirm that it is my discretion to either receive/ decline/ or modify “Apollo Cancer Opinion” recommendations
+                in consultation with my oncologist or treating physician. </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>I understand that Apollo Hospitals /treating Physicians assume no liability or responsibility for the propriety,
+                accuracy, or the completeness of “Apollo Cancer Opinion”. “Apollo Cancer Opinion” is purely informative in
+                nature and may only be used to offer information to treating oncologists/physicians to assist in their treatment
+                decisions. </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>I understand that my medical information and medical records will be stored on “Apollo Cancer Opinion” platform
+                for treatment suggestions. I understand that Apollo, its doctors and staff shall in no way be held responsible
+                in case of any consequences arising from the sharing of such data.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>I acknowledge that no guarantee or assurance has been made to me regarding the success of treatment plans suggested
+                by “Apollo Cancer Opinion” by Apollo or any of its doctors. </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <p>
+          <strong>I CERTIFY THAT I HAVE READ AND FULLY UNDERSTOOD THE ABOVE CONSENT AND THAT THE EXPLANATIONS REFERRED TO WERE IN FACT
+            MADE TO ME AND THAT THE FORM WAS FILLED IN PRIOR TO USING “APOLLO CANCER OPINION”. I ALSO CERTIFY THAT I WAS GIVEN
+            AN OPPORTUNITY TO ASK QUESTIONS AND ALL OF MY QUESTIONS HAVE BEEN SATISFACTORILY ANSWERED. </strong>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-infoLine" (click)="modalRef.hide()">Close</button>
+    </div>
+  </ng-template>
+</div>

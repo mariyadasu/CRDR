@@ -1,0 +1,237 @@
+[
+  {
+    "id": 2761,
+    "name": "Ahmedabad",
+    "cityType": 0
+  },
+  {
+    "id": 4395,
+    "name": "Amritsar",
+    "cityType": 0
+  },
+  {
+    "id": 95,
+    "name": "Aragonda",
+    "cityType": 0
+  },
+  {
+    "id": 3897,
+    "name": "Aurangabad",
+    "cityType": 0
+  },
+  {
+    "id": 3015,
+    "name": "Bangalore",
+    "cityType": 1
+  },
+  {
+    "id": 6374,
+    "name": "Bhilai",
+    "cityType": 0
+  },
+  {
+    "id": 4199,
+    "name": "Bhubaneswar",
+    "cityType": 0
+  },
+  {
+    "id": 6373,
+    "name": "Bilaspur",
+    "cityType": 0
+  },
+  {
+    "id": 4413,
+    "name": "Chandigarh",
+    "cityType": 0
+  },
+  {
+    "id": 1,
+    "name": "Chennai",
+    "cityType": 1
+  },
+  {
+    "id": 4791,
+    "name": "Coimbatore",
+    "cityType": 0
+  },
+  {
+    "id": 5867,
+    "name": "Dehradun",
+    "cityType": 0
+  },
+  {
+    "id": 2741,
+    "name": "Delhi",
+    "cityType": 1
+  },
+  {
+    "id": 2895,
+    "name": "Faridabad",
+    "cityType": 0
+  },
+  {
+    "id": 2803,
+    "name": "Gandhinagar",
+    "cityType": 0
+  },
+  {
+    "id": 5899,
+    "name": "Ghaziabad",
+    "cityType": 0
+  },
+  {
+    "id": 5907,
+    "name": "Gorakhpur",
+    "cityType": 0
+  },
+  {
+    "id": 2207,
+    "name": "Guwahati",
+    "cityType": 0
+  },
+  {
+    "id": 3699,
+    "name": "Gwalior",
+    "cityType": 0
+  },
+  {
+    "id": 12,
+    "name": "Hyderabad",
+    "cityType": 1
+  },
+  {
+    "id": 3707,
+    "name": "Indore",
+    "cityType": 0
+  },
+  {
+    "id": 4539,
+    "name": "Jaipur",
+    "cityType": 0
+  },
+  {
+    "id": 663,
+    "name": "Kakinada",
+    "cityType": 0
+  },
+  {
+    "id": 3371,
+    "name": "Kannur",
+    "cityType": 0
+  },
+  {
+    "id": 5939,
+    "name": "Kanpur",
+    "cityType": 0
+  },
+  {
+    "id": 4945,
+    "name": "Karaikudi",
+    "cityType": 0
+  },
+  {
+    "id": 753,
+    "name": "Karim Nagar",
+    "cityType": 0
+  },
+  {
+    "id": 4951,
+    "name": "Karur",
+    "cityType": 0
+  },
+  {
+    "id": 13,
+    "name": "Kolkata",
+    "cityType": 1
+  },
+  {
+    "id": 5955,
+    "name": "Lucknow",
+    "cityType": 0
+  },
+  {
+    "id": 5081,
+    "name": "Madurai",
+    "cityType": 0
+  },
+  {
+    "id": 3989,
+    "name": "Mumbai",
+    "cityType": 1
+  },
+  {
+    "id": 3175,
+    "name": "Mysore",
+    "cityType": 0
+  },
+  {
+    "id": 3999,
+    "name": "Nasik",
+    "cityType": 0
+  },
+  {
+    "id": 1223,
+    "name": "Nellore",
+    "cityType": 0
+  },
+  {
+    "id": 6009,
+    "name": "Noida",
+    "cityType": 0
+  },
+  {
+    "id": 4007,
+    "name": "Pune",
+    "cityType": 0
+  },
+  {
+    "id": 6388,
+    "name": "Raipur",
+    "cityType": 0
+  },
+  {
+    "id": 6303,
+    "name": "Siliguri",
+    "cityType": 0
+  },
+  {
+    "id": 2867,
+    "name": "Surat",
+    "cityType": 0
+  },
+  {
+    "id": 4037,
+    "name": "Thane",
+    "cityType": 0
+  },
+  {
+    "id": 1827,
+    "name": "Tirupati",
+    "cityType": 0
+  },
+  {
+    "id": 5641,
+    "name": "Trichy",
+    "cityType": 0
+  },
+  {
+    "id": 3571,
+    "name": "Trivandrum",
+    "cityType": 0
+  },
+  {
+    "id": 2873,
+    "name": "Vadodara",
+    "cityType": 0
+  },
+  {
+    "id": 1983,
+    "name": "Visakhapatnam",
+    "cityType": 0
+  },
+  {
+    "id": 2003,
+    "name": "Warangal",
+    "cityType": 0
+  }
+]

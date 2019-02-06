@@ -1,0 +1,63 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<section class="wt-bg">
+	<section class="col-sm-offset-3 col-sm-6 box-slide mar-15-xs">
+		<h4 class="heading mtop15 ">
+			<span class="icon-family text-info"></span> Family History</h4>
+		<section class="fam-hist">
+			<div *ngFor="let sy of HRQQuestionAndAnswers; let i = index ">
+				<div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[i]?.lstHRAQuestionsAnswersBO let questionid = index ">
+					<label class="text-primary" *ngIf="question.HRAQuestion!='-'">{{i+1}}) {{question.HRAQuestion}}:</label>
+					<div class="clearfix"></div>
+					<div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let p = index ">
+
+						<div class="radio-inline custom-radio emoji" *ngIf="answers.ControlID == hcs.radiocontrol" id="{{question.AttributeID}}">
+							<input id="{{question.AttributeID}}_{{p}}" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" class="next-call"
+							 value="{{answers.AttributeValue}}" type="radio">
+							<label for="{{question.AttributeID}}_{{p}}" class="font-300 text-black" (click)="familyhistoryClick(question.AttributeID,answers.AttributeValue)">{{answers.AttributeValue}}
+							</label>
+						</div>
+						<div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+							<input id="{{question.AttributeID}}_{{p}}" name="check_{{question.AttributeID}}_{{p}}" class="checkbox" value="{{answers.AttributeValue}}"
+							 (change)="checkedFamily($event,question.AttributeID,p)" [(ngModel)]="answers.checked" type="checkbox">
+							<label for="{{question.AttributeID}}_{{p}}" class="font-300 text-black"> {{answers.AttributeValue}} </label>
+						</div>
+						<div *ngIf="answers.ControlID == hcs.textcontrol">
+							<input type="text" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" />
+						</div>
+					</div>
+					<div id="realtion_{{question.AttributeID}}" style="display: none;">
+						<!-- <app-familyinfo [attrid]="question.AttributeID"></app-familyinfo> -->
+
+						<div *ngFor="let sy1 of sy.levelTwo; let i = index ">
+							<div class="form-group mtop20" *ngFor="let question1 of sy1.lstHRAQuestionsAnswersBO let questionid1 = index ">
+								<label class="text-primary" *ngIf="question1.HRAQuestion!='-'">{{str[i]}}) {{question1.HRAQuestion}}:</label>
+								<div class="clearfix"></div>
+								<div class="inline-blck" *ngFor="let answers1 of question1.objHRAAnswers; let q = index ">
+									<div class="clearfix"></div>
+									<div class="radio-inline custom-radio" *ngIf="answers1.ControlID == hcs.radiocontrol">
+										<input id="{{question1.AttributeID}}_{{q}}" name="{{question1.AttributeID}}" 
+										[(ngModel)]="question1.Answer"
+										 class="next-call" value="{{answers1.AttributeValue}}" type="radio">
+										<label for="{{question1.AttributeID}}_{{q}}" class="font-300 text-black">{{answers1.AttributeValue}} </label>
+									</div>
+									<div *ngIf="answers1.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+										<input id="{{question1.AttributeID}}_{{q}}" name="check_{{question1.AttributeID}}_{{q}}" class="custom-check"
+										 value="{{answers1.AttributeValue}}" [(ngModel)]="answers1.checked" type="checkbox">
+										<label for="{{question1.AttributeID}}_{{q}}" class="font-300 text-black"> {{answers1.AttributeValue}} </label>
+									</div>
+									<div *ngIf="answers1.ControlID == hcs.textcontrol">
+										<input type="text" name="{{question1.AttributeID}}" [(ngModel)]="question1.Answer" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<section class="lightgrey-box radius25 mtop20"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next"
+				 (click)="nextSymptom()">Next <span class="icon-right-arrow"></span></a> </section>
+		</section>
+	</section>
+</section>

@@ -1,0 +1,101 @@
+<aside class="fadeInRight animated" [ngClass]="broad ? 'col-sm-7 col-sm-pull-5' : 'col-sm-6 col-sm-pull-6'" >
+  <section class="row">
+    <div class="col-xs-12 col-sm-12">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/"></a>
+        </li>
+        <li>
+          <a routerLink="/doctorsearch/{{ca.docCity | lowercase}}">{{ ca.docCity | titlecase }}</a>
+        </li>
+        <li>
+          <a routerLink="/doctorsearch/{{ca.docCity | lowercase}}/{{ca.docSpeciality | lowercase}}">{{ ca.docSpeciality | titlecase }}</a>
+        </li>
+        <li>{{ ca.docName }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wt-bg">
+    <p>
+      <span class="pull-right">
+        <a class="text-info" (click)="goBackToSearch()" *ngIf="completionLevel < 3">Change</a>
+      </span>
+    </p>
+    <div class="row ptop15 pbottom15 ">
+      <div class="col-sm-6 ">
+        <section class="jumbo">
+          <label class="icon-cont">
+            <span class="icon-location pull-left" aria-hidden="true"></span>
+          </label>
+          <div class="jumbo-txt ">
+            <h5>Appointment Date</h5>
+            <h4 class="text-primary">{{ ds }}</h4>
+          </div>
+        </section>
+      </div>
+      <div class="col-sm-6 mtop15-xs">
+        <section class="jumbo">
+          <label class="icon-cont">
+            <span class="icon-clock pull-left" aria-hidden="true"></span>
+          </label>
+          <div class="jumbo-txt ">
+            <h5>Appointment Time</h5>
+            <h4 class="text-primary">{{ ca.timeSlot }}</h4>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="row mtop20">
+      <div class="pbottom15 col-sm-12 bdr-bottom">
+        <figure class="doctor-img">
+          <a class="round-tab" title="AskApollo">
+            <img src="{{ ca.docPhotoURL }}" alt="AskApollo">
+          </a>
+
+        </figure>
+        <figcaption class="doc-txt">
+          <h4 class="text-primary">{{ ca.docName }}</h4>
+          <p>{{ ca.docQualification }}</p>
+          <ul class="data-list">
+            <li class="text-primary">
+              <span class="icon-doctor pull-left" aria-hidden="true"></span>
+              <div class="mLeft20">
+                {{ ca.docSpeciality | titlecase }}
+              </div>
+            </li>
+
+          </ul>
+
+        </figcaption>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="ptop15 pbottom15 col-sm-12">
+        <figure class="doctor-img">
+          <a class="round-tab" title="AskApollo">
+            <img src="../../../assets/map.jpg" alt="AskApollo">
+          </a>
+
+        </figure>
+        <figcaption class="doc-txt">
+          <h4 class="text-primary">{{ ca.docHospital }}</h4>
+          <p>{{ ca.docHospital }}</p>
+          <ul class="data-list">
+            <li class="text-primary">
+              <span class="icon-location pull-left" aria-hidden="true"></span>
+              <div class="mLeft20">
+                <a href="https://www.google.com/maps/?q={{ latlong }}" target="_blank">Get Directions</a>
+              </div>
+            </li>
+          </ul>
+
+        </figcaption>
+      </div>
+    </div>
+  </section>
+
+</aside>
+<!-- /left-content closed-->

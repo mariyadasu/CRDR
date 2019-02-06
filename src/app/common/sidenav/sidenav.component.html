@@ -1,0 +1,56 @@
+<div class="menu-slider" *ngIf="signedIn">
+  <div class="user-sec">
+    <span class="profile-img"> 
+      <a href="javascript:void(0)" class="round-tab" title="AskApollo" (click)="navigateProfile()">
+        <img src="{{imageUrl}}" alt="">
+      </a> 
+    </span>
+    <a href="javascript:void(0)" *ngIf="!signedIn">LOGIN</a>
+    <a (click)="navigateProfile()" *ngIf="signedIn">Hello {{firstName}}</a>
+  </div>
+  
+  <ul class="nav navbar-nav">
+    <li routerLinkActive="active"> <a routerLink="/" (click)="closeSideNav()"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+    <li routerLinkActive="active"><a href="javascript:void(0)"><span class="icon-smartphone-call" aria-hidden="true" ></span> My Consultations</a>
+        <ul  class="nav" id="submenu1" role="menu">
+              <li><a routerlink="dashboard" routerLink="my/dashboard" (click)="closeSideNav()"><span aria-hidden="true" class="icon-doctor"></span> Physical Consultation</a></li>
+              <li><a routerlink="dashboard-oc" routerLink="my/dashboard-oc" (click)="closeSideNav()"><span aria-hidden="true" class="icon-smartphone-call"></span> Online Consultation</a> </li>
+            </ul>
+<style>
+  .menu-slider .navbar-nav li #submenu1 li a{
+    font-size:12px;
+    color: #cacaca;
+    font-weight: 600;
+  }
+  .menu-slider .navbar-nav li #submenu1 li a:hover,
+  .menu-slider .navbar-nav li #submenu1 li:hover{
+    color: #FFF;
+  }
+  .menu-slider .navbar-nav li #submenu1{
+      padding-left:10px;
+  }
+  .menu-slider .navbar-nav li #submenu1 li a [class^="icon-"]{
+     font-size: 12px;
+    
+  }
+</style>
+    </li>
+    <li><a routerLink="my/profile" (click)="closeSideNav()"><span class="icon-user" aria-hidden="true"></span> My Profile</a></li>
+    <li routerLinkActive="active"><a routerLink="my/family" (click)="closeSideNav()"><span class="icon-family" aria-hidden="true"></span> My Family</a></li>
+    <li><a href="https://www.apolloprism.com/" target="_blank"><span class="icon-car-first-aid-kit" aria-hidden="true"></span> My Health Records</a>      </li>
+    <li><a href="https://www.apollohospitals.com/international-patient-services/" target="_blank"><span class="icon-earth-globe-with-continents-maps" aria-hidden="true"></span> International Patients</a>      </li>
+    <li><a href="https://www.askapollo.com/physical-appointment/bookhealthcheckappointment.aspx" target="_blank"><span class="icon-medical-heart-health-check" aria-hidden="true"></span> My Health Check</a>      </li>
+    <li><a routerLink="/faqs" (click)="closeSideNav()"><span class="icon-question" aria-hidden="true"></span> FAQ’s</a></li>
+    <li><a routerLink="/contact-us" (click)="closeSideNav()"><span class="icon-family" aria-hidden="true"></span> Contact us</a></li>
+    <li><a routerLink="/feedback" (click)="closeSideNav()"><span class="glyphicon glyphicon-comment"></span> Feedback</a> </li>
+    <li><a href="javascript:void(0)" (click)="logout()"><span class="icon-exit"></span> Log out</a> </li>
+    <li class="hidden"><a><span class="icon-question" aria-hidden="true"></span> Help Center</a> </li>
+
+  </ul>
+  <p class="menu-social">
+    <a href="https://www.facebook.com/AskApolloOnline/" target="_blank"><span class="icon-facebook-logo-button" aria-hidden="true"></span></a>
+    <a href="https://twitter.com/askapollo" target="_blank"><span class="icon-twitter" aria-hidden="true"></span></a>
+  </p>
+  <p class="padd20"><a class="btn btn-info  btn-sm btn-block" href="http://onelink.to/5kfb99"
+      target="_blank">Download the AskApollo App</a></p>
+</div>

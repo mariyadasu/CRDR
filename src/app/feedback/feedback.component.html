@@ -1,0 +1,187 @@
+<!-- content-wrap start -->
+<section class="container content-wrap">
+  <div class="row">
+    <aside class="col-md-12 right-content fadeInRight animated">
+      <section class="row">
+        <div class="col-xs-7 col-sm-10">
+          <ul class="breadcrumb">
+            <li><a href="index.html"></a></li>
+            <li>Feedback</li>
+          </ul>
+        </div>
+      </section>
+      <section class="wt-bg">
+
+        <section class="row mtop20">
+          <div class="col-sm-4 hidden-xs"> <img class="img-rounded img-responsive bdr-grey" src="./assets/feedback.jpg" alt="" /> </div>
+          <div class="col-sm-8 ">
+            <div class="edit-form" id="acc-feed">
+              <h4 class="mtop0">Your valuable <span class="text-info">feedback</span> will help us improve our products & services. Please
+                rate us on the below parameters.</h4>
+              <div class="faces">
+
+
+                <ul class="nav nav-tabs">
+                  <li class="chk-cont" (click)="setFeedBackType('aspect','1')">
+                    <a href="#1aa" data-toggle="tab">
+                                <i class="tick glyphicon glyphicon-ok"></i>
+                                <input id="feedback1" name="feedback" type="radio" class="hideradio" />
+                                <label title="Poor" class="chkview" for="feedback1">
+                                <img src="../../assets/poor.png" alt="Poor"></label>
+                    <span class="title-rate">Poor</span></a>
+                    </li>
+                  <li class="chk-cont" (click)="setFeedBackType('aspect','2')"><a href="#1aa" data-toggle="tab">
+                                <i class="tick glyphicon glyphicon-ok"></i>
+                                <input id="feedback2" name="feedback" type="radio" class="hideradio" />
+                                <label title="Average" class="chkview" for="feedback2">
+                                <img src="../../assets/avg.png" alt="Average"></label><span class="title-rate">Average</span></a>
+                            </li>
+                            <li class="chk-cont" (click)="setFeedBackType('aspect','3')"><a href="#1aa" data-toggle="tab">
+                                <i class="tick glyphicon glyphicon-ok"></i>
+                                <input id="feedback3" name="feedback" type="radio" class="hideradio" />
+                                <label title="Good" class="chkview" for="feedback3">
+                                <img src="../../assets/good.png" alt="Good"></label><span class="title-rate">Good</span></a>
+                            </li>
+                            <li class="chk-cont" (click)="setFeedBackType('like','4')"><a href="#1bb"  data-toggle="tab">
+                                <i class="tick glyphicon glyphicon-ok"></i>
+                                <input id="feedback4" name="feedback" type="radio" class="hideradio" />
+                                <label title="Very Good" class="chkview" for="feedback4">
+                                <img src="../../assets/vgood.png" alt="Very Good"></label><span class="title-rate">Very Good</span></a>
+                            </li>
+                            <li class="chk-cont" (click)="setFeedBackType('like','5')"><a href="#1bb"  data-toggle="tab">
+                                <i class="tick glyphicon glyphicon-ok"></i>
+                                <input id="feedback5" name="feedback" type="radio" class="hideradio" />
+                                <label title="Excellent" class="chkview" for="feedback5">
+                                <img src="../../assets/excellent.png" alt="Excellent"></label><span class="title-rate">Excellent</span></a>
+                            </li>
+                        </ul>
+
+
+
+
+
+
+
+
+
+<!-- 
+                <input id="feedback1"  (click)="setFeedBackType('aspect','1')" name="feedback" 
+                type="radio" class="hideradio" />Poor
+                <input id="feedback2"  (click)="setFeedBackType('aspect','2')" 
+                name="feedback" type="radio" class="hideradio" />Average
+                <input id="feedback3"  (click)="setFeedBackType('aspect','3')" 
+                name="feedback" type="radio" class="hideradio" />Good
+                <input id="feedback4"   (click)="setFeedBackType('like','4')" 
+                name="feedback" type="radio" class="hideradio" />Very Good
+                <input id="feedback5"  (click)="setFeedBackType('like','5')" 
+                name="feedback" type="radio" class="hideradio" />Excellent -->
+<!-- 
+                <ul class="nav nav-tabs">
+
+                  <li class="chk-cont"><a (click)="setFeedBackType('aspect')">
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <input id="feedback1" name="feedback" type="radio" class="hideradio" />
+                        <label title="Poor" class="chkview" for="feedback1">
+                        <img src="img/poor.png" alt="Poor"></label>
+						<span class="title-rate">Poor</span></a>
+                  </li>
+                  <li class="chk-cont"><a (click)="setFeedBackType('like')">
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <input id="feedback2" name="feedback" type="radio" class="hideradio" />
+                        <label title="Average" class="chkview" for="feedback2">
+                        <img src="img/avg.png" alt="Average"></label><span class="title-rate">Average</span></a>
+                  </li>
+                  <li class="chk-cont"><a>
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <input id="feedback3" name="feedback" type="radio" class="hideradio" />
+                        <label title="Good" class="chkview" for="feedback3">
+                        <img src="img/good.png" alt="Good"></label><span class="title-rate">Good</span></a>
+                  </li>
+                  <li class="chk-cont "><a>
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <input id="feedback4" name="feedback" type="radio" class="hideradio" />
+                        <label title="Very Good" class="chkview" for="feedback4">
+                        <img src="img/vgood.png" alt="Very Good"></label><span class="title-rate">Very Good</span></a>
+                  </li>
+                  <li class="chk-cont"><a>
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <input id="feedback5" name="feedback" type="radio" class="hideradio" />
+                        <label title="Excellent" class="chkview" for="feedback5">
+                        <img src="img/excellent.png" alt="Excellent"></label><span class="title-rate">Excellent</span></a>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="form-group mtop20">
+                <label class="font-nrml">What was your primary goal of your visit to our website today?<span class="asterisk">*</span></label>
+                <div class="dropdown bootstrap-select">
+
+                  <select name="reasons" (change)="setReason($event.target)" class="mydropdown"> 
+                    <option [selected]="c==reason" 
+                    *ngFor="let c of reasons" [value]="c">
+                      {{c}}
+                    </option>
+                  </select>
+
+                </div>
+
+              </div>
+
+              <div class="form-group" id="specify" *ngIf="showOtherReason=='Y'">
+                <label class="font-nrml">Please specify<span class="asterisk">*</span></label>
+                <textarea class="form-control" [(ngModel)]="otherReason" placeholder="" rows="1"></textarea>
+              </div>
+              <section class="tab-content ">
+
+                <div class="form-group" *ngIf="showAspectHideLike=='N'">
+                  <label class="font-nrml">What did you like on the Askapollo website?<span class="asterisk">*</span></label>
+                  <textarea class="form-control" placeholder="Please give your valuable feedback" rows="1" [(ngModel)]="feedbackContentLike"></textarea>
+
+                </div>
+                <div class="form-group" *ngIf="showAspectHideLike=='Y'">
+                  <label class="font-nrml">Which aspect of the site should we improve upon?<span class="asterisk">*</span></label>
+
+                  <textarea class="form-control" placeholder="Please give your valuable feedback" rows="1" [(ngModel)]="feedbackContentAspect"></textarea>
+
+                </div>
+              </section>
+              <div class="form-group">
+                <label class="font-nrml">Please help us with your Email ID</label>
+                <input type="text" [(ngModel)]="email" class="form-control" placeholder="Email ID" [readonly]="true" />
+              </div>
+              <div class="form-group text-center">
+
+                <a (click)="sendFeedBack(template)" data-toggle="modal" data-target="#thankyou" class="btn btn-info">Submit</a>
+                <a (click)="clear()" class="btn btn-default">Cancel</a>
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+        </section>
+      </section>
+
+      <!-- /listing closed -->
+
+    </aside>
+    <!-- /left-content closed-->
+
+    <!-- /right-content closed -->
+  </div>
+  <!-- /row -->
+  <ng-template #template>
+    
+    <div class="modal-body">
+      <div class="wt-bg  text-center thnk-you">
+            <span class="circle"><span class="icon-check"></span></span>
+            <h1 class="text-info">Thank you!</h1>
+            <h4 class="text-info">For your valuable feedback!</h4>
+            <h5 class="text-primary ">Your feedback will help us in improving our services better.</h5>
+              
+        </div>
+    </div>
+  </ng-template>
+</section>
+<!-- /content-wrap closed -->

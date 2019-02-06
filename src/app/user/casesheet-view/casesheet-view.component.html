@@ -1,0 +1,199 @@
+<section class="inner-pages">
+    <!-- mini-header start-->
+    <section class="mini-header"> </section>
+    <!-- /mini-header closed-->
+    <!-- content-wrap start -->
+    <section class="container content-wrap">
+      <div class="row">
+        <aside class="col-md-9  fadeInRight animated">
+          <section class="row">
+            <div class="col-xs-12 col-sm-12">
+              <ul class="breadcrumb">
+                <li style="cursor:pointer" routerLink="/">
+                <li>
+                  <a routerLink="/my/dashboard-oc">Dashboard</a>
+                </li>
+                <li>Casesheet</li>
+              </ul>
+            </div>
+          </section>
+          <section class="wt-bg  border-btm ">
+            <section class="col-sm-offset-1 col-sm-10 box-slide mar-15-xs">
+              <!-- <section class="box-head">
+                <section class="row progress-top">
+                  <div class="col-xs-3">Personal</div>
+                  <div class="col-xs-3">Lifestyle</div>
+                  <div class="col-xs-3">Medical</div>
+                  <div class="col-xs-3">Reports</div>
+                </section>
+                <div class="progress mini">
+                  <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                    aria-valuemin="0" aria-valuemax="100" style="width: 13%;">11%</div>
+                </div>
+              </section> -->
+              <div class="alert alert-success hide mtop15"></div>
+  
+              <div id="regiration_form" class="edit-form" novalidate="">                
+                <!--Upload Reports Closed-->
+                <fieldset class="fadeInRight animated " id="fldsetSummary">
+                  <h4 class="heading mtop15"><span class="icon-document text-info"></span> Medical casesheet</h4>
+                  <section class="icon-center mtop10"><span class="icon-medkit"></span></section>
+  
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">1. Personal Information </h3>
+                  <div class="grey-box clearfix padd10 mtop10">
+                    <ul class="list-arrow wdt-30-md">
+                      <li class="text-grey font-nrml">First Name: <span class="text-primary">{{AppointmentPatientInfo.firstName}}</span></li>
+                      <li class="text-grey font-nrml">Last Name: <span class="text-primary">{{AppointmentPatientInfo.lastName}}</span></li>
+                      <li class="text-grey font-nrml">Date of birth (Age): <span class="text-primary">{{AppointmentPatientInfo.dob}}</span></li>
+                      <li class="text-grey font-nrml">Gender: <span class="text-primary">{{AppointmentPatientInfo.gender}}</span></li>
+                      <li class="text-grey font-nrml">Height: <span class="text-primary">{{AppointmentPatientInfo.heightText}}</span></li>
+                      <li class="text-grey font-nrml">Weight: <span class="text-primary">{{AppointmentPatientInfo.weightText}}</span></li>
+                      <li class="text-grey font-nrml">City: <span class="text-primary">{{AppointmentPatientInfo.city}}</span></li>
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">2. Smoke </h3>
+                  <div class="clearfix">
+                    <ul class="list-arrow ">
+                      <li class="text-grey font-nrml">Do you smoke? <span class="text-primary">{{AppointmentPatientInfo.isSmoker}}</span>
+                      </li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Yes'">How many
+                        cigarettes do you smoke daily? <span class="text-primary">{{AppointmentPatientInfo.howManyCigarretesperDay}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Yes'">Smoking since how
+                        many years: <span class="text-primary">{{AppointmentPatientInfo.howManyYearsSmoked}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">When did
+                        you stop smoking? <span class="text-primary">{{AppointmentPatientInfo.whendidyoustoppedSmoking}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">How many
+                        cigarettes did you smoke? <span class="text-primary">{{AppointmentPatientInfo.howManyCigarretesperDay}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isSmoker === 'Not Anymore'">How many
+                        years did you smoke? <span class="text-primary">{{AppointmentPatientInfo.howManyYearsSmoked}}</span></li>
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0  bdr-bottom ">3. Alcohol </h3>
+                  <div class="clearfix">
+                    <ul class="list-arrow ">
+                      <li class="text-grey font-nrml">Do you consume alcohol? <span class="text-primary">{{AppointmentPatientInfo.isDrinker}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Yes'">How long are you
+                        consuming Alcohol? <span class="text-primary">{{AppointmentPatientInfo.howlongUrDrinking}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Yes'">How Frequently?
+                        <span class="text-primary">{{AppointmentPatientInfo.HowFrequentlyDrink}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.isDrinker === 'Not Anymore'">When did
+                        you stop consuming alcohol? <span class="text-primary">{{AppointmentPatientInfo.whendidyoustoppedDrinking}}</span></li>
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom">4. Diet </h3>
+                  <div class="clearfix">
+                    <ul class="list-arrow ">
+                      <li class="text-grey font-nrml">Diet <span class="text-primary">{{AppointmentPatientInfo.Diet}}</span></li>
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0  bdr-bottom ">5. Exercise </h3>
+                  <div class="clearfix ">
+                    <ul class="list-arrow ">
+                      <li class="text-grey font-nrml">Do you exercise regularly? <span class="text-primary">{{AppointmentPatientInfo.doyouExcerciseDaily}}</span></li>
+                      <!-- <li class="text-grey font-nrml">Which exercise you do? <span class="text-primary">Swimming</span></li>
+                      <li class="text-grey font-nrml">How many days in a week? <span class="text-primary">Daily </span></li>
+                      <li class="text-grey font-nrml">How long do you exercise? <span class="text-primary">30 mint.</span></li> -->
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">6. Complaints/Symptoms </h3>
+                  <div class="clearfix ">
+                    <ul class="list-arrow wdt-30-md">
+                        <li class="text-grey font-nrml" *ngFor="let sym of AppointmentPatientInfo.presentComplaintsObject">
+                            <span *ngIf="sym.symptoms!=='Others'">{{sym.symptoms}}</span>
+                            <span *ngIf="sym.symptoms==='Others'">{{sym.symptomsdescription}}</span>
+                          
+                        </li>
+                      <!-- <li class="text-grey font-nrml">Fainting</li> -->
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">7. Present Medications </h3>
+                  <div class="clearfix ">
+                    <ul class="div-table div-bordered">
+                      <li>
+                        <!-- <div class="wdth-5p div-cell text-primary">Sl.#</div> -->
+                        <div class="wdth-40p div-cell text-primary">Medicine name</div>
+                        <div class="wdth-30p div-cell text-primary">Dosage</div>
+                        <div class="wdth-20p div-cell text-primary">Started From</div>
+                      </li>
+                      <li *ngFor="let m of AppointmentPatientInfo.presentMedicationObject">
+                        <!-- <div class="wdth-5p div-cell">1</div> -->
+                        <div class="wdth-40p div-cell">{{m.medicine}}</div>
+                        <div class="wdth-30p div-cell">{{m.dosage}}</div>
+                        <div class="wdth-25p div-cell "> {{m.started}}</div>
+                      </li>
+                      <!-- <li>
+                        <div class="wdth-5p div-cell">2</div>
+                        <div class="wdth-40p div-cell">ABS</div>
+                        <div class="wdth-30p div-cell">Twice in a day</div>
+                        <div class="wdth-25p div-cell "> 3/7/2018</div>
+                      </li>
+                      <li>
+                        <div class="wdth-5p div-cell">3</div>
+                        <div class="wdth-40p div-cell">Paracip</div>
+                        <div class="wdth-30p div-cell">Once in a day</div>
+                        <div class="wdth-25p div-cell "> 3/7/2018</div>
+                      </li> -->
+                    </ul>
+                  </div>
+  
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">8. Allergies </h3>
+                  <div class="clearfix ">
+                    <ul class="list-arrow ">
+                        <li class="text-grey font-nrml">Do you have any allergies? <span class="text-primary">{{AppointmentPatientInfo.isAllergetic}}</span></li>
+                        <li class="text-grey font-nrml" *ngFor="let al of AppointmentPatientInfo.allergiesObject">
+                            <span *ngIf="al.item_text!=='Others'">{{al.item_text}}</span>
+                            <span *ngIf="al.item_text==='Others'">{{al.item_description}}</span> 
+                          </li>
+                    </ul>
+                  </div>
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">9. History </h3>
+                  <div class="clearfix ">
+                    <h5 class="text-primary fonts-16 mbottom0">Personal</h5>
+                    <ul class="list-arrow wdt-30-md">
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.hypertension">Hypertension <span
+                          class="text-primary">{{AppointmentPatientInfo.hypertension}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.diabeties">Diabeties <span class="text-primary">{{AppointmentPatientInfo.diabeties}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.heartDisease">HeartDisease <span
+                          class="text-primary">{{AppointmentPatientInfo.heartDisease}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.anemia">Anemia <span class="text-primary">{{AppointmentPatientInfo.anemia}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.cancer">Cancer <span class="text-primary">{{AppointmentPatientInfo.cancer}}</span></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix ">
+                    <h5 class="text-primary fonts-16 mbottom0">Family </h5>
+                    <ul class="list-arrow wdt-30-md">
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.hypertensioninFamily">Hypertension
+                        <span class="text-primary">{{AppointmentPatientInfo.hypertensioninFamily}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.diabetiesinFamily">Diabeties <span
+                          class="text-primary">{{AppointmentPatientInfo.diabetiesinFamily}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.heartDiseaseinFamily">HeartDisease
+                        <span class="text-primary">{{AppointmentPatientInfo.heartDiseaseinFamily}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.anemiainFamily">Anemia <span class="text-primary">{{AppointmentPatientInfo.anemiainFamily}}</span></li>
+                      <li class="text-grey font-nrml" *ngIf="AppointmentPatientInfo.cancerinFamily">Cancer <span class="text-primary">{{AppointmentPatientInfo.cancerinFamily}}</span></li>
+                    </ul>
+                  </div>
+  
+                  <h3 class="heading14 text-info mbottom0 bdr-bottom ">10. Reports </h3>
+                  <div class="clearfix ">
+                    <ol class="list-order margin0">
+                      <li *ngFor="let d of uploadedDocuments"><a target="_blank" href="{{d.StaorageImagePath}}" class="text-grey"><span
+                            class="icon-file-text-o"></span> {{d.DocumentName}}</a></li>
+                      <!-- <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C
+                          Akshara.doc</a></li>
+                      <li><a href="#1" class="text-grey"><span class="icon-file-text-o"></span> Apollo C B C C
+                          Akshara.pdf</a></li> -->
+                    </ol>
+                  </div>
+                  
+                </fieldset>
+              </div>
+            </section>
+          </section>
+          <!-------------------------wt-bg closed-------------------->
+        </aside>
+       
+      </div>
+      <!-- /row -->
+    </section>
+    <!-- /content-wrap closed -->
+  </section>

@@ -1,0 +1,565 @@
+<!--app banner start-->
+<div class="top-appBanner">
+  <a href="http://onelink.to/5kfb99" target="_blank" class="btn btn-info btn-sm pull-right">Get
+    App</a>
+  <button type="button" class="close">&times;</button>
+  <figure>
+    <img src="./assets/mobile.png" class="img-responsive" alt="AskApollo">
+  </figure>
+  <figcaption>
+    <strong>Download the</strong>
+    <span class="text-info">Ask</span>
+    <span class="text-primary">Apollo app!</span>
+  </figcaption>
+</div>
+
+
+<!--header Start-->
+<header class="header ">
+
+  <div class="container-fluid" [ngClass]="{'login': signedIn, 'not-login': !signedIn}" *ngIf="!iFrame">
+    <div class="row" id="mh">
+      <div class="col-md-2  col-sm-12 col-xs-12">
+        <ng-content select="[ham-menu-xs]"></ng-content>
+        <div class="visible-sm visible-xs top-contact">
+
+          <a *ngIf="!signedIn" (click)="openSignup()" class=""><span class="glyphicon glyphicon-user"></span> Login |
+            Sign
+            Up</a>
+
+          <a href="https://api.whatsapp.com/send?phone=+919133873311&text=Hi, I contacted you Through your website."
+            class="wtsp-no" *ngIf="activeTab != us.TAB_ONLINE_CONSULTATION">
+            <span class="icon-whatsapp-logo-variant" aria-hidden="true"></span> +91-9133 873 311</a>
+          <a href="https://api.whatsapp.com/send?phone=+917093840123&text=Hi, I contacted you Through your website."
+            *ngIf="activeTab == us.TAB_ONLINE_CONSULTATION">
+            <span class="icon-whatsapp-logo-variant" aria-hidden="true"></span> +91-7093 840 123</a>
+
+          <div *ngIf="signedIn">
+            <a routerLink="/my/dashboard"><span class="glyphicon glyphicon-user"></span>{{ firstName }}</a>
+
+            <a (click)="logout()"> Logout </a>
+          </div>
+
+        </div>
+        <a class="navbar-brand" routerLink="/">
+          <img src="./assets/askapollo.png" class="img-responsive visible-xs" alt="AskApollo" /><img src="./assets/askapollo-logo.png"
+            class="img-responsive hidden-xs" alt="AskApollo" />
+        </a>
+      </div>
+
+      <section class="col-md-10  col-sm-12 col-xs-12 tabs-cont">
+        <ul class="nav nav-tabs">
+          <li [ngClass]="{'active': activeTab == us.TAB_PHYSICAL_APPOINTMENT}">
+            <a routerLink="/" (click)="clearSearch()">
+              <span class="icon-doctor" aria-hidden="true"></span>
+              <span class="tab-sep">Book
+                <br />Appointment</span>
+            </a>
+          </li>
+          <li [ngClass]="{'active': activeTab == us.TAB_ONLINE_CONSULTATION}">
+            <a routerLink="online-doctors-consultation" (click)="clearSearch()">
+              <span class="icon-smartphone-call" aria-hidden="true"></span>
+              <span class="tab-sep"> Consult
+                <br />Online</span>
+            </a>
+          </li>
+          <li class="hidden-xs">
+            <a href="https://www.askapollo.com/physical-appointment/bookhealthcheckappointment.aspx" target="_blank">
+              <span class="icon-medical-heart-health-check" aria-hidden="true"></span>
+              <span class="tab-sep">Book Health<br />Check
+              </span>
+            </a>
+          </li>
+          <li [ngClass]="{'active': activeTab == us.TAB_HEALTH_LIBRARY}">
+            <a routerLink="/health-library">
+            <!-- <a href="https://blog.askapollo.com/" target="_blank"> -->
+              <span class="icon-a-heart-beside-the-book" aria-hidden="true"></span>
+              <span class="tab-sep">Health<br />Library
+              </span>
+            </a>
+          </li>
+          <li [ngClass]="{'active': activeTab == us.TAB_CANCER_CARE}" id="mnone">
+            <a routerLink="/canceropinion">
+              <span class="icon-board-Big" aria-hidden="true"></span>
+              <span class="tab-sep"> Cancer <br />Opinion</span>
+            </a>
+          </li>
+          <li id="mdisplay">
+            <a href="https://www.askapollo.com/physical-appointment/bookHealthcheckappointment.aspx" target="_blank">
+              <span class="icon-medical-heart-health-check" aria-hidden="true"></span>
+              <span class="tab-sep"> <i class="hidden-xs">Book </i>Health
+                <br />Check</span>
+            </a>
+          </li>
+          <li class="dropdown1">
+            <a (click)="isCollapsedHeader = !isCollapsedHeader" id="oth-service" (clickOutside)="onClickedOutside($event)">
+              <span class="icon-pharmacy" aria-hidden="true"></span>
+              <span class="tab-sep">Other
+                <br />Services</span>
+              <span class="icon-down-arrow"></span>
+            </a>
+
+            <ul class="dropdown-menu hidden-xs" [collapse]="isCollapsedHeader">
+              <li id="mnone">
+                <a href="https://www.apolloprism.com/" target="_blank">
+                  <span class="icon-clipboard-with-pencil" aria-hidden="true"></span>
+                  <span class="tab-sep">Health Records
+                  </span>
+                </a>
+              </li>
+
+              <li id="mdisplay">
+                <a routerLink="/canceropinion">
+                  <span class="icon-board-Big" aria-hidden="true"></span>
+                  <span class="tab-sep"> Cancer
+                    <br />Opinion</span>
+                </a>
+              </li>
+
+              <li style="display: none;">
+                <a href="https://www.askapollo.com/physical-appointment/bookHealthcheckappointment.aspx" target="_blank">
+                  <span class="icon-medical-heart-health-check" aria-hidden="true"></span>
+                  <span class="tab-sep">Book Health Check
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://pay.apollohospitals.com/" target="_blank">
+                  <span class="icon-online-pay" aria-hidden="true"></span>
+                  <span class="tab-sep">Pay Online</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://apollohomecare.com/" target="_blank">
+                  <span class="icon-charity"></span>
+                  <span class="tab-sep">Home Care</span>
+                </a>
+              </li>
+              <!--<li>
+                <a *ngIf="!signedIn" routerLink="/health-checks" >
+                  <span class="icon-heartbeat"></span>
+                  <span class="tab-sep">Health Risk</span>
+                </a>
+                <a *ngIf="signedIn" routerLink="/health-risk-questionnaire/appointmentlist" >
+                  <span class="icon-heartbeat"></span>
+                  <span class="tab-sep">Health Risk</span>
+                </a>
+              </li>-->
+              <li>
+                <a href="javascript:void(0)">
+                  <span class="icon-telephone" aria-hidden="true"></span>
+                  <span class="tab-sep"> 1860 500 1066</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section class="other-services ">
+        <ul class="droplinks open in">
+          <!-- <li><a href="#1"><span class="icon-a-heart-beside-the-book" aria-hidden="true"></span> Health Library</a></li> -->
+          <li id="mdisplay">
+            <a routerLink="/canceropinion">
+              <span class="icon-board-Big" aria-hidden="true"></span>
+              <span class="tab-sep"> Cancer Opinion</span>
+            </a>
+          </li>
+          <li id="mnone"><a href="https://www.askapollo.com/physical-appointment/bookhealthcheckappointment.aspx"
+              target="_blank"><span class="icon-medical-heart-health-check" aria-hidden="true"></span> Book Health
+              Check</a></li>
+
+          <li><a href="https://www.apolloprism.com/" target="_blank"><span class="icon-clipboard-with-pencil"
+                aria-hidden="true"></span>
+              Health Records</a>
+          </li>
+
+          <li><a href="https://pay.apollohospitals.com/" target="_blank"><span class="icon-online-pay" aria-hidden="true"></span>
+              Pay Online</a></li>
+          <!-- <li><a href="#1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Visit old site</a></li> -->
+          <li><a href="https://apollohomecare.com/" target="_blank"><span class="icon-charity" aria-hidden="true"></span>
+              Home Care</a></li>
+          <li><a href="javascript:void(0)"><span class="icon-telephone" aria-hidden="true"></span> 1860 500 1066</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <!--row Closed-->
+    <div class="row blue-bg ">
+      <div class="col-md-1  padd20 location hidden-sm hidden-xs">
+
+
+        <ng-content select="[ham-menu-gxs]" *ngIf="signedIn"></ng-content>
+
+
+        <div style="display: none;" [ngClass]=" signedIn ? 'col-sm-9' : 'col-sm-12'">
+          <div class="dropdown bootstrap-select">
+            <!-- <select>
+              <option value="c.id" *ngFor="let c of cities" (click)="preferredCitySelected(c)">
+                {{c.name}}
+              </option>
+            </select> -->
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true">
+              {{ selectedCity.name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let c of cities" (click)="preferredCitySelected(c)">
+                <a data-value="c.id">{{ c.name }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Begin Secondary Header for Physical Appointment Booking -->
+      <div class="col-md-9 blue-bg zindex1000 main-search" *ngIf="activeTab == us.TAB_PHYSICAL_APPOINTMENT && !userRoutes(router.url)">
+        <div class="tab-content wow zoomIn animated">
+          <div class="tab-pane fade in active">
+            <div style="display: none;">
+              <div class="dropdown bootstrap-select">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true">
+                  {{ selectedCity.name }}
+                  <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li *ngFor="let c of cities" (click)="preferredCitySelected(c)">
+                    <a data-value="c.id">{{ c.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <h2 class="find-doc">Find Doctors
+                <small>&amp; Book Appointment</small>
+              </h2>
+
+              <input type="text" class="form-control input-lg search" name="x" [(ngModel)]="searchString"
+                [ngModelOptions]="{standalone: true}" placeholder="{{ searchPlaceholder }}" (typeaheadOnSelect)="searchSelected($event)"
+                (keyup)="getAutoSuggestion($event)" [typeahead]="searchSuggestions" [typeaheadOptionsLimit]="10"
+                [typeaheadWaitMs]="300" [disabled]="selectedCity.name == 'Select City'">
+            </div>
+
+            <div class="input-group input-group-lg">
+              <div class="row myrow">
+                <div class="col-sm-2 firstcol">
+                  <select class="myselect" name="cities" (change)="preferredCitySelectedNew($event.target)">
+                    <option value="-1">Select City</option>
+                    <optgroup label="Top Cities">
+                      <option *ngFor="let c of topCities" [value]="c.id" [selected]="c.name==selectedCity.name">
+                        {{c.name}}
+                      </option>
+                    </optgroup>
+                    <optgroup label="Other Cities">
+                      <option *ngFor="let c of otherCities" [value]="c.id" [selected]="c.name==selectedCity.name">
+                        {{c.name}}
+                      </option>
+                    </optgroup>
+
+
+                    <!-- <option [selected]="c.name==selectedCity.name" *ngFor="let c of cities" [value]="c.id">
+                      {{c.name}}
+                    </option> -->
+                  </select>
+                </div>
+                <div class="col-sm-7 midcol booksearch">
+                  <form #form="ngForm" class="myserchicon src-form">
+                    <input type="text" (blur)="searchBulr()" [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}"
+                      class="form-control input-lg search" placeholder="{{ searchPlaceholder }}" (typeaheadOnSelect)="searchSelected($event)"
+                      (keyup)="getAutoSuggestion($event)" [typeahead]="searchSuggestions" [typeaheadOptionsLimit]="10"
+                      [typeaheadWaitMs]="300" [disabled]="selectedCity.name == 'Select City'" (keyup.enter)="submitSearchPhy()">
+                  </form>
+
+                </div>
+                <div class="col-sm-3 lastcol">
+                  <select name="cities" class="myselect" (change)="setCurrentHospitalNew($event.target)">
+                    <option [value]="">Select Hospital</option>
+            
+                    <optgroup label="Hospitals" *ngIf="hospitalsList.length>0">
+                        <option *ngFor="let c of hospitalsList" [value]="c.hospitalId" [selected]="c.hospitalName==selectedHospital.hospitalName">
+                        {{c.hospitalName}}
+                      </option> 
+                    </optgroup>
+                    <optgroup label="Clinics"  *ngIf="clinicsList.length>0">
+                        <option *ngFor="let c of clinicsList" [value]="c.hospitalId" [selected]="c.hospitalName==selectedHospital.hospitalName">
+                        {{c.hospitalName}}
+                      </option> 
+                    </optgroup> 
+                    <!-- <option [selected]="c.hospitalName==selectedHospital.hospitalName" *ngFor="let c of hospitals"
+                      [value]="c.hospitalId">
+                      {{c.hospitalName}}
+                    </option> -->
+                  </select>
+
+                  <span class="mybtn input-group-btn">
+                    <button class="btn btn-info" type="button" (click)="goFetch()">Search
+                      <span class="icon-magnifier" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+
+
+
+
+              <!-- <div class="dropdown bootstrap-select input-group-btn ctlocate">
+                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                        {{ selectedCity.name }}
+                        <span class="caret"></span>
+                      </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li *ngFor="let c of cities" (click)="preferredCitySelected(c)">
+                    <a data-value="c.id">{{ c.name }}</a>
+                  </li>
+                </ul> 
+              </div> -->
+
+
+
+
+              <!-- <div class="dropdown bootstrap-select input-group-btn">
+              
+                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">
+                        {{ selectedHospital.hospitalName }}
+                        <span class="caret"></span>
+                      </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li *ngIf="hospitals.length==0" class="no-city-hospitals"> Select a city first </li>
+                  <li *ngFor="let h of hospitals" (click)="setCurrentHospital(h)">
+                    <a data-value="h.hospitalId">{{ h.hospitalName }}</a>
+                  </li>
+                </ul> 
+              </div> -->
+
+
+
+
+              <div style="display: none;" class="col-md-10  col-sm-12 col-xs-12 tabs-cont">
+                <div class="login-btn pull-right hidden-xs hidden-sm">
+                  <a *ngIf="!signedIn" class="btn btn-whtLine text-uppercase" (click)="openSignup()">Login &nbsp; |
+                    &nbsp;
+                    Sign Up</a>
+                  <span *ngIf="signedIn" class="welcome"><span class="glyphicon glyphicon-user"></span>
+                    <a routerLink="/my/dashboard">{{ firstName }}</a>
+                    <br />
+                    <a (click)="logout()"> Logout </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- input group closed-->
+          </div>
+        </div>
+      </div>
+
+
+      <!-- End Secondary Header for Physical Appointment Booking -->
+
+      <!-- Begin Secondary Header for Online Consultation -->
+      <div class="col-md-9 blue-bg main-search zindex1000" *ngIf="activeTab == us.TAB_ONLINE_CONSULTATION && !userRoutes(router.url)">
+        <div class="tab-content wow zoomIn animated">
+          <div class="tab-pane fade ">
+            <div style="display: none;" class="">
+              <div class="dropdown bootstrap-select">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true"> Hyderabad
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li>
+                    <a href="#" data-value="Hyderabad">Hyderabad</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Mumbai">Mumbai</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Delhi">Delhi</a>
+                  </li>
+                </ul>
+              </div>
+              <h2 class="find-doc">Find Doctors
+                <small>&amp; Book Appointment</small>
+              </h2>
+              <input type="text" class="form-control search" name="x" placeholder="Doctors, Clinics, Specialities, Hospitals etc">
+            </div>
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control search" name="x" placeholder="Enter Primary Speciality/Super Speciality/Doctor Name">
+              <div class="dropdown bootstrap-select input-group-btn">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true"> Apollo Health City Jubilee Hills
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li>
+                    <a href="#" data-value="Hyderabad">Apollo Health City Jubilee Hills</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Mumbai">Apollo Health City Jubilee Hills</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Delhi">Apollo Health City Jubilee Hills</a>
+                  </li>
+                </ul>
+              </div>
+              <span class="myserchicon input-group-btn">
+                <button class="btn btn-info" type="button">Search
+                  <span class="icon-magnifier" aria-hidden="true"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div id="online-tab" class="tab-pane fade in active">
+            <div style="display: none;" class="">
+              <div class="dropdown bootstrap-select">
+                <input type="text" class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true" value="Hyderabad">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li>
+                    <a href="#" data-value="Hyderabad">Hyderabad</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Mumbai">Mumbai</a>
+                  </li>
+                  <li>
+                    <a href="#" data-value="Delhi">Delhi</a>
+                  </li>
+                </ul>
+              </div>
+              <button class="btn icon-detect">&nbsp;</button>
+              <div class="clear mtop10"></div>
+              <input type="text" class="form-control search" name="x" placeholder="Search by : Doctors, Specialties, Symptoms, Diseases etc">
+            </div>
+            <div class="row">
+              <div class="col-md-9">
+                <div class="myserchicon input-group input-group-lg">
+
+                  <!-- das-->
+
+                  <input type="text" [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}" class="form-control search online-consult-search"
+                    placeholder="Search by : Doctors, Specialties, Symptoms, Diseases & Treatments" (typeaheadOnSelect)="searchSelectedC($event)"
+                    (keyup)="getAutoSuggestionC($event)" [typeahead]="searchSuggestions" [typeaheadOptionsLimit]="20" [typeaheadWaitMs]="300"
+                    (keyup.enter)="submitSearch()">
+
+                  <!-- <input type="text" class="form-control search online-consult-search" name="x" placeholder="Search by : Doctors, Specialties, Symptoms, Diseases & Treatments"> -->
+                  <span class="input-group-btn">
+                    <button class="btn btn-info" (click)="goFetchC()" type="button">Search
+                      <span class="icon-magnifier" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+                <ul class="suggestion-list">
+                  <li>
+                    <a href="#">Abscess-General Surgery
+                      <span>Treatment</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Abdominal compartment syndrome-Gastroenterology
+                      <span>Symptom</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Abdominal separation-Internal Medicine
+                      <span>Speciality</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Arun Prabhu Ganeshan G
+                      <span>Doctor</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="wtsp-no">
+                  <a (click)="OnlinewhatsApp()">
+                    <span class="icon-whatsapp-logo-variant"></span> +91 7093 840 123
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Secondary Header for Online Consultation -->
+
+      <!-- Begin Secondary Header for Cancer Care -->
+      <div class="col-md-9 blue-bg padd20 zindex1000" *ngIf="activeTab == us.TAB_CANCER_CARE && activeTab != us.TAB_HEALTH_LIBRARY">
+        <h4 class="font-wht margin0 padd15-sm">Apollo Hospitals provides an online treatment plan based on its
+          specialist and international guidelines before
+          <br class="visible-lg"> you start treatment.</h4>
+      </div>
+      <!-- End Secondary Header for Cancer Care -->
+
+
+      <!--Login btn start-->
+      <div class="col-md-2 hidden-sm hidden-xs text-right pull-right"  *ngIf="activeTab != us.TAB_HEALTH_LIBRARY">
+        <p class="mtop10" *ngIf="!signedInForAnonimus"><a *ngIf="!signedIn" (click)="openSignup()" class="loginBtn btn ">
+            <span class="glyphicon glyphicon-user"></span> Login | Sign up</a>
+
+          <span *ngIf="signedIn" class="welcome"><span class="glyphicon glyphicon-user"></span>
+            <a routerLink="/my/dashboard">{{ firstName }}</a>
+            <a (click)="logout()"> Logout </a>
+          </span>
+        </p>
+
+        <p class="mtop10" *ngIf="signedInForAnonimus">
+          
+        <span  class="welcome"><span class="glyphicon glyphicon-user"></span>
+          <a routerLink="/my/dashboard">{{ nameForAnno }}</a>
+          <a (click)="logoutAnn()"> | Logout </a>
+        </span>
+      </p>
+
+        <a *ngIf="activeTab != us.TAB_ONLINE_CONSULTATION" href="https://www.askapollo.com/physical-appointment/"
+          target="_blank" class="loginBtn btn"><span class="glyphicon glyphicon-globe"></span> Visit old site</a>
+        <a *ngIf="activeTab == us.TAB_ONLINE_CONSULTATION" (click)="OnlineoldSite()" class="loginBtn btn"> <span class="glyphicon glyphicon-globe"></span>
+          Visit old site </a>
+
+
+      </div>
+      <!--Login btn closed-->
+
+      <!-- Begin Health Library -->
+      <div class="col-md-9 blue-bg padd20 zindex1000" *ngIf="activeTab == us.TAB_HEALTH_LIBRARY">
+       
+
+       <!--  Health Library -->
+
+      </div>
+
+      <div class="col-md-2 hidden-sm hidden-xs text-right pull-right myls" *ngIf="activeTab == us.TAB_HEALTH_LIBRARY">
+        <p class="mtop10" *ngIf="!signedInForAnonimus" style="margin-bottom: 5px;">
+          <a *ngIf="!signedIn" (click)="openSignupHealthLibrary()" class="loginBtn btn ">
+            <span class="glyphicon glyphicon-user"></span> Login | Sign up
+          </a>
+
+          <span *ngIf="signedIn" class="welcome"><span class="glyphicon glyphicon-user"></span>
+            <a routerLink="/my/dashboard">{{ firstName }}</a>
+            <a (click)="logout()"> Logout </a>
+          </span>
+        </p>
+        <p><a _ngcontent-c4="" class="loginBtn btn ng-star-inserted" href="https://www.askapollo.com/physical-appointment/" target="_blank"><span _ngcontent-c4="" class="glyphicon glyphicon-globe"></span> Visit old site</a></p>
+          <p class="mtop10" *ngIf="signedInForAnonimus">
+          
+          <span  class="welcome"><span class="glyphicon glyphicon-user"></span>
+            <a routerLink="/my/dashboard">{{ nameForAnno }}</a>
+            <a (click)="logoutAnn()"> | Logout </a>
+          </span>
+        </p>
+      </div>
+
+      <!-- End Health Library  -->
+    </div>
+    <!--row Closed-->
+
+  </div>
+
+  <div class="container-fluid" *ngIf="iFrame">
+    <a class="btn btn-whtLine iFrame-btn text-uppercase" (click)="iframelogout()">Logout</a>
+  </div>
+
+</header>

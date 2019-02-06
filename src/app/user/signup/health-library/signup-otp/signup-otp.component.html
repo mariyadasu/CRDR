@@ -1,0 +1,74 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<!-- <div id="loadingid" class="spinner" style="display:none"></div> -->
+<h3 class="text-info mtop10 ">{{headerMessage}}</h3>
+<!--<form #vm="ngForm" (ngSubmit)="verifyOTP(vm)">-->
+<div *ngIf="showUhid!='Y'">
+  <div class="form-group">
+    <label class="font-nrml">Mobile number or Email:</label>
+    <input type="text" class="form-control" disabled="disabled" name="mobile" [ngModel]="ep">
+    <small class="form-text text-muted">
+      <!-- <a href="#1">Change Number</a> -->
+    </small>
+  </div>
+  <div class="form-group">
+    <label class="font-nrml">Please enter verification code (OTP):
+      <span class="asterisk">*</span>
+    </label>
+    <input type="text" [(ngModel)]="otp" class="form-control" placeholder="_ _ _ _ " 
+    name="otp" required>
+    <p class="text-right">
+      <small class="form-text text-muted ">
+        <a (click)="resendOTP()">Still not received OTP? </a>
+      </small>
+    </p>
+
+  </div>
+  <div class="form-group ">
+    <section class="row">
+      <div class="col-sm-6">
+        <button (click)="verifyOTP()" type="submit" class="btn btn-info btn-block">Submit OTP</button>
+
+      </div>
+      <div class="col-sm-6 mtop15-xs">
+        <a (click)="resendOTP()" class="btn btn-primaryLine btn-block"> Resend OTP</a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="linked-div" *ngIf="showUhid=='Y'">
+  <div class="form-group">
+    <label class="font-nrml">Please choose UHID</label>
+    <div class="dropdown bootstrap-select btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true">
+							{{selectedUhid}} <span *ngIf="selectUhidName" class="text-info font-12">{{selectUhidName}}</span>
+							<span class="caret"></span>
+						  </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li (click)="setUHID(null)"><a>Choose Uhid<span class="text-info  font-12"></span></a></li>
+        <li *ngFor="let uhid of Uhids" (click)="setUHID(uhid)">
+          <a>{{uhid.UHID}} <span class="text-info  font-12">({{uhid.userName}})</span></a>
+        </li>
+        <!-- <li><a href="#" data-value="Experience">AC01.000012344 <span class="text-info  font-12">(Santosh Kumar)</span></a></li>
+          <li><a href="#" data-value="Recommendations">AC01.000012344 <span class="text-info  font-12">(Santosh Kumar)</span></a></li>
+          -->
+      </ul>
+    </div>
+    <div class="form-text text-muted mtop5 font-12 text-right dropdown ">What is UHID? <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown" href="#1">i</a>
+      <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid">
+        Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID while registering at the hospital;
+        this unique number is used to identify you and will be linked with you lifelong. Using this number, the hospital
+        will store all your medical records and prescriptions while you are being treated at Apollo Hospitals.
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group mtop20">
+    <button class="btn btn-info btn-block btn-lg" (click)="finish()">Submit</button>
+  </div>
+
+</div>
+<!--</form>-->

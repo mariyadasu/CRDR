@@ -1,0 +1,486 @@
+<!--Slider Start-->
+
+<div id="main-slider" class="carousel slide hidden-xs hidden-sm" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+    <li data-target="#main-slider" data-slide-to="1"></li>
+    <li data-target="#main-slider" data-slide-to="2"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner physical-slide" role="listbox">  
+  <div class="item active">
+    
+     <img src="./assets/slidea.jpg" alt="Ask Apollo">
+      <div class="carousel-caption pleft20 text-left mtop30">
+       <h1 class="text-primary">The Apollo <strong class="text-info">World of Care</strong><small class="font-16 mtop10">Assuring. Advanced. Accessible</small></h1>
+        <p class="mtop20">Our team of over 7000 doctors join me in giving you the best of modern healthcare<br class="visible-lg" > to ensure you stay healthy, always.</p>
+      </div>
+    
+    </div>
+    <div class="item"> <img src="./assets/slideb.jpg" alt="Ask Apollo">
+     
+    <div class="carousel-caption pright20 text-left ">
+        <h2 class="text-primary mtop10">Looking for <strong class="text-info">a second opinion</strong> in 
+cancer treatment?</h2>
+        <p class="mtop15">Our oncology specialists are now available online for an expert opinion. Just upload your diagnostic report on apollocanceropinion.com' website and get a second opinion. 'apollocanceropinion.com' is a convenient and hassle-free service than can make a difference to your cancer treatment and care.</p>
+      <p><a routerLink="/canceropinion"><img src="./assets/cancer-center.png" width="223" height="61" alt="Cancer Opinion"/></a></p>
+      </div>
+    </div>
+    <div class="item"> <img src="./assets/slidec.jpg" alt="Ask Apollo">
+      <div class="carousel-caption mtop30">
+          <h2 class="text-primary mtop30">Welcome to the World of</h2>
+       <h1 class="text-info mtop30"><strong>24/7 CARE!</strong></h1>
+        
+     </div>
+     
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#main-slider" data-slide="prev"> <span class="icon-left-arrow"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#main-slider" data-slide="next"> <span class="icon-right-arrow"></span> <span class="sr-only">Next</span> </a> </div>
+<!--Slider Closed-->
+
+<!-- how-works start-->
+<section class="how-works wow fadeInLeftBig animated hidden-xs">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="easy-three only">
+        <a class="pull-left" (click)="openVideo(video)" data-toggle="modal"><img src="../../assets/play-video.png" width="66" height="76" alt="Play Video"/></a>
+        <div class="mleft80">
+          <h2>
+            <a (click)="openVideo(video)"  data-toggle="modal">How it Works?</a>
+          </h2>
+          <h5 class="fonts-16"><a (click)="openVideo(video)"  data-toggle="modal">Watch video <i class="glyphicon glyphicon-play-circle"></i></a></h5>
+        </div>
+      </div> -->
+      <div class="easy-three">
+        <h2>How it Works?</h2>
+        <h5>Get an appointment in four easy steps</h5>
+      </div>
+      <ul>
+        <li>
+          <span class="icon-map-pin-marked icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Select Location
+            <small> &amp; Hospital</small>
+          </h5>
+        </li>
+        <li>
+          <span class="icon-doctor icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Choose doctor &amp;
+            <small>your preferred slot</small>
+          </h5>
+        </li>
+        <li>
+          <span class="icon-smartphone icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Verify your
+            <small>mobile number</small>
+          </h5>
+        </li>
+        <li class="last">
+          <span class="icon-calendar icon-sec" aria-hidden="true"></span>
+          <h5 class="text-primary mtop0">Appointment Done
+            <small>appointment confirmed</small>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /how-works closed-->
+
+<!-- top-speciality-start-->
+<section class="top-speciality wow fadeInRightBig animated wow2">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading ">Top Specialities</h2>
+      <div id="topspl" class="carousel slide" data-ride="carousel">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row-fluid">
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('cardiologist')" title="" class="round-tab ts1">
+                  <!-- <img alt="Cardiology" src="../../assets/top-sp/Cardiologist.png">  -->
+                </a>
+                <h5 class="acr-txt">Cardiologist</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('neurosurgeon')" title="" class="round-tab ts2">
+                  <!-- <img alt="Orthopaedics" src="../../assets/top-sp/Neurosurgeon.png"> -->
+                 </a>
+                <h5 class="acr-txt">Neurosurgeon</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('orthopedician')" title="" class="round-tab ts3">
+                  <!-- <img alt="Neurology" src="../../assets/top-sp/Orthopedician.png">  -->
+                </a>
+                <h5 class="acr-txt">Orthopedician</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('oncologist')"  title="" class="round-tab ts4">
+                  <!-- <img alt="Gastroenterology" src="../../assets/top-sp/Oncologist.png"> -->
+                 </a>
+                <h5 class="acr-txt">Oncologist</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('neurologist')"  title="" class="round-tab ts5">
+                  <!-- <img alt="Sleep Medicine" src="../../assets/top-sp/Neurologist.png"> -->
+                 </a>
+                <h5 class="acr-txt">Neurologist</h5>
+              </div>
+              <div class="col-sm-2 col-xs-4">
+                <a (click)="doctorlink('gastroenterologist')"  title="" class="round-tab ts6">
+                  <!-- <img alt="Sexual Medicine" src="../../assets/top-sp/Gastroenterologist.png">  -->
+                </a>
+                <h5 class="acr-txt">Gastroenterologist</h5>
+              </div>
+            </div>
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+          <div class="item">
+            <div class="row-fluid">
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('ent-specialist')"  title="" class="round-tab ts14">
+                 </a>
+                <h5 class="acr-txt">ENT</h5>
+              </div>
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('dentist')"  title="" class="round-tab ts8">
+                  <!-- <img alt="Orthopaedics" src="../../assets/top-sp/Dentist.png"> -->
+                 </a>
+                <h5 class="acr-txt">Dentist</h5>
+              </div>
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('psychiatrist')"  title="" class="round-tab ts9">
+                  <!-- <img alt="Neurology" src="../../assets/top-sp/Psychiatrist.png">  -->
+                </a>
+                <h5 class="acr-txt">Psychiatrist</h5>
+              </div>
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('urologist')" title="" class="round-tab ts10">
+                  <!-- <img alt="Gastroenterology" src="../../assets/top-sp/Urologist.png"> -->
+                 </a>
+                <h5 class="acr-txt">Urologist</h5>
+              </div>
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('gynecologist')"  title="" class="round-tab ts11">
+                  <!-- <img alt="Sleep Medicine" src="../../assets/top-sp/Gynecologist.png"> -->
+                 </a>
+                <h5 class="acr-txt">Gynecologist</h5>
+              </div>
+              <div class="col-sm-2  col-xs-4">
+                <a (click)="doctorlink('pediatrician')" title="" class="round-tab ts12">
+                  <!-- <img alt="Sexual Medicine" src="../../assets/top-sp/Pediatrician.png">  -->
+                </a>
+                <h5 class="acr-txt">Pediatrician</h5>
+              </div>
+            </div>
+            
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+        </div>
+        <!--/carousel-inner-->
+        <a class="left carousel-control" href="#topspl" data-slide="prev">‹</a>
+        <a class="right carousel-control" href="#topspl" data-slide="next">›</a>
+      </div>
+      <!--/myCarousel-->
+    </div>
+  </div>
+</section>
+<!-- top-speciality-closed-->
+
+<!-- top-Location-start-->
+<section class="top-locations rightside">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading text-center">Our Top Locations</h2>
+      <ul>
+        <li>
+          <a routerLink="/chennai">
+            <img src="./assets/Chennai.jpg" alt="Chennai">
+            <h4>Chennai</h4>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/hyderabad">
+            <img src="./assets/Hyderabad.jpg" alt="Hyderabad">
+            <h4>Hyderabad</h4>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/bangalore">
+            <img src="./assets/Bengaluru.jpg" alt="Bengaluru">
+            <h4>Bangalore</h4>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/kolkata">
+            <img src="./assets/Kolkata.jpg" alt="Kolkata">
+            <h4>Kolkata</h4>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/delhi">
+            <img src="./assets/Delhi.jpg" alt="Delhi">
+            <h4>Delhi</h4>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/mumbai">
+            <img src="./assets/Mumbai.jpg" alt="Mumbai">
+            <h4>Mumbai</h4>
+          </a>
+        </li>
+        <li class="mblnone">
+          <a routerLink="/ahmedabad">
+            <img src="./assets/Ahmedabad.jpg" alt="Ahmedabad">
+            <h4>Ahmedabad</h4>
+          </a>
+        </li>
+      </ul>
+      <!-- <p class="text-center">
+        <a href="#" class="btn btn-infoLine">View all >></a>
+      </p> -->
+    </div>
+  </div>
+</section>
+<!-- top-Location-closed-->
+
+<!-- health-tips-start-->
+<section class="health-tips leftside animated">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading">Health Tips and Advice From Top Doctors</h2>
+      <div id="health" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#health" data-slide-to="0" class="active"></li>
+          <li data-target="#health" data-slide-to="1"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row-fluid">
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Acne/Pimples" class="img-responsive" src="./assets/pimple.jpg"> </a>
+                <h4>Acne/Pimples</h4>
+                <p></p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="The Perfect Routine" class="img-responsive" src="./assets/routine.jpg"> </a>
+                <h4>The Perfect Routine</h4>
+                <p></p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Weight Loss" class="img-responsive" src="./assets/weight-loss.jpg"> </a>
+                <h4>Weight Loss</h4>
+                <p></p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Hair Loss" class="img-responsive" src="./assets/hair.jpg"> </a>
+                <h4>Hair Loss</h4>
+                <p></p>
+              </div>
+
+            </div>
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+          <div class="item">
+            <div class="row-fluid">
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="The Perfect Routine" class="img-responsive" src="./assets/routine.jpg"> </a>
+                <h4>The Perfect Routine</h4>
+                <!-- <p>Dr. KD Singh, Dietitian/Nutritionist</p> -->
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Hair Loss" class="img-responsive" src="./assets/hair.jpg"> </a>
+                <h4>Hair Loss</h4>
+                <!-- <p>Dr. Santosh saini, Medicine and Surgery (BAMS)</p> -->
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Acne/Pimples" class="img-responsive" src="./assets/pimple.jpg"> </a>
+                <h4>Acne/Pimples</h4>
+                <!-- <p>Dr. Omkar reddy, Acidity, Acne/Pimples</p> -->
+              </div>
+
+              <div class="col-sm-3 col-xs-6">
+                <a title="" href="https://blog.askapollo.com/" target="_blank">
+                  <img alt="Weight Loss" class="img-responsive" src="./assets/weight-loss.jpg"> </a>
+                <h4>Weight Loss</h4>
+                <!-- <p>Dr. Ashutosh Goyal, Medicine and Surgery (BAMS)</p> -->
+              </div>
+
+
+            </div>
+            <!--/row-fluid-->
+          </div>
+          <!--/item-->
+
+        </div>
+        <!--/carousel-inner-->
+      </div>
+      <!--/myCarousel-->
+    </div>
+  </div>
+</section>
+<!-- health-tips-closed-->
+
+<!-- app-section-start-->
+<section class="app-section hidden-xs hidden-sm" style="background-image: url(./assets/app-section.jpg); background-size: cover;">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-5 col-sm-5 hand  rightside animated">
+        <img src="./assets/mobile.png" class="img-responsive" alt="AskApollo"> </div>
+      <div class="col-md-7 col-sm-7  leftside animated ">
+        <h1 class="title">GET
+          <strong><span class="text-info">Ask</span><span class="text-primary">Apollo</span></strong> APP</h1>
+        <p class="mtop10">AskApollo app is now available on both Google Play and the IOS.</p>
+        <div class="mtop30">
+          <a href="https://play.google.com/store/apps/details?id=com.apollo.android&hl=en" target="_blank">
+            <img src="./assets/google-play.png" width="187" height="65" alt="AskApollo">
+          </a>
+          <a href="https://itunes.apple.com/in/app/one-apollo/id1272088560?mt=8" class="mLeft10" target="_blank">
+            <img src="./assets/apply.png" width="194" height="65" alt="AskApollo">
+          </a>
+        </div>
+        <div class="mobile-link mtop30">
+          <p>Enter below 10 digits mobile no. for app link.</p>
+          <div class="input-group add-on">
+            <span class="input-group-addon" id="basic-addon1">+91</span>
+            <input type="text" id="srch-term" name="srch-term" placeholder="Enter Your Mobile Number" class="form-control input-lg" 
+            [(ngModel)]="pn" (keyup.enter)="sendAppLinkEnter()">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-info btn-lg" (click)="sendAppLink()">Send App Link</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /app-section-closed -->
+
+<!-- testimonials-start-->
+<section class="testimonials hidden-xs hidden-sm">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading text-center">Patient Speak</h2>
+      <div class="col-md-6 animated ">
+        <div class="client-say">
+            <figure >
+              <a href="#" class="round-tab">
+                <img alt="AskApollo" src="./assets/somika.jpg">
+              </a> 
+              <span class="quote">
+                <span class="icon-quote-left" aria-hidden="true">                  
+                </span>
+              </span>
+            </figure>
+          <figcaption>Doctor was very nice, good approach, proper guidelines and suggestion. Doctor tried to give much time for diagnosis, asked all aspects of diseases. Very careful and suggested medicine which is more effective than other local or regular doctors. </figcaption>
+          <!--She is very concern and co-operative to make patients comfortable. Such a good doctor , you never need any local inexpensive an inexperienced docs.-->
+          <h3>Patient Somikaa Mahapatra</h3>
+          <h5 class="text-primary">Australia</h5>
+        </div>
+      </div>
+
+      <div class="col-md-6 animated ">
+        <div class="client-say">
+            <figure ><a href="#" class="round-tab"><img alt="AskApollo" src="./assets/sneha.jpg"></a> <span class="quote"><span class="icon-quote-left" aria-hidden="true"></span></span></figure>
+          <figcaption>While I selected Email as mode of consultation, I am very happy to receive a phone call from the doctor himself to actually know my symptoms better. That was very sweet and touching. Great product and service</figcaption>
+          <h3>Patient Sneha </h3>
+          <h5 class="text-primary">India</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /testimonials-closed -->
+
+<!-- patient-care-start-->
+<section class="patient-care rightside hidden-xs hidden-sm" style="background-image: url(./assets/care.jpg); background-size: cover;" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ">
+        <h2 class="text-primary" >International
+          <small>patient center</small>
+        </h2>
+        <p class="mtop30">
+          <a href="https://www.apollohospitals.com/international-patient-services/" target="_blank" class="text-info">Click here for more...</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /patient-care-closed -->
+
+<!-- press-pieces-start-->
+<section class="press-pieces rightside hidden-sm hidden-xs ">
+  <div class="container">
+    <div class="row">
+      <h2 class="heading">As Featured On</h2>
+      <ul class="list-inline ">
+        <li class="item active">
+          <a title="ibtn9" href="http://ibtn9.com/2015/10/apollo-hospitals-introduces-ask-apollo-a-first-of-its-kind-medical-platform-in-the-country/" target="_blank">
+            <img src="./assets/ibtn.png" alt="ibtn9">
+          </a>
+          <a title="PTInews" target="_blank" href="http://www.ptinews.com/pressrelease/15668_press-subApollo-Hospitals-Introduces-Ask-Apollo--a-First-of-its-Kind-Medical-Platform-in-the-Country">
+            <img src="./assets/pti.png" alt="PTInews">
+          </a>
+          <a title="Abhitak News" target="_blank" href="http://abhitaknews.com/news/businesswire.aspx?Value=5HXWCZI0frFmKQHdnfcLowiUY1Tz82evGgQ%3d">
+            <img src="./assets/abhi.png" alt="Abhitak News">
+          </a>
+          <a title="Investment Guru India" target="_blank" href="http://investmentguruindia.com/Forms/businesswire2.aspx?Value=LS8TJUO7qc3hXjMic9Y7cQj5Q4VcyCOE2AQ%3d">
+            <img src="./assets/guru.png" alt="Investment Guru India">
+          </a>
+          <a title="New Indian Express" target="_blank" href="http://www.newindianexpress.com/cities/bengaluru/2015/oct/18/Meet-on-Patient-Safety-Held-830939.html">
+            <img src="./assets/indian-express.png" alt="New Indian Express">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /press-pieces-closed -->
+
+<!-- seo-text-start-->
+<section class="seo-text rightside hidden-xs hidden-sm">
+  <div class="container">
+    <h4>About AskApollo</h4>
+    
+    <p class="font-10">Health plays an intrinsic role in the development of nations and we have implemented a number of strategies that addresses and identifies people’s health needs. Apollo Hospitals believe in community engagement and provides its customers more than just specific health treatments. Keeping this in mind, Apollo Hospitals bring to you a solution that provides you with a greater accessibility to your healthcare needs.</p>
+
+    <h5 class="mbottom5"></h5>
+    <p class="font-10">Ask Apollo is an appointment scheduler to facilitate seeking confirming and fulfilling appointments for doctor consultations, health checks and diagnostic services at any of the Apollo Hospitals across the group through the website or by calling the dedicated Ask Apollo.</p>
+
+    <h5 class="mbottom5"></h5>
+    <p class="font-10">Ask Apollo also offers virtual consult service from Apollo Hospitals. It connects billions of patients to Asia’s most advanced healthcare network. It is a patient-centric service that gives patients the freedom to consult a doctor at his convenience from anywhere, anytime. It’s easy and interactive. Users can talk to doctors face-to-face through video conferencing or connect with them via voice call or email, no matter where you are in the world. All at the click of a button.</p>
+  </div>
+</section>
+<!-- /seo-text-closed -->
+
+<ng-template #video>
+  <div  role="dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" (click)="modalRef.hide();"  aria-label="Close">&times;</button>
+            <h4 class="modal-title">Book Appointment <small class="text-info">(How it works?)</small></h4>
+          </div>
+          <div class="modal-body">
+           <iframe width="100%" height="315" src="https://www.youtube.com/embed/-TnwFvHUIp8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+          </div>
+          
+      </div>
+    </div>
+  </ng-template>

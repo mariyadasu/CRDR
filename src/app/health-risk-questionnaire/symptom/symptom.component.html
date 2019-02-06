@@ -1,0 +1,122 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<section class="inner-pages">
+  <section class="mini-header"> </section>
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-12 right-content ">
+        <section class="row">
+          <div class="col-xs-7 col-sm-10">
+            <ul class="breadcrumb">
+              <li><a href="index.html"></a></li>
+              <li>Health Risk Assessment</li>
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg">
+          <section class="col-sm-offset-3 col-sm-6 box-slide mar-15-xs">
+            <h4 class="heading mtop15"><span class="icon-medkit text-info"></span> Diagnosed with {{HRQQuestionAndAnswers[possymptomid]?.SymptomHeading}}</h4>
+            
+            <div *ngIf="HRQQuestionAndAnswers[possymptomid]?.SymptomId == 14721406">
+            <div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[possymptomid]?.lstHRAQuestionsAnswersBO let questionid = index ">
+                <div *ngIf="questionid < 2">
+                <label class="text-primary" *ngIf="question.HRAQuestion!='-'">{{questionid+1}}) {{question.HRAQuestion}}:</label>
+                <div class="clearfix"></div>
+                <div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let i = index ">
+                  <div class="radio-inline custom-radio" *ngIf="answers.ControlID == hcs.radiocontrol || answers.ControlID == 197 ">
+                    <input id="{{question.AttributeID}}_{{i}}" 
+                    name="{{question.AttributeID}}" 
+                    [(ngModel)]="question.Answer" 
+                    class="next-call"
+                    value="{{answers.AttributeValue}}" 
+                    type="radio">
+                    <label for="{{question.AttributeID}}_{{i}}" class="font-300 text-black" (click)="symptomclick(answers.AttributeValue,HRQQuestionAndAnswers[possymptomid]['SymptomId'])"> {{answers.AttributeValue}} </label>
+                  </div>
+                  <div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+                    <input id="{{i}}" 
+                    name="check_{{question.AttributeID}}_{{i}}" 
+                    class="custom-check" 
+                    value="{{answers.AttributeValue}}" 
+                    [(ngModel)]="answers.checked"
+                      type="checkbox">
+                    <label for="{{i}}" class="font-300 text-black"> {{answers.AttributeValue}} </label>
+                  </div>
+                  <div *ngIf="answers.ControlID == hcs.textcontrol">
+                    <input type="text" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" />
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="questionid > 1 && flagstatus" >
+                <label class="text-primary" *ngIf="question.HRAQuestion!='-'">{{questionid+1}}) {{question.HRAQuestion}}:</label>
+                <div class="clearfix"></div>
+                <div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let i = index ">
+                  <div class="radio-inline custom-radio" *ngIf="answers.ControlID == hcs.radiocontrol || answers.ControlID == 197 ">
+                    <input id="{{question.AttributeID}}_{{i}}" 
+                    name="{{question.AttributeID}}" 
+                    [(ngModel)]="question.Answer" 
+                    class="next-call"
+                    value="{{answers.AttributeValue}}" 
+                    type="radio">
+                    <label for="{{question.AttributeID}}_{{i}}" class="font-300 text-black" (click)="symptomclick(answers.AttributeValue,HRQQuestionAndAnswers[possymptomid]['SymptomId'])"> {{answers.AttributeValue}} </label>
+                  </div>
+                  <div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+                    <input id="{{question.AttributeID}}_{{i}}" 
+                    name="check_{{question.AttributeID}}_{{i}}" 
+                    class="custom-check" 
+                    value="{{answers.AttributeValue}}" 
+                    [(ngModel)]="answers.checked"
+                      type="checkbox">
+                    <label for="{{question.AttributeID}}_{{i}}" class="font-300 text-black">{{answers.AttributeValue}}</label>
+                  </div>
+                  <div *ngIf="answers.ControlID == hcs.textcontrol">
+                    <input type="text" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div *ngIf="HRQQuestionAndAnswers[possymptomid]?.SymptomId != 14721406 ">
+            <div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[possymptomid]?.lstHRAQuestionsAnswersBO let questionid = index ">
+            <div [style.visibility]="question.AttributeID!= attrid || questionstatus ? 'visible' : 'hidden'">
+              <label class="text-primary" *ngIf="question.HRAQuestion!='-'">{{questionid+1}}) {{question.HRAQuestion}}:</label>
+              <div class="clearfix"></div>
+              <div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let i = index ">
+                <div class="radio-inline custom-radio" *ngIf="answers.ControlID == hcs.radiocontrol || answers.ControlID == 197 ">
+                  <input id="{{question.AttributeID}}_{{i}}" 
+                  name="{{question.AttributeID}}" 
+                  [(ngModel)]="question.Answer" 
+                  class="next-call"
+                  value="{{answers.AttributeValue}}" 
+                  type="radio">
+                  <label for="{{question.AttributeID}}_{{i}}" class="font-300 text-black" (click)="symptomclick(answers.AttributeValue,HRQQuestionAndAnswers[possymptomid]['SymptomId'],question.AttributeID)">{{answers.AttributeValue}}</label>
+                </div>
+                <div *ngIf="answers.ControlID == hcs.checkboxcontrol" class="checkbox-inline custom-check">
+                  <input id="{{i}}" 
+                  name="check_{{question.AttributeID}}_{{i}}" 
+                  class="custom-check" 
+                  value="{{answers.AttributeValue}}" 
+                  [(ngModel)]="answers.checked"
+                    type="checkbox">
+                  <label for="{{i}}" class="font-300 text-black">{{answers.AttributeValue}}</label>
+                </div>
+                <div *ngIf="answers.ControlID == hcs.textcontrol">
+                  <input type="text" name="{{question.AttributeID}}" [(ngModel)]="question.Answer" />
+                </div>
+              </div>
+            </div>
+          </div>
+            </div>
+
+            <section class="lightgrey-box radius25 mtop20">
+            
+              <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next" (click)="nextSymptom(HRQQuestionAndAnswers[possymptomid]?.SymptomId)">Next <span class="icon-right-arrow"></span></a>
+              
+              </section>
+          </section>
+        </section>
+      </aside>
+    </div>
+  </section>
+</section>
+
+

@@ -1,0 +1,57 @@
+<!-- inner-pages start -->
+<section class="inner-pages">
+  <!-- mini-header start-->
+	<section class="mini-header">
+	    <div class="brn-btm">
+	      <div class="container filter-sec">
+		  	
+			
+	      </div>
+	    </div>
+	</section>
+	  <!-- /mini-header closed-->
+    <!-- content-wrap start -->
+    <section class="container content-wrap">
+	    <div class="row">    
+	    
+			<aside class="col-sm-12 fadeInLeft animated wt-bg">
+			    <section class="row bdr-bottom">
+			    	<div class="col-sm-6">
+			    		<h4 class="text-primary margin0">Lady Doctors Index</h4>
+			    	</div>
+			    	<div class="col-sm-6 pb-5">
+			    		<form class="form-inline text-right-xs" #f="ngForm" (ngSubmit)="searchladydoctor(f)" novalidate>
+		  	    		  <label>Search : </label>
+		                  <input class="form-control input-sm mtop5-xs" 
+		                   type="text" placeholder="Enter Doctor Name" 
+		                  maxlength="300" [(ngModel)]="ladydocFillter.FullName"
+		                   [typeahead]="ladydocComplex"
+		                   [typeaheadScrollable]="true"
+		                   [typeaheadOptionsInScrollableView]="8"
+		                   (typeaheadOnSelect)="onSelect($event)"
+		                   typeaheadOptionField="FullName" name="ladydoctorname"
+		                    >
+  	    				</form>	
+			    	</div>
+			    </section>
+			    		
+				<section class="mtop20 row">
+					<div class="col-sm-4" *ngFor="let doc of ladydoctors| filterBy: ladydocFillter ">
+						<ul class="data-list box-shad bouncee">
+						  <li><h3 class="heading14 margin0 padd0">
+						  <a class="text-primary" [routerLink]="['/', sanitization(doc.UrlCityName), sanitization(doc.UrlSpecialityKeyword) , sanitization(doc.UrlFullName)]">{{doc.FullName}}</a></h3></li>
+		                  <li><span class="icon-doctor pull-left font-11" aria-hidden="true"></span> <div class="mLeft20"><a [routerLink]="['/',sanitization(doc.UrlCityName),'ladydoctors', sanitization(doc.UrlSpecialityKeyword) ]">{{doc.SpecilaityKeyword}}</a> </div></li>
+						   <li><span class="icon-location pull-left font-11" aria-hidden="true"></span> <div class="mLeft20"><a [routerLink]="['/',sanitization(doc.UrlCityName),'ladydoctors']">{{doc.CityName}}</a> </div></li>
+		                </ul>
+		                <br/>	
+					</div>	
+				</section>
+				<!--row-closed -->			
+		    </aside>
+	    <!-- /wt-bg closed --> 
+		</div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+<!--/ inner-pages closed -->

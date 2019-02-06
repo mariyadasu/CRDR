@@ -1,0 +1,25 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+ <section class="wt-bg">
+  <section class="col-sm-offset-3 col-sm-6 box-slide mar-15-xs">
+ <h4 class="heading mtop15"><span class="icon-happy text-info"></span> {{HRQQuestionAndAnswers[possymptomid]?.SymptomHeading}}</h4>
+      	<div class="form-group mtop20" *ngFor="let question of HRQQuestionAndAnswers[possymptomid]?.lstHRAQuestionsAnswersBO let questionid = index ">
+        <label class="text-primary">{{questionid+1}}) {{question.HRAQuestion}}:</label>
+        <div class="clearfix"></div>
+        <div class="inline-blck" *ngFor="let answers of question.objHRAAnswers; let i = index ">        	
+	        <div class="radio-inline custom-radio emoji"  *ngIf="answers.ControlID == hcs.radiocontrol">          
+            <input 
+            id="{{question.AttributeID}}_{{i}}" 
+            name="{{question.AttributeID}}"  
+            [(ngModel)]="question.Answer" class="next-call"  
+            value="{{answers.AttributeValue}}"
+             type="radio">
+            <label for="{{question.AttributeID}}_{{i}}" class="font-300 text-black"><img src="./assets/{{ removeSpaces(answers.AttributeValue) | lowercase}}.png" alt="{{answers.AttributeValue}}"><span class="title-rate"> {{answers.AttributeValue}} </span></label>
+          </div>                    
+        </div>
+      </div>
+			
+      		<section class="lightgrey-box radius25 mtop20"> <a id="step-1-next" href="javascript:void(0)" class="btn btn-info radius25 btn-sm pull-right next" (click)="nextSymptom()">Next <span class="icon-right-arrow"></span></a>
+          <!--  <a  href="javascript:void(0)" class="btn btn-primaryLine radius25 btn-sm previous"><span class="icon-left-arrow"></span></a> -->
+         </section>
+</section>
+</section>

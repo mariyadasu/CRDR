@@ -1,0 +1,271 @@
+<section class="inner-pages" id="mainDIV">
+  <!-- mini-header start-->
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container  filter-sec">
+        <div class="row">
+          <div class="col-sm-8">
+            <!-- <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                {{ selectHospitalString }}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li *ngIf="hospitals.length==0" class="no-city-hospitals"> Select a city first </li>
+                <li *ngFor="let h of hospitals" (click)="setCurrentHospital(h)">
+                  <a>{{ h.hospitalName }}</a>
+                </li>
+              </ul>
+            </div> -->
+
+            <label class="filter-btn mLeft10">
+              <input id="check32" type="checkbox" (change)="filterAvailableToday($event)" />
+              <label for="check32" class="text-grey">Available today</label>
+            </label>
+
+            <div class="more-filter">
+              <section class="fltr-list form-inline" [collapse]="isCollapsed">
+
+                <div class="dropdown bootstrap-select btn-group">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{gender}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li *ngFor="let gen of availableGenders">
+                      <a *ngIf="gen == '1'" (click)="filterBy('g', 1)">Male Doctor</a>
+                      <a *ngIf="gen == '2'" (click)="filterBy('g', 2)">Female Doctor</a>
+                    </li>
+                    <!-- <li>
+                      <a *ngIf="gen == '2'" (click)="filterBy('g', 2)">Female Doctor</a>
+                    </li> -->
+                  </ul>
+                </div>
+
+                <div class="dropdown bootstrap-select btn-group">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{language}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                    <li *ngFor="let lng of availableLanguages">
+                      <a (click)="filterBy('l', lng)">{{lng | titlecase}}</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dropdown bootstrap-select btn-group">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{timeDefults}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>
+                      <a (click)="filterTiming('am')">Morning</a>
+                    </li>
+                    <li>
+                      <a (click)="filterTiming('aa')">Afternoon</a>
+                    </li>
+                    <li>
+                      <a (click)="filterTiming('ae')">Evening</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </section>
+
+              <button type="button" class="btn btn-info btn-sm mLeft10 fltr-btn" (click)="isCollapsed = !isCollapsed" (clickOutside)="onClickedOutside($event)">
+                <span class="icon-funnel " aria-hidden="true"></span>
+                <label class="hidden-mobi">More filters</label>
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-4 text-right relevance">
+            <label class="mright10">Sort by:</label>
+
+            <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                {{ sortByString }}
+                <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                  <a data-value="highlow" (click)="sortBy('hl')">Experience High-Low</a>
+                </li>
+                <li>
+                  <a data-value="lowhigh" (click)="sortBy('lh')">Experience Low-High</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9 right-content fadeInRight animated" id="scrolTop">
+        <section class="row">
+          <div class="col-xs-7 col-sm-10">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              </li>
+              <li *ngFor="let c of breadcrumbs; let i = index">
+                <a routerLink="/doctorsearch/{{ c.url }}">{{ removeSpaces(c.name) | titlecase}}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-xs-5  col-sm-2 pleft0 relevance-mob visible-xs">
+            <div class="dropdown bootstrap-select btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                {{ sortByString }}
+                <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                  <a data-value="highlow" (click)="sortBy('hl')">Exp High-Low</a>
+                </li>
+                <li>
+                  <a data-value="lowhigh" (click)="sortBy('lh')">Exp Low-High</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="listing mtop10" id="accordion">
+          <app-summary-card [ngClass]="{'hidden': doctors.length==0}" *ngFor="let d of doctorsPaginated" [d]="d"></app-summary-card>
+          <div *ngIf="gettingDataFromServer" class="mtop30">Finding the right doctors for you. Please wait ... </div>
+          <div *ngIf="doctors.length==0 && !gettingDataFromServer" class="mtop30">No relevant doctors available</div>
+        </section>
+
+        <pagination *ngIf="doctors.length>0" [itemsPerPage]="itemsPerPage" [boundaryLinks]="true" [totalItems]="doctors.length" [(ngModel)]="currentPage"
+          class="pagination-sm" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="&raquo;"></pagination>
+
+        <div *ngIf="doctorsPaginated.length>0">
+          {{message}}
+        </div>
+
+      </aside>
+
+
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+        <h5 class="heading14 bdr-bottom ">Most Searched Localities In {{ currentCity | titlecase }}</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li *ngFor="let trend of trends">
+            <a routerLink='/doctorsearch/{{ currentCity }}/{{ trend.SpecialityKeyword | lowercase }}/hyperlocal/{{getUrlWithSpecialityCharacters(trend.HyperLocation)}}'
+              *ngIf="trend.HyperLocation">{{ trend.DisplayText }}</a>
+          </li>
+        </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Health Articles</h5>
+        <ul class="data-list font11 arr-bullet">
+          <li>
+            <a href="https://blog.askapollo.com/category/cancer-care/" target="_blank">Cancer Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/general-health/" target="_blank">General Health</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/healthy-living/" target="_blank">Healthy Living</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/heart-care/" target="_blank">Heart Care</a>
+          </li>
+          <li>
+            <a href="https://blog.askapollo.com/category/ortho-care/" target="_blank">Ortho Care</a>
+          </li>
+          <li>
+            <a href=" https://blog.askapollo.com/category/top-slider/" target="_blank">Others</a>
+          </li>
+        </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Get the free Askapollo App</h5>
+        <div class="form-group telblock">
+          <label>Enter your mobile no.</label>
+          <input type="tel" class="form-control input-sm" [(ngModel)]="pn" (keyup.enter)="sendAppLinkEnter()">
+          <img class="indflag2" src="../../assets/tel-num.png" />
+        </div>
+        <div class="form-group">
+          <a class="btn btn-info btn-sm" (click)="sendAppLink()">Send App Link</a>
+        </div>
+      </aside>
+      <!-- /right-content closed -->
+
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+  <div class="container">
+
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.SpecialityContent"></p>
+    <p class="font-10" *ngIf="bc != null" [innerHTML]="bc.BoilerContent"></p>
+
+    <!-- <h5 class="mbottom5">DERMATOLOGIST</h5>
+    <p class="font-10">A dermatologist is a doctor who specializes in the field of dermatology, which pertains to the study of disorders related
+      to the skin, hair, nails and sweat and oil glands, and mucous membranes.</p>
+
+    <h5 class="mbottom5">WHEN SHOULD YOU CONSULT DERMATOLOGIST?</h5>
+    <p class="font-10">Dermatologists can effectively detect skin cancer and provide diagnosis for it.</p>
+
+    <h5 class="mbottom5">WHAT IS THE ROLE OF DERMATOLOGIST?</h5>
+    <p class="font-10">A dermatologist will first perform a check-up through testing and examination of medical reports as well as a thorough
+      assessment of the patient’s medical history, diet and lifestyle.</p>
+
+    <h5 class="mbottom5">COMMON PROBLEMS YOU SHOULD SEE DERMATOLOGIST FOR</h5>
+    <p class="font-10">Dermatological help can be sought for other issues such as poor diet and an unhealthy lifestyle.</p>
+
+    <h5 class="mbottom5">DID YOU KNOW?</h5>
+    <p class="font-10">The human skin is constantly shedding off dead cells and replacing them by generating new ones. Over a period of 28 days,
+      it completely renews itself.</p>
+
+    <h5 class="mbottom5">HEALTH TIP</h5>
+    <p class="font-10">6 Face Washing Mistakes that are Damaging Your Skin, Everyday! Face-washing may be a simple everyday task that requires
+      no great effort on your part. But when it?s not done right, it causes significant harm to your skin, each day. The
+      mistakes that you may make while washing your face could lead to issues like irritation, dryness and even wrinkles.
+      Read on to find out how you can avoid making these common errors, and save your skin from blemishes, ageing and lustreless
+      look. 1. Using the wrong cleanser The use of the wrong cleanser can throw your ph levels out of balance. The optimal
+      ph balance of your skin is 5.5ph. This is the ideal level at which the thin protective layer on the surface of the
+      skin (called acid mantle) can function to keep germs, toxins and bacteria at bay. You should therefore be picking your
+      cleanser based on your skin type as it would come with the right ph balance. 2. Not cleaning your hands before touching
+      the face Always clean the germs and dirt of your hands first before moving onto your face. Ignoring this crucial first
+      step can cause you to transfer all the bacteria and dirt of your hands on your face, giving rise to common skin problems
+      such as acne, pimples and blackheads. 3. Using a pre-used washcloth To avoid the filth from clogging your pores, always
+      clean the washcloth that you use with an antiseptic to keep germs and bacteria at bay. Once you're done washing your
+      face, don't rub the cloth all over your face but pat dry it. 4. Washing face using with hot water When it comes to
+      the water that you splash on your face, you should always use lukewarm or room temperature water. This is because hot
+      water leaves your skin dry as it washes away the skin's essential oils; and cold water can break the capillaries (fine
+      blood vessels) of your skin. In contrast, mildly lukewarm water will keep your skin hydrated and healthy. 5. Not washing
+      the face twice a day Just as you shouldn't ignore this important skin care habit that keeps your skin clean, you also
+      shouldn't go overboard with it. Excessive face-washing can hamper the natural oil production of your skin, giving rise
+      to dryness and irritation as a result. Your skin requires the natural oil it produces to keep it smooth and supple.
+      Ideally, you should wash your face twice daily - once in the morning for removing the bacteria and dirt that clogged
+      your pores, and again at night before going to bed. 6. Rushing through the routine Lastly, don't rush through your
+      cleansing routine. Make sure to properly rinse your face of cleanser completely, otherwise the residues would cause
+      your skin to dry up later on, leading to skin irritation. It is therefore very important to pay attention to all the
+      little details that make up your face-washing routine. By doing it right, you get to achieve the clear and blemish-free
+      skin that you always wanted.</p> -->
+  </div>
+</section>
+<!-- /seo-text-closed -->
+
+<script type="text/javascript">function name(parameters) {
+
+  }
+</script>

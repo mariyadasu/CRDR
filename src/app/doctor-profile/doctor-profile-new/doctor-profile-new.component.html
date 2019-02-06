@@ -1,0 +1,309 @@
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header">
+    <div class="brn-btm">
+      <div class="container  filter-sec">
+
+        <div class="row bs-wizard" style="border-bottom:0;">
+          <div class="col-xs-3 bs-wizard-step active">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Appointment
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <!-- active -->
+            <div class="text-center bs-wizard-stepnum">Patient
+              <br class="visible-xs" />Info</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Verify
+              <br class="visible-xs" />Mobile no.</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+
+          <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Appointment
+              <br class="visible-xs" />Confirmed!</div>
+            <div class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <a class="bs-wizard-dot"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+              <li style="cursor:pointer" routerLink="/">
+              </li>
+              <li>
+                <a routerLink="/{{ docSummary.docCity }}">{{ docSummary.docCity | titlecase }}</a>
+              </li>
+              <li>
+                <a routerLink="/{{ sanitization(docSummary.docCity) }}/{{ sanitization(docSummary.docSpeciality) }}">{{ docSummary.docSpeciality | titlecase}}</a>
+              </li>
+              <li>
+                <a routerLink="/{{sanitization(cityFromUrl)}}/{{sanitization(specialityFromUrl)}}/{{sanitization(docNameFromUrl)}}">{{ docSummary.docName | titlecase}}</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="wt-bg">
+          <figure class="doctor-img">
+            <a class="round-tab" title="AskApollo">
+              <img [src]="doc.CompletePhotoURL" alt="AskApollo" (error)="error($event)">
+            </a>
+          </figure>
+
+          <figcaption class="doc-txt">
+            <h1 class="mtop0 text-primary"> {{ doc.DoctorName }} </h1>
+            <p [innerHTML]="doc.Qualification"></p>
+            <ul class="data-list">
+              <li class="text-primary">
+                <span class="icon-doctor pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">
+
+                  <h2><a class="text-primary" routerLink="/india/{{replaceLinks(docSummary.docSpeciality)}}">{{ docSummary.docSpeciality | titlecase}}</a></h2>
+
+                  <!-- <a class="text-primary">{{ doc.MultiSpeciltyKeyword | titlecase }}</a> -->
+                </div>
+              </li>
+              <li>
+                <span class="icon-file-text-o pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">{{ doc.YearsofExperience }} Years of experience</div>
+              </li>
+              <li>
+                <span class="icon-language pull-left" aria-hidden="true"></span>
+                <div class="mLeft20">{{ doc.RegionalLanguage }}</div>
+              </li>
+              <li>
+                <p class="social-links mbottom0">
+                  <a>
+                    <share-button button="facebook" text="Share"></share-button>
+                    <!-- <span class="icon-facebook-logo-button" aria-hidden="true"></span> -->
+                  </a>
+                  <a>
+                     <share-button button="twitter" text="Tweet"></share-button>
+                    <!-- <span class="icon-twitter" aria-hidden="true"></span> -->
+                  </a>
+                  <!-- <a>
+                    <share-button button="google" text="google"></share-button>
+                  </a> -->
+                  <a><share-button button="linkedin" text="in"></share-button></a>
+                   
+                </p>
+              </li>
+            </ul>
+            <!--p class="mbottom0 text-right"><a class="btn btn-primaryLine">Submit Feedback</a> </p-->
+          </figcaption>
+          
+          <ngx-json-ld [json]="seoSchemaForDoctorProfile"></ngx-json-ld>
+          <div class="clearfix"></div>
+        </section>
+
+        <div class="wt-tabs mtop20">
+     
+          <div class="tab-content clearfix">
+            <tabset #staticTabs>
+              <tab heading="Location">
+                <div class="tab-pane active" id="1b">
+
+                  <app-location-summary-card *ngFor="let dl of doc.DoctorLocationtabList" [dl]="dl" [ds]="docSummary"></app-location-summary-card>
+
+                </div>
+              </tab>
+
+              <tab heading="Info" *ngIf="docInfoTab != undefined">
+                <div class="tab-pane" id="2b">
+                  <div *ngIf="docInfoTab.Qualification">
+                    <h4 class="text-primary">Qualification</h4>
+                    <p> {{ docInfoTab.Qualification }} </p>
+                  </div>
+                  <div *ngIf="docInfoTab.WorkExperience">
+                    <h4 class="text-primary">Work Experience</h4>
+                    <ul class="list-view">
+                      <li>
+                        <div [innerHTML]="docInfoTab.WorkExperience"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="docInfoTab.RegistrationNo">
+                    <h4 class="text-primary">Registration No</h4>
+                    <ul class="list-view">
+                      <li> {{ docInfoTab.RegistrationNo }} </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="servicesList">
+                    <h4 class="text-primary">Services</h4>
+                    <p class="mLeft20">
+                      <!-- <span *ngFor="let servicesList of dc; let i = index">
+                        Hiii{{dc.serviceName}}      
+                      </span> -->
+                      {{servicesList}}
+                    </p>
+                    <!-- <ul>
+                        <li *ngFor="let docInfoTab.ServicesList of people"> 
+                          {{ person }}
+                        </li>
+                      </ul> -->
+                  </div>
+                  <div *ngIf="docInfoTab.GenderInteger">
+                    <h4 class="text-primary">Gender</h4>
+                    <ul class="list-view">
+                      <li>{{ docInfoTab.GenderInteger == 1 ? "Male" : "Female" }}</li>
+                    </ul>
+                  </div>
+                  <div *ngIf="docInfoTab.AwardsandAchievements">
+                    <h4 class="text-primary">Awards and Achievements</h4>
+                    <ul class="list-view">
+                      <li>
+                        <div [innerHTML]="docInfoTab.AwardsandAchievements"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="docInfoTab.researchandPublications">
+                    <h4 class="text-primary">Research and Publications</h4>
+                    <ul class="list-view">
+                      <li [innerHTML]="docInfoTab.researchandPublications"></li>
+                    </ul>
+                  </div>
+                  <div *ngIf="docInfoTab.Summary">
+                    <h4 class="text-primary">Summary</h4>
+                    <ul class="list-view">
+                      <li>
+                        <div [innerHTML]="docInfoTab.Summary"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="doc.ProfessionalMemberships">
+                    <h4 class="text-primary">Professional Memberships</h4>
+                    <ul class="list-view">
+                      <li>
+                        <div [innerHTML]="doc.ProfessionalMemberships"></div>
+                      </li>
+                    </ul>
+                  </div>
+                   <div *ngIf="doc.SpecialInterest">
+                    <h4 class="text-primary">Special Interest</h4>
+                    <ul class="list-view">
+                      <li>
+                        <div [innerHTML]="doc.SpecialInterest"></div>
+                      </li>
+                    </ul>
+                  </div>
+                   <div *ngIf="docHealthFeedTab.VideoUrl">
+                    <h4 class="text-primary">Video</h4>
+                    <ul class="list-view">
+                      <li>
+                        <iframe width="560" height="315" [src]="getVideoURL(docHealthFeedTab.VideoUrl)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+
+        </div>
+      </aside>
+ 
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated">
+       <span *ngIf="currentCity">
+            <h5 class="heading14 bdr-bottom ">Most Searched Localities In {{ currentCity }}</h5>
+            <ul class="data-list font11 arr-bullet">
+              <li *ngFor="let trend of trends">
+                <a routerLink='/{{ currentCity }}/{{ removeSpaces(trend.SpecialityKeyword | lowercase) }}/hyperlocal/{{ removeSpaces(trend.HyperLocation | lowercase) }}' *ngIf="trend.HyperLocation">{{ trend.DisplayText }}</a>
+              </li>
+            </ul>
+        </span>
+        <span *ngIf="!currentCity">
+            <h5 class="heading14 bdr-bottom ">Most Searched Cities</h5>
+            <ul class="data-list font11 arr-bullet">
+              <li *ngFor="let city of cities">
+                <a routerLink='/{{ city.name | lowercase }}'>Doctors in {{ city.name | titlecase }}</a>
+              </li>
+            </ul>
+        </span>
+
+        <h5 class="heading14 bdr-bottom mtop20">Health Articles</h5>
+        <ul class="data-list font11 arr-bullet">
+            <li>
+              <a href="https://blog.askapollo.com/category/cancer-care/" target="_blank">Cancer Care</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/general-health/" target="_blank">General Health</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/healthy-living/" target="_blank">Healthy Living</a>
+            </li>
+            <li>
+              <a href="https://blog.askapollo.com/category/heart-care/" target="_blank">Heart Care</a>
+            </li>
+            <li>
+                <a href="https://blog.askapollo.com/category/ortho-care/" target="_blank">Ortho Care</a>
+              </li>
+            <li>
+              <a href=" https://blog.askapollo.com/category/top-slider/" target="_blank">Others</a>
+            </li>
+          </ul>
+
+        <h5 class="heading14 bdr-bottom mtop20">Get the free Askapollo App</h5>
+        <div class="form-group telblock">
+          <label>Enter your mobile no.</label>
+          <input type="text" class="form-control input-sm" [(ngModel)]="pn" (keyup.enter)="sendAppLinkEnter()">
+          <img class="indflag2" src="../../assets/tel-num.png"/>
+        </div>
+        <div class="form-group">
+          <a class="btn btn-info btn-sm" (click)="sendAppLink()">Send App Link</a>
+        </div>
+
+      </aside>
+    </div>
+  </section>
+</section>
+<!--/ inner-pages closed -->
+<!-- bottom - app banner start-->
+<section class="app-bannerBtm visible-xs">
+  <div class="container">
+    <h3>AskApollo Mobile App</h3>
+    <h5>One stop destination for all healthcare and wellness needs</h5>
+    <p>
+      <a href="https://play.google.com/store/apps/details?id=com.apollo.android&hl=en" target="_blank" class="btn-whtLine btn">Install App</a>
+    </p>
+    <a>
+      <img src="../../assets/app-mobile.png" alt="AskApoll App">
+    </a>
+  </div>
+</section>
+<!-- bottom -app banner start-->
+
+<!-- seo-text-start-->
+<section class="seo-text hidden-xs hidden-sm">
+  <div class="container">
+    {{message}}
+  </div>
+</section>
+
+
+<!-- /seo-text-closed -->

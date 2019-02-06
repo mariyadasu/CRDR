@@ -1,0 +1,46 @@
+<aside class="col-sm-3 fadeInRight animated left-panel-cont hidden-xs">
+    <div class="left-panel">
+      <ul class="breadcrumb">
+        <li><a routerLink="dashboard"></a></li>
+        <li>Dashboard</li>
+      </ul>
+      <a href="javascript:(void)" class="btn btn-xs btn-default left-toggle"> Left menu <span class="icon-arrow-circle-right"></span></a>
+      <div class="wt-bg">
+        <figure class="profile-img"> 
+          <a href="javascript:void(0)" class="round-tab" title="AskApollo">
+            <img src="{{imageUrl}}" alt=""></a> </figure>
+        <figcaption class=" profile-txt">
+          <h4 class="mtop0">{{ocUserInfo.FirstName}} {{ocUserInfo.LastName}}</h4>
+          <p class="text-muted margin0">+{{ocUserInfo.CountryCode}}{{ocUserInfo.Mobileno}}</p>
+          <a class="text-info" routerLink="profile">Edit Profile</a>
+         </figcaption>
+         <h5 class="bdr-binfo mtop20"><span class="glyphicon glyphicon-briefcase text-info"></span>&nbsp; Wallet</h5>
+         <ul class="div-table mini-table div-bordered mtop10 font11">
+          <li><div class="wdth-70p div-cell pleft0">One Apollo Wallet Points:</div><div class="wdth-30p div-cell text-primary">{{wallet.walletPoints}}</div></li>
+          <li><div class="wdth-70p div-cell pleft0">Customer Slab:</div><div class="wdth-30p div-cell text-primary">{{wallet.walletSlab}}</div></li>
+        </ul>
+        
+      </div>
+      <!--wt-bg closed-->
+      
+      <nav class="left-nav">
+        <ul class="nav">
+          <li><a href="javascript:void(0)" id="btn-1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><span class="icon-medkit" aria-hidden="true"></span> My Consultations</a>
+            <ul class="nav collapse in" id="submenu1" role="menu" aria-labelledby="btn-1">
+              <li routerLinkActive="active"><a routerLink="dashboard"><span class="icon-doctor" aria-hidden="true"></span> Physical Consultation</a></li>
+              <li routerLinkActive="active"><a routerLink="dashboard-oc"><span class="icon-smartphone-call" aria-hidden="true"></span> Online Consultation</a> </li>
+            </ul>
+          </li>
+          <li routerLinkActive="active"><a routerLink="profile"><span class="icon-user" aria-hidden="true"></span> My Profile</a></li>
+          <li routerLinkActive="active"><a routerLink="family" routerLinkActive="active"><span class="icon-family" aria-hidden="true"></span> My Family</a></li>
+          <li ><a href="https://www.apolloprism.com/" target="_blank"><span class="icon-clipboard-with-pencil" aria-hidden="true"></span> My Health Records</a></li>
+          <li ><a href="https://www.askapollo.com/physical-appointment/bookhealthcheckappointment.aspx" target="_blank"><span class="icon-medical-heart-health-check" aria-hidden="true"></span>My Health Check</a> </li>
+          <li><a routerLink="/feedback"><span class="glyphicon glyphicon-comment"></span> Feedback</a> </li>
+          <li ><a (click)="logout()"><span class="icon-exit"></span> Log out</a> </li>
+        </ul>
+      </nav>
+      <!--nav closed--> 
+      
+    </div>
+    <!--left-panel closed--> 
+</aside>

@@ -1,0 +1,258 @@
+<aside class="col-sm-7 col-sm-pull-5 fadeInRight animated">
+  <section class="row">
+    <div class="col-xs-12 col-sm-12">
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/"></a>
+        </li>
+        <li>
+          <a routerLink="/doctorsearch/{{ca.docCity | lowercase}}">{{ ca.docCity | titlecase }}</a>
+        </li>
+        <li>
+          <a routerLink="/doctorsearch/{{ca.docCity | lowercase}}/{{ca.docSpeciality | lowercase}}">{{ ca.docSpeciality | titlecase }}</a>
+        </li>
+        <li>{{ ca.docName }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="heading mb-10">Hospital UHID Registration</h2>
+    <section class="row">
+      <div class="col-sm-12 mtop10 text-center">
+        <p class="font-16 text-primary">Avoid hassles, Register for your Apollo Hospital/Clinic UHID online.</p>
+      </div>
+      <section class="faq-btn col-sm-8 col-sm-offset-2 mtop20" style="display:none;">
+
+        <a class="btn btn-info btn-lg roundBtn" data-toggle="collapse" data-target="#UHID-Create">Proceed for UHID Registration
+          <span class="btnPrimary hidden-xs">
+            <span class="icon-edit-document" style="line-height: 34px;"></span>
+          </span>
+        </a>
+
+      </section>
+    </section>
+
+    <div id="UHID-Create" class="collapse mtop15-xs">
+      <section class="row mtop20">
+
+        <div class="form-group col-sm-6">
+          <label>Title:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {{ selectedSalutation }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let s of salutations" (click)="setSalutation(s)">
+                <a>{{ s }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>First Name:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" type="text" name="fn" [ngModel]="pi.fn" required>
+        </div>
+      </section>
+      <section class="row ">
+
+        <div class="form-group col-sm-6">
+          <label>Last Name:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" type="text" name="ln" [ngModel]="pi.ln" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Email ID:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" type="text" name="email" [ngModel]="pi.email" email required>
+          <label class="help-block font-10 mbottom0">(Email confirmation of appointment will be sent to this ID)</label>
+        </div>
+      </section>
+      <section class="row ">
+
+        <div class="form-group col-sm-6">
+          <label>Mobile no.:
+            <span class="asterisk">*</span>
+          </label>
+          <input class="form-control input-sm" type="text" name="pn" [ngModel]="pi.pn" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Select Guardian:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true"> {{ selectedGuardian }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let g of guardians" (click)="setSelectedGuardian(g)">
+                <a> {{ g }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="row">
+
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Date of birth (Age):
+            <span class="asterisk">*</span>
+          </label>
+          <input   type="text" class="form-control input-sm" id="datetimepicker4" name="dob" [ngModel]="pi.dob" required />
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label>Gender:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="clearfix"></div>
+          <div class="radio radio-inline ">
+            <input id="2" type="radio" [value]="'2'" name="gender" [ngModel]="pi.gender" ngModel required>
+            <label for="2" class="font-300 text-black"> Female </label>
+          </div>
+          <div class="radio radio-inline ">
+            <input type="radio" id="1" [value]="'1'" name="gender" [ngModel]="pi.gender" ngModel required>
+            <label for="1" class="font-300 text-black"> Male </label>
+          </div>
+          <div class="radio radio-inline ">
+            <input id="3" type="radio" [value]="'3'" name="gender" [ngModel]="pi.gender" ngModel required>
+            <label for="3" class="font-300 text-black"> Others </label>
+          </div>
+        </div>
+      </section>
+      <section class="row">
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Marital status:</label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true"> {{ maritalStatus }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li (click)="setMaritalStatus('Married')">
+                <a> Married </a>
+              </li>
+              <li (click)="setMaritalStatus('Unmarried')">
+                <a> Unmarried </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Pin Code:
+            <span class="asterisk">*</span>
+          </label>
+          <input type="text" class="form-control input-sm" name="pin" ngModel required />
+        </div>
+
+      </section>
+
+      <section class="row">
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Select Country:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true"> {{ selectedCountry.name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let c of countries" (click)="setCountry(c)">
+                <a> {{ c.name }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Select State:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true"> {{ selectedState.name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let s of states" (click)="setState(s)">
+                <a> {{ s.name }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+      <section class="row">
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Select District:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true">{{ selectedDistrict.name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let d of districts" (click)="setDistrict(d)">
+                <a> {{ d.name }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="font-nrml">Select City:
+            <span class="asterisk">*</span>
+          </label>
+          <div class="dropdown bootstrap-select">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true">{{ selectedCity.name }}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li *ngFor="let ct of cities" (click)="setCity(ct)">
+                <a> {{ ct.name }} </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+      <section class="row">
+
+        <div class="form-group  col-sm-12">
+          <label class="font-nrml">Address:
+            <span class="asterisk">*</span>
+          </label>
+          <input type="text" name="address" ngModel class="form-control input-sm" />
+        </div>
+
+      </section>
+
+      <section class="row">
+        <div class="form-group col-sm-12">
+          <label class="font-nrml text-primary">Hospital registration fee:
+            <strong class="text-info">Rs 200</strong>
+          </label>
+
+        </div>
+
+      </section>
+
+      <section class="row text-center">
+        <a class="btn btn-info">
+          <span class="icon-credit-card" aria-hidden="true"></span> Pay Now </a>
+      </section>
+    </div>
+
+
+  </section>
+
+</aside>

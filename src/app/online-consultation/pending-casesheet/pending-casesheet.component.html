@@ -1,0 +1,330 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<section class="inner-pages">
+  <!-- mini-header start-->
+  <section class="mini-header"></section>
+  <!-- /mini-header closed-->
+  <!-- content-wrap start -->
+  <section class="container content-wrap">
+    <div class="row">
+      <aside class="col-md-9  fadeInRight animated">
+        <section class="row">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="breadcrumb">
+                <li style="cursor:pointer" routerLink="/">
+              <li><a routerLink="/my/dashboard-oc" >Dashboard</a></li>
+              <li>Casesheet</li>
+            </ul>
+          </div>
+        </section>
+        <section class="wt-bg  border-btm ">
+          <div class="col-sm-7 pleft0">
+            <h3 class="mtop5">Medical casesheet</h3>
+          </div>
+          <div class="col-sm-5 pleft0 pr-0 hidden-xs">
+            <ul class="nav nav-tabs steps-tab">
+              <li rel-index="0" [ngClass]="{'active': !showStep2}"><a  class="btn" aria-controls="step-1" role="tab">Basic Information</a>
+                <span class="progress"></span>
+                <i class="circle"></i>
+              </li>
+              <li rel-index="1" [ngClass]="{'active': showStep2}"><a  class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">Patient details</a>
+                <span class="progress"></span>
+                <i class="circle"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+          <!-- heading closed-->
+
+          <div class="tab-content edit-form clearfix">
+            <div class="active  fadeInRight animated" *ngIf="!showStep2">
+              <section class="row">
+                <div class="form-group col-sm-12 mtop10">
+                  <label class="text-info">Appointment booked for:<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+                  <ul class="self-relative">
+                    <li class="chk-cont active">
+                      <input (click)="removeRelative()" id="tab1" name="self-rel" value="self" type="radio" checked class="hideradio" [(ngModel)]="AppointmentPatientInfo.type"
+                      />
+                      <label title="Self" id="for-self" class="chkview" for="tab1">
+                        <i class="tick glyphicon glyphicon-ok"></i>
+                        <i class="glyphicon glyphicon-user"></i></label>
+                      <span class="title-rate">Self</span> </li>
+                    <li class="chk-cont">
+                      <input (click)="showRelatives()" id="tab2" name="self-rel" value="relative" type="radio" class="hideradio" [(ngModel)]="AppointmentPatientInfo.type"
+                      />
+                      <!-- <label title="Add Relative" class="chkview" data-toggle="collapse" data-target="#Rel" for="tab2"><i class="tick glyphicon glyphicon-ok"></i><i class="icon-plus-user"></i></label> -->
+                      <span class="title-rate">Relative</span></li>
+                  </ul>
+                  <div *ngIf="showRelativesFlag">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="true">
+                   
+                   <span  class="text-info font-12">({{ selectedRelative.firstName }} {{ selectedRelative.lastName }})</span> 
+                  <!-- <span class="caret"></span> -->
+                   </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" *ngIf="showRelativesFlag">
+                      <!-- <li (click)="showNewPatient()">
+                        <a>Not Sure.. Proceed!</a>
+                      </li> -->
+                      <li *ngFor="let id of availableRelatives" (click)="setRelative(id)">
+                        <a>{{ id.uhid }}
+                        <span class="text-info font-12">({{ id.firstName }} {{ id.lastName }})</span>
+                      </a>
+                      </li>
+                    </ul>
+                  </div>
+                
+                </div>
+              </section>
+              <section class="row">
+              
+              </section>
+              <section class="row">
+                <div class="form-group col-sm-6">
+                  <label class="font-nrml text-primary">Age(in years):<span class="asterisk">*</span></label>
+                  <input [(ngModel)]="AppointmentPatientInfo.age" class="form-control "  id="datetimepicker4" type="text">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label class="text-primary">Gender:<span class="asterisk">*</span></label>
+                  <div class="clearfix"></div>
+                  <div class="radio radio-inline ">
+                    <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen1" value="Male" checked="checked" type="radio">
+                    <label for="radiogen1" class="font-300 text-black"> Male </label>
+                  </div>
+                  <div class="radio radio-inline ">
+                    <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen2" value="Female" type="radio">
+                    <label for="radiogen2" class="font-300 text-black"> Female </label>
+                  </div>
+                  <div class="radio radio-inline ">
+                    <input [(ngModel)]="AppointmentPatientInfo.gender" name="radi" id="radiogen3" value="UnKnown" type="radio">
+                    <label for="radiogen3" class="font-300 text-black"> Others </label>
+                  </div>
+                </div>
+              </section>
+              <section class="row">
+                <div class="form-group col-sm-6">
+                  <label class="text-primary">Height:  <span class="asterisk">*</span></label>
+                  <div class="dropdown bootstrap-select">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                      {{AppointmentPatientInfo.heightText}}
+                      <span class="caret"></span> </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li *ngFor="let fd of feetData">
+                        <a (click)="setHeight(fd.ft,fd.in)" data-value="fd.ft,fd.in">{{fd.ft}} Foot - {{fd.in}} Inch</a></li>
+                      
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group col-sm-6">
+                  <label class="text-primary">Weight  (In kgs):<span class="asterisk">*</span></label>
+                  <div class="dropdown bootstrap-select">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">    {{AppointmentPatientInfo.weightText}}   <span class="caret"></span> </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li *ngFor="let w of weightData">
+                        <a (click)="setWeight(w.wt)" data-value="w.wt">{{w.wt}}</a></li>                     
+                    </ul>
+                  </div>
+                </div>
+              </section>
+              <section class="row">
+                <div class="form-group col-sm-6">
+                  <label class="font-nrml text-primary">BMI:</label>
+                  <input [(ngModel)]="AppointmentPatientInfo.bmi" class="form-control" disabled value="" type="text">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label class="font-nrml text-primary">City:<span class="asterisk">*</span></label>
+                  <input [(ngModel)]="AppointmentPatientInfo.city" class="form-control" value="" type="text">
+                </div>
+              </section>
+              <p class="text-right"> <a id="step-1-next" (click)="showSetepTwo()" class="btn btn-infoLine roundBtn btn-sm">Next <span class="icon-right-arrow"></span></a></p>
+            </div>
+            <!--/ tab step-1 closed-->
+
+            <div class="fadeInRight animated " *ngIf="showStep2">
+              <div class="clearfix"></div>
+              <section class="form-group ">
+                <label class="text-primary mtop10">Have you ever visited Apollo Hospitals before:</label> &nbsp;
+                <div class="clearfix"></div>
+                <div class="radio radio-inline ">
+                  <input (click)="removeUhids()" 
+                  [(ngModel)]="AppointmentPatientInfo.pastHistory" name="rad-uh" id="UH2"
+                    value="No" type="radio" checked="checked">
+                  <label for="UH2" class="font-300 text-black" id="nono"> No </label>
+                </div>
+
+                <div class="radio radio-inline ">
+                  <input (click)="showUhids()"  [(ngModel)]="AppointmentPatientInfo.pastHistory" name="rad-uh" id="UH1"
+                    value="Yes" type="radio">
+                  <label for="UH1" class="font-300 text-black" data-toggle="collapse" data-target="#ever-visited"> Yes </label>
+                </div>
+                <section *ngIf="showSelfUhid" id="ever-visited" class="mtop15-xs" aria-expanded="true">
+                   <div class="dropdown bootstrap-select col-sm-6 plr-0 ">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="true">
+                      <span  class="text-info font-12">({{ selectedUHIDSelf.firstName }} {{ selectedUHIDSelf.lastName }})</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                      <li *ngFor="let id of availableUHIDSelf" (click)="setUHIDSelf(id)">
+                        <a>{{ id.uhid }}
+                        <span class="text-info font-12">({{ id.firstName }} {{ id.lastName }})</span>
+                      </a>
+                      </li>
+                    </ul>
+                  </div> 
+                  <div class="clearfix"></div>
+                  <!-- <small class="font-nrml dropdown text-grey help-block">What is UHID: <a class="info-icon dropdown-toggle" id="uhid" data-toggle="dropdown"  href="#1" >i</a>
+                    <div class="dropdown-menu primary-drop font-10" aria-labelledby="uhid"> Unique Hospital Identification (UHID) is your unique patient number. You will be given a UHID while registering at the hospital; this unique number is used to identify you and will be linked with you lifelong. Using this number,  the hospital will store all your medical records and prescriptions while you are being treated at Apollo Hospitals. </div>
+                  </small>  -->
+                </section>
+
+              </section>
+              <div class="form-group">
+                <label class="font-nrml text-primary">Complaints<span class="asterisk">*</span></label>
+                <textarea class="form-control" rows="2" [(ngModel)]="AppointmentPatientInfo.presentComplains" placeholder="Tell us about your present complaints here."></textarea>
+
+              </div>
+
+              <div class="form-group">
+                <label class="font-nrml text-primary">Please upload your medical reports (Eg – Diagnostics reports , Old prescriptions , CT Scans , MRI etc)</label>
+
+                <section class="display-blx-xs help-block">
+                  <div data-toggle="tooltip" data-placement="bottom" title=".JPG, .GIF, .PNG, .PDF, .JPEG" class="btn btn-default btn-xs btn-theme btn-upload mtop5-xs blue-tooltip"><span><i class="glyphicon glyphicon-paperclip"></i> Upload reports / prescriptions </span>
+                    <input type="file" class="upload-file-btn" name="reportUpload" id="reportUpload" #file (change)="reportUpload($event)">                    </div>
+                  <p class="font-10">Max size 30MB</p>
+                </section>
+              </div>
+
+              <div class="form-group">
+                <label class="font-nrml text-primary">Allergies<span class="asterisk">*</span></label>
+                <div class="bootstrap-select multiselect-style wdth-full">
+
+                  <ng-multiselect-dropdown [placeholder]="'Select Allegries'" [data]="Allergies" [(ngModel)]="selectedAllergies" [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)">
+                  </ng-multiselect-dropdown>
+
+                </div>
+              </div>
+
+              <!-- <div class="form-group repeat-cont">
+                <label class="font-nrml text-primary">Medications<span class="asterisk">*</span></label>
+                <section class="row repeat-row">
+                  <div class="col-sm-5">
+                    <input class="form-control" value="" placeholder="Medicine name" type="text">
+                  </div>
+                  <div class="col-sm-3 mtop15-xs pleft0-md">
+                    <div class="dropdown bootstrap-select">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"> Dosage <span class="caret"></span> </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#1" data-value="+1">Once in a day</a></li>
+                        <li><a href="#1" data-value="+2">Twice in a day</a></li>
+                        <li><a href="#1" data-value="+3">Thrice in a day</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mtop15-xs pleft0-md">
+                    <input class="form-control" placeholder="Started from" id="datetimepicker5" type="text">
+                  </div>
+                  <div class="col-sm-1 pr-0 pleft0-md mtop15-xs">
+                    <a href="#1" title="Add row" class="btn btn-infoLine roundBtn btn-sm clone-btn"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="#1" title="Delete row" class="btn btn-primaryLine roundBtn btn-sm  remove-btn"><span class="glyphicon glyphicon-trash"></span></a>
+                  </div>
+                </section>
+              </div> -->
+              <label class="font-nrml text-primary">Medications<span class="asterisk">*</span></label>
+              <a (click)="addMedication()" title="Add row" class="btn btn-infoLine roundBtn btn-sm clone-btn"><span class="glyphicon glyphicon-plus"></span></a>
+             
+           
+              <div *ngFor="let m of medications; let in=index">
+
+                <div class="form-group row">
+
+                  <div class="col-sm-3">
+                    <input type="text" [(ngModel)]="m.medicine" class="form-control" />
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="dropdown bootstrap-select">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"> {{m.dosage}} <span class="caret"></span> </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a (click)="setDossage('Once in a day',m)" value="Once in a day">Once in a day</a></li>
+                        <li><a (click)="setDossage('Twice in a day',m)" value="Twice in a day">Twice in a day</a></li>
+                        <li><a (click)="setDossage('Thrice in a day',m)" value="Thrice in a day">Thrice in a day</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-3">                    
+                    <input class="form-control" placeholder="date(MM/DD/YYYY)" type="text" #dp="bsDatepicker" bsDatepicker [bsConfig]="bsConfig" name="dob" [(ngModel)]="m.started" > 
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div>
+
+                      <a (click)="deleteMedication(m.index)" title="Delete row" class="btn btn-primaryLine roundBtn btn-sm  remove-btn"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+
+              <p> <a id="step-1-prev" (click)="showSetepTwo()" class="btn btn-infoLine roundBtn btn-sm"><span class="icon-left-arrow"></span> Previous </a></p>
+              <div class="form-group text-center"> <a (click)="saveAndSubmit()" class="btn btn-info">Save & submit</a> <a class="btn btn-primaryLine" (click)="saveAsDraft()"
+                  data-dismiss="modal">Save as draft</a>
+              </div>
+            </div>
+            <!--/ tab step-2 closed-->
+          </div>
+          <!-- tab-content closed-->
+        </section>
+        <!-------------------------wt-bg closed-------------------->
+
+      </aside>
+      <!-- /left-content closed-->
+      <aside class="col-sm-3 hidden-xs hidden-sm fadeInLeft animated afixed">
+        <h5 class="heading14 bdr-bottom ">Appointment Info</h5>
+        <ul class="howWork-valign mtop30 ">
+          <li><span class="icon-doc icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.doctorname}}</small> </h5>
+              <p class="font-11 ">{{AppointmentDocInfo.Speciality}}</p>
+            </div>
+          </li>
+          <li><span class="icon-calendar icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentDate}}</small> </h5>
+              <p class="font-11 ">Appointment Date</p>
+            </div>
+          </li>
+          <li><span class="icon-clock icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>{{AppointmentDocInfo.AppointmentTime}}</small> </h5>
+              <p class="font-11 ">Appointment Time</p>
+            </div>
+          </li>
+          <li><span class=" icon-video-camera icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-info mbottom5"><small>Mode</small></h5>
+              <p class="font-11">{{AppointmentDocInfo.Category}}</p>
+            </div>
+          </li>
+          <!-- <li><span class="icon-location icon-sec" aria-hidden="true"></span>
+            <div class="how-text">
+              <h5 class="text-primary mbottom5"><small>Apollo Health City Jubilee hills</small> </h5>
+              <p class="font-11 ">Location</p>
+            </div>
+          </li> -->
+        </ul>
+      </aside>
+      <!-- /right-content closed -->
+    </div>
+    <!-- /row -->
+  </section>
+  <!-- /content-wrap closed -->
+</section>
